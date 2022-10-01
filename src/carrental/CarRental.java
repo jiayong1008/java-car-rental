@@ -8,6 +8,8 @@ package carrental;
  *
  * @author JiaYong
  */
+
+/***************       MAIN CLASS        ***********/
 public class CarRental {
 
     /**
