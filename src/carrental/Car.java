@@ -15,13 +15,13 @@ public class Car {
     
     //CONSTUCTORS
     public Car(){}
-    public Car
+    // public Car
     
     
     //GETTERS
-    public String getCarPlate(){return carPlate;}
-    public String getCarBrand(){return carBrand;}
-    public double getDailyRentalRate(){return dailyRentalRate;}
+    public String getCarPlate() { return carPlate; }
+    public String getCarBrand() { return carBrand; }
+    public double getDailyRentalRate() { return dailyRentalRate; }
     
     //SETTERS
     public void setCarPlate(String _carPlate) { carPlate = _carPlate; }

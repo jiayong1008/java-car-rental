@@ -10,6 +10,7 @@ package carrental;
  */
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Booking {
     
@@ -23,7 +24,6 @@ public class Booking {
     private double bookingFee;
     
     // CONSTRUCTORS
-    public Booking() {}
     public Booking(ArrayList<String> bookingInfo)
     {
         bookingId = bookingInfo.get(2);
@@ -40,7 +40,7 @@ public class Booking {
     public double getBokkingFee() {return bookingFee;} 
     
     // SETTERS
-    public void setBookingId(String _bookingId) { bookingId = _bookingId; }
+    // public void setBookingId(String _bookingId) { bookingId = _bookingId; }
     public void setCustomer(Customer _customer) { customer = _customer; }
     public void setCar(Car _car) { car = _car; }
     public void setBookingDate(Date _bookingDate) { bookingDate = _bookingDate; }
