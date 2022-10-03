@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Admin extends User {
 
-    private final int adminID;
+    private final String adminID;
 
     // CONSTRUCTORS
     public Admin(ArrayList <String> userInfo)
@@ -14,7 +14,8 @@ public class Admin extends User {
 
         // assigning user ID manually if not provided
         int userID = Integer.parseInt(userInfo.get(0).substring(1));
-        adminID = (userID >= 0) ? userID : id;
+        userID = (userID >= 0) ? userID : id;
+        adminID = "A" + String.format("%04d", userID);
         id++;
     }
 
@@ -22,7 +23,7 @@ public class Admin extends User {
     @Override
     public String toString()
     {
-        return String.format("A%04d (Admin) - %s", adminID, name);
+        return String.format("%s (Admin) - %s", adminID, name);
     }
     
     @Override

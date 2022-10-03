@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Customer extends User {
 
-    private final int customerID;
+    private final String customerID;
 
     // CONSTRUCTORS
     public Customer(ArrayList <String> userInfo)
@@ -14,14 +14,15 @@ public class Customer extends User {
 
         // assigning user ID manually if not provided
         int userID = Integer.parseInt(userInfo.get(0).substring(1));
-        customerID = (userID >= 0) ? userID : id;
+        userID = (userID >= 0) ? userID : id;
+        customerID = "C" + String.format("%04d", userID);
         id++;
     }
 
     // ABSTRACT METHODS
     public String toString()
     {
-        return String.format("C%04d (Customer) - %s", customerID, name);
+        return String.format("%s (Customer) - %s", customerID, name);
     }
     
     public boolean addToFile()

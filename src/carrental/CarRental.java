@@ -4,6 +4,10 @@
  */
 package carrental;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
 /**
  *
  * @author JiaYong
@@ -12,11 +16,63 @@ package carrental;
 /***************       MAIN CLASS        ***********/
 public class CarRental {
 
+    private static ArrayList<User> customers = new ArrayList<User>();
+    private static ArrayList<Admin> admins = new ArrayList<Admin>();
+    private static ArrayList<Booking> bookings = new ArrayList<Booking>();
+    private static final String userFile = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\ResortRoom\\src\\resortroom\\database\\users.txt";
+    private static final String bookingFile = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\ResortRoom\\src\\resortroom\\database\\bookings.txt";
+    // src\carrental\database\users.txt
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        loadUsers();
+        loadCars();
+        loadBookings();
+    }
+
+    public static void loadUsers()
+    {
+        // Preventing redundancy
+        customers.clear(); 
+        admins.clear();
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedReader br = new BufferedReader(new FileReader(userFile));
+            
+            br.readLine(); // Skip first line (header)
+            while ((line = br.readLine()) != null) { // Read line by line till EOF
+                String[] values = line.split(", "); // Split values by comma
+                ArrayList<String> personInfo = new ArrayList<String>(Arrays.asList(values));
+
+                if (personInfo.get(1).equals("customer")) {
+                    User cust = new User(personInfo);
+                    customers.add(cust);
+                } else if (personInfo.get(1).equals("staff")) {
+                    Staff staff = new Staff(personInfo);
+                    staffs.add(staff);
+                }
+            }
+            br.close();  
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+    }
+
+    public static void loadCars()
+    {
+        
+    }
+
+    public static void loadBookings()
+    {
+
     }
     
 }
