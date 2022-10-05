@@ -19,7 +19,7 @@ import java.util.Arrays;
 /***************       MAIN CLASS        ***********/
 public class CarRental {
 
-    private static ArrayList<User> customers = new ArrayList<User>();
+    private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private static ArrayList<Admin> admins = new ArrayList<Admin>();
     // private static ArrayList<Booking> bookings = new ArrayList<Booking>();
     private static final String userFile = "src\\carrental\\database\\users.txt";
@@ -27,10 +27,22 @@ public class CarRental {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         loadUsers();
-        loadCars();
-        loadBookings();
+        // loadCars();
+        // loadBookings();
+        login();
+    }
+
+    // GETTERS
+    public static ArrayList<Admin> getAdmins() { return admins; }
+    public static ArrayList<Customer> getCustomers() { return customers; }
+
+    public static void login() 
+    {
+        LoginFrame loginf = new LoginFrame();
+        loginf.setVisible(true);
     }
 
     public static void loadUsers()
@@ -43,15 +55,14 @@ public class CarRental {
         try {
             // May throw FileNotFoundException
             BufferedReader br = new BufferedReader(new FileReader(userFile));
-            
             br.readLine(); // Skip first line (header)
+
             while ((line = br.readLine()) != null) { // Read line by line till End Of File (EOF)
                 String[] values = line.split(", "); // Split values by comma
-                System.out.println(Arrays.toString(values));
                 ArrayList<String> personInfo = new ArrayList<String>(Arrays.asList(values));
 
                 if (personInfo.get(1).equals("customer")) {
-                    User cust = new Customer(personInfo);
+                    Customer cust = new Customer(personInfo);
                     customers.add(cust);
                 } else if (personInfo.get(1).equals("admin")) {
                     Admin admin = new Admin(personInfo);
@@ -65,9 +76,6 @@ public class CarRental {
         } catch (IOException e) {
             e.printStackTrace();
         } 
-
-        System.out.println(customers.get(0));
-        System.out.println(admins.get(0));
     }
 
     public static void loadCars()

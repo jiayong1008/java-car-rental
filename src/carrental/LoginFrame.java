@@ -4,6 +4,8 @@
  */
 package carrental;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author JiaYong
@@ -34,6 +36,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lblPass = new javax.swing.JLabel();
         passLogin = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
+        btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,20 +83,34 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSignUp.setBackground(new java.awt.Color(0, 153, 153));
+        btnSignUp.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignUp.setText("Sign Up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
         panelLoginLayout.setHorizontalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
                 .addContainerGap(166, Short.MAX_VALUE)
-                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblUsername)
-                    .addComponent(lblPass)
-                    .addComponent(txtUsername)
-                    .addComponent(passLogin)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblLoginAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(156, 156, 156))
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblUsername)
+                        .addComponent(lblPass)
+                        .addComponent(txtUsername)
+                        .addComponent(passLogin)
+                        .addComponent(lblLoginAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(154, 154, 154))
             .addGroup(panelLoginLayout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addComponent(lblLogin)
@@ -115,8 +132,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(btnLogin)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogin)
+                    .addComponent(btnSignUp))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,27 +157,56 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        
         String username = txtUsername.getText().trim().toLowerCase();
         String password = new String(passLogin.getPassword());
+        String role = checkCredentials(username, password);
 
-        // Check staff credentials
-        if (checkCredentials(username, password)) {
-            MainFrame mainf = new MainFrame(); // Call main page frame
-            mainf.setVisible(true);
-            this.setVisible(false); // Close login frame
-        } else { // Wrong credentials
+        // Check credentials & user role
+        if (role.equals("admin")) 
+        {
+            AdminFrame adminf = new AdminFrame(); // Open Admin's GUI
+            adminf.setVisible(true);
+            this.setVisible(false); // Close login GUI
+        }
+        else if (role.equals("customer"))
+        {
+            CustomerFrame custf = new CustomerFrame(); // Open Customer's GUI
+            custf.setVisible(true);
+            this.setVisible(false); // Close login GUI
+        }
+        else // Invalid credentials
+        { 
             lblLoginAlert.setOpaque(true);
-            lblLoginAlert.setText("Invalid staff credentials.");
+            lblLoginAlert.setText("Invalid credentials.");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    public boolean checkCredentials(String username, String password) {
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        
+        RegistrationFrame registerf = new RegistrationFrame();
+        registerf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSignUpActionPerformed
+
+    public String checkCredentials(String username, String password) 
+    {
+        // Check if user has provided the correct credentials of an admin
         ArrayList<Admin> admins = CarRental.getAdmins();
         for (Admin admin : admins) {
             if (username.equals(admin.getUsername()) && password.equals(admin.getPassword()))
-                return true;
+                return "admin";
         }
-        return false;
+
+        // Check if user has provided the correct credentials of a customer
+        ArrayList<Customer> customers = CarRental.getCustomers();
+        for (Customer customer : customers) {
+            if (username.equals(customer.getUsername()) && password.equals(customer.getPassword()))
+                return "customer";
+        }
+
+        // Invalid credentials
+        return "N/A";
     }
 
     /**
@@ -198,6 +246,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnSignUp;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblLoginAlert;
     private javax.swing.JLabel lblPass;

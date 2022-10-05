@@ -82,7 +82,6 @@
                                           </Group>
                                       </Group>
                                       <Component id="lblUsername" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblLoginAlert" alignment="0" min="-2" pref="330" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="passLogin" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
@@ -101,6 +100,7 @@
                                               <Component id="txtUsername2" min="-2" pref="163" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="lblLoginAlert" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
