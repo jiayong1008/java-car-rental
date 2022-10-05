@@ -5,7 +5,12 @@
 package carrental;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,12 +20,37 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
     DefaultListModel lm = new DefaultListModel<>();
+    Object[] columns = new Object[8]; // For individual table row
 
     /**
      * Creates new form AdminFrame
      */
     public AdminFrame() {
         initComponents();
+        loadCars();
+    }
+
+    // Populate record to table
+    public void addTableRow(DefaultTableModel model, Car car) 
+    {
+        columns[0] = car.getCarPlate();
+        columns[1] = car.getCarBrand();
+        columns[2] = car.getCarModel();
+        columns[3] = String.format("%.2f", car.getDailyRentalRate());
+        model.addRow(columns);
+    }
+
+    // Load first 8 users in 'book room' table
+    private void loadCars() 
+    {
+        ArrayList<Car> cars = CarRental.getCars();
+        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();
+        tableModel.setRowCount(0);
+        int index = cars.size();
+        
+        for (int i = 0; i < index; i++) {
+            addTableRow(tableModel, cars.get(i));
+        }
     }
 
     /**
@@ -108,7 +138,7 @@ public class AdminFrame extends javax.swing.JFrame {
         txtCarPlate = new javax.swing.JTextField();
         txtCarBrand = new javax.swing.JTextField();
         txtCarModel = new javax.swing.JTextField();
-        txtDailyRate = new javax.swing.JTextField();
+        txtCarDailyRate = new javax.swing.JTextField();
         btnAddCar = new javax.swing.JButton();
         btnSearchCar = new javax.swing.JButton();
         btnEditCar = new javax.swing.JButton();
@@ -120,7 +150,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        tableUsers1 = new javax.swing.JTable();
+        tableCars = new javax.swing.JTable();
         tabManageUsers = new javax.swing.JPanel();
         formBook = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -982,12 +1012,12 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        txtDailyRate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtDailyRate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtDailyRate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtDailyRate.addActionListener(new java.awt.event.ActionListener() {
+        txtCarDailyRate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCarDailyRate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCarDailyRate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtCarDailyRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDailyRateActionPerformed(evt);
+                txtCarDailyRateActionPerformed(evt);
             }
         });
 
@@ -1102,7 +1132,7 @@ public class AdminFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtCarDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         formBook3Layout.setVerticalGroup(
@@ -1123,7 +1153,7 @@ public class AdminFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel47)))
                             .addGroup(formBook3Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txtDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtCarDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(formBook3Layout.createSequentialGroup()
                         .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
@@ -1147,21 +1177,21 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        tableUsers1.setBackground(new java.awt.Color(204, 255, 255));
-        tableUsers1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tableUsers1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCars.setBackground(new java.awt.Color(204, 255, 255));
+        tableCars.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tableCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "User ID", "Name", "Role", "Gender", "Contact No.", "Email", "NRIC", "* Username"
+                "Car Plate", "Car Brand", "Car Model", "Daily Rental Rate (RM)"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1172,12 +1202,12 @@ public class AdminFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tableUsers1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableCars.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableUsers1MouseClicked(evt);
+                tableCarsMouseClicked(evt);
             }
         });
-        jScrollPane6.setViewportView(tableUsers1);
+        jScrollPane6.setViewportView(tableCars);
 
         javax.swing.GroupLayout tabManageCarsLayout = new javax.swing.GroupLayout(tabManageCars);
         tabManageCars.setLayout(tabManageCarsLayout);
@@ -2332,7 +2362,52 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDailyRateActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
-        // TODO add your handling code here:
+        
+        String carPlate = txtCarPlate.getText().trim();
+        String carBrand = txtCarBrand.getText().trim();
+        String carModel = txtCarModel.getText().trim();
+        String dailyRate = txtCarDailyRate.getText().trim();
+        Double dailyRentalRate;
+        
+        if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
+            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+        
+        else {
+
+            // Validate daily rate is a numeric (double) value
+            try {
+                dailyRentalRate = Double.parseDouble(dailyRate);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive numeric value.");
+                break;
+            }
+
+            // Validate daily rate is a positive value
+            if (dailyRentalRate <= 0) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive numeric value.");
+                break;
+            }
+            
+            // complete information provided
+            ArrayList<String> carInfo = new ArrayList<String>(
+                Arrays.asList([carPlate, carBrand, carModel, dailyRentalRate])
+            );     
+            Car car = new Car(carInfo);            
+
+            if (!car.isDuplicate()) {
+
+                if (car.addToFile()) { 
+                    loadCars();
+                    JOptionPane.showMessageDialog(this, "Car added successfully");
+                } 
+                else
+                    JOptionPane.showMessageDialog(this, "Car not added - Something went wrong.");
+                    
+            } else {
+                car = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Car not added - Duplication detected.");
+            }
+        }
     }//GEN-LAST:event_btnAddCarActionPerformed
 
     private void btnEditCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCarActionPerformed
@@ -2343,9 +2418,9 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteCarActionPerformed
 
-    private void tableUsers1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsers1MouseClicked
+    private void tableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCarsMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableUsers1MouseClicked
+    }//GEN-LAST:event_tableCarsMouseClicked
 
     private void txtCarPlateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarPlateActionPerformed
         // TODO add your handling code here:
@@ -2500,18 +2575,18 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tabReceipts;
     private javax.swing.JTable tableBookRoomGuest;
     private javax.swing.JTable tableBookings;
+    private javax.swing.JTable tableCars;
     private javax.swing.JTable tableUsers;
-    private javax.swing.JTable tableUsers1;
     private javax.swing.JTextArea txtAreaReceipt;
     private javax.swing.JTextField txtBookIdReceipt;
     private javax.swing.JTextField txtBookedGuestName;
     private javax.swing.JTextField txtCarBrand;
+    private javax.swing.JTextField txtCarDailyRate;
     private javax.swing.JTextField txtCarModel;
     private javax.swing.JTextField txtCarPlate;
     private javax.swing.JTextField txtChkIn;
     private javax.swing.JTextField txtChkOut;
     private javax.swing.JTextField txtContact;
-    private javax.swing.JTextField txtDailyRate;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGuestName;
     private javax.swing.JTextField txtMngCheckIn;

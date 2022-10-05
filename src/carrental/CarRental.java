@@ -21,8 +21,9 @@ public class CarRental {
 
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private static ArrayList<Admin> admins = new ArrayList<Admin>();
-    // private static ArrayList<Booking> bookings = new ArrayList<Booking>();
+    private static ArrayList<Car> cars = new ArrayList<Car>();
     private static final String userFile = "src\\carrental\\database\\users.txt";
+    private static final String carFile = "src\\carrental\\database\\cars.txt";
 
     /**
      * @param args the command line arguments
@@ -30,7 +31,7 @@ public class CarRental {
     public static void main(String[] args) 
     {
         loadUsers();
-        // loadCars();
+        loadCars();
         // loadBookings();
         login();
     }
@@ -38,7 +39,13 @@ public class CarRental {
     // GETTERS
     public static ArrayList<Admin> getAdmins() { return admins; }
     public static ArrayList<Customer> getCustomers() { return customers; }
+    public static ArrayList<Car> getCars() { return cars; }
+    public static String getCarFile() { return carFile; }
 
+    // ADDING INFORMATION
+    public static void addCars(Car car) { cars.add(car); }
+
+    
     public static void login() 
     {
         LoginFrame loginf = new LoginFrame();
@@ -57,7 +64,8 @@ public class CarRental {
             BufferedReader br = new BufferedReader(new FileReader(userFile));
             br.readLine(); // Skip first line (header)
 
-            while ((line = br.readLine()) != null) { // Read line by line till End Of File (EOF)
+            while ((line = br.readLine()) != null) 
+            { // Read line by line till End Of File (EOF)
                 String[] values = line.split(", "); // Split values by comma
                 ArrayList<String> personInfo = new ArrayList<String>(Arrays.asList(values));
 
@@ -80,7 +88,29 @@ public class CarRental {
 
     public static void loadCars()
     {
-        
+        // Preventing redundancy
+        cars.clear(); 
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedReader br = new BufferedReader(new FileReader(carFile));
+            br.readLine(); // Skip first line (header)
+
+            while ((line = br.readLine()) != null) 
+            { // Read line by line till End Of File (EOF)
+                String[] values = line.split(", "); // Split values by comma
+                ArrayList<String> carInfo = new ArrayList<String>(Arrays.asList(values));
+                Car car = new Car(carInfo);
+                cars.add(car);
+            }
+            br.close();  
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void loadBookings()
