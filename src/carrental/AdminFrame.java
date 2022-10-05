@@ -99,6 +99,28 @@ public class AdminFrame extends javax.swing.JFrame {
         lblMngBookingID = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableBookings = new javax.swing.JTable();
+        tabManageCars = new javax.swing.JPanel();
+        formBook3 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        txtCarPlate = new javax.swing.JTextField();
+        txtCarBrand = new javax.swing.JTextField();
+        txtCarModel = new javax.swing.JTextField();
+        txtDailyRate = new javax.swing.JTextField();
+        btnAddCar = new javax.swing.JButton();
+        btnSearchCar = new javax.swing.JButton();
+        btnEditCar = new javax.swing.JButton();
+        btnDeleteCar = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableUsers1 = new javax.swing.JTable();
         tabManageUsers = new javax.swing.JPanel();
         formBook = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -322,7 +344,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSearchRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -668,7 +690,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(pnlBookRoom2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         pnlBookRoom2Layout.setVerticalGroup(
             pnlBookRoom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -806,7 +828,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -916,6 +938,268 @@ public class AdminFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Manage Bookings", tabManageBookings);
+
+        tabManageCars.setBackground(new java.awt.Color(240, 240, 240));
+
+        formBook3.setBackground(new java.awt.Color(204, 255, 204));
+
+        jLabel22.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel22.setText("Car Plate");
+
+        jLabel23.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel23.setText("Car Brand");
+
+        jLabel30.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel30.setText("Car Model");
+
+        jLabel31.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel31.setText("Daily Rate");
+
+        txtCarPlate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCarPlate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCarPlate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtCarPlate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCarPlateActionPerformed(evt);
+            }
+        });
+
+        txtCarBrand.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCarBrand.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCarBrand.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtCarBrand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCarBrandActionPerformed(evt);
+            }
+        });
+
+        txtCarModel.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCarModel.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCarModel.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtCarModel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCarModelActionPerformed(evt);
+            }
+        });
+
+        txtDailyRate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtDailyRate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtDailyRate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtDailyRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDailyRateActionPerformed(evt);
+            }
+        });
+
+        btnAddCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnAddCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnAddCar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddCar.setText("Add");
+        btnAddCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCarActionPerformed(evt);
+            }
+        });
+
+        btnSearchCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnSearchCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnSearchCar.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchCar.setText("Search");
+        btnSearchCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchCarActionPerformed(evt);
+            }
+        });
+
+        btnEditCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnEditCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnEditCar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditCar.setText("Edit");
+        btnEditCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditCarActionPerformed(evt);
+            }
+        });
+
+        btnDeleteCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnDeleteCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnDeleteCar.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteCar.setText("Delete");
+        btnDeleteCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteCarActionPerformed(evt);
+            }
+        });
+
+        jLabel40.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel40.setText("*");
+
+        jLabel39.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel39.setText("*");
+
+        jLabel46.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel46.setText("*");
+
+        jLabel45.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        jLabel45.setText("Required fields");
+
+        jLabel44.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel44.setText("*");
+
+        jLabel47.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel47.setText("*");
+
+        javax.swing.GroupLayout formBook3Layout = new javax.swing.GroupLayout(formBook3);
+        formBook3.setLayout(formBook3Layout);
+        formBook3Layout.setHorizontalGroup(
+            formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formBook3Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBook3Layout.createSequentialGroup()
+                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel45))
+                    .addGroup(formBook3Layout.createSequentialGroup()
+                        .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formBook3Layout.createSequentialGroup()
+                                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel40)
+                                    .addComponent(jLabel39))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(formBook3Layout.createSequentialGroup()
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtCarPlate, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(formBook3Layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(txtCarBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(formBook3Layout.createSequentialGroup()
+                                .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(60, 60, 60)
+                        .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(formBook3Layout.createSequentialGroup()
+                                .addComponent(btnEditCar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(formBook3Layout.createSequentialGroup()
+                                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel44)
+                                    .addComponent(jLabel47))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel30)
+                                    .addComponent(jLabel31))
+                                .addGap(18, 18, 18)
+                                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        formBook3Layout.setVerticalGroup(
+            formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formBook3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBook3Layout.createSequentialGroup()
+                        .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel44)
+                            .addComponent(txtCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formBook3Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel31)
+                                    .addComponent(jLabel47)))
+                            .addGroup(formBook3Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDailyRate, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(formBook3Layout.createSequentialGroup()
+                        .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel40)
+                            .addComponent(txtCarPlate, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel39)
+                            .addComponent(txtCarBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel45)
+                    .addComponent(jLabel46))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(formBook3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearchCar)
+                    .addComponent(btnAddCar)
+                    .addComponent(btnEditCar)
+                    .addComponent(btnDeleteCar))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        tableUsers1.setBackground(new java.awt.Color(204, 255, 255));
+        tableUsers1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tableUsers1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User ID", "Name", "Role", "Gender", "Contact No.", "Email", "NRIC", "* Username"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableUsers1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableUsers1MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tableUsers1);
+
+        javax.swing.GroupLayout tabManageCarsLayout = new javax.swing.GroupLayout(tabManageCars);
+        tabManageCars.setLayout(tabManageCarsLayout);
+        tabManageCarsLayout.setHorizontalGroup(
+            tabManageCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabManageCarsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabManageCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(formBook3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        tabManageCarsLayout.setVerticalGroup(
+            tabManageCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabManageCarsLayout.createSequentialGroup()
+                .addComponent(formBook3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Manage Cars", tabManageCars);
 
         tabManageUsers.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -1219,8 +1503,8 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formBook, javax.swing.GroupLayout.PREFERRED_SIZE, 749, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
+                    .addComponent(formBook, javax.swing.GroupLayout.PREFERRED_SIZE, 778, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabManageUsersLayout.setVerticalGroup(
@@ -1337,7 +1621,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                     .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1424,7 +1708,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(bgLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2031,6 +2315,42 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLastReceiptActionPerformed
 
+    private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchCarActionPerformed
+
+    private void txtCarBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarBrandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarBrandActionPerformed
+
+    private void txtCarModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarModelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarModelActionPerformed
+
+    private void txtDailyRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDailyRateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDailyRateActionPerformed
+
+    private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCarActionPerformed
+
+    private void btnEditCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditCarActionPerformed
+
+    private void btnDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteCarActionPerformed
+
+    private void tableUsers1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsers1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableUsers1MouseClicked
+
+    private void txtCarPlateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarPlateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarPlateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2068,12 +2388,15 @@ public class AdminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
+    private javax.swing.JButton btnAddCar;
     private javax.swing.JButton btnBookingsDelete;
     private javax.swing.JButton btnBookingsEdit;
     private javax.swing.JButton btnBookingsSearch;
     private javax.swing.JButton btnChkIn;
     private javax.swing.JButton btnChkOut;
     private javax.swing.JButton btnConfirmBook;
+    private javax.swing.JButton btnDeleteCar;
+    private javax.swing.JButton btnEditCar;
     private javax.swing.JButton btnFirstReceipt;
     private javax.swing.JButton btnLastReceipt;
     private javax.swing.JButton btnLogout;
@@ -2083,6 +2406,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPreviousReceipt;
     private javax.swing.JButton btnPrintReceipt;
     private javax.swing.JButton btnProceedGuest;
+    private javax.swing.JButton btnSearchCar;
     private javax.swing.JButton btnSearchGuest;
     private javax.swing.JButton btnSearchReceipt;
     private javax.swing.JButton btnSearchRoom;
@@ -2096,6 +2420,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel formBook;
     private javax.swing.JPanel formBook1;
     private javax.swing.JPanel formBook2;
+    private javax.swing.JPanel formBook3;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel10;
@@ -2111,21 +2436,31 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2139,6 +2474,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblChkIn;
@@ -2159,17 +2495,23 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JTabbedPane tabBookRoom;
     private javax.swing.JPanel tabManageBookings;
+    private javax.swing.JPanel tabManageCars;
     private javax.swing.JPanel tabManageUsers;
     private javax.swing.JPanel tabReceipts;
     private javax.swing.JTable tableBookRoomGuest;
     private javax.swing.JTable tableBookings;
     private javax.swing.JTable tableUsers;
+    private javax.swing.JTable tableUsers1;
     private javax.swing.JTextArea txtAreaReceipt;
     private javax.swing.JTextField txtBookIdReceipt;
     private javax.swing.JTextField txtBookedGuestName;
+    private javax.swing.JTextField txtCarBrand;
+    private javax.swing.JTextField txtCarModel;
+    private javax.swing.JTextField txtCarPlate;
     private javax.swing.JTextField txtChkIn;
     private javax.swing.JTextField txtChkOut;
     private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtDailyRate;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGuestName;
     private javax.swing.JTextField txtMngCheckIn;
