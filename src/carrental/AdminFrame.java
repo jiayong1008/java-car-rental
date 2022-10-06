@@ -1769,15 +1769,15 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnChkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChkInActionPerformed
-        chkInDate = datef.format(jCalendar1.getDate());
-        txtChkIn.setText(chkInDate);
-        lblChkIn.setText(chkInDate);
-        validateToday();
-        if (!chkOutDate.isEmpty()) {
-            validateBookingDates();
-        }
-        bookRoomID = "";
-        lblRoomID.setText("N/A");
+        // chkInDate = datef.format(jCalendar1.getDate());
+        // txtChkIn.setText(chkInDate);
+        // lblChkIn.setText(chkInDate);
+        // validateToday();
+        // if (!chkOutDate.isEmpty()) {
+        //     validateBookingDates();
+        // }
+        // bookRoomID = "";
+        // lblRoomID.setText("N/A");
     }//GEN-LAST:event_btnChkInActionPerformed
 
     private void txtChkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChkInActionPerformed
@@ -1789,24 +1789,24 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtChkOutActionPerformed
 
     private void btnChkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChkOutActionPerformed
-        chkOutDate = datef.format(jCalendar1.getDate());
-        txtChkOut.setText(chkOutDate);
-        lblChkOut.setText(chkOutDate);
-        if (!chkInDate.isEmpty()) {
-            validateBookingDates();
-        }
-        bookRoomID = "";
-        lblRoomID.setText("N/A");
+        // chkOutDate = datef.format(jCalendar1.getDate());
+        // txtChkOut.setText(chkOutDate);
+        // lblChkOut.setText(chkOutDate);
+        // if (!chkInDate.isEmpty()) {
+        //     validateBookingDates();
+        // }
+        // bookRoomID = "";
+        // lblRoomID.setText("N/A");
     }//GEN-LAST:event_btnChkOutActionPerformed
 
     private void btnSearchRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchRoomActionPerformed
-        if (chkInDate.isEmpty() || chkOutDate.isEmpty()) { // Validation
-            JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
-        } else if (validateBookingDates()) { // Add all available rooms to list model
-            ArrayList<String> availableRooms = getAvailableRooms();
-            lm.removeAllElements();
-            availableRooms.forEach((room) -> lm.addElement(room));
-        }
+        // if (chkInDate.isEmpty() || chkOutDate.isEmpty()) { // Validation
+        //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
+        // } else if (validateBookingDates()) { // Add all available rooms to list model
+        //     ArrayList<String> availableRooms = getAvailableRooms();
+        //     lm.removeAllElements();
+        //     availableRooms.forEach((room) -> lm.addElement(room));
+        // }
     }//GEN-LAST:event_btnSearchRoomActionPerformed
 
     private void listAvailableRoomsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listAvailableRoomsValueChanged
@@ -1814,13 +1814,13 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_listAvailableRoomsValueChanged
 
     private void btnProceedGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedGuestActionPerformed
-        if (listAvailableRooms.getSelectedValue() == null) {
-            JOptionPane.showMessageDialog(this, "Please select a room before proceeding.");
-        } else {
-            bookRoomID = listAvailableRooms.getSelectedValue();
-            lblRoomID.setText(bookRoomID);
-            tabBookRoom.setSelectedIndex(1);
-        }
+        // if (listAvailableRooms.getSelectedValue() == null) {
+        //     JOptionPane.showMessageDialog(this, "Please select a room before proceeding.");
+        // } else {
+        //     bookRoomID = listAvailableRooms.getSelectedValue();
+        //     lblRoomID.setText(bookRoomID);
+        //     tabBookRoom.setSelectedIndex(1);
+        // }
     }//GEN-LAST:event_btnProceedGuestActionPerformed
 
     private void txtGuestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuestNameActionPerformed
@@ -1828,61 +1828,61 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGuestNameActionPerformed
 
     private void btnSearchGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGuestActionPerformed
-        String name = txtGuestName.getText().trim().toLowerCase();
-        if (name.isEmpty()) {
-            loadGuest();
-            JOptionPane.showMessageDialog(this, "Please insert guest name to search.");
-        } else {
-            ArrayList<User> customers = ResortBooking.getCusts();
-            DefaultTableModel tableModel = (DefaultTableModel) tableBookRoomGuest.getModel();
-            tableModel.setRowCount(0); // Delete all previous rows
+        // String name = txtGuestName.getText().trim().toLowerCase();
+        // if (name.isEmpty()) {
+        //     loadGuest();
+        //     JOptionPane.showMessageDialog(this, "Please insert guest name to search.");
+        // } else {
+        //     ArrayList<User> customers = ResortBooking.getCusts();
+        //     DefaultTableModel tableModel = (DefaultTableModel) tableBookRoomGuest.getModel();
+        //     tableModel.setRowCount(0); // Delete all previous rows
 
-            // Adding all customers who hv the matched name to table
-            for (User cust : customers) {
-                if (cust.getName().toLowerCase().contains(name)) {
-                    row[0] = cust.getUserID();
-                    row[1] = cust.getName();
-                    row[2] = cust.getGender();
-                    row[3] = cust.getContact();
-                    row[4] = cust.getEmail();
-                    row[5] = cust.getIC();
-                    tableModel.addRow(row);
-                }
-            }
-        }
+        //     // Adding all customers who hv the matched name to table
+        //     for (User cust : customers) {
+        //         if (cust.getName().toLowerCase().contains(name)) {
+        //             row[0] = cust.getUserID();
+        //             row[1] = cust.getName();
+        //             row[2] = cust.getGender();
+        //             row[3] = cust.getContact();
+        //             row[4] = cust.getEmail();
+        //             row[5] = cust.getIC();
+        //             tableModel.addRow(row);
+        //         }
+        //     }
+        // }
     }//GEN-LAST:event_btnSearchGuestActionPerformed
 
     private void btnConfirmBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmBookActionPerformed
-        if (chkInDate.isEmpty() || chkOutDate.isEmpty() || guestID == -1 || bookRoomID.isEmpty())
-        JOptionPane.showMessageDialog(this, "Please fill in all necessary details before proceeding.");
-        else {
-            ArrayList<String> bookingInfo = new ArrayList<String>();
-            Calendar calendar = Calendar.getInstance();
-            String today = datef.format(calendar.getTime());
-            Collections.addAll(bookingInfo, "-1", String.valueOf(guestID), bookRoomID, chkInDate, chkOutDate, today);
-            Booking booking = new Booking(bookingInfo);
-            if (!booking.isDuplicate()) {
-                if (booking.addToFile())
-                JOptionPane.showMessageDialog(this, "Booking successful.");
-                else {
-                    booking = null;
-                    JOptionPane.showMessageDialog(this, "Booking failed - Something went wrong.");
-                }
-            } else {
-                booking = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "Booking denied - Duplicate booking detected.");
-            }
-        }
+        // if (chkInDate.isEmpty() || chkOutDate.isEmpty() || guestID == -1 || bookRoomID.isEmpty())
+        // JOptionPane.showMessageDialog(this, "Please fill in all necessary details before proceeding.");
+        // else {
+        //     ArrayList<String> bookingInfo = new ArrayList<String>();
+        //     Calendar calendar = Calendar.getInstance();
+        //     String today = datef.format(calendar.getTime());
+        //     Collections.addAll(bookingInfo, "-1", String.valueOf(guestID), bookRoomID, chkInDate, chkOutDate, today);
+        //     Booking booking = new Booking(bookingInfo);
+        //     if (!booking.isDuplicate()) {
+        //         if (booking.addToFile())
+        //         JOptionPane.showMessageDialog(this, "Booking successful.");
+        //         else {
+        //             booking = null;
+        //             JOptionPane.showMessageDialog(this, "Booking failed - Something went wrong.");
+        //         }
+        //     } else {
+        //         booking = null; // Deleting it (by making it eligible for garbage collection)
+        //         JOptionPane.showMessageDialog(this, "Booking denied - Duplicate booking detected.");
+        //     }
+        // }
     }//GEN-LAST:event_btnConfirmBookActionPerformed
 
     private void btnSelectGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectGuestActionPerformed
-        int rowSelected = tableBookRoomGuest.getSelectedRow();
-        if (rowSelected < 0)
-        JOptionPane.showMessageDialog(this, "Please select a guest first.");
-        else {
-            guestID = (int) tableBookRoomGuest.getValueAt(rowSelected, 0); // UserID col
-            txtGuestName.setText((String) tableBookRoomGuest.getValueAt(rowSelected, 1));
-        }
+        // int rowSelected = tableBookRoomGuest.getSelectedRow();
+        // if (rowSelected < 0)
+        // JOptionPane.showMessageDialog(this, "Please select a guest first.");
+        // else {
+        //     guestID = (int) tableBookRoomGuest.getValueAt(rowSelected, 0); // UserID col
+        //     txtGuestName.setText((String) tableBookRoomGuest.getValueAt(rowSelected, 1));
+        // }
     }//GEN-LAST:event_btnSelectGuestActionPerformed
 
     private void tableBookRoomGuestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookRoomGuestMouseClicked
@@ -1894,122 +1894,122 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tableBookRoomGuestMouseClicked
 
     private void btnBookingsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsSearchActionPerformed
-        String name = txtBookedGuestName.getText().toLowerCase().trim();
-        String strCheckIn = txtMngCheckIn.getText();
-        String strCheckOut = txtMngCheckOut.getText();
-        lblMngBookingID.setText("N/A");
+        // String name = txtBookedGuestName.getText().toLowerCase().trim();
+        // String strCheckIn = txtMngCheckIn.getText();
+        // String strCheckOut = txtMngCheckOut.getText();
+        // lblMngBookingID.setText("N/A");
 
-        if (name.isEmpty() && strCheckIn.isEmpty() && strCheckOut.isEmpty()) {
-            loadBookings();
-            JOptionPane.showMessageDialog(this, "Please provide some information to search.");
-        } else {
-            ArrayList<Booking> bookings = ResortBooking.getBookings();
-            DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-            tableModel.setRowCount(0); // Delete all previous row
-            Date searchCheckIn = new Date();
-            Date searchCheckOut = new Date();
-            Date checkIn = new Date();
-            Date checkOut = new Date();
+        // if (name.isEmpty() && strCheckIn.isEmpty() && strCheckOut.isEmpty()) {
+        //     // loadBookings();
+        //     JOptionPane.showMessageDialog(this, "Please provide some information to search.");
+        // } else {
+        //     ArrayList<Booking> bookings = ResortBooking.getBookings();
+        //     DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        //     tableModel.setRowCount(0); // Delete all previous row
+        //     Date searchCheckIn = new Date();
+        //     Date searchCheckOut = new Date();
+        //     Date checkIn = new Date();
+        //     Date checkOut = new Date();
 
-            for (Booking booking : bookings) {
-                try {
-                    if (!strCheckIn.isEmpty() && !strCheckOut.isEmpty()) {
-                        searchCheckIn = datef.parse(txtMngCheckIn.getText());
-                        searchCheckOut = datef.parse(txtMngCheckOut.getText());
-                    }
-                    checkIn = datef.parse(booking.getCheckInDate());
-                    checkOut = datef.parse(booking.getCheckOutDate());
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Invalid date entered.");
-                }
+        //     for (Booking booking : bookings) {
+        //         try {
+        //             if (!strCheckIn.isEmpty() && !strCheckOut.isEmpty()) {
+        //                 searchCheckIn = datef.parse(txtMngCheckIn.getText());
+        //                 searchCheckOut = datef.parse(txtMngCheckOut.getText());
+        //             }
+        //             checkIn = datef.parse(booking.getCheckInDate());
+        //             checkOut = datef.parse(booking.getCheckOutDate());
+        //         } catch (Exception e) {
+        //             JOptionPane.showMessageDialog(this, "Invalid date entered.");
+        //         }
 
-                // User only inputs name without giving date
-                if (strCheckIn.isEmpty() && strCheckOut.isEmpty() &&
-                    User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)) {
-                    addTableRow(tableModel, booking); // Add to table
-                }
-                else if (!strCheckIn.isEmpty() && !strCheckOut.isEmpty() &&
-                    (checkIn.compareTo(searchCheckIn) >= 0) && (checkOut.compareTo(searchCheckOut) <= 0)) {
-                    // check in and out dates meet condition
-                    if (name.isEmpty() || (!name.isEmpty() &&
-                        User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)))
-                addTableRow(tableModel, booking); // Add to table
-            }
-            else if (strCheckIn.isEmpty() && !strCheckOut.isEmpty() && (checkOut.compareTo(searchCheckOut) <= 0)) {
-                // only check out date is provided
-                if (name.isEmpty() || (!name.isEmpty() &&
-                    User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)))
-            addTableRow(tableModel, booking); // Add to table
-        }
-        else if (strCheckOut.isEmpty() && strCheckIn.isEmpty() && (checkIn.compareTo(searchCheckIn) >= 0)) {
-            // only check in date is provided
-            if (name.isEmpty() || (!name.isEmpty() &&
-                User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)))
-        addTableRow(tableModel, booking); // Add to table
-        }
-        }
-        }
+        //         // User only inputs name without giving date
+        //         if (strCheckIn.isEmpty() && strCheckOut.isEmpty() &&
+        //             User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)) {
+        //             addTableRow(tableModel, booking); // Add to table
+        //         }
+        //         else if (!strCheckIn.isEmpty() && !strCheckOut.isEmpty() &&
+        //             (checkIn.compareTo(searchCheckIn) >= 0) && (checkOut.compareTo(searchCheckOut) <= 0)) {
+        //             // check in and out dates meet condition
+        //             if (name.isEmpty() || (!name.isEmpty() &&
+        //                 User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)))
+        //         addTableRow(tableModel, booking); // Add to table
+        //     }
+        //     else if (strCheckIn.isEmpty() && !strCheckOut.isEmpty() && (checkOut.compareTo(searchCheckOut) <= 0)) {
+        //         // only check out date is provided
+        //         if (name.isEmpty() || (!name.isEmpty() &&
+        //             User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)))
+        //     addTableRow(tableModel, booking); // Add to table
+        // }
+        // else if (strCheckOut.isEmpty() && strCheckIn.isEmpty() && (checkIn.compareTo(searchCheckIn) >= 0)) {
+        //     // only check in date is provided
+        //     if (name.isEmpty() || (!name.isEmpty() &&
+        //         User.getCustName(booking.getUser().getUserID()).toLowerCase().contains(name)))
+        // addTableRow(tableModel, booking); // Add to table
+        // }
+        // }
+        // }
     }//GEN-LAST:event_btnBookingsSearchActionPerformed
 
     private void btnBookingsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsEditActionPerformed
-        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        int row = tableBookings.getSelectedRow();
+        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        // int row = tableBookings.getSelectedRow();
 
-        if (row < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a row to edit.");
-        } else if (chkInDate.isEmpty() || chkOutDate.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
-        } else {
-            if (validateBookingDates()) {
-                String room = (String) tableModel.getValueAt(row, 1);
-                Booking currentBooking = Booking.getBooking((Integer) tableModel.getValueAt(row, 0));
-                ArrayList<String> availableRooms = getAvailableRooms(currentBooking);
-                if (availableRooms.contains(room)) {
-                    // passed all validations - approve edit
-                    currentBooking.updateInfo(chkInDate, chkOutDate);
-                    JOptionPane.showMessageDialog(this, "Booking info successfully updated.");
-                } else {
-                    JOptionPane.showMessageDialog(this, String.format("Room %s is not available for the given dates.", room));
-                }
-            }
-        }
+        // if (row < 0) {
+        //     JOptionPane.showMessageDialog(this, "Please select a row to edit.");
+        // } else if (chkInDate.isEmpty() || chkOutDate.isEmpty()) {
+        //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
+        // } else {
+        //     if (validateBookingDates()) {
+        //         String room = (String) tableModel.getValueAt(row, 1);
+        //         Booking currentBooking = Booking.getBooking((Integer) tableModel.getValueAt(row, 0));
+        //         ArrayList<String> availableRooms = getAvailableRooms(currentBooking);
+        //         if (availableRooms.contains(room)) {
+        //             // passed all validations - approve edit
+        //             currentBooking.updateInfo(chkInDate, chkOutDate);
+        //             JOptionPane.showMessageDialog(this, "Booking info successfully updated.");
+        //         } else {
+        //             JOptionPane.showMessageDialog(this, String.format("Room %s is not available for the given dates.", room));
+        //         }
+        //     }
+        // }
     }//GEN-LAST:event_btnBookingsEditActionPerformed
 
     private void btnBookingsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsDeleteActionPerformed
-        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        int row = tableBookings.getSelectedRow();
+        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        // int row = tableBookings.getSelectedRow();
 
-        if (row < 0)
-        JOptionPane.showMessageDialog(this, "Please select a booking to delete.");
-        else {
-            int bookingID = (int) tableBookings.getValueAt(row, 0); // BookingID col
+        // if (row < 0)
+        // JOptionPane.showMessageDialog(this, "Please select a booking to delete.");
+        // else {
+        //     int bookingID = (int) tableBookings.getValueAt(row, 0); // BookingID col
 
-            for (Booking booking : ResortBooking.getBookings()) {
-                if (booking.getBookingID() == bookingID) {
-                    Booking tmp = booking;
-                    ResortBooking.getBookings().remove(booking);
-                    if (Booking.rewriteFile()) {
-                        ResortBooking.getBookings().remove(booking);
-                        tableModel.removeRow(row);
-                        lblMngBookingID.setText("N/A");
-                        txtMngCheckIn.setText("");
-                        txtMngCheckOut.setText("");
-                        chkInDate = "";
-                        chkOutDate = "";
-                        JOptionPane.showMessageDialog(this, "Booking record deleted successfully.");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
-                        ResortBooking.getBookings().add(tmp); // don't delete the instance
-                    }
-                    break;
-                }
-            }
-        }
+        //     for (Booking booking : ResortBooking.getBookings()) {
+        //         if (booking.getBookingID() == bookingID) {
+        //             Booking tmp = booking;
+        //             ResortBooking.getBookings().remove(booking);
+        //             if (Booking.rewriteFile()) {
+        //                 ResortBooking.getBookings().remove(booking);
+        //                 tableModel.removeRow(row);
+        //                 lblMngBookingID.setText("N/A");
+        //                 txtMngCheckIn.setText("");
+        //                 txtMngCheckOut.setText("");
+        //                 chkInDate = "";
+        //                 chkOutDate = "";
+        //                 JOptionPane.showMessageDialog(this, "Booking record deleted successfully.");
+        //             } else {
+        //                 JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
+        //                 ResortBooking.getBookings().add(tmp); // don't delete the instance
+        //             }
+        //             break;
+        //         }
+        //     }
+        // }
     }//GEN-LAST:event_btnBookingsDeleteActionPerformed
 
     private void btnMngCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMngCheckInActionPerformed
-        chkInDate = datef.format(jCalendar2.getDate());
-        txtMngCheckIn.setText(chkInDate);
+        // chkInDate = datef.format(jCalendar2.getDate());
+        // txtMngCheckIn.setText(chkInDate);
     }//GEN-LAST:event_btnMngCheckInActionPerformed
 
     private void txtMngCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMngCheckInActionPerformed
@@ -2017,8 +2017,8 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMngCheckInActionPerformed
 
     private void btnMngCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMngCheckOutActionPerformed
-        chkOutDate = datef.format(jCalendar2.getDate());
-        txtMngCheckOut.setText(chkOutDate);
+        // chkOutDate = datef.format(jCalendar2.getDate());
+        // txtMngCheckOut.setText(chkOutDate);
     }//GEN-LAST:event_btnMngCheckOutActionPerformed
 
     private void txtMngCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMngCheckOutActionPerformed
@@ -2030,17 +2030,17 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBookedGuestNameActionPerformed
 
     private void tableBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookingsMouseClicked
-        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        int row = tableBookings.getSelectedRow();
+        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        // int row = tableBookings.getSelectedRow();
 
-        if (row >= 0) {
-            chkInDate = (String) tableModel.getValueAt(row, 4);
-            chkOutDate = (String) tableModel.getValueAt(row, 5);
-            lblMngBookingID.setText(String.valueOf(tableModel.getValueAt(row, 0)));
-            txtBookedGuestName.setText((String) tableModel.getValueAt(row, 3));
-            txtMngCheckIn.setText(chkInDate);
-            txtMngCheckOut.setText(chkOutDate);
-        }
+        // if (row >= 0) {
+        //     chkInDate = (String) tableModel.getValueAt(row, 4);
+        //     chkOutDate = (String) tableModel.getValueAt(row, 5);
+        //     lblMngBookingID.setText(String.valueOf(tableModel.getValueAt(row, 0)));
+        //     txtBookedGuestName.setText((String) tableModel.getValueAt(row, 3));
+        //     txtMngCheckIn.setText(chkInDate);
+        //     txtMngCheckOut.setText(chkOutDate);
+        // }
     }//GEN-LAST:event_tableBookingsMouseClicked
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
@@ -2055,41 +2055,41 @@ public class AdminFrame extends javax.swing.JFrame {
         String email = txtEmail.getText().trim();
         String ic = txtNric.getText().trim();
         String username = txtUsername.getText().trim().toLowerCase();
-        List<User> users = new ArrayList<User>();
+        // List<User> users = new ArrayList<User>();
 
-        if (role.equals("staff")) {
-            for (Staff staff : ResortBooking.getStaffs()) {
-                users.add(staff);
-            }
-        } else { // customers
-            users = ResortBooking.getCusts();
-        }
+        // if (role.equals("staff")) {
+        //     for (Staff staff : ResortBooking.getStaffs()) {
+        //         users.add(staff);
+        //     }
+        // } else { // customers
+        //     users = ResortBooking.getCusts();
+        // }
 
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
 
         // Adding all customers who hv the matched description to table
-        for (User user : users) {
+        // for (User user : users) {
 
-            if (user.getName().toLowerCase().contains(name) && gender.equals(user.getGender().toLowerCase())
-                && user.getContact().contains(contact) && user.getEmail().contains(email) &&
-                user.getIC().contains(ic)) { // Common details matched
+        //     if (user.getName().toLowerCase().contains(name) && gender.equals(user.getGender().toLowerCase())
+        //         && user.getContact().contains(contact) && user.getEmail().contains(email) &&
+        //         user.getIC().contains(ic)) { // Common details matched
 
-                // matching username for 'staff' role
-                if (user.getRole().equals("Customer") || (user.getRole().equals("Staff")
-                    && user.getUsername().toLowerCase().contains(username))) {
-                row[0] = user.getUserID();
-                row[1] = user.getName();
-                row[2] = user.getRole();
-                row[3] = user.getGender();
-                row[4] = user.getContact();
-                row[5] = user.getEmail();
-                row[6] = user.getIC();
-                row[7] = user.getUsername();
-                tableModel.addRow(row);
-            }
-        }
-        }
+        //         // matching username for 'staff' role
+        //         if (user.getRole().equals("Customer") || (user.getRole().equals("Staff")
+        //             && user.getUsername().toLowerCase().contains(username))) {
+        //         row[0] = user.getUserID();
+        //         row[1] = user.getName();
+        //         row[2] = user.getRole();
+        //         row[3] = user.getGender();
+        //         row[4] = user.getContact();
+        //         row[5] = user.getEmail();
+        //         row[6] = user.getIC();
+        //         row[7] = user.getUsername();
+        //         tableModel.addRow(row);
+        //     }
+        // }
+        // }
     }//GEN-LAST:event_btnUserSearchActionPerformed
 
     private void txtUserFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserFullNameActionPerformed
@@ -2125,26 +2125,26 @@ public class AdminFrame extends javax.swing.JFrame {
         else {
             // complete information provided
             ArrayList<String> custInfo = new ArrayList<String>();
-            User user = new User();
+            // User user = new User();
 
-            if (role.equals("Customer")) {
-                Collections.addAll(custInfo, "-1", "customer", name, gender, contact, email, ic);
-                user = new User(custInfo);
-            } else {
-                Collections.addAll(custInfo, "-1", "staff", name, gender, contact, email, ic, username, password);
-                user = new Staff(custInfo);
-            }
+            // if (role.equals("Customer")) {
+            //     Collections.addAll(custInfo, "-1", "customer", name, gender, contact, email, ic);
+            //     user = new User(custInfo);
+            // } else {
+            //     Collections.addAll(custInfo, "-1", "staff", name, gender, contact, email, ic, username, password);
+            //     user = new Staff(custInfo);
+            // }
 
-            if (!user.isDuplicate()) {
-                if (user.addToFile()) {
-                    loadUsers();
-                    JOptionPane.showMessageDialog(this, "User added successfully");
-                } else
-                JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
-            } else {
-                user = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
-            }
+            // if (!user.isDuplicate()) {
+            //     if (user.addToFile()) {
+            //         loadUsers();
+            //         JOptionPane.showMessageDialog(this, "User added successfully");
+            //     } else
+            //     JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
+            // } else {
+            //     user = null; // Deleting it (by making it eligible for garbage collection)
+            //     JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
+            // }
         }
     }//GEN-LAST:event_btnUserAddActionPerformed
 
@@ -2163,24 +2163,24 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Incomplete information.");
         } else {
             int userID = (int) tableUsers.getValueAt(row, 0); // UserID col
-            List<User> users = new ArrayList<User>();
+            // List<User> users = new ArrayList<User>();
 
-            if (((String) tableModel.getValueAt(row, 2)).equals("Staff")) {
-                for (Staff staff : ResortBooking.getStaffs()) {
-                    users.add(staff); }
-            } else {
-                users = ResortBooking.getCusts();
-            }
+            // if (((String) tableModel.getValueAt(row, 2)).equals("Staff")) {
+            //     for (Staff staff : ResortBooking.getStaffs()) {
+            //         users.add(staff); }
+            // } else {
+            //     users = ResortBooking.getCusts();
+            // }
 
-            for (User user : users) {
-                if (user.getUserID() == userID) {
-                    if (user.updateInfo(name, contact, email, ic)) {
-                        JOptionPane.showMessageDialog(this, "User updated successfully.");
-                        break;
-                    } else
-                    JOptionPane.showMessageDialog(this, "User update failed - something went wrong.");
-                }
-            }
+            // for (User user : users) {
+            //     if (user.getUserID() == userID) {
+            //         if (user.updateInfo(name, contact, email, ic)) {
+            //             JOptionPane.showMessageDialog(this, "User updated successfully.");
+            //             break;
+            //         } else
+            //         JOptionPane.showMessageDialog(this, "User update failed - something went wrong.");
+            //     }
+            // }
         }
     }//GEN-LAST:event_btnUserEditActionPerformed
 
@@ -2192,37 +2192,37 @@ public class AdminFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Please select a user to delete.");
         else {
             int userID = (int) tableUsers.getValueAt(row, 0); // UserID col
-            List<User> users = new ArrayList<User>();
+            // List<User> users = new ArrayList<User>();
 
-            if (((String) tableModel.getValueAt(row, 2)).equals("Staff")) {
-                for (Staff staff : ResortBooking.getStaffs()) {
-                    users.add(staff); }
-            } else {
-                users = ResortBooking.getCusts();
-            }
+            // if (((String) tableModel.getValueAt(row, 2)).equals("Staff")) {
+            //     for (Staff staff : ResortBooking.getStaffs()) {
+            //         users.add(staff); }
+            // } else {
+            //     users = ResortBooking.getCusts();
+            // }
 
-            for (User user : users) {
-                if (user.getUserID() == userID) {
+            // for (User user : users) {
+            //     if (user.getUserID() == userID) {
 
-                    if (user.getRole() == "Staff")
-                    ResortBooking.getStaffs().remove(user);
-                    else
-                    ResortBooking.getCusts().remove(user);
+            //         if (user.getRole() == "Staff")
+            //         ResortBooking.getStaffs().remove(user);
+            //         else
+            //         ResortBooking.getCusts().remove(user);
 
-                    if (User.rewriteFile()) {
-                        tableModel.removeRow(row);
-                        txtUserFullName.setText("");
-                        txtContact.setText("");
-                        txtEmail.setText("");
-                        txtNric.setText("");
-                        txtUsername.setText("");
-                        JOptionPane.showMessageDialog(this, "User deleted successfully.");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
-                    }
-                    break;
-                }
-            }
+            //         if (User.rewriteFile()) {
+            //             tableModel.removeRow(row);
+            //             txtUserFullName.setText("");
+            //             txtContact.setText("");
+            //             txtEmail.setText("");
+            //             txtNric.setText("");
+            //             txtUsername.setText("");
+            //             JOptionPane.showMessageDialog(this, "User deleted successfully.");
+            //         } else {
+            //             JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
+            //         }
+            //         break;
+            //     }
+            // }
         }
     }//GEN-LAST:event_btnUserDeleteActionPerformed
 
@@ -2250,20 +2250,20 @@ public class AdminFrame extends javax.swing.JFrame {
     private void btnNextReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextReceiptActionPerformed
         Booking booking = null;
 
-        while (booking == null) {
-            receiptID++;
-            if (receiptID >= 0 && receiptID <= Booking.getHighestId()) {
-                booking = Booking.getBooking(receiptID);
-                if (booking != null) {
-                    loadReceipt(booking);
-                    txtBookIdReceipt.setText(Integer.toString(receiptID));
-                    break;
-                }
-            } else { // Already at last record
-                receiptID--;
-                break;
-            }
-        }
+        // while (booking == null) {
+        //     receiptID++;
+        //     if (receiptID >= 0 && receiptID <= Booking.getHighestId()) {
+        //         booking = Booking.getBooking(receiptID);
+        //         if (booking != null) {
+        //             loadReceipt(booking);
+        //             txtBookIdReceipt.setText(Integer.toString(receiptID));
+        //             break;
+        //         }
+        //     } else { // Already at last record
+        //         receiptID--;
+        //         break;
+        //     }
+        // }
     }//GEN-LAST:event_btnNextReceiptActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
@@ -2275,74 +2275,74 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void btnSearchReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchReceiptActionPerformed
-        Booking booking = validateBookingID();
-        if (booking == null)
-        JOptionPane.showMessageDialog(this, "Invalid Booking ID.");
-        else
-        loadReceipt(booking); // populate receipt
+        // Booking booking = validateBookingID();
+        // if (booking == null)
+        // JOptionPane.showMessageDialog(this, "Invalid Booking ID.");
+        // else
+        // loadReceipt(booking); // populate receipt
     }//GEN-LAST:event_btnSearchReceiptActionPerformed
 
     private void btnFirstReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstReceiptActionPerformed
-        int first = 0;
-        Booking booking = Booking.getBooking(first);
-        boolean hasRecord = true;
+        // int first = 0;
+        // Booking booking = Booking.getBooking(first);
+        // boolean hasRecord = true;
 
-        while (booking == null) {
-            first++;
-            if (first > ResortBooking.getBookings().size()) {
-                JOptionPane.showMessageDialog(this, "No booking receipts to show.");
-                hasRecord = false;
-                break;
-            } else {
-                booking = Booking.getBooking(first);
-            }
-        }
+        // while (booking == null) {
+        //     first++;
+        //     if (first > ResortBooking.getBookings().size()) {
+        //         JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+        //         hasRecord = false;
+        //         break;
+        //     } else {
+        //         booking = Booking.getBooking(first);
+        //     }
+        // }
 
-        if (hasRecord) {
-            loadReceipt(booking);
-            txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
-        }
+        // if (hasRecord) {
+        //     loadReceipt(booking);
+        //     txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
+        // }
     }//GEN-LAST:event_btnFirstReceiptActionPerformed
 
     private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
         Booking booking = null;
 
-        while (booking == null) {
-            receiptID--;
-            if (receiptID >= 0 && receiptID < ResortBooking.getBookings().size()) {
-                booking = Booking.getBooking(receiptID);
-                if (booking != null) {
-                    loadReceipt(booking);
-                    txtBookIdReceipt.setText(Integer.toString(receiptID));
-                    break;
-                }
-            } else { // Already at first record
-                receiptID++;
-                break;
-            }
-        }
+        // while (booking == null) {
+        //     receiptID--;
+        //     if (receiptID >= 0 && receiptID < ResortBooking.getBookings().size()) {
+        //         booking = Booking.getBooking(receiptID);
+        //         if (booking != null) {
+        //             loadReceipt(booking);
+        //             txtBookIdReceipt.setText(Integer.toString(receiptID));
+        //             break;
+        //         }
+        //     } else { // Already at first record
+        //         receiptID++;
+        //         break;
+        //     }
+        // }
     }//GEN-LAST:event_btnPreviousReceiptActionPerformed
 
     private void btnLastReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastReceiptActionPerformed
-        int last = Booking.getHighestId();
-        Booking booking = Booking.getBooking(last);
-        boolean hasRecord = true;
+        // int last = Booking.getHighestId();
+        // Booking booking = Booking.getBooking(last);
+        // boolean hasRecord = true;
 
-        while (booking == null) {
-            last--;
-            if (last < 0) {
-                JOptionPane.showMessageDialog(this, "No booking receipts to show.");
-                hasRecord = false;
-                break;
-            } else {
-                booking = Booking.getBooking(last);
-            }
-        }
+        // while (booking == null) {
+        //     last--;
+        //     if (last < 0) {
+        //         JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+        //         hasRecord = false;
+        //         break;
+        //     } else {
+        //         booking = Booking.getBooking(last);
+        //     }
+        // }
 
-        if (hasRecord) {
-            loadReceipt(booking);
-            txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
-        }
+        // if (hasRecord) {
+        //     loadReceipt(booking);
+        //     txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
+        // }
     }//GEN-LAST:event_btnLastReceiptActionPerformed
 
     private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
@@ -2357,41 +2357,41 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCarModelActionPerformed
 
-    private void txtDailyRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDailyRateActionPerformed
+    private void txtCarDailyRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarDailyRateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDailyRateActionPerformed
+    }//GEN-LAST:event_txtCarDailyRateActionPerformed
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
         
-        String carPlate = txtCarPlate.getText().trim();
+        String carPlate = txtCarPlate.getText().trim().toUpperCase();
         String carBrand = txtCarBrand.getText().trim();
         String carModel = txtCarModel.getText().trim();
         String dailyRate = txtCarDailyRate.getText().trim();
-        Double dailyRentalRate;
+        Double dailyRentalRate = 0.0;
         
         if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
             JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
         
         else {
-
+            
             // Validate daily rate is a numeric (double) value
             try {
                 dailyRentalRate = Double.parseDouble(dailyRate);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive numeric value.");
-                break;
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
+                return;
             }
 
             // Validate daily rate is a positive value
             if (dailyRentalRate <= 0) {
-                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive numeric value.");
-                break;
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive value.");
+                return;
             }
             
-            // complete information provided
+            // Complete information provided - create new car object and add to database
             ArrayList<String> carInfo = new ArrayList<String>(
-                Arrays.asList([carPlate, carBrand, carModel, dailyRentalRate])
-            );     
+                Arrays.asList(carPlate, carBrand, carModel, dailyRate)
+            );
             Car car = new Car(carInfo);            
 
             if (!car.isDuplicate()) {

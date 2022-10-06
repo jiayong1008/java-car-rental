@@ -64,7 +64,7 @@ public class Car {
             PrintWriter pw = new PrintWriter(bw);
             
             line = String.format(
-                "%d, %s, %s, %s\n", 
+                "%s, %s, %s, %.2f\n", 
                 carPlate, carBrand, carModel, dailyRentalRate
             );
             pw.write(line);

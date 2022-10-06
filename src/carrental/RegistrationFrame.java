@@ -287,14 +287,14 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String password = new String(txtRgtUsername.getPassword());
 
         // Check staff credentials
-        if (checkCredentials(username, password)) {
-            MainFrame mainf = new MainFrame(); // Call main page frame
-            mainf.setVisible(true);
-            this.setVisible(false); // Close login frame
-        } else { // Wrong credentials
-            lblLoginAlert.setOpaque(true);
-            lblLoginAlert.setText("Invalid staff credentials.");
-        }
+        // if (checkCredentials(username, password)) {
+        //     MainFrame mainf = new MainFrame(); // Call main page frame
+        //     mainf.setVisible(true);
+        //     this.setVisible(false); // Close login frame
+        // } else { // Wrong credentials
+        //     lblLoginAlert.setOpaque(true);
+        //     lblLoginAlert.setText("Invalid staff credentials.");
+        // }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void txtRgtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgtPassActionPerformed
