@@ -2419,11 +2419,20 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteCarActionPerformed
 
     private void tableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCarsMouseClicked
-        // TODO add your handling code here:
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();
+        int row = tableCars.getSelectedRow();
+        
+        if (row >= 0) {
+            txtCarPlate.setText((String) tableModel.getValueAt(row, 0));
+            txtCarBrand.setText((String) tableModel.getValueAt(row, 1));
+            txtCarModel.setText((String) tableModel.getValueAt(row, 2));
+            txtCarDailyRate.setText((String) tableModel.getValueAt(row, 3));
+        }
     }//GEN-LAST:event_tableCarsMouseClicked
 
     private void txtCarPlateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarPlateActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtCarPlateActionPerformed
 
     /**
