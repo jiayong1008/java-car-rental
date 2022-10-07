@@ -49,6 +49,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblConfirmPass = new javax.swing.JLabel();
         txtNRIC = new javax.swing.JPasswordField();
         lblNRIC = new javax.swing.JLabel();
+        lblRegistration1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -166,6 +167,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblNRIC.setForeground(new java.awt.Color(255, 255, 255));
         lblNRIC.setText("NRIC");
 
+        lblRegistration1.setBackground(new java.awt.Color(245, 245, 245));
+        lblRegistration1.setFont(new java.awt.Font("Poppins", 3, 24)); // NOI18N
+        lblRegistration1.setForeground(new java.awt.Color(255, 204, 102));
+        lblRegistration1.setText("RapidCar");
+
         javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
         panelRegistration.setLayout(panelRegistrationLayout);
         panelRegistrationLayout.setHorizontalGroup(
@@ -187,8 +193,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnMale)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnFemale)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnFemale))
                                     .addGroup(panelRegistrationLayout.createSequentialGroup()
                                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -218,7 +223,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
                     .addGroup(panelRegistrationLayout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblRegistration1)
+                .addGap(15, 15, 15))
         );
         panelRegistrationLayout.setVerticalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +260,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNRIC)
                     .addComponent(lblGender))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNRIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,14 +268,16 @@ public class RegistrationFrame extends javax.swing.JFrame {
                         .addComponent(btnFemale)))
                 .addGap(34, 34, 34)
                 .addComponent(btnConfirm)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblRegistration1)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(panelRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,6 +373,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblNRIC;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblRegistration;
+    private javax.swing.JLabel lblRegistration1;
     private javax.swing.JLabel lblRgtPass;
     private javax.swing.JLabel lblRgtUsername;
     private javax.swing.JPanel panelRegistration;
