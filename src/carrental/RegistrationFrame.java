@@ -4,6 +4,10 @@
  */
 package carrental;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author vinie
@@ -135,10 +139,20 @@ public class RegistrationFrame extends javax.swing.JFrame {
         buttonGroup1.add(btnMale);
         btnMale.setForeground(new java.awt.Color(255, 255, 255));
         btnMale.setText("Male");
+        btnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnFemale);
         btnFemale.setForeground(new java.awt.Color(255, 255, 255));
         btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
 
         lblContact.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         lblContact.setForeground(new java.awt.Color(255, 255, 255));
@@ -294,9 +308,55 @@ public class RegistrationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        String username = txtName.getText().trim().toLowerCase();
-        String password = new String(txtRgtUsername.getPassword());
+        String name = txtName.getText().trim().toUpperCase();
+        String contact = txtContact.getText().trim();
+        String email = txtEmail.getText().trim().toLowerCase();
+        String nric = txtNRIC.getText().trim();
+        String username = txtRgtUsername.getText().trim().toLowerCase();
+        String password = txtRgtPass.getText().trim();
+        String cpassword = txtConfirmPass.getText().trim();
+        
+        if (name.isEmpty() || contact.isEmpty() || email.isEmpty() || nric.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
+            //gender button didnt clicked
+            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to register account.");
+        
+        else {
+            
+            // Validate daily rate is a numeric (double) value
+            try {
+                dailyRentalRate = Double.parseDouble(dailyRate);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
+                return;
+            }
 
+            // Validate daily rate is a positive value
+            if (dailyRentalRate <= 0) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive value.");
+                return;
+            }
+            
+            // Complete information provided - create new car object and add to database
+            ArrayList<String> carInfo = new ArrayList<String>(
+                Arrays.asList(userID, role, name, gender, contact, email, IC / passport, username, password)
+                    //generate ID first, set role
+            );
+            Car car = new Car(carInfo);            
+
+            if (!car.isDuplicate()) {
+
+                if (car.addToFile()) { 
+                    loadUsers();
+                    JOptionPane.showMessageDialog(this, "Register successfully");
+                } 
+                else
+                    JOptionPane.showMessageDialog(this, "Register unsuccessful - Something went wrong.");
+                    
+            } else {
+                car = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Register unsuccessful - Duplication detected.");
+            }
+        }
         // Check staff credentials
         // if (checkCredentials(username, password)) {
         //     MainFrame mainf = new MainFrame(); // Call main page frame
@@ -323,6 +383,14 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
+        String gender = "Male";
+    }//GEN-LAST:event_btnMaleActionPerformed
+
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+        String gender = "Female";
+    }//GEN-LAST:event_btnFemaleActionPerformed
 
     /**
      * @param args the command line arguments
