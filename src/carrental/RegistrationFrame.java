@@ -309,7 +309,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        
+
         String name = txtName.getText().trim().toUpperCase();
         String contactNo = txtContact.getText().trim();
         String email = txtEmail.getText().trim().toLowerCase();
@@ -321,43 +321,28 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String userID = "Ctest1";
         String gender = "Female";
         
-        if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
+        if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
             JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
         
         else {
             
-            // Validate daily rate is a numeric (double) value
-            try {
-                dailyRentalRate = Double.parseDouble(dailyRate);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
-                return;
-            }
-
-            // Validate daily rate is a positive value
-            if (dailyRentalRate <= 0) {
-                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive value.");
-                return;
-            }
-            
             // Complete information provided - create new car object and add to database
-            ArrayList<String> carInfo = new ArrayList<String>(
-                Arrays.asList(carPlate, carBrand, carModel, dailyRate)
+            ArrayList<String> custInfo = new ArrayList<String>(
+                Arrays.asList(userID, role, name, gender, contactNo, email, ic, username, password)
             );
-            Car car = new Car(carInfo);            
+            Customer customer = new Customer(custInfo);            
 
-            if (!car.isDuplicate()) {
+            if (!customer.isDuplicate()) {
 
-                if (car.addToFile()) { 
-                    loadCars();
-                    JOptionPane.showMessageDialog(this, "Car added successfully");
+                if (customer.addToFile()) { 
+                    JOptionPane.showMessageDialog(this, "Registered successfully");
                 } 
                 else
-                    JOptionPane.showMessageDialog(this, "Car not added - Something went wrong.");
+                    JOptionPane.showMessageDialog(this, "Registered unsuccessfully - Something went wrong.");
                     
             } else {
-                car = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "Car not added - Duplication detected.");
+                customer = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Username exists, try again.");
             }
         }
     }    

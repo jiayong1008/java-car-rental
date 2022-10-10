@@ -30,20 +30,34 @@ public class Customer extends User {
         return String.format("%s (Customer) - %s", customerID, name);
     }
     
+    public boolean isDuplicate() 
+    {
+        ArrayList<Customer> customers = CarRental.getCustomers();
+
+        for (Customer customer : customers) {
+            // Car duplication is trigerred when it has the same car plate
+            if (customer.customerID.equals(customerID)) {
+                // id--;
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public boolean addToFile()
     {
-        {
+        String userID = "C00test";
+        String role = "Customer";
         String line;
 
         try {
             // May throw FileNotFoundException
             BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
             PrintWriter pw = new PrintWriter(bw);
-            String userID = "C00test";
-            String role = "Customer";
+            
             line = String.format(
                 "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
-                userID, role, name, gender, contactNo, email, ic, username, password
+            userID, role, name, gender, contactNo, email, ic, username, password
             );
             pw.write(line);
             pw.close();
