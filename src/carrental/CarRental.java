@@ -70,9 +70,11 @@ public class CarRental {
     public static ArrayList<Customer> getCustomers() { return customers; }
     public static ArrayList<Car> getCars() { return cars; }
     public static String getCarFile() { return carFile; }
+    public static String getUserFile() { return userFile; }
 
     // ADDING INFORMATION
     public static void addCars(Car car) { cars.add(car); }
+    public static void addCustomers(Customer customer) { customers.add(customer); }
 
     
     public static void login() 
