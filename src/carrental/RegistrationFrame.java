@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
  *
  * @author vinie
  */
-public class RegistrationFrame extends javax.swing.JFrame {
+
+public class RegistrationFrame extends javax.swing.JFrame {    
     public RegistrationFrame() {
         initComponents();
     }
@@ -307,9 +308,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
-
+    
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-
         String name = txtName.getText().trim().toUpperCase();
         String contactNo = txtContact.getText().trim();
         String email = txtEmail.getText().trim().toLowerCase();
@@ -345,51 +345,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Username exists, try again.");
             }
         }
-    }    
-
-//            addUser(userID, role, name, gender, contact, email, nric, username, password);
-            
-//        if (name.isEmpty() || contact.isEmpty() || email.isEmpty() || nric.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
-//            //gender button didnt clicked
-//            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to register account.");
-//        
-//        else {
-//            
-//            // Validate daily rate is a numeric (double) value
-//            try {
-//                dailyRentalRate = Double.parseDouble(dailyRate);
-//            } catch (NumberFormatException e) {
-//                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
-//                return;
-//            }
-//
-//            // Validate daily rate is a positive value
-//            if (dailyRentalRate <= 0) {
-//                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive value.");
-//                return;
-//            }
-//            
-//            // Complete information provided - create new car object and add to database
-//            ArrayList<String> carInfo = new ArrayList<String>(
-//                Arrays.asList(userID, role, name, gender, contact, email, IC / passport, username, password)
-//                    //generate ID first, set role
-//            );
-//            Car car = new Car(carInfo);            
-//
-//            if (!car.isDuplicate()) {
-//
-//                if (car.addToFile()) { 
-//                    loadUsers();
-//                    JOptionPane.showMessageDialog(this, "Register successfully");
-//                } 
-//                else
-//                    JOptionPane.showMessageDialog(this, "Register unsuccessful - Something went wrong.");
-//                    
-//            } else {
-//                car = null; // Deleting it (by making it eligible for garbage collection)
-//                JOptionPane.showMessageDialog(this, "Register unsuccessful - Duplication detected.");
-//            }
-//        }
+    }
 // Check staff credentials
 // if (checkCredentials(username, password)) {
 //     MainFrame mainf = new MainFrame(); // Call main page frame
@@ -399,8 +355,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
 //     lblLoginAlert.setOpaque(true);
 //     lblLoginAlert.setText("Invalid staff credentials.");
 // }
+{
     }//GEN-LAST:event_btnConfirmActionPerformed
-
+//
     private void txtRgtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRgtUsernameActionPerformed
@@ -426,37 +383,37 @@ public class RegistrationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFemaleActionPerformed
 
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrationFrame().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new RegistrationFrame().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirm;
