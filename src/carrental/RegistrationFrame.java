@@ -342,18 +342,16 @@ public class RegistrationFrame extends javax.swing.JFrame {
             }
         }
     }
-// Check staff credentials
-// if (checkCredentials(username, password)) {
-//     MainFrame mainf = new MainFrame(); // Call main page frame
-//     mainf.setVisible(true);
-//     this.setVisible(false); // Close login frame
-// } else { // Wrong credentials
-//     lblLoginAlert.setOpaque(true);
-//     lblLoginAlert.setText("Invalid staff credentials.");
-// }
-{
-    }//GEN-LAST:event_btnConfirmActionPerformed
-//
+    // Check staff credentials
+    // if (checkCredentials(username, password)) {
+    //     MainFrame mainf = new MainFrame(); // Call main page frame
+    //     mainf.setVisible(true);
+    //     this.setVisible(false); // Close login frame
+    // } else { // Wrong credentials
+    //     lblLoginAlert.setOpaque(true);
+    //     lblLoginAlert.setText("Invalid staff credentials.");
+    // }//GEN-LAST:event_btnConfirmActionPerformed
+    
     private void txtRgtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRgtUsernameActionPerformed
