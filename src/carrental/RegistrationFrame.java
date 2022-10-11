@@ -4,18 +4,17 @@
  */
 package carrental;
 
-/**
- *
- * @author vinie
- */
-public class RegistrationFrame extends javax.swing.JFrame {
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form RegistrationFrame
-     */
+
+public class RegistrationFrame extends javax.swing.JFrame {   
+    
     public RegistrationFrame() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,9 +34,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         lblRgtUsername = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JButton();
-        txtRgtUsername = new javax.swing.JPasswordField();
-        txtRgtPass = new javax.swing.JTextField();
-        txtConfirmPass = new javax.swing.JTextField();
+        passRgt = new javax.swing.JPasswordField();
+        txtRgtUsername = new javax.swing.JTextField();
+        txtNRIC = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         btnMale = new javax.swing.JRadioButton();
@@ -47,8 +46,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblRgtPass = new javax.swing.JLabel();
         lblConfirmPass = new javax.swing.JLabel();
-        txtNRIC = new javax.swing.JPasswordField();
+        passcRgt = new javax.swing.JPasswordField();
         lblNRIC = new javax.swing.JLabel();
+        lblRegistration1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,24 +92,24 @@ public class RegistrationFrame extends javax.swing.JFrame {
             }
         });
 
-        txtRgtUsername.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtRgtUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passRgt.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        passRgt.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-        txtRgtPass.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtRgtPass.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtRgtPass.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtRgtPass.addActionListener(new java.awt.event.ActionListener() {
+        txtRgtUsername.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtRgtUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtRgtUsername.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtRgtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRgtPassActionPerformed(evt);
+                txtRgtUsernameActionPerformed(evt);
             }
         });
 
-        txtConfirmPass.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtConfirmPass.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtConfirmPass.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtConfirmPass.addActionListener(new java.awt.event.ActionListener() {
+        txtNRIC.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtNRIC.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNRIC.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtNRIC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConfirmPassActionPerformed(evt);
+                txtNRICActionPerformed(evt);
             }
         });
 
@@ -134,10 +134,20 @@ public class RegistrationFrame extends javax.swing.JFrame {
         buttonGroup1.add(btnMale);
         btnMale.setForeground(new java.awt.Color(255, 255, 255));
         btnMale.setText("Male");
+        btnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnFemale);
         btnFemale.setForeground(new java.awt.Color(255, 255, 255));
         btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
 
         lblContact.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         lblContact.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,21 +169,22 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblConfirmPass.setForeground(new java.awt.Color(255, 255, 255));
         lblConfirmPass.setText("Confirm Password");
 
-        txtNRIC.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtNRIC.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passcRgt.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        passcRgt.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         lblNRIC.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         lblNRIC.setForeground(new java.awt.Color(255, 255, 255));
         lblNRIC.setText("NRIC");
 
+        lblRegistration1.setBackground(new java.awt.Color(245, 245, 245));
+        lblRegistration1.setFont(new java.awt.Font("Poppins", 3, 24)); // NOI18N
+        lblRegistration1.setForeground(new java.awt.Color(255, 204, 102));
+        lblRegistration1.setText("RapidCar");
+
         javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
         panelRegistration.setLayout(panelRegistrationLayout);
         panelRegistrationLayout.setHorizontalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrationLayout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(lblRegistration)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelRegistrationLayout.createSequentialGroup()
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRegistrationLayout.createSequentialGroup()
@@ -182,43 +193,53 @@ public class RegistrationFrame extends javax.swing.JFrame {
                             .addGroup(panelRegistrationLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblName)
                                     .addGroup(panelRegistrationLayout.createSequentialGroup()
                                         .addComponent(txtNRIC, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnMale)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnFemale)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelRegistrationLayout.createSequentialGroup()
-                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblContact))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblEmail)
-                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(lblName)
-                                    .addGroup(panelRegistrationLayout.createSequentialGroup()
-                                        .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnFemale))
+                                    .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(panelRegistrationLayout.createSequentialGroup()
+                                            .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblRgtUsername)
+                                                .addComponent(lblNRIC))
+                                            .addGap(103, 103, 103)
+                                            .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblGender)
+                                                .addComponent(lblRgtPass))
+                                            .addGap(96, 96, 96))
+                                        .addGroup(panelRegistrationLayout.createSequentialGroup()
                                             .addComponent(txtRgtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblRgtUsername)
-                                            .addComponent(lblNRIC))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblGender)
-                                            .addComponent(txtRgtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblRgtPass))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblConfirmPass)
-                                            .addComponent(txtConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(passRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(passcRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(panelRegistrationLayout.createSequentialGroup()
+                                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblContact))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lblEmail)
+                                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblConfirmPass))))))
                             .addComponent(lblLoginAlert, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelRegistrationLayout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegistrationLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblRegistration1)
+                .addGap(15, 15, 15))
+            .addGroup(panelRegistrationLayout.createSequentialGroup()
+                .addGap(239, 239, 239)
+                .addComponent(lblRegistration)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelRegistrationLayout.setVerticalGroup(
             panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,29 +265,31 @@ public class RegistrationFrame extends javax.swing.JFrame {
                     .addComponent(lblConfirmPass))
                 .addGap(18, 18, 18)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRgtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRgtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRgtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passcRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNRIC)
                     .addComponent(lblGender))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNRIC, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnMale)
-                        .addComponent(btnFemale)))
-                .addGap(34, 34, 34)
+                        .addComponent(btnFemale))
+                    .addComponent(txtNRIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addComponent(btnConfirm)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblRegistration1)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(panelRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,29 +304,63 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
-
+    
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        String username = txtName.getText().trim().toLowerCase();
-        String password = new String(txtRgtUsername.getPassword());
+        String name = txtName.getText().trim().toUpperCase();
+        String contactNo = txtContact.getText().trim();
+        String email = txtEmail.getText().trim().toLowerCase();
+        String ic = txtNRIC.getText().trim();
+        String username = txtRgtUsername.getText().trim().toLowerCase();
+        String password = new String(passRgt.getPassword());
+        String cpassword = new String(passcRgt.getPassword());
+        String role = "Customer";
+        String userID = "Ctest1";
+        String gender = "Female";
+        
+        if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
+            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+        
+        else {
+            
+            // Complete information provided - create new car object and add to database
+            ArrayList<String> custInfo = new ArrayList<String>(
+                Arrays.asList(userID, role, name, gender, contactNo, email, ic, username, password)
+            );
+            Customer customer = new Customer(custInfo);            
 
-        // Check staff credentials
-        // if (checkCredentials(username, password)) {
-        //     MainFrame mainf = new MainFrame(); // Call main page frame
-        //     mainf.setVisible(true);
-        //     this.setVisible(false); // Close login frame
-        // } else { // Wrong credentials
-        //     lblLoginAlert.setOpaque(true);
-        //     lblLoginAlert.setText("Invalid staff credentials.");
-        // }
+            if (!customer.isDuplicate()) {
+
+                if (customer.addToFile()) { 
+                    JOptionPane.showMessageDialog(this, "Registered successfully");
+                } 
+                else
+                    JOptionPane.showMessageDialog(this, "Registered unsuccessfully - Something went wrong.");
+                    
+            } else {
+                customer = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Username exists, try again.");
+            }
+        }
+    }
+// Check staff credentials
+// if (checkCredentials(username, password)) {
+//     MainFrame mainf = new MainFrame(); // Call main page frame
+//     mainf.setVisible(true);
+//     this.setVisible(false); // Close login frame
+// } else { // Wrong credentials
+//     lblLoginAlert.setOpaque(true);
+//     lblLoginAlert.setText("Invalid staff credentials.");
+// }
+{
     }//GEN-LAST:event_btnConfirmActionPerformed
-
-    private void txtRgtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgtPassActionPerformed
+//
+    private void txtRgtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRgtPassActionPerformed
+    }//GEN-LAST:event_txtRgtUsernameActionPerformed
 
-    private void txtConfirmPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPassActionPerformed
+    private void txtNRICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNRICActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtConfirmPassActionPerformed
+    }//GEN-LAST:event_txtNRICActionPerformed
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
         // TODO add your handling code here:
@@ -313,40 +370,46 @@ public class RegistrationFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
+        String gender = "Male";
+    }//GEN-LAST:event_btnMaleActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrationFrame().setVisible(true);
-            }
-        });
-    }
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+        String gender = "Female";
+    }//GEN-LAST:event_btnFemaleActionPerformed
+
+
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(RegistrationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new RegistrationFrame().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirm;
@@ -362,15 +425,16 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblNRIC;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblRegistration;
+    private javax.swing.JLabel lblRegistration1;
     private javax.swing.JLabel lblRgtPass;
     private javax.swing.JLabel lblRgtUsername;
     private javax.swing.JPanel panelRegistration;
-    private javax.swing.JTextField txtConfirmPass;
+    private javax.swing.JPasswordField passRgt;
+    private javax.swing.JPasswordField passcRgt;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JPasswordField txtNRIC;
+    private javax.swing.JTextField txtNRIC;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtRgtPass;
-    private javax.swing.JPasswordField txtRgtUsername;
+    private javax.swing.JTextField txtRgtUsername;
     // End of variables declaration//GEN-END:variables
 }

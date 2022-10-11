@@ -51,7 +51,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lblLogin.setBackground(new java.awt.Color(245, 245, 245));
         lblLogin.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         lblLogin.setForeground(new java.awt.Color(255, 204, 102));
-        lblLogin.setText("Login");
+        lblLogin.setText("RapidCar Login");
 
         lblUsername.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,6 +73,11 @@ public class LoginFrame extends javax.swing.JFrame {
         passLogin.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         passLogin.setToolTipText("");
         passLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passLoginActionPerformed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(255, 204, 102));
         btnLogin.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
@@ -114,11 +119,10 @@ public class LoginFrame extends javax.swing.JFrame {
                                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(192, 192, 192))))
-            .addGroup(panelLoginLayout.createSequentialGroup()
-                .addGap(307, 307, 307)
-                .addComponent(lblLogin)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(192, 192, 192))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
+                        .addComponent(lblLogin)
+                        .addGap(212, 212, 212))))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +196,10 @@ public class LoginFrame extends javax.swing.JFrame {
         registerf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void passLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passLoginActionPerformed
 
     public String checkCredentials(String username, String password) 
     {
