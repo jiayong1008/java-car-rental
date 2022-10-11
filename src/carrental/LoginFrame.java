@@ -73,6 +73,11 @@ public class LoginFrame extends javax.swing.JFrame {
         passLogin.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         passLogin.setToolTipText("");
         passLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passLoginActionPerformed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(255, 204, 102));
         btnLogin.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
@@ -191,6 +196,10 @@ public class LoginFrame extends javax.swing.JFrame {
         registerf.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnSignUpActionPerformed
+
+    private void passLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passLoginActionPerformed
 
     public String checkCredentials(String username, String password) 
     {

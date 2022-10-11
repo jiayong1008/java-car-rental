@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
  * @author vinie
  */
 
-public class RegistrationFrame extends javax.swing.JFrame {    
+public class RegistrationFrame extends javax.swing.JFrame {   
+    
     public RegistrationFrame() {
         initComponents();
     }
@@ -37,7 +38,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         lblRgtUsername = new javax.swing.JLabel();
         btnConfirm = new javax.swing.JButton();
-        txtRgtPass = new javax.swing.JPasswordField();
+        passRgt = new javax.swing.JPasswordField();
         txtRgtUsername = new javax.swing.JTextField();
         txtNRIC = new javax.swing.JTextField();
         txtContact = new javax.swing.JTextField();
@@ -49,7 +50,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblRgtPass = new javax.swing.JLabel();
         lblConfirmPass = new javax.swing.JLabel();
-        txtConfirmPass = new javax.swing.JPasswordField();
+        passcRgt = new javax.swing.JPasswordField();
         lblNRIC = new javax.swing.JLabel();
         lblRegistration1 = new javax.swing.JLabel();
 
@@ -95,8 +96,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
             }
         });
 
-        txtRgtPass.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtRgtPass.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passRgt.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        passRgt.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         txtRgtUsername.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         txtRgtUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
@@ -172,8 +173,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblConfirmPass.setForeground(new java.awt.Color(255, 255, 255));
         lblConfirmPass.setText("Confirm Password");
 
-        txtConfirmPass.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtConfirmPass.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passcRgt.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        passcRgt.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
         lblNRIC.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         lblNRIC.setForeground(new java.awt.Color(255, 255, 255));
@@ -216,10 +217,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
                                         .addGroup(panelRegistrationLayout.createSequentialGroup()
                                             .addComponent(txtRgtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtRgtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                            .addComponent(passRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(passcRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(panelRegistrationLayout.createSequentialGroup()
                                             .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
@@ -270,8 +270,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRgtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRgtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passcRgt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNRIC)
@@ -313,10 +313,10 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String name = txtName.getText().trim().toUpperCase();
         String contactNo = txtContact.getText().trim();
         String email = txtEmail.getText().trim().toLowerCase();
-        String ic = txtConfirmPass.getText().trim();
-        String username = txtRgtPass.getText().trim().toLowerCase();
-        String password = txtRgtUsername.getText().trim();
-        String cpassword = txtNRIC.getText().trim();
+        String ic = txtNRIC.getText().trim();
+        String username = txtRgtUsername.getText().trim().toLowerCase();
+        String password = new String(passRgt.getPassword());
+        String cpassword = new String(passcRgt.getPassword());
         String role = "Customer";
         String userID = "Ctest1";
         String gender = "Female";
@@ -433,12 +433,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblRgtPass;
     private javax.swing.JLabel lblRgtUsername;
     private javax.swing.JPanel panelRegistration;
-    private javax.swing.JPasswordField txtConfirmPass;
+    private javax.swing.JPasswordField passRgt;
+    private javax.swing.JPasswordField passcRgt;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNRIC;
     private javax.swing.JTextField txtName;
-    private javax.swing.JPasswordField txtRgtPass;
     private javax.swing.JTextField txtRgtUsername;
     // End of variables declaration//GEN-END:variables
 }
