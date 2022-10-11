@@ -51,8 +51,8 @@ public class CarRental {
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private static ArrayList<Admin> admins = new ArrayList<Admin>();
     private static ArrayList<Car> cars = new ArrayList<Car>();
-    private static final String userFile = "src\\carrental\\database\\users.txt";
-    private static final String carFile = "src\\carrental\\database\\cars.txt";
+    private static final String userFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
+    private static final String carFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/cars.txt";
 
     /**
      * @param args the command line arguments

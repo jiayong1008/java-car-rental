@@ -932,19 +932,19 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void tableHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHistoryMouseClicked
-        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        int row = tableUsers.getSelectedRow();
-
-        if (row >= 0) {
-            txtUserFullName.setText((String) tableModel.getValueAt(row, 1));
-            comRole.setSelectedItem((String) tableModel.getValueAt(row, 2));
-            comGender.setSelectedItemtableBookingstableModel.getValueAt(row, 3));tableBookings   txtContact.setText((String) tableModel.getValueAt(row, 4));
-            txtSearchHistory.setText((String) tableModel.getValueAt(row, 5));
-            txtNric.setText((String) tableModel.getValueAt(row, 6));
-
-            if (((String) tableModel.getValueAt(row, 7)).equals("staff"))
-            txtUsername.setText((String) tableModel.getValueAt(row, 7));
-        }
+//        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+//        int row = tableUsers.getSelectedRow();
+//
+//        if (row >= 0) {
+//            txtUserFullName.setText((String) tableModel.getValueAt(row, 1));
+//            comRole.setSelectedItem((String) tableModel.getValueAt(row, 2));
+//            comGender.setSelectedItemtableBookingstableModel.getValueAt(row, 3));tableBookings   txtContact.setText((String) tableModel.getValueAt(row, 4));
+//            txtSearchHistory.setText((String) tableModel.getValueAt(row, 5));
+//            txtNric.setText((String) tableModel.getValueAt(row, 6));
+//
+//            if (((String) tableModel.getValueAt(row, 7)).equals("staff"))
+//            txtUsername.setText((String) tableModel.getValueAt(row, 7));
+//        }
     }//GEN-LAST:event_tableHistoryMouseClicked
 
     private void txtSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchHistoryActionPerformed
@@ -952,13 +952,13 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchHistoryActionPerformed
 
     private void btnSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHistoryActionPerformed
-        String role = comRole.getSelectedItem().toString().toLowerCase();
-        String gender = comGender.getSelectedItem().toString().toLowerCase();
-        String name = txtUserFullName.getText().trim().toLowerCase();
-        String contact = txtContact.getText().trim();
-        String email = txtSearchHistory.getText().trim();
-        String ic = txtNric.getText().trim();
-        String username = txtUsername.getText().trim().toLowerCase();
+//        String role = comRole.getSelectedItem().toString().toLowerCase();
+//        String gender = comGender.getSelectedItem().toString().toLowerCase();
+//        String name = txtUserFullName.getText().trim().toLowerCase();
+//        String contact = txtContact.getText().trim();
+//        String email = txtSearchHistory.getText().trim();
+//        String ic = txtNric.getText().trim();
+//        String username = txtUsername.getText().trim().toLowerCase();
         // List<User> users = new ArrayList<User>();
 
         // if (role.equals("staff")) {
@@ -968,9 +968,9 @@ public class CustomerFrame extends javax.swing.JFrame {
             // } else { // customers
             //     users = ResortBooking.getCusts();
             // }
-
-        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        tableModel.setRowCount(0); // Delete all previous rows
+//
+//        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+//        tableModel.setRowCount(0); // Delete all previous rows
 
         // Adding all customers who hv the matched description to table
         // for (User user : users) {
