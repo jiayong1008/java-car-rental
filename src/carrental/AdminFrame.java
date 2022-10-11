@@ -40,7 +40,7 @@ public class AdminFrame extends javax.swing.JFrame {
         model.addRow(columns);
     }
 
-    // Load first 8 users in 'book room' table
+    // Load first cars in table
     private void loadCars() 
     {
         ArrayList<Car> cars = CarRental.getCars();
