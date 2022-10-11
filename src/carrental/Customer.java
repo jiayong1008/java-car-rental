@@ -16,11 +16,11 @@ public class Customer extends User {
     {
         // calling superclass constructor to populate basic info
         super(userInfo);
-
+        
         // assigning user ID manually if not provided
-        int userID = Integer.parseInt(userInfo.get(0).substring(1));
-        userID = (userID >= 0) ? userID : id;
-        customerID = "C" + String.format("%04d", userID);
+//        int userID = Integer.parseInt(userInfo.get(0).substring(1));
+//        userID = (userID >= 0) ? userID : id;
+        customerID = userInfo.get(0);
         id++;
     }
 
@@ -36,7 +36,7 @@ public class Customer extends User {
 
         for (Customer customer : customers) {
             // Car duplication is trigerred when it has the same car plate
-            if (customer.customerID.equals(customerID)) {
+            if (customer.getCustomerID().equals(customerID)) {
                 // id--;
                 return true;
             }
@@ -74,4 +74,5 @@ public class Customer extends User {
         
         return false;
     }
+    public String getCustomerID() { return customerID; }
 }
