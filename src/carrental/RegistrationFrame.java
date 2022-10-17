@@ -327,8 +327,16 @@ public class RegistrationFrame extends javax.swing.JFrame {
         
         else if(contactNo.length() < 10 || contactNo.length() > 11){
             JOptionPane.showMessageDialog(this, "Invalid contact number. ");
-            if (!Customer.isNumeric(contactNo)){
-                JOptionPane.showMessageDialog(this, "contact not numeric ");
+            boolean isNumeric = true;
+            try {
+                int checkInt = Integer.parseInt(contactNo);
+            } catch (NumberFormatException ex){
+                isNumeric = false;
+            }
+            if(isNumeric){
+                JOptionPane.showMessageDialog(this, "is numeric ");
+            } else{
+                JOptionPane.showMessageDialog(this, "Invalid contact number or NRIC.");
             }
         }
         
@@ -345,9 +353,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         
         else if(ic.length() != 12){
             JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
-            if (!Customer.isNumeric(ic)){
-                JOptionPane.showMessageDialog(this, "not numeric ");
-            }
+//            checkNumeric(ic);
         }
         
         else {
@@ -408,6 +414,20 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String gender = "Female";
     }//GEN-LAST:event_btnFemaleActionPerformed
 
+//    public void checkNumeric(String str){
+//        boolean isNumeric = true;
+//        try {
+//            int checkInt = Integer.parseInt(str);
+//        } catch (NumberFormatException ex){
+//            isNumeric = false;
+//        }
+//        if(isNumeric){
+//            JOptionPane.showMessageDialog(this, "is numeric ");
+//        } else{
+//            JOptionPane.showMessageDialog(this, "Invalid contact number or NRIC.");
+//        }
+//    }
+    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

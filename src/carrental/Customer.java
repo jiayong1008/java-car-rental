@@ -44,33 +44,22 @@ public class Customer extends User {
         return false;
     }
     
-//    public static boolean isNumeric(String str) {
-//        try {
-//            Integer.parseInt(str);  
-//            return true;
-//        }catch(NumberFormatException e){  
-//        return false;  
-//        }  
-//}
-    
-    
-    
     public boolean addToFile()
     {
-        try {
-
-      // make a connection to the file
-      BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
-      PrintWriter pw = new PrintWriter(bw);
-      Path file = Paths.get("input.txt");
-
-      // read all lines of the file
-      long count = Files.lines(file).count();
-      System.out.println("Total Lines: " + count);
-
-    } catch (Exception e) {
-      e.getStackTrace();
-    }
+//        try {
+//
+//      // make a connection to the file
+//      BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
+//      PrintWriter pw = new PrintWriter(bw);
+//      Path file = Paths.get("input.txt");
+//
+//      // read all lines of the file
+//      long count = Files.lines(file).count();
+//      System.out.println("Total Lines: " + count);
+//
+//    } catch (Exception e) {
+//      e.getStackTrace();
+//    }
         String userID = "C000test";
         String role = "Customer";
         String line;
