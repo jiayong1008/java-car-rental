@@ -43,7 +43,7 @@ public class Car {
     public boolean isDuplicate() 
     {
         ArrayList<Car> cars = CarRental.getCars();
-
+        
         for (Car car : cars) {
             // Car duplication is trigerred when it has the same car plate
             if (car.getCarPlate().equals(carPlate)) {

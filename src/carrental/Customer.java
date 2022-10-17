@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+
 public class Customer extends User {
 
     private final String customerID;
@@ -33,7 +34,6 @@ public class Customer extends User {
     public boolean isDuplicate() 
     {
         ArrayList<Customer> customers = CarRental.getCustomers();
-
         for (Customer customer : customers) {
             // Car duplication is trigerred when it has the same car plate
             if (customer.getCustomerID().equals(customerID)) {
@@ -44,9 +44,34 @@ public class Customer extends User {
         return false;
     }
     
+//    public static boolean isNumeric(String str) {
+//        try {
+//            Integer.parseInt(str);  
+//            return true;
+//        }catch(NumberFormatException e){  
+//        return false;  
+//        }  
+//}
+    
+    
+    
     public boolean addToFile()
     {
-        String userID = "C00test";
+        try {
+
+      // make a connection to the file
+      BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
+      PrintWriter pw = new PrintWriter(bw);
+      Path file = Paths.get("input.txt");
+
+      // read all lines of the file
+      long count = Files.lines(file).count();
+      System.out.println("Total Lines: " + count);
+
+    } catch (Exception e) {
+      e.getStackTrace();
+    }
+        String userID = "C000test";
         String role = "Customer";
         String line;
 

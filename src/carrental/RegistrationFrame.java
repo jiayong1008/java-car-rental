@@ -317,10 +317,38 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String cpassword = new String(passcRgt.getPassword());
         String role = "Customer";
         String customerID = "Ctest1";
-        String gender = "Female";
-        
+        String gender = "WAIT";
         if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
             JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+            
+        else if(name.length() <= 3 || username.length() <= 3){
+            JOptionPane.showMessageDialog(this, "Name and username must be more than 3 characters. ");
+        }
+        
+        else if(contactNo.length() < 10 || contactNo.length() > 11){
+            JOptionPane.showMessageDialog(this, "Invalid contact number. ");
+            if (!Customer.isNumeric(contactNo)){
+                JOptionPane.showMessageDialog(this, "contact not numeric ");
+            }
+        }
+        
+        else if(!email.contains("@") || !email.contains(".com")){
+            JOptionPane.showMessageDialog(this, "Invalid email. ");
+        }
+        
+        else if(!password.equals(cpassword)){
+            JOptionPane.showMessageDialog(this, "The password confirmation does not match.");
+            if (password.length() < 9){
+                JOptionPane.showMessageDialog(this, "Password must be more than 8 characters. ");
+            }
+        }
+        
+        else if(ic.length() != 12){
+            JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
+            if (!Customer.isNumeric(ic)){
+                JOptionPane.showMessageDialog(this, "not numeric ");
+            }
+        }
         
         else {
             
@@ -342,7 +370,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
                     
             } else {
                 customer = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "Username exists, try again.");
+                JOptionPane.showMessageDialog(this, "Account Exist");
             }
         }
     }
@@ -373,11 +401,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
-
+        
     }//GEN-LAST:event_btnMaleActionPerformed
 
     private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
-
+        String gender = "Female";
     }//GEN-LAST:event_btnFemaleActionPerformed
 
 
