@@ -4,6 +4,12 @@
  */
 package carrental;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class CustomerFrame extends javax.swing.JFrame {
@@ -138,6 +144,11 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         jtpCustomer.setBackground(new java.awt.Color(0, 0, 0));
         jtpCustomer.setForeground(new java.awt.Color(255, 255, 255));
+        jtpCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtpCustomerMouseClicked(evt);
+            }
+        });
 
         pnlBookRoom.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -868,6 +879,9 @@ public class CustomerFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableHistoryMouseClicked(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tableHistoryMouseExited(evt);
+            }
         });
         jScrollPane2.setViewportView(tableHistory);
 
@@ -1054,7 +1068,7 @@ public class CustomerFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void btnSelectGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectGuestActionPerformed
         // int rowSelected = tableBookRoomGuest.getSelectedRow();
         // if (rowSelected < 0)
@@ -1116,6 +1130,34 @@ public class CustomerFrame extends javax.swing.JFrame {
     private void txtGuestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuestNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGuestNameActionPerformed
+
+    boolean displayed = false;
+    
+    private void jtpCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtpCustomerMouseClicked
+        if (displayed) return;
+        displayed = true;
+        File file = new File(CarRental.getBookingFile());
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+
+            DefaultTableModel model = (DefaultTableModel)tableHistory.getModel();
+            Object[] lines = br.lines().toArray();
+
+            for(int i = 0; i < lines.length; i++){
+                String[] row = lines[i].toString().split(",");
+                model.addRow(row);
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+    }//GEN-LAST:event_jtpCustomerMouseClicked
+
+    private void tableHistoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHistoryMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableHistoryMouseExited
 
     /**
      * @param args the command line arguments
