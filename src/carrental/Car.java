@@ -40,6 +40,11 @@ public class Car {
     public void setDailyRentalRate(double _dailyRentalRate) { dailyRentalRate = _dailyRentalRate; }
 
     // CAR-SPECIFIC METHODS
+    public String toString() {
+        return String.format("%s - %s %s - Rental Rate: RM %.02f per day.\n",
+                carPlate, carBrand, carModel, dailyRentalRate);
+    }
+
     public boolean isDuplicate() 
     {
         ArrayList<Car> cars = CarRental.getCars();
@@ -80,6 +85,48 @@ public class Car {
             System.out.println("Oops..something went wrong.");
         }
         
+        return false;
+    }
+
+    public boolean updateInfo(String _carPlate, String _carBrand, String _carModel, double _dailyRentalRate)
+    {
+        setCarPlate(_carPlate);
+        setCarBrand(_carBrand);
+        setCarModel(_carModel);
+        setDailyRentalRate(_dailyRentalRate);
+
+        return rewriteFile();
+    }
+
+    public static boolean rewriteFile()
+    {
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getCarFile()));
+            PrintWriter pw = new PrintWriter(bw);
+            pw.write("carPlate, carBrand, carModel, dailyRentalRate\n");
+            
+            for (Car car : CarRental.getCars()) {
+                line = String.format(
+                    "%s, %s, %s, %.02f\n", 
+                    car.getCarPlate(),
+                    car.getCarBrand(),
+                    car.getCarModel(),
+                    car.getDailyRentalRate());
+                pw.write(line);
+            }
+            
+            pw.close();
+            return true;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("User file does not exist");
+        } catch (IOException e) {
+            System.out.println("Oops..something went wrong.");
+        }
+
         return false;
     }
 }

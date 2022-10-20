@@ -2311,7 +2311,42 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLastReceiptActionPerformed
 
     private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
-        // TODO add your handling code here:
+        
+        String carPlate = txtCarPlate.getText().trim().toUpperCase();
+        String carBrand = txtCarBrand.getText().trim().toLowerCase();
+        String carModel = txtCarModel.getText().trim().toLowerCase();
+        String dailyRate = txtCarDailyRate.getText().trim();
+        Double dailyRentalRate = -1.0;
+        
+        // If daily rate field is not empty, ensure that it is a numeric (double) value
+        if (!dailyRate.isEmpty())
+        {
+            try {
+                dailyRentalRate = Double.parseDouble(dailyRate);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
+                return;
+            }
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
+
+        for (Car car : CarRental.getCars())
+        {
+            if (car.getCarPlate().toUpperCase().contains(carPlate) &&
+                car.getCarBrand().toLowerCase().contains(carBrand) &&
+                car.getCarModel().toLowerCase().contains(carModel) &&
+                (dailyRentalRate < 0 || dailyRentalRate >= 0 && car.getDailyRentalRate() == dailyRentalRate))
+            {
+                columns[0] = car.getCarPlate();
+                columns[1] = car.getCarBrand();
+                columns[2] = car.getCarModel();
+                columns[3] = car.getDailyRentalRate();
+                tableModel.addRow(columns);
+            }
+        }
+
     }//GEN-LAST:event_btnSearchCarActionPerformed
 
     private void txtCarBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarBrandActionPerformed
@@ -2376,11 +2411,67 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddCarActionPerformed
 
     private void btnEditCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCarActionPerformed
-        // TODO add your handling code here:
+        
+        int row = tableCars.getSelectedRow();
+        String carPlate = txtCarPlate.getText().trim().toUpperCase();
+        String carBrand = txtCarBrand.getText().trim();
+        String carModel = txtCarModel.getText().trim();
+        String dailyRate = txtCarDailyRate.getText().trim();
+        Double dailyRentalRate = 0.0;
+
+        if (row < 0)
+            JOptionPane.showMessageDialog(this, "Please select a car to edit.");
+        else if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Incomplete information provided.");
+        } else {
+
+            // Validate daily rate is a numeric (double) value
+            try {
+                dailyRentalRate = Double.parseDouble(dailyRate);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
+                return;
+            }
+
+            // Current car can be obtained from cars array list based on the row selected in the cars table
+            ArrayList<Car> cars = CarRental.getCars();
+            Car car = cars.get(row);
+
+            if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate))
+                JOptionPane.showMessageDialog(this, "Car updated successfully.");
+            
+            else
+                JOptionPane.showMessageDialog(this, "Failed to update car - something went wrong.");
+        }
+                                           
     }//GEN-LAST:event_btnEditCarActionPerformed
 
     private void btnDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCarActionPerformed
-        // TODO add your handling code here:
+        
+        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();                                            
+        int row = tableCars.getSelectedRow();
+
+        if (row < 0)
+            JOptionPane.showMessageDialog(this, "Please select a car to delete.");
+        else 
+        {
+            // Current car can be obtained from cars array list based on the row selected in the cars table
+            ArrayList<Car> cars = CarRental.getCars();
+            Car car = cars.get(row);
+            cars.remove(car);
+
+            if (Car.rewriteFile()) {
+                tableModel.removeRow(row);
+                txtCarPlate.setText("");
+                txtCarBrand.setText("");
+                txtCarModel.setText("");
+                txtCarDailyRate.setText("");
+                JOptionPane.showMessageDialog(this, "Car deleted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Car deletion failed - something went wrong.");
+            }
+        }
+
     }//GEN-LAST:event_btnDeleteCarActionPerformed
 
     private void tableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCarsMouseClicked
