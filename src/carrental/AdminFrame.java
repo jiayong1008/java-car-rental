@@ -53,8 +53,8 @@ public class AdminFrame extends javax.swing.JFrame {
     public void addBookingTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
-        columns[1] = booking.getCustomer().getCustomerID();
-        columns[2] = booking.getCar().getCarPlate();
+        columns[1] = booking.getCustomerID();
+        columns[2] = booking.getCarPlate();
         columns[3] = booking.getBookingDate();
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
@@ -2291,11 +2291,11 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNextReceiptActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
-        try {
-            txtAreaReceipt.print();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Could not print, check your printer.");
-        }
+//        try {
+//            txtAreaReceipt.print();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Could not print, check your printer.");
+//        }
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void btnSearchReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchReceiptActionPerformed
@@ -2329,7 +2329,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFirstReceiptActionPerformed
 
     private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
-        Booking booking = null;
+//        Booking booking = null;
 
         // while (booking == null) {
         //     receiptID--;
