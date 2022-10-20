@@ -53,8 +53,8 @@ public class AdminFrame extends javax.swing.JFrame {
     public void addBookingTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
-        columns[1] = booking.getCustomerID();
-        columns[2] = booking.getCarPlate();
+        columns[1] = "111";
+        columns[2] = "111";
         columns[3] = booking.getBookingDate();
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
