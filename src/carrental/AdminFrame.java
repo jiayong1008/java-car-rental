@@ -49,6 +49,18 @@ public class AdminFrame extends javax.swing.JFrame {
         columns[3] = String.format("%.2f", car.getDailyRentalRate());
         model.addRow(columns);
     }
+    
+    public void addBookingTableRow(DefaultTableModel model, Booking booking) 
+    {
+        columns[0] = booking.getBookingId();
+        columns[1] = booking.getCustomer().getCustomerID();
+        columns[2] = booking.getCar().getCarPlate();
+        columns[3] = booking.getBookingDate();
+        columns[4] = booking.getStartDate();
+        columns[5] = booking.getEndDate();
+        columns[3] = booking.getBookingFee();
+        model.addRow(columns);
+    }
 
     // Load first cars in table
     private void loadCars() 
@@ -71,7 +83,7 @@ public class AdminFrame extends javax.swing.JFrame {
         int index = bookings.size();
         
         for (int i = 0; i < index; i++) {
-            addTableRow(tableModel, bookings.get(i));
+            addBookingTableRow(tableModel, bookings.get(i));
         }
     }
 

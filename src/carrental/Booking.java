@@ -20,7 +20,6 @@ public class Booking {
     private LocalDate endDate;
     private double bookingFee;
     
-    public Booking() {}
     // CONSTRUCTORS
     public Booking(ArrayList<String> bookingInfo)
     {
