@@ -37,6 +37,7 @@ public class AdminFrame extends javax.swing.JFrame {
     public AdminFrame() {
         initComponents();
         loadCars();
+        loadBookings();
     }
 
     // Populate record to table
@@ -59,6 +60,18 @@ public class AdminFrame extends javax.swing.JFrame {
         
         for (int i = 0; i < index; i++) {
             addTableRow(tableModel, cars.get(i));
+        }
+    }
+    
+    private void loadBookings() 
+    {
+        ArrayList<Booking> bookings = CarRental.getBookings();
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        tableModel.setRowCount(0);
+        int index = bookings.size();
+        
+        for (int i = 0; i < index; i++) {
+            addTableRow(tableModel, bookings.get(i));
         }
     }
 
@@ -2027,17 +2040,19 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBookingIDActionPerformed
 
     private void tableBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookingsMouseClicked
-        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        // int row = tableBookings.getSelectedRow();
-
-        // if (row >= 0) {
-        //     chkInDate = (String) tableModel.getValueAt(row, 4);
-        //     chkOutDate = (String) tableModel.getValueAt(row, 5);
-        //     lblMngBookingID.setText(String.valueOf(tableModel.getValueAt(row, 0)));
-        //     txtBookedGuestName.setText((String) tableModel.getValueAt(row, 3));
-        //     txtMngCheckIn.setText(chkInDate);
-        //     txtMngCheckOut.setText(chkOutDate);
-        // }
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        int row = tableBookings.getSelectedRow();
+        
+        if (row >= 0) {
+            txtBookingID.setText((String) tableModel.getValueAt(row, 0));
+            txtCustomerID.setText((String) tableModel.getValueAt(row, 1));
+            txtBookingCP.setText((String) tableModel.getValueAt(row, 2));
+            txtBookingDate.setText((String) tableModel.getValueAt(row, 3));
+            txtPickUp.setText((String) tableModel.getValueAt(row, 4));
+            txtDropOff.setText((String) tableModel.getValueAt(row, 5));
+            txtAmount.setText((String) tableModel.getValueAt(row, 6));
+            
+        }
     }//GEN-LAST:event_tableBookingsMouseClicked
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed

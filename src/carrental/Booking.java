@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 public class Booking {
     
     // INITIALIZATIONS
-    private final String bookingId;
+    private final String bookingID;
     private Customer customer;
     private Car car;
     private LocalDate bookingDate;
@@ -20,10 +20,11 @@ public class Booking {
     private LocalDate endDate;
     private double bookingFee;
     
+    public Booking() {}
     // CONSTRUCTORS
     public Booking(ArrayList<String> bookingInfo)
     {
-        bookingId = bookingInfo.get(0);
+        bookingID = bookingInfo.get(0);
         String sBookingDate = bookingInfo.get(3);
         String sstartDate = bookingInfo.get(4);
         String sendDate = bookingInfo.get(5);
@@ -44,7 +45,7 @@ public class Booking {
     }
     
     // GETTERS
-    public String getBookingId() {return bookingId;} 
+    public String getBookingId() {return bookingID;} 
     public Customer getCustomer() {return customer;} 
     public Car getCar() {return car;}
     public LocalDate getBookingDate() {return bookingDate;} 
