@@ -1,5 +1,10 @@
 package carrental;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -56,5 +61,36 @@ public class Booking {
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
     public void setBookingFee(double _bookingFee) { bookingFee = _bookingFee; }
     
+    public static boolean rewriteFile()
+    {
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getCarFile()));
+            PrintWriter pw = new PrintWriter(bw);
+            pw.write("carPlate, carBrand, carModel, dailyRentalRate\n");
+            
+            for (Car car : CarRental.getCars()) {
+                line = String.format(
+                    "%s, %s, %s, %.02f\n", 
+                    car.getCarPlate(),
+                    car.getCarBrand(),
+                    car.getCarModel(),
+                    car.getDailyRentalRate());
+                pw.write(line);
+            }
+            
+            pw.close();
+            return true;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("User file does not exist");
+        } catch (IOException e) {
+            System.out.println("Oops..something went wrong.");
+        }
+
+        return false;
+    }
     
 }

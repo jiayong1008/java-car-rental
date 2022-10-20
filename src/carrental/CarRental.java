@@ -52,12 +52,12 @@ public class CarRental {
     private static ArrayList<Admin> admins = new ArrayList<Admin>();
     private static ArrayList<Car> cars = new ArrayList<Car>();
     private static ArrayList<Booking> bookings = new ArrayList<Booking>();
-    // private static final String userFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
-    // private static final String carFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/cars.txt";
-    // private static final String bookingFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/bookings.txt";
-    private static final String userFile = "src\\carrental\\database\\users.txt";
-    private static final String carFile = "src\\carrental\\database\\cars.txt";
-    private static final String bookingFile = "src\\carrental\\database\\bookings.txt";
+    private static final String userFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
+    private static final String carFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/cars.txt";
+    private static final String bookingFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/bookings.txt";
+//    private static final String userFile = "src\\carrental\\database\\users.txt";
+//    private static final String carFile = "src\\carrental\\database\\cars.txt";
+//    private static final String bookingFile = "src\\carrental\\database\\bookings.txt";
 
     /**
      * @param args the command line arguments
@@ -66,7 +66,7 @@ public class CarRental {
     {
         loadUsers();
         loadCars();
-        // loadBookings();
+        loadBookings();
         login();
     }
 
@@ -82,6 +82,7 @@ public class CarRental {
     // ADDING INFORMATION
     public static void addCars(Car car) { cars.add(car); }
     public static void addCustomers(Customer customer) { customers.add(customer); }
+    public static void addBookings(Booking booking) { bookings.add(booking); }
 
     
     public static void login() 
@@ -159,15 +160,15 @@ public class CarRental {
 
         try {
             // May throw FileNotFoundException
-            BufferedReader br = new BufferedReader(new FileReader(carFile));
+            BufferedReader br = new BufferedReader(new FileReader(bookingFile));
             br.readLine(); // Skip first line (header)
 
             while ((line = br.readLine()) != null) 
             { // Read line by line till End Of File (EOF)
                 String[] values = line.split(", "); // Split values by comma
-                ArrayList<String> carInfo = new ArrayList<String>(Arrays.asList(values));
-                Car car = new Car(carInfo);
-                cars.add(car);
+                ArrayList<String> bookingInfo = new ArrayList<String>(Arrays.asList(values));
+                Booking booking = new Booking(bookingInfo);
+                bookings.add(booking);
             }
             br.close();  
             
