@@ -27,6 +27,7 @@ abstract public class User {
         username = userInfo.get(7);
         password = userInfo.get(8);
     }
+    
 
     // GETTERS
     public String getName() { return name; }

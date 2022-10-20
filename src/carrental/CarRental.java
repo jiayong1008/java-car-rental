@@ -51,10 +51,13 @@ public class CarRental {
     private static ArrayList<Customer> customers = new ArrayList<Customer>();
     private static ArrayList<Admin> admins = new ArrayList<Admin>();
     private static ArrayList<Car> cars = new ArrayList<Car>();
+    private static ArrayList<Booking> bookings = new ArrayList<Booking>();
     // private static final String userFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
     // private static final String carFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/cars.txt";
+    // private static final String bookingFile = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/bookings.txt";
     private static final String userFile = "src\\carrental\\database\\users.txt";
     private static final String carFile = "src\\carrental\\database\\cars.txt";
+    private static final String bookingFile = "src\\carrental\\database\\bookings.txt";
 
     /**
      * @param args the command line arguments
@@ -71,8 +74,10 @@ public class CarRental {
     public static ArrayList<Admin> getAdmins() { return admins; }
     public static ArrayList<Customer> getCustomers() { return customers; }
     public static ArrayList<Car> getCars() { return cars; }
+    public static ArrayList<Booking> getBookings() { return bookings; }
     public static String getCarFile() { return carFile; }
     public static String getUserFile() { return userFile; }
+    public static String getBookingFile() { return bookingFile; }
 
     // ADDING INFORMATION
     public static void addCars(Car car) { cars.add(car); }
@@ -148,7 +153,29 @@ public class CarRental {
 
     public static void loadBookings()
     {
+        // Preventing redundancy
+        bookings.clear(); 
+        String line;
 
+        try {
+            // May throw FileNotFoundException
+            BufferedReader br = new BufferedReader(new FileReader(carFile));
+            br.readLine(); // Skip first line (header)
+
+            while ((line = br.readLine()) != null) 
+            { // Read line by line till End Of File (EOF)
+                String[] values = line.split(", "); // Split values by comma
+                ArrayList<String> carInfo = new ArrayList<String>(Arrays.asList(values));
+                Car car = new Car(carInfo);
+                cars.add(car);
+            }
+            br.close();  
+            
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
 }

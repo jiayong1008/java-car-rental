@@ -7,3 +7,5 @@ WQA7786, BMW, M3, 320.00
 WGH2083, Toyota, Sienna, 180.00
 MMP110, BMW, M5, 380.00
 LJY1008, Proton, X70, 380.00
+LTG1234, Toyota, Altis, 150.00
+G1209, Toyota, Altis, 120.00
