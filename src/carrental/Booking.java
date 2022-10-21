@@ -1,5 +1,10 @@
 package carrental;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -7,8 +12,10 @@ import java.time.format.DateTimeFormatter;
 public class Booking {
     
     // INITIALIZATIONS
-    private final String bookingId;
+    private final String bookingID;
     private Customer customer;
+    private Customer customerID;
+    private Car carPlate;
     private Car car;
     private LocalDate bookingDate;
     private LocalDate startDate;
@@ -18,7 +25,7 @@ public class Booking {
     // CONSTRUCTORS
     public Booking(ArrayList<String> bookingInfo)
     {
-        bookingId = bookingInfo.get(0);
+        bookingID = bookingInfo.get(0);
         String sBookingDate = bookingInfo.get(3);
         String sstartDate = bookingInfo.get(4);
         String sendDate = bookingInfo.get(5);
@@ -39,8 +46,10 @@ public class Booking {
     }
     
     // GETTERS
-    public String getBookingId() {return bookingId;} 
+    public String getBookingId() {return bookingID;} 
     public Customer getCustomer() {return customer;} 
+    public Customer getCustomerID() {return customerID;} 
+    public Car getCarPlate() {return carPlate;} 
     public Car getCar() {return car;}
     public LocalDate getBookingDate() {return bookingDate;} 
     public LocalDate getStartDate() {return startDate;} 
@@ -56,5 +65,36 @@ public class Booking {
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
     public void setBookingFee(double _bookingFee) { bookingFee = _bookingFee; }
     
+    public static boolean rewriteFile()
+    {
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getCarFile()));
+            PrintWriter pw = new PrintWriter(bw);
+            pw.write("carPlate, carBrand, carModel, dailyRentalRate\n");
+            
+            for (Car car : CarRental.getCars()) {
+                line = String.format(
+                    "%s, %s, %s, %.02f\n", 
+                    car.getCarPlate(),
+                    car.getCarBrand(),
+                    car.getCarModel(),
+                    car.getDailyRentalRate());
+                pw.write(line);
+            }
+            
+            pw.close();
+            return true;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("User file does not exist");
+        } catch (IOException e) {
+            System.out.println("Oops..something went wrong.");
+        }
+
+        return false;
+    }
     
 }

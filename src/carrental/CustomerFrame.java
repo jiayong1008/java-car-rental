@@ -729,13 +729,17 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         tblNotification.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {"Your booking on 12-10-2022 is confirmed!"},
+                {"Your booking on 12-10-2022 is confirmed!"},
+                {"Your booking on 11-10-2022 is confirmed!"},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-
+                "Title 1"
             }
         ));
         jScrollPane3.setViewportView(tblNotification);
