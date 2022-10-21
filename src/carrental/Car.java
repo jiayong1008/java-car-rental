@@ -9,25 +9,35 @@ import java.util.ArrayList;
 
 
 public class Car {
+    
+    private final String carID;
     private String carPlate;
     private String carBrand;
     private String carModel;
     private double dailyRentalRate;
+    public static int id = 1;
     
     // CONSTUCTORS
-    public Car() {}
-    public Car(ArrayList<String> carInfo) {
-        carPlate = carInfo.get(0);
-        carBrand = carInfo.get(1);
-        carModel = carInfo.get(2);
+    public Car(ArrayList<String> carInfo) 
+    {
+        carPlate = carInfo.get(1);
+        carBrand = carInfo.get(2);
+        carModel = carInfo.get(3);
         
-        //string to double
-        String sDailyRentalRate = carInfo.get(3);
+        // Assign car ID manually if not provided
+        int tmpID = Integer.parseInt(carInfo.get(0).substring(1));
+        tmpID = (tmpID >= 0) ? tmpID : id;
+        carID = "R" + String.format("%04d", tmpID);
+        id = ++tmpID;
+
+        // String to double
+        String sDailyRentalRate = carInfo.get(4);
         dailyRentalRate = Double.parseDouble(sDailyRentalRate);
     }
     
     
     // GETTERS
+    public String getCarID() { return carID; }
     public String getCarPlate() { return carPlate; }
     public String getCarBrand() { return carBrand; }
     public String getCarModel() { return carModel; }
@@ -52,7 +62,7 @@ public class Car {
         for (Car car : cars) {
             // Car duplication is trigerred when it has the same car plate
             if (car.getCarPlate().equals(carPlate)) {
-                // id--;
+                id--;
                 return true;
             }
         }
@@ -69,8 +79,8 @@ public class Car {
             PrintWriter pw = new PrintWriter(bw);
             
             line = String.format(
-                "%s, %s, %s, %.2f\n", 
-                carPlate, carBrand, carModel, dailyRentalRate
+                "%s, %s, %s, %s, %.2f\n", 
+                carID, carPlate, carBrand, carModel, dailyRentalRate
             );
             pw.write(line);
             pw.close();
@@ -106,11 +116,12 @@ public class Car {
             // May throw FileNotFoundException
             BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getCarFile()));
             PrintWriter pw = new PrintWriter(bw);
-            pw.write("carPlate, carBrand, carModel, dailyRentalRate\n");
+            pw.write("carID, carPlate, carBrand, carModel, dailyRentalRate\n");
             
             for (Car car : CarRental.getCars()) {
                 line = String.format(
-                    "%s, %s, %s, %.02f\n", 
+                    "%s, %s, %s, %s, %.02f\n", 
+                    car.getCarID(),
                     car.getCarPlate(),
                     car.getCarBrand(),
                     car.getCarModel(),

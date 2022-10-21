@@ -1,11 +1,10 @@
-carPlate, carBrand, carModel, dailyRentalRate
-MCD0298, BMW, X1, 450.00
-NRC1088, Toyota, Corolla, 225.00
-WKL908, Jeep, Grand Cherokee, 400.00
-HGF3098, Toyota, Camry, 99.00
-WQA7786, BMW, M3, 320.00
-WGH2083, Toyota, Sienna, 180.00
-MMP110, BMW, M5, 380.00
-LJY1008, Proton, X70, 380.00
-LTG1234, Toyota, Altis, 150.00
-G1209, Toyota, Altis, 120.00
+carID, carPlate, carBrand, carModel, dailyRentalRate
+R0002, NRC1088, Toyota, Corolla, 225.00
+R0003, WKL908, Jeep, Grand Cherokee, 400.00
+R0004, HGF3098, Toyota, Camry, 99.00
+R0005, WQA7786, BMW, M3, 320.00
+R0006, WGH2083, Toyota, Sienna, 180.00
+R0007, MMP110, BMW, M5, 380.00
+R0008, LJY1008, Proton, X70, 380.00
+R0009, LTG1234, Toyota, Altis, 150.00
+R0010, G1209, Toyota, Altis, 120.00

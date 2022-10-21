@@ -56,10 +56,11 @@ public class AdminFrame extends javax.swing.JFrame {
     // Populate record to table - Overload method (Car)
     public void addTableRow(DefaultTableModel model, Car car) 
     {
-        columns[0] = car.getCarPlate();
-        columns[1] = car.getCarBrand();
-        columns[2] = car.getCarModel();
-        columns[3] = String.format("%.2f", car.getDailyRentalRate());
+        columns[0] = car.getCarID();
+        columns[1] = car.getCarPlate();
+        columns[2] = car.getCarBrand();
+        columns[3] = car.getCarModel();
+        columns[4] = String.format("%.2f", car.getDailyRentalRate());
         model.addRow(columns);
     }
 
@@ -1252,14 +1253,14 @@ public class AdminFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Car Plate", "Car Brand", "Car Model", "Daily Rental Rate (RM)"
+                "Car ID", "Car Plate", "Car Brand", "Car Model", "Daily Rental Rate (RM)"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                true, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2457,10 +2458,11 @@ public class AdminFrame extends javax.swing.JFrame {
                 car.getCarModel().toLowerCase().contains(carModel) &&
                 (dailyRentalRate < 0 || dailyRentalRate >= 0 && car.getDailyRentalRate() == dailyRentalRate))
             {
-                columns[0] = car.getCarPlate();
-                columns[1] = car.getCarBrand();
-                columns[2] = car.getCarModel();
-                columns[3] = car.getDailyRentalRate();
+                columns[0] = car.getCarID();
+                columns[1] = car.getCarPlate();
+                columns[2] = car.getCarBrand();
+                columns[3] = car.getCarModel();
+                columns[4] = String.format("%.2f", car.getDailyRentalRate());
                 tableModel.addRow(columns);
             }
         }
@@ -2508,7 +2510,7 @@ public class AdminFrame extends javax.swing.JFrame {
             
             // Complete information provided - create new car object and add to database
             ArrayList<String> carInfo = new ArrayList<String>(
-                Arrays.asList(carPlate, carBrand, carModel, dailyRate)
+                Arrays.asList("R-1", carPlate, carBrand, carModel, dailyRate)
             );
             Car car = new Car(carInfo);            
 
@@ -2539,10 +2541,12 @@ public class AdminFrame extends javax.swing.JFrame {
 
         if (row < 0)
             JOptionPane.showMessageDialog(this, "Please select a car to edit.");
-        else if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty()) {
+        
+        else if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
             JOptionPane.showMessageDialog(this, "Incomplete information provided.");
-        } else {
-
+        
+        else 
+        {
             // Validate daily rate is a numeric (double) value
             try {
                 dailyRentalRate = Double.parseDouble(dailyRate);
@@ -2551,15 +2555,19 @@ public class AdminFrame extends javax.swing.JFrame {
                 return;
             }
 
-            // Current car can be obtained from cars array list based on the row selected in the cars table
-            ArrayList<Car> cars = CarRental.getCars();
-            Car car = cars.get(row);
+            String carID = (String) tableCars.getValueAt(row, 0); // CarID col
 
-            if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate)) {
-                JOptionPane.showMessageDialog(this, "Car updated successfully.");
-                loadCars();
-            } else
-                JOptionPane.showMessageDialog(this, "Failed to update car - something went wrong.");
+            for (Car car : CarRental.getCars())
+            {
+                if (!car.getCarID().equals(carID)) continue;
+
+                if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate)) {
+                    loadCars();
+                    JOptionPane.showMessageDialog(this, "Car updated successfully.");
+                } else
+                    JOptionPane.showMessageDialog(this, "Failed to update car - something went wrong.");
+            }
+
         }
                                            
     }//GEN-LAST:event_btnEditCarActionPerformed
@@ -2585,9 +2593,11 @@ public class AdminFrame extends javax.swing.JFrame {
                 txtCarModel.setText("");
                 txtCarDailyRate.setText("");
                 JOptionPane.showMessageDialog(this, "Car deleted successfully.");
-            } else {
+                loadCars();
+            } 
+            else
                 JOptionPane.showMessageDialog(this, "Car deletion failed - something went wrong.");
-            }
+            
         }
 
     }//GEN-LAST:event_btnDeleteCarActionPerformed
@@ -2598,10 +2608,10 @@ public class AdminFrame extends javax.swing.JFrame {
         int row = tableCars.getSelectedRow();
         
         if (row >= 0) {
-            txtCarPlate.setText((String) tableModel.getValueAt(row, 0));
-            txtCarBrand.setText((String) tableModel.getValueAt(row, 1));
-            txtCarModel.setText((String) tableModel.getValueAt(row, 2));
-            txtCarDailyRate.setText((String) tableModel.getValueAt(row, 3));
+            txtCarPlate.setText((String) tableModel.getValueAt(row, 1));
+            txtCarBrand.setText((String) tableModel.getValueAt(row, 2));
+            txtCarModel.setText((String) tableModel.getValueAt(row, 3));
+            txtCarDailyRate.setText((String) tableModel.getValueAt(row, 4));
         }
     }//GEN-LAST:event_tableCarsMouseClicked
 
