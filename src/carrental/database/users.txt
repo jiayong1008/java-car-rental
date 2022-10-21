@@ -7,10 +7,3 @@ C0005, customer, Hermione Granger, Female, 014-87654321, hermione@gmail.com, 991
 C0006, customer, Ronald Weasley, Male, 016-98765432, ron@gmail.com, 001008-14-8899, ronald, qwerty
 C0007, customer, Elijah Mikaelson, Male, 017-99661123, elijah@gmail.com, 571008-14-1235, elijah, qwerty
 C0008, customer, Niklaus Mikaelson, Male, 012-12345678, klaus@gmail.com, 601008-14-6866, niklaus, qwerty
-C000test, Customer, SASASASAS, WAIT, sasasasasa, sasasasa@.com, 123456789012, sasasasa, sasa
-C000test, Customer, ASSASASASA, WAIT, 0126316655, sdasdsad@.com, 129029029109, sasasassa, sasa
-C000test, Customer, HHHHHHHH, WAIT, uyuyuyuyuy, asasas@.com, uyuyuyuyuyuy, asasasa, SASASA
-C000test, Customer, SASASASASSAA, WAIT, wewrwtwtww, asas@.com, wtwtwtwttwas, sasaasasa, sasa
-C000test, Customer, FGFGGFFGFFG, WAIT, asasasasas, sasasa@.com, asfdgdhdjdjd, jhhhjhshhsadh, sasa
-C000test, Customer, GDGDGDGDSGD, WAIT, hghgthgtyh, ssasdsa@.com, dsdsdfderdff, sdasdasd, sasa
-C000test, Customer, SASASAASAS, WAIT, sasasasasa, sasas@.com, 019910909090, saadasdsad, sasa

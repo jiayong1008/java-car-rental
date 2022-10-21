@@ -80,9 +80,9 @@ public class CarRental {
     public static String getBookingFile() { return bookingFile; }
 
     // ADDING INFORMATION
-    public static void addCars(Car car) { cars.add(car); }
-    public static void addCustomers(Customer customer) { customers.add(customer); }
-
+    public static void addCar(Car car) { cars.add(car); }
+    public static void addCustomer(Customer customer) { customers.add(customer); }
+    public static void addAdmin(Admin admin) { admins.add(admin); }
     
     public static void login() 
     {

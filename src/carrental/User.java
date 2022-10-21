@@ -1,6 +1,12 @@
 package carrental;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 abstract public class User {
 
@@ -12,7 +18,7 @@ abstract public class User {
     protected String ic;
     protected String username;
     protected String password;
-    protected static int id = 1;
+    public static int id = 1;
     protected static final String FILE = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\CarRental\\src\\carrental\\database\\users.txt";
 
     // CONSTRUCTORS
@@ -26,8 +32,7 @@ abstract public class User {
         ic = userInfo.get(6);
         username = userInfo.get(7);
         password = userInfo.get(8);
-    }
-    
+    }    
 
     // GETTERS
     public String getName() { return name; }
@@ -47,8 +52,52 @@ abstract public class User {
     public void setUsername(String _username) { username = _username; }
     public void setPassword(String _password) { password = _password; }
 
+    public boolean addToFile()
+    {
+        String line;
+        try {
+            // May throw FileNotFoundException
+            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE, true));
+            PrintWriter pw = new PrintWriter(bw);
+            
+            line = String.format(
+                "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
+                getUserID(), getRole().toLowerCase(), name, gender,
+                contactNo, email, ic, username, password);
+            pw.write(line);
+            pw.close();
+
+            // Incomplete here, subclass need to add this object to CarRental.
+            return true;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("User file does not exist");
+        } catch (IOException e) {
+            System.out.println("Oops..something went wrong.");
+        }
+        return false;
+    }
+
+    public boolean isDuplicate() 
+    {
+        List<User> users = new ArrayList<User>();
+        users.addAll(CarRental.getAdmins());
+        users.addAll(CarRental.getCustomers());
+
+        // User duplication is trigerred when user has the same IC
+        for (User user : users) {
+            if (user.getIC().equals(ic)) {
+                id--;
+                return true;
+            }
+        }
+        return false;
+    }
+
     // ABSTRACT METHODS
-    @Override
+    public abstract String getUserID();
+    public abstract String getRole();
     public abstract String toString();
-    public abstract boolean addToFile();
+    // public abstract boolean isDuplicate();
+    // public abstract boolean addToFile();
 }

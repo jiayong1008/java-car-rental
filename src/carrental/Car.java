@@ -76,7 +76,7 @@ public class Car {
             pw.close();
 
             // Add to ResortBooking's 'customers' ArrayList
-            CarRental.addCars(this);
+            CarRental.addCar(this);
             return true;
 
         } catch (FileNotFoundException e) {

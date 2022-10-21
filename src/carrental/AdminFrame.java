@@ -11,10 +11,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -36,10 +38,25 @@ public class AdminFrame extends javax.swing.JFrame {
      */
     public AdminFrame() {
         initComponents();
+        loadUsers();
         loadCars();
     }
 
-    // Populate record to table
+    // Populate record to table - Overload method (User)
+    public void addTableRow(DefaultTableModel model, User user) 
+    {
+        columns[0] = user.getUserID();
+        columns[1] = user.getName();
+        columns[2] = user.getRole();
+        columns[3] = user.getGender();
+        columns[4] = user.getContactNo();
+        columns[5] = user.getEmail();
+        columns[6] = user.getIC();
+        columns[7] = user.getUsername();
+        model.addRow(columns);
+    }
+
+    // Populate record to table - Overload method (Car)
     public void addTableRow(DefaultTableModel model, Car car) 
     {
         columns[0] = car.getCarPlate();
@@ -49,7 +66,24 @@ public class AdminFrame extends javax.swing.JFrame {
         model.addRow(columns);
     }
 
-    // Load first cars in table
+    // Load cars in table
+    private void loadUsers() 
+    {
+        // Polymorphism - adding admin (subclass) and customer (subclass) to User (superclass) list 
+        List<User> users = new ArrayList<User>();
+        users.addAll(CarRental.getAdmins());
+        users.addAll(CarRental.getCustomers());
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+        tableModel.setRowCount(0);
+        int index = users.size();
+        
+        for (int i = 0; i < index; i++) {
+            addTableRow(tableModel, users.get(i));
+        }
+    }
+
+    // Load cars in table
     private void loadCars() 
     {
         ArrayList<Car> cars = CarRental.getCars();
@@ -186,6 +220,12 @@ public class AdminFrame extends javax.swing.JFrame {
         btnUserDelete = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
         tabReceipts = new javax.swing.JPanel();
@@ -423,7 +463,7 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addComponent(txtChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         tabBookRoom.addTab("1 - Select Date", pnlBookRoom1);
@@ -763,7 +803,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Book Room", pnlBookRoom);
+        jTabbedPane1.addTab("Book Car", pnlBookRoom);
 
         tabManageBookings.setBackground(new java.awt.Color(240, 240, 240));
 
@@ -877,7 +917,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -982,7 +1022,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageBookingsLayout.createSequentialGroup()
                 .addComponent(formBook2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1244,7 +1284,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageCarsLayout.createSequentialGroup()
                 .addComponent(formBook3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1261,7 +1301,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel3.setText("User Role");
 
         comRole.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        comRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Staff" }));
+        comRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin" }));
         comRole.setMinimumSize(new java.awt.Dimension(100, 28));
         comRole.setPreferredSize(new java.awt.Dimension(100, 28));
 
@@ -1383,11 +1423,35 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        jLabel11.setText("Only required for 'staff' role");
+        jLabel11.setText("Required fields");
 
         jLabel15.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 51, 51));
         jLabel15.setText("*");
+
+        jLabel27.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel27.setText("*");
+
+        jLabel28.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel28.setText("*");
+
+        jLabel32.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel32.setText("*");
+
+        jLabel48.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel48.setText("*");
+
+        jLabel49.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel49.setText("*");
+
+        jLabel50.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel50.setText("*");
 
         javax.swing.GroupLayout formBookLayout = new javax.swing.GroupLayout(formBook);
         formBook.setLayout(formBookLayout);
@@ -1399,112 +1463,122 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addGroup(formBookLayout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
-                        .addGap(425, 425, 425))
+                        .addComponent(jLabel11))
                     .addGroup(formBookLayout.createSequentialGroup()
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(formBookLayout.createSequentialGroup()
-                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(formBookLayout.createSequentialGroup()
-                                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtUserFullName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(comRole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(332, 332, 332)
+                                .addComponent(jLabel13))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formBookLayout.createSequentialGroup()
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(formBookLayout.createSequentialGroup()
                                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
                                             .addComponent(jLabel4))
-                                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(formBookLayout.createSequentialGroup()
                                                 .addGap(16, 16, 16)
-                                                .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(formBookLayout.createSequentialGroup()
+                                                .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBookLayout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
-                                                .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(60, 60, 60)
-                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel13)))
-                            .addGroup(formBookLayout.createSequentialGroup()
-                                .addComponent(btnUserAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnUserSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(formBookLayout.createSequentialGroup()
-                                .addComponent(btnUserEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnUserDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(formBookLayout.createSequentialGroup()
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(comRole, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(formBookLayout.createSequentialGroup()
+                                        .addComponent(btnUserAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btnUserSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtUserFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel14)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formBookLayout.createSequentialGroup()
                                 .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel10))
-                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(formBookLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(1, 1, 1))
-                                    .addGroup(formBookLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addGap(266, 266, 266))
+                                .addGap(18, 18, 18)
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnUserDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNric, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnUserEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         formBookLayout.setVerticalGroup(
             formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formBookLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(30, 30, 30)
                 .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(formBookLayout.createSequentialGroup()
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel49))
+                        .addGap(12, 12, 12)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel14)))
+                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(jLabel50))
+                        .addGap(15, 15, 15)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel14)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel10))
-                        .addGap(7, 7, 7))
+                        .addGap(44, 44, 44))
                     .addGroup(formBookLayout.createSequentialGroup()
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel48)
                             .addComponent(txtUserFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(comRole, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel32))
                         .addGap(18, 18, 18)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6)
-                            .addComponent(comGender, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                            .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel28))
+                            .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addGroup(formBookLayout.createSequentialGroup()
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel15))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(formBookLayout.createSequentialGroup()
                                 .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(43, 43, 43)))))
                 .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUserSearch)
                     .addComponent(btnUserAdd)
@@ -1552,7 +1626,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formBook, javax.swing.GroupLayout.PREFERRED_SIZE, 793, Short.MAX_VALUE)
+                    .addComponent(formBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1744,7 +1818,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addContainerGap(18, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Receipts", tabReceipts);
@@ -2074,6 +2148,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAddActionPerformed
+        
         String name = txtUserFullName.getText().trim();
         String contact = txtContact.getText().trim();
         String email = txtEmail.getText().trim();
@@ -2083,33 +2158,33 @@ public class AdminFrame extends javax.swing.JFrame {
         String username = txtUsername.getText().trim();
         String password = new String(pass.getPassword()).trim();
 
-        if (name.isEmpty() || contact.isEmpty() || email.isEmpty() || ic.isEmpty())
-        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
-        else if (role.equals("Staff") && (username.isEmpty() || password.isEmpty()))
-        JOptionPane.showMessageDialog(this, "Please fill in username and password to add staff.");
-        else {
-            // complete information provided
-            ArrayList<String> custInfo = new ArrayList<String>();
-            // User user = new User();
+        if (name.isEmpty() || contact.isEmpty() || email.isEmpty() || 
+            ic.isEmpty() || username.isEmpty() || password.isEmpty() ) 
+        {
+            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+        }
+        else { // Complete information provided
+            
+            ArrayList<String> userInfo = new ArrayList<String>();
 
-            // if (role.equals("Customer")) {
-            //     Collections.addAll(custInfo, "-1", "customer", name, gender, contact, email, ic);
-            //     user = new User(custInfo);
-            // } else {
-            //     Collections.addAll(custInfo, "-1", "staff", name, gender, contact, email, ic, username, password);
-            //     user = new Staff(custInfo);
-            // }
+            Collections.addAll(
+                userInfo, "T-1", role.toLowerCase(), name, 
+                gender, contact, email, ic, username, password
+            );
+            User user = role.equals("Customer") ? new Customer(userInfo) : new Admin(userInfo);
+            System.out.println(user);
 
-            // if (!user.isDuplicate()) {
-            //     if (user.addToFile()) {
-            //         loadUsers();
-            //         JOptionPane.showMessageDialog(this, "User added successfully");
-            //     } else
-            //     JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
-            // } else {
-            //     user = null; // Deleting it (by making it eligible for garbage collection)
-            //     JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
-            // }
+            if (!user.isDuplicate()) {
+                if (user.addToFile()) {
+                    loadUsers();
+                    JOptionPane.showMessageDialog(this, "User added successfully");
+                } else {
+                    JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
+                }
+            } else {
+                user = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
+            }
         }
     }//GEN-LAST:event_btnUserAddActionPerformed
 
@@ -2192,6 +2267,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserDeleteActionPerformed
 
     private void tableUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsersMouseClicked
+
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         int row = tableUsers.getSelectedRow();
 
@@ -2202,8 +2278,6 @@ public class AdminFrame extends javax.swing.JFrame {
             txtContact.setText((String) tableModel.getValueAt(row, 4));
             txtEmail.setText((String) tableModel.getValueAt(row, 5));
             txtNric.setText((String) tableModel.getValueAt(row, 6));
-
-            if (((String) tableModel.getValueAt(row, 7)).equals("staff"))
             txtUsername.setText((String) tableModel.getValueAt(row, 7));
         }
     }//GEN-LAST:event_tableUsersMouseClicked
@@ -2437,10 +2511,10 @@ public class AdminFrame extends javax.swing.JFrame {
             ArrayList<Car> cars = CarRental.getCars();
             Car car = cars.get(row);
 
-            if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate))
+            if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate)) {
                 JOptionPane.showMessageDialog(this, "Car updated successfully.");
-            
-            else
+                loadCars();
+            } else
                 JOptionPane.showMessageDialog(this, "Failed to update car - something went wrong.");
         }
                                            
@@ -2609,10 +2683,13 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -2629,7 +2706,10 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
