@@ -5,13 +5,9 @@
 package carrental;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Constructor;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +36,7 @@ public class AdminFrame extends javax.swing.JFrame {
         initComponents();
         loadUsers();
         loadCars();
+        loadBookings();
     }
 
     // Populate record to table - Overload method (User)
@@ -93,6 +90,18 @@ public class AdminFrame extends javax.swing.JFrame {
         
         for (int i = 0; i < index; i++) {
             addTableRow(tableModel, cars.get(i));
+        }
+    }
+
+    private void loadBookings() 
+    {
+        ArrayList<Booking> bookings = CarRental.getBookings();
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        tableModel.setRowCount(0);
+        int index = bookings.size();
+        
+        for (int i = 0; i < index; i++) {
+            // addBookingTableRow(tableModel, bookings.get(i));
         }
     }
 
