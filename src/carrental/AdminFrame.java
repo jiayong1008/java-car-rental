@@ -2103,41 +2103,38 @@ public class AdminFrame extends javax.swing.JFrame {
         String email = txtEmail.getText().trim();
         String ic = txtNric.getText().trim();
         String username = txtUsername.getText().trim().toLowerCase();
-        // List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<User>();
 
-        // if (role.equals("staff")) {
-        //     for (Staff staff : ResortBooking.getStaffs()) {
-        //         users.add(staff);
-        //     }
-        // } else { // customers
-        //     users = ResortBooking.getCusts();
-        // }
+        if (role.equals("customer")) {
+           users.addAll(CarRental.getCustomers());
+        } 
+        else { // Admins
+            users.addAll(CarRental.getAdmins());
+        }
+        System.out.println(users.toString());
 
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
 
-        // Adding all customers who hv the matched description to table
-        // for (User user : users) {
-
-        //     if (user.getName().toLowerCase().contains(name) && gender.equals(user.getGender().toLowerCase())
-        //         && user.getContact().contains(contact) && user.getEmail().contains(email) &&
-        //         user.getIC().contains(ic)) { // Common details matched
-
-        //         // matching username for 'staff' role
-        //         if (user.getRole().equals("Customer") || (user.getRole().equals("Staff")
-        //             && user.getUsername().toLowerCase().contains(username))) {
-        //         row[0] = user.getUserID();
-        //         row[1] = user.getName();
-        //         row[2] = user.getRole();
-        //         row[3] = user.getGender();
-        //         row[4] = user.getContact();
-        //         row[5] = user.getEmail();
-        //         row[6] = user.getIC();
-        //         row[7] = user.getUsername();
-        //         tableModel.addRow(row);
-        //     }
-        // }
-        // }
+        // Adding all users who hv the matched description to table
+        for (User user : users) {
+            // Filtering matched users
+            if (user.getName().toLowerCase().contains(name) && gender.equals(user.getGender().toLowerCase())
+                && user.getContactNo().contains(contact) && user.getEmail().contains(email) &&
+                user.getIC().contains(ic) && user.getUsername().toLowerCase().contains(username)) 
+            {
+                columns[0] = user.getUserID();
+                columns[1] = user.getName();
+                columns[2] = user.getRole();
+                columns[3] = user.getGender();
+                columns[4] = user.getContactNo();
+                columns[5] = user.getEmail();
+                columns[6] = user.getIC();
+                columns[7] = user.getUsername();
+                tableModel.addRow(columns);
+            }
+        }
+        
     }//GEN-LAST:event_btnUserSearchActionPerformed
 
     private void txtUserFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserFullNameActionPerformed
@@ -2198,58 +2195,96 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserAddActionPerformed
 
     private void btnUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserEditActionPerformed
+        
+        // User details that are editable - name, contact, email. Others are illogical to be modified
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         int row = tableUsers.getSelectedRow();
         String name = txtUserFullName.getText().trim();
         String contact = txtContact.getText().trim();
         String email = txtEmail.getText().trim();
-        String ic = txtNric.getText().trim();
-        // String username = txtUsername.getText().trim().toLowerCase();
 
         if (row < 0)
-        JOptionPane.showMessageDialog(this, "Please select a user to edit.");
-        else if (name.isEmpty() || contact.isEmpty() || email.isEmpty() || ic.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a user to edit.");
+
+        else if (name.isEmpty() || contact.isEmpty() || email.isEmpty())
             JOptionPane.showMessageDialog(this, "Incomplete information.");
-        } else {
-            int userID = (int) tableUsers.getValueAt(row, 0); // UserID col
-            // List<User> users = new ArrayList<User>();
 
-            // if (((String) tableModel.getValueAt(row, 2)).equals("Staff")) {
-            //     for (Staff staff : ResortBooking.getStaffs()) {
-            //         users.add(staff); }
-            // } else {
-            //     users = ResortBooking.getCusts();
-            // }
+        else 
+        {
+            String userID = (String) tableUsers.getValueAt(row, 0); // UserID col
+            List<User> users = new ArrayList<User>();
 
-            // for (User user : users) {
-            //     if (user.getUserID() == userID) {
-            //         if (user.updateInfo(name, contact, email, ic)) {
-            //             JOptionPane.showMessageDialog(this, "User updated successfully.");
-            //             break;
-            //         } else
-            //         JOptionPane.showMessageDialog(this, "User update failed - something went wrong.");
-            //     }
-            // }
+            if (((String) tableModel.getValueAt(row, 2)).equals("Admin")) 
+                users.addAll(CarRental.getAdmins());
+
+            else
+                users.addAll(CarRental.getCustomers());
+
+            for (User user : users) 
+            {
+                if (!user.getUserID().equals(userID)) continue;
+
+                if (user.getName().equals(name) && user.getContactNo().equals(contact) && user.getEmail().equals(email))
+                JOptionPane.showMessageDialog(this, "Nothing to edit.");
+
+                else
+                {
+                    if (user.updateInfo(name, contact, email)) {
+                        JOptionPane.showMessageDialog(this, "User updated successfully.");
+                        loadUsers();
+                        break;
+                    } 
+                    else
+                    JOptionPane.showMessageDialog(this, "User update failed - something went wrong.");
+                }
+            }
         }
     }//GEN-LAST:event_btnUserEditActionPerformed
 
     private void btnUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDeleteActionPerformed
+
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         int row = tableUsers.getSelectedRow();
 
         if (row < 0)
         JOptionPane.showMessageDialog(this, "Please select a user to delete.");
-        else {
-            int userID = (int) tableUsers.getValueAt(row, 0); // UserID col
-            // List<User> users = new ArrayList<User>();
 
-            // if (((String) tableModel.getValueAt(row, 2)).equals("Staff")) {
-            //     for (Staff staff : ResortBooking.getStaffs()) {
-            //         users.add(staff); }
-            // } else {
-            //     users = ResortBooking.getCusts();
-            // }
+        else 
+        {
+            String userID = (String) tableUsers.getValueAt(row, 0); // UserID col
+            String role = (String) tableModel.getValueAt(row, 2);
+            List<User> users = new ArrayList<User>();
 
+            if (role.equals("Admin")) 
+            users.addAll(CarRental.getAdmins());
+
+            else
+            users.addAll(CarRental.getCustomers());
+
+            for (User user : users) 
+            {
+                if (!user.getUserID().equals(userID)) continue;
+
+                if (role.equals("Admin")) 
+                CarRental.getAdmins().remove(user);
+    
+                else
+                CarRental.getCustomers().remove(user);
+
+                if (User.rewriteFile()) {
+                    tableModel.removeRow(row);
+                    txtUserFullName.setText("");
+                    txtContact.setText("");
+                    txtEmail.setText("");
+                    txtNric.setText("");
+                    txtUsername.setText("");
+                    JOptionPane.showMessageDialog(this, "User deleted successfully.");
+                } 
+                else
+                    JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
+                
+                break;
+            }
             // for (User user : users) {
             //     if (user.getUserID() == userID) {
 

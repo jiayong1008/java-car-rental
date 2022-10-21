@@ -94,6 +94,50 @@ abstract public class User {
         return false;
     }
 
+    // NORMAL METHODS
+    public boolean updateInfo (String _name, String contact, String _email)
+    {
+        setName(_name);
+        setContactNo(contact);
+        setEmail(_email);
+        return rewriteFile();
+    }
+
+    public static boolean rewriteFile() 
+    {
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE));
+            PrintWriter pw = new PrintWriter(bw);
+            pw.write("userID, role, name, gender, contact, email, IC / passport, username, password\n");
+
+            List <User> users = new ArrayList<User>();
+            users.addAll(CarRental.getAdmins());
+            users.addAll(CarRental.getCustomers());
+            
+            for (User user : users) {
+                line = String.format(
+                    "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
+                    user.getUserID(), user.getRole().toLowerCase(), user.getName(), user.getGender(),
+                    user.getContactNo(), user.getEmail(), user.getIC(), user.getIC(), user.getPassword()
+                );
+                pw.write(line);
+            }
+            
+            pw.close();
+            return true;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("User file does not exist");
+        } catch (IOException e) {
+            System.out.println("Oops..something went wrong.");
+        }
+
+        return false;
+    }
+
     // ABSTRACT METHODS
     public abstract String getUserID();
     public abstract String getRole();
