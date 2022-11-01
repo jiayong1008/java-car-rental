@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package carrental;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -63,6 +61,18 @@ public class AdminFrame extends javax.swing.JFrame {
         columns[4] = String.format("%.2f", car.getDailyRentalRate());
         model.addRow(columns);
     }
+    
+        public void addBookingTableRow(DefaultTableModel model, Booking booking) 
+    {
+        columns[0] = booking.getBookingId();
+        columns[1] = "111";
+        columns[2] = "111";
+        columns[3] = booking.getBookingDate();
+        columns[4] = booking.getStartDate();
+        columns[5] = booking.getEndDate();
+        columns[3] = booking.getBookingFee();
+        model.addRow(columns);
+    }
 
     // Load cars in table
     private void loadUsers() 
@@ -102,7 +112,7 @@ public class AdminFrame extends javax.swing.JFrame {
         int index = bookings.size();
         
         for (int i = 0; i < index; i++) {
-            // addBookingTableRow(tableModel, bookings.get(i));
+            addBookingTableRow(tableModel, bookings.get(i));
         }
     }
 
@@ -2081,35 +2091,32 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBookingsEditActionPerformed
 
     private void btnBookingsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsDeleteActionPerformed
-        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        // int row = tableBookings.getSelectedRow();
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();                                            
+        int row = tableBookings.getSelectedRow();
 
-        // if (row < 0)
-        // JOptionPane.showMessageDialog(this, "Please select a booking to delete.");
-        // else {
-        //     int bookingID = (int) tableBookings.getValueAt(row, 0); // BookingID col
+        if (row < 0)
+            JOptionPane.showMessageDialog(this, "Please select a booking to delete.");
+        else 
+        {
+            // Current car can be obtained from cars array list based on the row selected in the cars table
+            ArrayList<Booking> bookings = CarRental.getBookings();
+            Booking booking = bookings.get(row);
+            bookings.remove(booking);
 
-        //     for (Booking booking : ResortBooking.getBookings()) {
-        //         if (booking.getBookingID() == bookingID) {
-        //             Booking tmp = booking;
-        //             ResortBooking.getBookings().remove(booking);
-        //             if (Booking.rewriteFile()) {
-        //                 ResortBooking.getBookings().remove(booking);
-        //                 tableModel.removeRow(row);
-        //                 lblMngBookingID.setText("N/A");
-        //                 txtMngCheckIn.setText("");
-        //                 txtMngCheckOut.setText("");
-        //                 chkInDate = "";
-        //                 chkOutDate = "";
-        //                 JOptionPane.showMessageDialog(this, "Booking record deleted successfully.");
-        //             } else {
-        //                 JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
-        //                 ResortBooking.getBookings().add(tmp); // don't delete the instance
-        //             }
-        //             break;
-        //         }
-        //     }
-        // }
+            if (Booking.rewriteFile()) {
+                tableModel.removeRow(row);
+                txtBookingID.setText("");
+                txtCustomerID.setText("");
+                txtBookingCP.setText("");
+                txtBookingDate.setText("");
+                txtPickUp.setText("");
+                txtDropOff.setText("");
+                txtAmount.setText("");
+                JOptionPane.showMessageDialog(this, "Booking deleted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
+            }
+        }
     }//GEN-LAST:event_btnBookingsDeleteActionPerformed
 
     private void txtBookingCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingCPActionPerformed
@@ -2136,11 +2143,13 @@ public class AdminFrame extends javax.swing.JFrame {
             txtPickUp.setText((String) tableModel.getValueAt(row, 4));
             txtDropOff.setText((String) tableModel.getValueAt(row, 5));
             txtAmount.setText((String) tableModel.getValueAt(row, 6));
+    }
     }//GEN-LAST:event_tableBookingsMouseClicked
 
-    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
+    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContactActionPerformed
+    }                                          
+
 
     private void btnUserSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserSearchActionPerformed
         String role = comRole.getSelectedItem().toString().toLowerCase();
