@@ -317,73 +317,85 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String cpassword = new String(passcRgt.getPassword());
         String role = "Customer";
         String customerID = "Ctest1";
-        String gender = "WAIT";
+        int opt = 0;
+        System.out.println("opt is"+ opt);
+        String gender;
+        if (opt == 1){
+            gender = "male";
+        }
+        else if (opt == 2){
+            gender = "female";
+        }
+        else{
+            gender = "";
+        }
+        System.out.println("gender is"+ gender);
         double dContact = 0.0;
         double dIC = 0.0;
-        if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
-            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
-            
-        else if(name.length() <= 3 || username.length() <= 3){
-            JOptionPane.showMessageDialog(this, "Name and username must be more than 3 characters. ");
-        }
-        
-        else if(contactNo.length() < 10 || contactNo.length() > 11){
-            JOptionPane.showMessageDialog(this, "Invalid contact number. ");
-        }
-        
-        else if(!email.contains("@") || !email.contains(".com")){
-            JOptionPane.showMessageDialog(this, "Invalid email. ");
-        }
-        
-        else if(!password.equals(cpassword)){
-            JOptionPane.showMessageDialog(this, "The password confirmation does not match.");
-            if (password.length() < 9){
-                JOptionPane.showMessageDialog(this, "Password must be more than 8 characters. ");
-            }
-        }
-        
-        else if(ic.length() != 12){
-            JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
-//            checkNumeric(ic);
-        }
-        
-        else {
-            
-            try {
-                dContact = Double.parseDouble(contactNo);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Contact number must be a numeric value.");
-                return;
-            }
-            
-            try {
-                dIC = Double.parseDouble(ic);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "NRIC must be a numeric value.");
-                return;
-            }
-            
-            // Complete information provided - create new customer object and add to database
-            ArrayList<String> custInfo = new ArrayList<String>(
-                Arrays.asList(customerID, role, name, gender, contactNo, email, ic, username, password)
-            );
-            
-            Customer customer = new Customer(custInfo);
-                        
-
-            if (!customer.isDuplicate()) {
-
-                if (customer.addToFile()) { 
-                    JOptionPane.showMessageDialog(this, "Registered successfully");
-                } 
-                else
-                    JOptionPane.showMessageDialog(this, "Registered unsuccessfully - Something went wrong.");
-                    
-            } else {
-                customer = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "Account Exist");
-            }
-        }
+//        if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
+//            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+//            
+//        else if(name.length() <= 3 || username.length() <= 3){
+//            JOptionPane.showMessageDialog(this, "Name and username must be more than 3 characters. ");
+//        }
+//        
+//        else if(contactNo.length() < 10 || contactNo.length() > 11){
+//            JOptionPane.showMessageDialog(this, "Invalid contact number. ");
+//        }
+//        
+//        else if(!email.contains("@") || !email.contains(".com")){
+//            JOptionPane.showMessageDialog(this, "Invalid email. ");
+//        }
+//        
+//        else if(!password.equals(cpassword)){
+//            JOptionPane.showMessageDialog(this, "The password confirmation does not match.");
+//            if (password.length() < 9){
+//                JOptionPane.showMessageDialog(this, "Password must be more than 8 characters. ");
+//            }
+//        }
+//        
+//        else if(ic.length() != 12){
+//            JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
+////            checkNumeric(ic);
+//        }
+//        
+//        else {
+//            
+//            try {
+//                dContact = Double.parseDouble(contactNo);
+//            } catch (NumberFormatException e) {
+//                JOptionPane.showMessageDialog(this, "Contact number must be a numeric value.");
+//                return;
+//            }
+//            
+//            try {
+//                dIC = Double.parseDouble(ic);
+//            } catch (NumberFormatException e) {
+//                JOptionPane.showMessageDialog(this, "NRIC must be a numeric value.");
+//                return;
+//            }
+//            
+//            // Complete information provided - create new customer object and add to database
+//            ArrayList<String> custInfo = new ArrayList<String>(
+//                Arrays.asList(customerID, role, name, gender, contactNo, email, ic, username, password)
+//            );
+//            
+//            Customer customer = new Customer(custInfo);
+//                        
+//
+//            if (!customer.isDuplicate()) {
+//
+//                if (customer.addToFile()) { 
+//                    JOptionPane.showMessageDialog(this, "Registered successfully");
+//                } 
+//                else
+//                    JOptionPane.showMessageDialog(this, "Registered unsuccessfully - Something went wrong.");
+//                    
+//            } else {
+//                customer = null; // Deleting it (by making it eligible for garbage collection)
+//                JOptionPane.showMessageDialog(this, "Account Exist");
+//            }
+//        }
     }
     // Check staff credentials
     // if (checkCredentials(username, password)) {
@@ -412,27 +424,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
-        
+
     }//GEN-LAST:event_btnMaleActionPerformed
 
     private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
-        String gender = "Female";
+        
     }//GEN-LAST:event_btnFemaleActionPerformed
-
-//    public void checkNumeric(String str){
-//        boolean isNumeric = true;
-//        try {
-//            int checkInt = Integer.parseInt(str);
-//        } catch (NumberFormatException ex){
-//            isNumeric = false;
-//        }
-//        if(isNumeric){
-//            JOptionPane.showMessageDialog(this, "is numeric ");
-//        } else{
-//            JOptionPane.showMessageDialog(this, "Invalid contact number or NRIC.");
-//        }
-//    }
-    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

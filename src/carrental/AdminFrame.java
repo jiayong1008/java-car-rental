@@ -73,7 +73,7 @@ public class AdminFrame extends javax.swing.JFrame {
         columns[3] = booking.getBookingDate();
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
-        columns[3] = booking.getBookingFee();
+        columns[6] = booking.getBookingFee();
         model.addRow(columns);
     }
 
@@ -1618,7 +1618,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(txtNric, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addComponent(jLabel50))
                         .addGap(15, 15, 15)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1646,7 +1646,7 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel28))
-                            .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE))
+                            .addComponent(comGender, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formBookLayout.createSequentialGroup()
