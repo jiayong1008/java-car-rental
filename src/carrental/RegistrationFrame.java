@@ -318,6 +318,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String role = "Customer";
         String customerID = "Ctest1";
         String gender = "WAIT";
+        double dContact = 0.0;
+        double dIC = 0.0;
         if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
             JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
             
@@ -327,17 +329,6 @@ public class RegistrationFrame extends javax.swing.JFrame {
         
         else if(contactNo.length() < 10 || contactNo.length() > 11){
             JOptionPane.showMessageDialog(this, "Invalid contact number. ");
-            boolean isNumeric = true;
-            try {
-                int checkInt = Integer.parseInt(contactNo);
-            } catch (NumberFormatException ex){
-                isNumeric = false;
-            }
-            if(isNumeric){
-                JOptionPane.showMessageDialog(this, "is numeric ");
-            } else{
-                JOptionPane.showMessageDialog(this, "Invalid contact number or NRIC.");
-            }
         }
         
         else if(!email.contains("@") || !email.contains(".com")){
@@ -358,7 +349,21 @@ public class RegistrationFrame extends javax.swing.JFrame {
         
         else {
             
-            // Complete information provided - create new car object and add to database
+            try {
+                dContact = Double.parseDouble(contactNo);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Contact number must be a numeric value.");
+                return;
+            }
+            
+            try {
+                dIC = Double.parseDouble(ic);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "NRIC must be a numeric value.");
+                return;
+            }
+            
+            // Complete information provided - create new customer object and add to database
             ArrayList<String> custInfo = new ArrayList<String>(
                 Arrays.asList(customerID, role, name, gender, contactNo, email, ic, username, password)
             );
