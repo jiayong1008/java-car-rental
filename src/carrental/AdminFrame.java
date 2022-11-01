@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package carrental;
 
 import java.io.BufferedReader;
@@ -988,13 +991,11 @@ public class AdminFrame extends javax.swing.JFrame {
                                 .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(formBook2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
+                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel54)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                .addGroup(formBook2Layout.createSequentialGroup()
-                                    .addComponent(jLabel52)
-                                    .addGap(3, 3, 3)))
+                                    .addComponent(jLabel52))
+                                .addGap(3, 3, 3))
                             .addGroup(formBook2Layout.createSequentialGroup()
                                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel51)
@@ -1061,7 +1062,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -1380,6 +1381,11 @@ public class AdminFrame extends javax.swing.JFrame {
         comRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin" }));
         comRole.setMinimumSize(new java.awt.Dimension(100, 28));
         comRole.setPreferredSize(new java.awt.Dimension(100, 28));
+        comRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comRoleActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel4.setText("Contact no.");
@@ -2717,6 +2723,10 @@ public class AdminFrame extends javax.swing.JFrame {
     private void txtDropOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDropOffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDropOffActionPerformed
+
+    private void comRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comRoleActionPerformed
 
     /**
      * @param args the command line arguments
