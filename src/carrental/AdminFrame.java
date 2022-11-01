@@ -68,8 +68,8 @@ public class AdminFrame extends javax.swing.JFrame {
         public void addBookingTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
-        columns[1] = "111";
-        columns[2] = "111";
+        columns[1] = booking.getCustomer().getUserID();
+        columns[2] = booking.getCar().getCarPlate();
         columns[3] = booking.getBookingDate();
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
@@ -2138,6 +2138,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCustomerIDActionPerformed
 
     private void tableBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookingsMouseClicked
+        
         DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
         int row = tableBookings.getSelectedRow();
         
