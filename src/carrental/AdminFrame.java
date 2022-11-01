@@ -168,18 +168,23 @@ public class AdminFrame extends javax.swing.JFrame {
         tableBookRoomGuest = new javax.swing.JTable();
         tabManageBookings = new javax.swing.JPanel();
         formBook2 = new javax.swing.JPanel();
-        btnAllBookings = new javax.swing.JButton();
+        btnBookingsSearch = new javax.swing.JButton();
         btnBookingsEdit = new javax.swing.JButton();
         btnBookingsDelete = new javax.swing.JButton();
-        jCalendar2 = new com.toedter.calendar.JCalendar();
-        btnMngCheckIn = new javax.swing.JButton();
-        txtMngCheckIn = new javax.swing.JTextField();
-        btnMngCheckOut = new javax.swing.JButton();
-        txtMngCheckOut = new javax.swing.JTextField();
+        txtBookingCP = new javax.swing.JTextField();
+        txtBookingDate = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        txtBookedGuestName = new javax.swing.JTextField();
+        txtCustomerID = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        lblMngBookingID = new javax.swing.JLabel();
+        txtBookingID = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        txtPickUp = new javax.swing.JTextField();
+        txtAmount = new javax.swing.JTextField();
+        txtDropOff = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableBookings = new javax.swing.JTable();
         tabManageCars = new javax.swing.JPanel();
@@ -438,7 +443,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSearchRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -784,7 +789,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(pnlBookRoom2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         pnlBookRoom2Layout.setVerticalGroup(
             pnlBookRoom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -819,18 +824,18 @@ public class AdminFrame extends javax.swing.JFrame {
 
         formBook2.setBackground(new java.awt.Color(204, 255, 204));
 
-        btnAllBookings.setBackground(new java.awt.Color(0, 153, 153));
-        btnAllBookings.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnAllBookings.setForeground(new java.awt.Color(255, 255, 255));
-        btnAllBookings.setText("All Booking Details");
-        btnAllBookings.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBookingsSearch.setBackground(new java.awt.Color(0, 153, 153));
+        btnBookingsSearch.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnBookingsSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnBookingsSearch.setText("Search");
+        btnBookingsSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAllBookingsMouseExited(evt);
+                btnBookingsSearchMouseExited(evt);
             }
         });
-        btnAllBookings.addActionListener(new java.awt.event.ActionListener() {
+        btnBookingsSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAllBookingsActionPerformed(evt);
+                btnBookingsSearchActionPerformed(evt);
             }
         });
 
@@ -854,134 +859,185 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        jCalendar2.setBackground(new java.awt.Color(153, 255, 204));
-
-        btnMngCheckIn.setBackground(new java.awt.Color(0, 153, 153));
-        btnMngCheckIn.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnMngCheckIn.setForeground(new java.awt.Color(255, 255, 255));
-        btnMngCheckIn.setText("Check In");
-        btnMngCheckIn.setMaximumSize(new java.awt.Dimension(105, 34));
-        btnMngCheckIn.setMinimumSize(new java.awt.Dimension(105, 34));
-        btnMngCheckIn.setPreferredSize(new java.awt.Dimension(105, 34));
-        btnMngCheckIn.addActionListener(new java.awt.event.ActionListener() {
+        txtBookingCP.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtBookingCP.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBookingCP.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtBookingCP.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtBookingCP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMngCheckInActionPerformed(evt);
+                txtBookingCPActionPerformed(evt);
             }
         });
 
-        txtMngCheckIn.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtMngCheckIn.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtMngCheckIn.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtMngCheckIn.setPreferredSize(new java.awt.Dimension(21, 28));
-        txtMngCheckIn.addActionListener(new java.awt.event.ActionListener() {
+        txtBookingDate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtBookingDate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBookingDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtBookingDate.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtBookingDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMngCheckInActionPerformed(evt);
-            }
-        });
-
-        btnMngCheckOut.setBackground(new java.awt.Color(0, 153, 153));
-        btnMngCheckOut.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnMngCheckOut.setForeground(new java.awt.Color(255, 255, 255));
-        btnMngCheckOut.setText("Check Out");
-        btnMngCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMngCheckOutActionPerformed(evt);
-            }
-        });
-
-        txtMngCheckOut.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtMngCheckOut.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtMngCheckOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtMngCheckOut.setPreferredSize(new java.awt.Dimension(21, 28));
-        txtMngCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMngCheckOutActionPerformed(evt);
+                txtBookingDateActionPerformed(evt);
             }
         });
 
         jLabel41.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel41.setText("Booking ID");
 
-        txtBookedGuestName.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtBookedGuestName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtBookedGuestName.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtBookedGuestName.setPreferredSize(new java.awt.Dimension(21, 28));
-        txtBookedGuestName.addActionListener(new java.awt.event.ActionListener() {
+        txtCustomerID.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtCustomerID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCustomerID.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtCustomerID.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtCustomerID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBookedGuestNameActionPerformed(evt);
+                txtCustomerIDActionPerformed(evt);
             }
         });
 
         jLabel42.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel42.setText("Guest Name");
+        jLabel42.setText("Customer ID");
 
-        lblMngBookingID.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        lblMngBookingID.setForeground(new java.awt.Color(51, 51, 51));
-        lblMngBookingID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMngBookingID.setText("N/A");
+        txtBookingID.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtBookingID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBookingID.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtBookingID.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtBookingID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBookingIDActionPerformed(evt);
+            }
+        });
+
+        jLabel51.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel51.setText("Car Plate");
+
+        jLabel52.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel52.setText("Booking Date");
+
+        txtPickUp.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtPickUp.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPickUp.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtPickUp.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtPickUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPickUpActionPerformed(evt);
+            }
+        });
+
+        txtAmount.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtAmount.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtAmount.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtAmount.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAmountActionPerformed(evt);
+            }
+        });
+
+        txtDropOff.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtDropOff.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtDropOff.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtDropOff.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtDropOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDropOffActionPerformed(evt);
+            }
+        });
+
+        jLabel53.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel53.setText("Pick-Up");
+
+        jLabel54.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel54.setText("Drop-Off");
+
+        jLabel55.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel55.setText("Amount");
 
         javax.swing.GroupLayout formBook2Layout = new javax.swing.GroupLayout(formBook2);
         formBook2.setLayout(formBook2Layout);
         formBook2Layout.setHorizontalGroup(
             formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+            .addGroup(formBook2Layout.createSequentialGroup()
+                .addGap(95, 95, 95)
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
-                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel42)
-                            .addComponent(btnMngCheckOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMngCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41))
-                        .addGap(18, 18, 18)
+                    .addGroup(formBook2Layout.createSequentialGroup()
+                        .addComponent(jLabel42)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(formBook2Layout.createSequentialGroup()
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtMngCheckOut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtMngCheckIn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtBookedGuestName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblMngBookingID, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
-                        .addComponent(btnAllBookings)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBookingsDelete)))
-                .addGap(32, 32, 32))
+                            .addGroup(formBook2Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addGap(49, 49, 49)
+                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBookingID, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(formBook2Layout.createSequentialGroup()
+                                .addComponent(jLabel53)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPickUp, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(formBook2Layout.createSequentialGroup()
+                                .addComponent(jLabel55)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(formBook2Layout.createSequentialGroup()
+                                    .addComponent(jLabel54)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(formBook2Layout.createSequentialGroup()
+                                    .addComponent(jLabel52)
+                                    .addGap(3, 3, 3)))
+                            .addGroup(formBook2Layout.createSequentialGroup()
+                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel51)
+                                    .addComponent(btnBookingsSearch))
+                                .addGap(18, 18, 18)))
+                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formBook2Layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBookingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBookingCP, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(formBook2Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnBookingsDelete)))
+                        .addGap(64, 64, 64))))
         );
         formBook2Layout.setVerticalGroup(
             formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formBook2Layout.createSequentialGroup()
-                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGap(36, 36, 36)
+                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(txtBookingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBookingCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel51))
+                .addGap(14, 14, 14)
+                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBookingDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel52))
+                .addGap(17, 17, 17)
+                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPickUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel53)
+                    .addComponent(jLabel54)
+                    .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(formBook2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel41)
-                            .addComponent(lblMngBookingID))
-                        .addGap(25, 25, 25)
-                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(formBook2Layout.createSequentialGroup()
-                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel42)
-                                    .addComponent(txtBookedGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnMngCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(btnMngCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(formBook2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(txtMngCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMngCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAllBookings, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel55)))
+                    .addGroup(formBook2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBookingsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBookingsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formBook2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addComponent(btnBookingsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         tableBookings.setBackground(new java.awt.Color(204, 255, 255));
@@ -991,11 +1047,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Booking ID", "Room ID", "User ID", "Guest Name", "Check In", "Check Out", "Booking Date"
+                "Booking ID", "Customer ID", "Car Plate", "Booking Date", "Pick-Up", "Drop-Off", "Amount"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -1032,7 +1088,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageBookingsLayout.createSequentialGroup()
                 .addComponent(formBook2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1286,7 +1342,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabManageCarsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(formBook3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabManageCarsLayout.setVerticalGroup(
@@ -1546,7 +1602,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(txtNric, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addComponent(jLabel50))
                         .addGap(15, 15, 15)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1574,7 +1630,7 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel28))
-                            .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE))
+                            .addComponent(comGender, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formBookLayout.createSequentialGroup()
@@ -1637,7 +1693,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(formBook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabManageUsersLayout.setVerticalGroup(
@@ -1754,7 +1810,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                     .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1996,9 +2052,9 @@ public class AdminFrame extends javax.swing.JFrame {
         txtGuestName.setText((String) tableModel.getValueAt(row, 1));
     }//GEN-LAST:event_tableBookRoomGuestMouseClicked
     
-    private void btnAllBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllBookingsActionPerformed
+    private void btnBookingsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsSearchActionPerformed
         
-    }//GEN-LAST:event_btnAllBookingsActionPerformed
+    }//GEN-LAST:event_btnBookingsSearchActionPerformed
 
     private void btnBookingsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsEditActionPerformed
         // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
@@ -2056,40 +2112,30 @@ public class AdminFrame extends javax.swing.JFrame {
         // }
     }//GEN-LAST:event_btnBookingsDeleteActionPerformed
 
-    private void btnMngCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMngCheckInActionPerformed
-        // chkInDate = datef.format(jCalendar2.getDate());
-        // txtMngCheckIn.setText(chkInDate);
-    }//GEN-LAST:event_btnMngCheckInActionPerformed
-
-    private void txtMngCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMngCheckInActionPerformed
+    private void txtBookingCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingCPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMngCheckInActionPerformed
+    }//GEN-LAST:event_txtBookingCPActionPerformed
 
-    private void btnMngCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMngCheckOutActionPerformed
-        // chkOutDate = datef.format(jCalendar2.getDate());
-        // txtMngCheckOut.setText(chkOutDate);
-    }//GEN-LAST:event_btnMngCheckOutActionPerformed
-
-    private void txtMngCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMngCheckOutActionPerformed
+    private void txtBookingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMngCheckOutActionPerformed
+    }//GEN-LAST:event_txtBookingDateActionPerformed
 
-    private void txtBookedGuestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookedGuestNameActionPerformed
+    private void txtCustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustomerIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBookedGuestNameActionPerformed
+    }//GEN-LAST:event_txtCustomerIDActionPerformed
 
     private void tableBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookingsMouseClicked
-        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        // int row = tableBookings.getSelectedRow();
-
-        // if (row >= 0) {
-        //     chkInDate = (String) tableModel.getValueAt(row, 4);
-        //     chkOutDate = (String) tableModel.getValueAt(row, 5);
-        //     lblMngBookingID.setText(String.valueOf(tableModel.getValueAt(row, 0)));
-        //     txtBookedGuestName.setText((String) tableModel.getValueAt(row, 3));
-        //     txtMngCheckIn.setText(chkInDate);
-        //     txtMngCheckOut.setText(chkOutDate);
-        // }
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        int row = tableBookings.getSelectedRow();
+        
+        if (row >= 0) {
+            txtBookingID.setText((String) tableModel.getValueAt(row, 0));
+            txtCustomerID.setText((String) tableModel.getValueAt(row, 1));
+            txtBookingCP.setText((String) tableModel.getValueAt(row, 2));
+            txtBookingDate.setText((String) tableModel.getValueAt(row, 3));
+            txtPickUp.setText((String) tableModel.getValueAt(row, 4));
+            txtDropOff.setText((String) tableModel.getValueAt(row, 5));
+            txtAmount.setText((String) tableModel.getValueAt(row, 6));
     }//GEN-LAST:event_tableBookingsMouseClicked
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
@@ -2619,33 +2665,49 @@ public class AdminFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtCarPlateActionPerformed
 
-    private void btnAllBookingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAllBookingsMouseExited
+    private void btnBookingsSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsSearchMouseExited
 
-    }//GEN-LAST:event_btnAllBookingsMouseExited
+    }//GEN-LAST:event_btnBookingsSearchMouseExited
 
-    boolean displayed = false;
+//    boolean displayed = false;
     
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        if (displayed) return;
-        displayed = true;
-        File file = new File(CarRental.getBookingFile());
-        
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            
-            DefaultTableModel model = (DefaultTableModel)tableBookings.getModel();
-            Object[] lines = br.lines().toArray();
-            
-            for(int i = 0; i < lines.length; i++){
-                String[] row = lines[i].toString().split(",");
-                model.addRow(row);
-            }
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        if (displayed) return;
+//        displayed = true;
+//        File file = new File(CarRental.getBookingFile());
+//        
+//        try {
+//            FileReader fr = new FileReader(file);
+//            BufferedReader br = new BufferedReader(fr);
+//            
+//            DefaultTableModel model = (DefaultTableModel)tableBookings.getModel();
+//            Object[] lines = br.lines().toArray();
+//            
+//            for(int i = 0; i < lines.length; i++){
+//                String[] row = lines[i].toString().split(",");
+//                model.addRow(row);
+//            }
+//            
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void txtBookingIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBookingIDActionPerformed
+
+    private void txtPickUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPickUpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPickUpActionPerformed
+
+    private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAmountActionPerformed
+
+    private void txtDropOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDropOffActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDropOffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2685,9 +2747,9 @@ public class AdminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JButton btnAddCar;
-    private javax.swing.JButton btnAllBookings;
     private javax.swing.JButton btnBookingsDelete;
     private javax.swing.JButton btnBookingsEdit;
+    private javax.swing.JButton btnBookingsSearch;
     private javax.swing.JButton btnChkIn;
     private javax.swing.JButton btnChkOut;
     private javax.swing.JButton btnConfirmBook;
@@ -2696,8 +2758,6 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnFirstReceipt;
     private javax.swing.JButton btnLastReceipt;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnMngCheckIn;
-    private javax.swing.JButton btnMngCheckOut;
     private javax.swing.JButton btnNextReceipt;
     private javax.swing.JButton btnPreviousReceipt;
     private javax.swing.JButton btnPrintReceipt;
@@ -2718,7 +2778,6 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel formBook2;
     private javax.swing.JPanel formBook3;
     private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2764,6 +2823,11 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2781,7 +2845,6 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblChkIn;
     private javax.swing.JLabel lblChkOut;
-    private javax.swing.JLabel lblMngBookingID;
     private javax.swing.JLabel lblNights;
     private javax.swing.JLabel lblRapidCar;
     private javax.swing.JLabel lblRoomID;
@@ -2804,9 +2867,12 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTable tableBookings;
     private javax.swing.JTable tableCars;
     private javax.swing.JTable tableUsers;
+    private javax.swing.JTextField txtAmount;
     private javax.swing.JTextArea txtAreaReceipt;
     private javax.swing.JTextField txtBookIdReceipt;
-    private javax.swing.JTextField txtBookedGuestName;
+    private javax.swing.JTextField txtBookingCP;
+    private javax.swing.JTextField txtBookingDate;
+    private javax.swing.JTextField txtBookingID;
     private javax.swing.JTextField txtCarBrand;
     private javax.swing.JTextField txtCarDailyRate;
     private javax.swing.JTextField txtCarModel;
@@ -2814,11 +2880,12 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtChkIn;
     private javax.swing.JTextField txtChkOut;
     private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtCustomerID;
+    private javax.swing.JTextField txtDropOff;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtGuestName;
-    private javax.swing.JTextField txtMngCheckIn;
-    private javax.swing.JTextField txtMngCheckOut;
     private javax.swing.JTextField txtNric;
+    private javax.swing.JTextField txtPickUp;
     private javax.swing.JTextField txtUserFullName;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
