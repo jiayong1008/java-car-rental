@@ -14,8 +14,6 @@ public class Booking {
     // INITIALIZATIONS
     private final String bookingID;
     private Customer customer;
-    private Customer customerID;
-    private Car carPlate;
     private Car car;
     private LocalDate bookingDate;
     private LocalDate startDate;
@@ -48,8 +46,6 @@ public class Booking {
     // GETTERS
     public String getBookingId() {return bookingID;} 
     public Customer getCustomer() {return customer;} 
-    public Customer getCustomerID() {return customerID;} 
-    public Car getCarPlate() {return carPlate;} 
     public Car getCar() {return car;}
     public LocalDate getBookingDate() {return bookingDate;} 
     public LocalDate getStartDate() {return startDate;} 
