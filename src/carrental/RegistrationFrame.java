@@ -4,6 +4,8 @@
  */
 package carrental;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -315,21 +317,15 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String username = txtRgtUsername.getText().trim().toLowerCase();
         String password = new String(passRgt.getPassword());
         String cpassword = new String(passcRgt.getPassword());
-        String role = "Customer";
-        String customerID = "Ctest1";
-        int opt = 0;
-        System.out.println("opt is"+ opt);
-        String gender;
-        if (opt == 1){
-            gender = "male";
-        }
-        else if (opt == 2){
-            gender = "female";
-        }
-        else{
-            gender = "";
-        }
-        System.out.println("gender is"+ gender);
+        String role = "customer";
+        
+//        get date to generate customer id
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  
+        LocalDateTime now = LocalDateTime.now();  
+        String customerID = "C" + (dtf.format(now));
+//        finish generate customer id
+
+        System.out.println("gender" + buttonGroup1.getSelection().getActionCommand());
         double dContact = 0.0;
         double dIC = 0.0;
 //        if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())

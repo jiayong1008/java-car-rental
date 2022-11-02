@@ -7,4 +7,4 @@ C0005, customer, Hermione Granger, Female, 014-87654321, hermione@gmail.com, 991
 C0006, customer, Ronald Weasley, Male, 016-98765432, ron@gmail.com, 001008-14-8899, ronald, qwerty
 C0007, customer, Elijah Mikaelson, Male, 017-99661123, elijah@gmail.com, 571008-14-1235, elijah, qwerty
 C0008, customer, Niklaus Mikaelson, Male, 012-12345678, klaus@gmail.com, 601008-14-6866, niklaus, qwerty
-C0009, Customer, Damon Salvatore, male, 012-55566688, damon@tvd.com, 181008-14-0802, damon, qwerty
+C0009, customer, Damon Salvatore, male, 012-55566688, damon@tvd.com, 181008-14-0802, damon, qwerty
