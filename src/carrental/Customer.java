@@ -67,7 +67,7 @@ public class Customer extends User {
 //      e.getStackTrace();
 //    }
         String userID = "C000test";
-        String role = "Customer";
+        String role = "customer";
         String line;
 
         try {
