@@ -336,45 +336,45 @@ public class RegistrationFrame extends javax.swing.JFrame {
         if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
             JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
             
-//        else if(name.length() <= 3 || username.length() <= 3){
-//            JOptionPane.showMessageDialog(this, "Name and username must be more than 3 characters. ");
-//        }
-//        
-//        else if(contactNo.length() < 10 || contactNo.length() > 11){
-//            JOptionPane.showMessageDialog(this, "Invalid contact number. ");
-//        }
-//        
-//        else if(!email.contains("@") || !email.contains(".com")){
-//            JOptionPane.showMessageDialog(this, "Invalid email. ");
-//        }
-//        
-//        else if(!password.equals(cpassword)){
-//            JOptionPane.showMessageDialog(this, "The password confirmation does not match.");
-//            if (password.length() < 9){
-//                JOptionPane.showMessageDialog(this, "Password must be more than 8 characters. ");
-//            }
-//        }
-//        
-//        else if(ic.length() != 12){
-//            JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
-////            checkNumeric(ic);
-//        }
+        else if(name.length() <= 3 || username.length() <= 3){
+            JOptionPane.showMessageDialog(this, "Name and username must be more than 3 characters. ");
+        }
+        
+        else if(contactNo.length() < 10 || contactNo.length() > 11){
+            JOptionPane.showMessageDialog(this, "Invalid contact number. ");
+        }
+        
+        else if(!email.contains("@") || !email.contains(".com")){
+            JOptionPane.showMessageDialog(this, "Invalid email. ");
+        }
+        
+        else if(!password.equals(cpassword)){
+            JOptionPane.showMessageDialog(this, "The password confirmation does not match.");
+            if (password.length() < 9){
+                JOptionPane.showMessageDialog(this, "Password must be more than 8 characters. ");
+            }
+        }
+        
+        else if(ic.length() != 12){
+            JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
+//            checkNumeric(ic);
+        }
         
         else {
             
-//            try {
-//                dContact = Double.parseDouble(contactNo);
-//            } catch (NumberFormatException e) {
-//                JOptionPane.showMessageDialog(this, "Contact number must be a numeric value.");
-//                return;
-//            }
-//            
-//            try {
-//                dIC = Double.parseDouble(ic);
-//            } catch (NumberFormatException e) {
-//                JOptionPane.showMessageDialog(this, "NRIC must be a numeric value.");
-//                return;
-//            }
+            try {
+                dContact = Double.parseDouble(contactNo);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Contact number must be a numeric value.");
+                return;
+            }
+            
+            try {
+                dIC = Double.parseDouble(ic);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "NRIC must be a numeric value.");
+                return;
+            }
             ArrayList<String> userInfo = new ArrayList<String>();
 
             Collections.addAll(
