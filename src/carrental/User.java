@@ -19,7 +19,8 @@ abstract public class User {
     protected String username;
     protected String password;
     public static int id = 1;
-    protected static final String FILE = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\CarRental\\src\\carrental\\database\\users.txt";
+//    protected static final String FILE = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\CarRental\\src\\carrental\\database\\users.txt";
+    protected static final String FILE = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
 
     // CONSTRUCTORS
     public User() {}
