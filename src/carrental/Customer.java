@@ -66,7 +66,6 @@ public class Customer extends User {
 //    } catch (Exception e) {
 //      e.getStackTrace();
 //    }
-        String userID = "C000test";
         String role = "customer";
         String line;
 
@@ -77,7 +76,7 @@ public class Customer extends User {
             
             line = String.format(
                 "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
-            userID, role, name, gender, contactNo, email, ic, username, password
+            customerID, role, name, gender, contactNo, email, ic, username, password
             );
             pw.write(line);
             pw.close();

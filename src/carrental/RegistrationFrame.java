@@ -381,7 +381,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 userInfo, "T-1", role.toLowerCase(), name, 
                 gender, contactNo, email, ic, username, password
             );
-            User user = role.equals("Customer") ? new Customer(userInfo) : new Admin(userInfo);
+            User user = role.equals("customer") ? new Customer(userInfo) : new Customer(userInfo);
             System.out.println(user);
 
             if (!user.isDuplicate()) {

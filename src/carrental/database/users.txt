@@ -1,10 +1,14 @@
 userID, role, name, gender, contact, email, IC / passport, username, password
-A0001, admin, Lim Jia Yong, Female, 011-12345678, jiayong@gmail.com, 021008-14-8888, jiayong, qwerty
-A0002, admin, Goh Vi Nie, Female, 013-56781234, vinie@gmail.com, 021008-14-7777, vinie, qwerty
-C0003, customer, Harry Potter, Male, 013-56781233, harry@gmail.com, 001008-14-7777, harry, qwerty
-C0004, customer, Hayley Marshall, Female, 014-87656821, hayley@gmail.com, 951008-14-6688, hayley, qwerty
-C0005, customer, Hermione Granger, Female, 014-87654321, hermione@gmail.com, 991008-14-6688, hermione, qwerty
-C0006, customer, Ronald Weasley, Male, 016-98765432, ron@gmail.com, 001008-14-8899, ronald, qwerty
-C0007, customer, Elijah Mikaelson, Male, 017-99661123, elijah@gmail.com, 571008-14-1235, elijah, qwerty
-C0008, customer, Niklaus Mikaelson, Male, 012-12345678, klaus@gmail.com, 601008-14-6866, niklaus, qwerty
-C0009, customer, Damon Salvatore, male, 012-55566688, damon@tvd.com, 181008-14-0802, damon, qwerty
+A0001, admin, Lim Jia Yong, Female, 011-12345678, jiayong@gmail.com, 021008-14-8888, 021008-14-8888, qwerty
+A0002, admin, Goh Vi Nie, Female, 013-56781234, vinie@gmail.com, 021008-14-7777, 021008-14-7777, qwerty
+A0010, admin, LOW SHU KIE, female, 0199899367, lows@gmail.com, 019988778788, 019988778788, shukie12
+C0003, customer, Harry Potter, Male, 013-56781233, harry@gmail.com, 001008-14-7777, 001008-14-7777, qwerty
+C0004, customer, Hayley Marshall, Female, 014-87656821, hayley@gmail.com, 951008-14-6688, 951008-14-6688, qwerty
+C0005, customer, Hermione Granger, Female, 014-87654321, hermione@gmail.com, 991008-14-6688, 991008-14-6688, qwerty
+C0006, customer, Ronald Weasley, Male, 016-98765432, ron@gmail.com, 001008-14-8899, 001008-14-8899, qwerty
+C0007, customer, Elijah Mikaelson, Male, 017-99661123, elijah@gmail.com, 571008-14-1235, 571008-14-1235, qwerty
+C0008, customer, Niklaus Mikaelson, Male, 012-12345678, klaus@gmail.com, 601008-14-6866, 601008-14-6866, qwerty
+C0009, customer, Damon Salvatore, male, 012-55566688, damon@tvd.com, 181008-14-0802, 181008-14-0802, qwerty
+C0010, customer, SDASDASDASDASD, male, 21321321313, @.com, 312312332322, asdasdasdas, asdfghjk
+C0011, customer, SADSDSA, male, 1111111111, @.com, 111111111111, asdasdasdas, asdfghjk
+C0012, customer, TAN MING JING, male, 01988778551, tmj@gmail.com, 001998998765, tmj0329, tmj0329
