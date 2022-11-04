@@ -4,18 +4,11 @@
  */
 package carrental;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -29,6 +22,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
     DefaultListModel lm = new DefaultListModel<>();
     Object[] columns = new Object[8]; // For individual table row
+    private int receiptID; // Current booking ID of receipt
+    
 
     /**
      * Creates new form AdminFrame
@@ -39,6 +34,8 @@ public class AdminFrame extends javax.swing.JFrame {
         loadCars();
         loadBookings();
     }
+
+// ================     HELPER FUNCTIONS        ========================
 
     // Populate record to table - Overload method (User)
     public void addTableRow(DefaultTableModel model, User user) 
@@ -118,6 +115,52 @@ public class AdminFrame extends javax.swing.JFrame {
             addBookingTableRow(tableModel, bookings.get(i));
         }
     }
+
+    private Booking validateBookingID() {
+        try {
+            String bookingID = txtBookIdReceipt.getText().trim().toUpperCase();
+
+            for (Booking booking : CarRental.getBookings())
+            {
+                if (!booking.getBookingId().equals(bookingID)) continue;
+                
+                receiptID = Integer.parseInt(bookingID.substring(1));
+                return booking;
+            }
+            return null;
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private void loadReceipt(Booking booking) {
+        receiptID = Integer.parseInt(booking.getBookingId().substring(1));
+        float subtotal = (float) booking.getBookingFee();
+        float tax = subtotal * CarRental.getTax();
+        float total = subtotal + tax;
+
+        txtAreaReceipt.setText("  *******************************************\n");
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  *                BOOKING %s RECEIPT            *\n", booking.getBookingId()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + "  *******************************************\n");
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("\t    %s \n\n", booking.getBookingDate()));
+
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Customer Name:\t%s\n", booking.getCustomer().getName()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Customer ID:\t\t%s\n", booking.getCustomer().getUserID()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Car Model:\t\t%s\n", booking.getCar().getCarModel()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Car Plate:\t\t%s\n", booking.getCar().getCarPlate()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Rental Start Date:\t%s\n", booking.getStartDate()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Rental End Date:\t%s\n", booking.getEndDate()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Rental Duration:\t%d days\n", booking.getRentalDuration()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Price per Day:\t\tRM%.2f\n", booking.getCar().getDailyRentalRate()));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Subtotal:\t\tRM%.2f\n", subtotal));
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("  Tax (10%%):\t\tRM%.2f\n", tax));
+
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + "  ___________________________________________\n");
+        txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("   TOTAL:\t\tRM%.2f\n", total));
+    }
+
+// ================     END OF HELPER FUNCTIONS        ========================
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -2348,28 +2391,6 @@ public class AdminFrame extends javax.swing.JFrame {
                 
                 break;
             }
-            // for (User user : users) {
-            //     if (user.getUserID() == userID) {
-
-            //         if (user.getRole() == "Staff")
-            //         ResortBooking.getStaffs().remove(user);
-            //         else
-            //         ResortBooking.getCusts().remove(user);
-
-            //         if (User.rewriteFile()) {
-            //             tableModel.removeRow(row);
-            //             txtUserFullName.setText("");
-            //             txtContact.setText("");
-            //             txtEmail.setText("");
-            //             txtNric.setText("");
-            //             txtUsername.setText("");
-            //             JOptionPane.showMessageDialog(this, "User deleted successfully.");
-            //         } else {
-            //             JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
-            //         }
-            //         break;
-            //     }
-            // }
         }
     }//GEN-LAST:event_btnUserDeleteActionPerformed
 
@@ -2396,20 +2417,29 @@ public class AdminFrame extends javax.swing.JFrame {
     private void btnNextReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextReceiptActionPerformed
         Booking booking = null;
 
-        // while (booking == null) {
-        //     receiptID++;
-        //     if (receiptID >= 0 && receiptID <= Booking.getHighestId()) {
-        //         booking = Booking.getBooking(receiptID);
-        //         if (booking != null) {
-        //             loadReceipt(booking);
-        //             txtBookIdReceipt.setText(Integer.toString(receiptID));
-        //             break;
-        //         }
-        //     } else { // Already at last record
-        //         receiptID--;
-        //         break;
-        //     }
-        // }
+        while (booking == null) {
+            // ReceiptID starts from 1
+            receiptID++;
+            // TODO - Change CarRental.getBookings().size() to Highest ID
+            if (receiptID > 0 && receiptID <= CarRental.getBookings().size()) 
+            {
+                String requestedBookingId = String.format("B%05d", receiptID);
+                for (Booking carBooking : CarRental.getBookings())
+                {
+                    if (carBooking.getBookingId().equals(requestedBookingId))
+                    {
+                        booking = carBooking;
+                        loadReceipt(booking);
+                        txtBookIdReceipt.setText(requestedBookingId);
+                        break;
+                    }
+                }
+
+            } else { // Already at last record
+                receiptID--;
+                break;
+            }
+        }
     }//GEN-LAST:event_btnNextReceiptActionPerformed
 
     private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
@@ -2421,55 +2451,70 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void btnSearchReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchReceiptActionPerformed
-        // Booking booking = validateBookingID();
-        // if (booking == null)
-        // JOptionPane.showMessageDialog(this, "Invalid Booking ID.");
-        // else
-        // loadReceipt(booking); // populate receipt
+        Booking booking = validateBookingID();
+
+        if (booking == null)
+        JOptionPane.showMessageDialog(this, "Invalid Booking ID.");
+
+        else
+        loadReceipt(booking); // populate receipt
     }//GEN-LAST:event_btnSearchReceiptActionPerformed
 
     private void btnFirstReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstReceiptActionPerformed
-        // int first = 0;
-        // Booking booking = Booking.getBooking(first);
-        // boolean hasRecord = true;
 
-        // while (booking == null) {
-        //     first++;
-        //     if (first > ResortBooking.getBookings().size()) {
-        //         JOptionPane.showMessageDialog(this, "No booking receipts to show.");
-        //         hasRecord = false;
-        //         break;
-        //     } else {
-        //         booking = Booking.getBooking(first);
-        //     }
-        // }
+        if (CarRental.getBookings().size() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+            return;
+        }
 
-        // if (hasRecord) {
-        //     loadReceipt(booking);
-        //     txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
-        // }
+        // Extracting first booking record
+        Booking booking = CarRental.getBookings().get(0);
+        loadReceipt(booking);
+        txtBookIdReceipt.setText(booking.getBookingId());
+
     }//GEN-LAST:event_btnFirstReceiptActionPerformed
 
     private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
         Booking booking = null;
 
-        // while (booking == null) {
-        //     receiptID--;
-        //     if (receiptID >= 0 && receiptID < ResortBooking.getBookings().size()) {
-        //         booking = Booking.getBooking(receiptID);
-        //         if (booking != null) {
-        //             loadReceipt(booking);
-        //             txtBookIdReceipt.setText(Integer.toString(receiptID));
-        //             break;
-        //         }
-        //     } else { // Already at first record
-        //         receiptID++;
-        //         break;
-        //     }
-        // }
+        while (booking == null) {
+            // ReceiptID starts from 1
+            receiptID--;
+            // TODO - Change CarRental.getBookings().size() to Highest ID
+            if (receiptID > 0 && receiptID <= CarRental.getBookings().size()) 
+            {
+                String requestedBookingId = String.format("B%05d", receiptID);
+                for (Booking carBooking : CarRental.getBookings())
+                {
+                    if (carBooking.getBookingId().equals(requestedBookingId))
+                    {
+                        booking = carBooking;
+                        loadReceipt(booking);
+                        txtBookIdReceipt.setText(requestedBookingId);
+                        break;
+                    }
+                }
+            } else { // Already at first record
+                receiptID++;
+                break;
+            }
+        }
     }//GEN-LAST:event_btnPreviousReceiptActionPerformed
 
     private void btnLastReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastReceiptActionPerformed
+        
+        int bookingSize = CarRental.getBookings().size();
+        if (bookingSize == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+            return;
+        }
+
+        // Extracting last booking record
+        Booking booking = CarRental.getBookings().get(bookingSize - 1);
+        loadReceipt(booking);
+        txtBookIdReceipt.setText(booking.getBookingId());
         // int last = Booking.getHighestId();
         // Booking booking = Booking.getBooking(last);
         // boolean hasRecord = true;
