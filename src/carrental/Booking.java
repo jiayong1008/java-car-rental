@@ -5,9 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class Booking {
     
@@ -39,8 +40,10 @@ public class Booking {
         bookingDate = LocalDate.parse(sBookingDate, format);
         startDate = LocalDate.parse(sstartDate, format);
         endDate = LocalDate.parse(sendDate, format);
-        
-        
+
+        // Todo - Initialize Customer and Car object
+        customer = CarRental.getCustomers().get(0);
+        car = CarRental.getCars().get(0);
     }
     
     // GETTERS
@@ -50,7 +53,17 @@ public class Booking {
     public LocalDate getBookingDate() {return bookingDate;} 
     public LocalDate getStartDate() {return startDate;} 
     public LocalDate getEndDate() {return endDate;} 
-    public double getBookingFee() {return bookingFee;} 
+    public double getBookingFee() {return bookingFee;}
+
+    public int getRentalDuration() 
+    {
+        try {
+            long duration = ChronoUnit.DAYS.between(startDate, endDate);
+            return (int) duration;
+        } catch (Exception e) {
+            return -1;
+        }   
+    }
     
     // SETTERS
     // public void setBookingId(String _bookingId) { bookingId = _bookingId; }

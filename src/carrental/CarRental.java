@@ -58,6 +58,7 @@ public class CarRental {
 //    private static final String userFile = "src\\carrental\\database\\users.txt";
 //    private static final String carFile = "src\\carrental\\database\\cars.txt";
 //    private static final String bookingFile = "src\\carrental\\database\\bookings.txt";
+   private static final float tax = 0.1F; // 10%
 
     /**
      * @param args the command line arguments
@@ -78,6 +79,7 @@ public class CarRental {
     public static String getCarFile() { return carFile; }
     public static String getUserFile() { return userFile; }
     public static String getBookingFile() { return bookingFile; }
+    public static float getTax() { return tax; }
 
     // ADDING INFORMATION
     public static void addCar(Car car) { cars.add(car); }
