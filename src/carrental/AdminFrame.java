@@ -314,6 +314,16 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
+        tabReport = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtAreaReport = new javax.swing.JTextArea();
+        jLabel57 = new javax.swing.JLabel();
+        jCalendar2 = new com.toedter.calendar.JCalendar();
+        btnReportStartDate = new javax.swing.JButton();
+        btnReportEndDate = new javax.swing.JButton();
+        txtReportStartDate = new javax.swing.JTextField();
+        txtReportEndDate = new javax.swing.JTextField();
+        btnGenerateReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1661,7 +1671,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtNric, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
                             .addComponent(jLabel50))
                         .addGap(15, 15, 15)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1689,7 +1699,7 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel28))
-                            .addComponent(comGender, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                            .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formBookLayout.createSequentialGroup()
@@ -1768,6 +1778,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         tabReceipts.setBackground(new java.awt.Color(204, 255, 204));
 
+        txtAreaReceipt.setEditable(false);
         txtAreaReceipt.setColumns(20);
         txtAreaReceipt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtAreaReceipt.setRows(5);
@@ -1947,6 +1958,123 @@ public class AdminFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Receipts", tabReceipts);
+
+        tabReport.setBackground(new java.awt.Color(204, 255, 204));
+
+        txtAreaReport.setEditable(false);
+        txtAreaReport.setColumns(20);
+        txtAreaReport.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        txtAreaReport.setRows(5);
+        jScrollPane7.setViewportView(txtAreaReport);
+
+        jLabel57.setFont(new java.awt.Font("Poppins Medium", 1, 20)); // NOI18N
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel57.setText("Report");
+
+        jCalendar2.setBackground(new java.awt.Color(153, 255, 204));
+
+        btnReportStartDate.setBackground(new java.awt.Color(0, 153, 153));
+        btnReportStartDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnReportStartDate.setForeground(new java.awt.Color(255, 255, 255));
+        btnReportStartDate.setText("Start Date");
+        btnReportStartDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportStartDateActionPerformed(evt);
+            }
+        });
+
+        btnReportEndDate.setBackground(new java.awt.Color(0, 153, 153));
+        btnReportEndDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnReportEndDate.setForeground(new java.awt.Color(255, 255, 255));
+        btnReportEndDate.setText("End Date");
+        btnReportEndDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportEndDateActionPerformed(evt);
+            }
+        });
+
+        txtReportStartDate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtReportStartDate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtReportStartDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtReportStartDate.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtReportStartDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReportStartDateActionPerformed(evt);
+            }
+        });
+
+        txtReportEndDate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        txtReportEndDate.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtReportEndDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        txtReportEndDate.setPreferredSize(new java.awt.Dimension(21, 28));
+        txtReportEndDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtReportEndDateActionPerformed(evt);
+            }
+        });
+
+        btnGenerateReport.setBackground(new java.awt.Color(0, 153, 153));
+        btnGenerateReport.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnGenerateReport.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerateReport.setText("Generate Report");
+        btnGenerateReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateReportActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tabReportLayout = new javax.swing.GroupLayout(tabReport);
+        tabReport.setLayout(tabReportLayout);
+        tabReportLayout.setHorizontalGroup(
+            tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabReportLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(tabReportLayout.createSequentialGroup()
+                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnReportStartDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReportEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtReportStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tabReportLayout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGenerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtReportEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(26, 26, 26)
+                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
+        );
+        tabReportLayout.setVerticalGroup(
+            tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabReportLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabReportLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnReportStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtReportStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnReportEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtReportEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGenerateReport, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
+                    .addGroup(tabReportLayout.createSequentialGroup()
+                        .addComponent(jLabel57)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(18, Short.MAX_VALUE))))
+        );
+
+        jTabbedPane1.addTab("Reports", tabReport);
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -2774,6 +2902,26 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comRoleActionPerformed
 
+    private void btnReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStartDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportStartDateActionPerformed
+
+    private void btnReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportEndDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportEndDateActionPerformed
+
+    private void txtReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportStartDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtReportStartDateActionPerformed
+
+    private void txtReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportEndDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtReportEndDateActionPerformed
+
+    private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerateReportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2821,12 +2969,15 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteCar;
     private javax.swing.JButton btnEditCar;
     private javax.swing.JButton btnFirstReceipt;
+    private javax.swing.JButton btnGenerateReport;
     private javax.swing.JButton btnLastReceipt;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnNextReceipt;
     private javax.swing.JButton btnPreviousReceipt;
     private javax.swing.JButton btnPrintReceipt;
     private javax.swing.JButton btnProceedGuest;
+    private javax.swing.JButton btnReportEndDate;
+    private javax.swing.JButton btnReportStartDate;
     private javax.swing.JButton btnSearchCar;
     private javax.swing.JButton btnSearchGuest;
     private javax.swing.JButton btnSearchReceipt;
@@ -2843,6 +2994,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel formBook2;
     private javax.swing.JPanel formBook3;
     private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2893,6 +3045,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2906,6 +3059,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblChkIn;
@@ -2928,12 +3082,14 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tabManageCars;
     private javax.swing.JPanel tabManageUsers;
     private javax.swing.JPanel tabReceipts;
+    private javax.swing.JPanel tabReport;
     private javax.swing.JTable tableBookRoomGuest;
     private javax.swing.JTable tableBookings;
     private javax.swing.JTable tableCars;
     private javax.swing.JTable tableUsers;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextArea txtAreaReceipt;
+    private javax.swing.JTextArea txtAreaReport;
     private javax.swing.JTextField txtBookIdReceipt;
     private javax.swing.JTextField txtBookingCP;
     private javax.swing.JTextField txtBookingDate;
@@ -2951,6 +3107,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtGuestName;
     private javax.swing.JTextField txtNric;
     private javax.swing.JTextField txtPickUp;
+    private javax.swing.JTextField txtReportEndDate;
+    private javax.swing.JTextField txtReportStartDate;
     private javax.swing.JTextField txtUserFullName;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
