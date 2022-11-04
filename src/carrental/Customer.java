@@ -81,7 +81,7 @@ public class Customer extends User {
             pw.write(line);
             pw.close();
 
-            // Add to ResortBooking's 'customers' ArrayList
+            // Add to CarRental's 'customers' ArrayList
             CarRental.addCustomer(this);
             return true;
 

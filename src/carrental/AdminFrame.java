@@ -23,7 +23,8 @@ public class AdminFrame extends javax.swing.JFrame {
     DefaultListModel lm = new DefaultListModel<>();
     Object[] columns = new Object[8]; // For individual table row
     private int receiptID; // Current booking ID of receipt
-    
+    private String reportStartDate = ""; // Selected report starte date
+    private String reportEndDate = ""; // Selected report end date       
 
     /**
      * Creates new form AdminFrame

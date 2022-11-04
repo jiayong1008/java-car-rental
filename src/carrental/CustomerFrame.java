@@ -46,6 +46,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtMaxPrice = new javax.swing.JTextField();
+        btnResetCar = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tableAllCars = new javax.swing.JTable();
         pnlBookRoom = new javax.swing.JPanel();
@@ -233,11 +234,21 @@ public class CustomerFrame extends javax.swing.JFrame {
             }
         });
 
+        btnResetCar.setBackground(new java.awt.Color(255, 204, 102));
+        btnResetCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnResetCar.setForeground(new java.awt.Color(255, 255, 255));
+        btnResetCar.setText("Reset");
+        btnResetCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetCarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tabHistory1Layout = new javax.swing.GroupLayout(tabHistory1);
         tabHistory1.setLayout(tabHistory1Layout);
         tabHistory1Layout.setHorizontalGroup(
             tabHistory1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabHistory1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHistory1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(tabHistory1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabHistory1Layout.createSequentialGroup()
@@ -260,8 +271,10 @@ public class CustomerFrame extends javax.swing.JFrame {
                         .addComponent(txtMaxPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55))
             .addGroup(tabHistory1Layout.createSequentialGroup()
-                .addGap(348, 348, 348)
+                .addGap(209, 209, 209)
                 .addComponent(btnFilterCar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(btnResetCar, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabHistory1Layout.setVerticalGroup(
@@ -282,7 +295,9 @@ public class CustomerFrame extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addComponent(txtMaxPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(btnFilterCar)
+                .addGroup(tabHistory1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFilterCar)
+                    .addComponent(btnResetCar))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -1380,6 +1395,10 @@ public class CustomerFrame extends javax.swing.JFrame {
     private void txtMaxPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaxPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaxPriceActionPerformed
+
+    private void btnResetCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnResetCarActionPerformed
     
     boolean displayed = false;
     
@@ -1425,6 +1444,7 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPUD;
     private javax.swing.JButton btnProceedCar;
+    private javax.swing.JButton btnResetCar;
     private javax.swing.JButton btnSearchCar;
     private javax.swing.JButton btnSearchGuest;
     private javax.swing.JButton btnSearchHistory;
