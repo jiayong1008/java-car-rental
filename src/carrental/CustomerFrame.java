@@ -1142,24 +1142,24 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jtpCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtpCustomerMouseClicked
-        if (displayed) return;
-        displayed = true;
-        File file = new File(CarRental.getBookingFile());
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-
-            DefaultTableModel model = (DefaultTableModel)tableHistory.getModel();
-            Object[] lines = br.lines().toArray();
-
-            for(int i = 0; i < lines.length; i++){
-                String[] row = lines[i].toString().split(",");
-                model.addRow(row);
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        if (displayed) return;
+//        displayed = true;
+//        File file = new File(CarRental.getBookingFile());
+//        try {
+//            FileReader fr = new FileReader(file);
+//            BufferedReader br = new BufferedReader(fr);
+//
+//            DefaultTableModel model = (DefaultTableModel)tableHistory.getModel();
+//            Object[] lines = br.lines().toArray();
+//
+//            for(int i = 0; i < lines.length; i++){
+//                String[] row = lines[i].toString().split(",");
+//                model.addRow(row);
+//            }
+//
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_jtpCustomerMouseClicked
 

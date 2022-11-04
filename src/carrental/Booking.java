@@ -14,8 +14,8 @@ public class Booking {
     
     // INITIALIZATIONS
     private final String bookingID;
-    private Customer customer;
-    private Car car;
+    private Customer customerID;
+    private Car carPlate;
     private LocalDate bookingDate;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -42,14 +42,14 @@ public class Booking {
         endDate = LocalDate.parse(sendDate, format);
 
         // Todo - Initialize Customer and Car object
-        customer = CarRental.getCustomers().get(0);
-        car = CarRental.getCars().get(0);
+        customerID = CarRental.getCustomers().get(0);
+        carPlate = CarRental.getCars().get(0);
     }
     
     // GETTERS
     public String getBookingId() {return bookingID;} 
-    public Customer getCustomer() {return customer;} 
-    public Car getCar() {return car;}
+    public Customer getCustomer() {return customerID;} 
+    public Car getCar() {return carPlate;}
     public LocalDate getBookingDate() {return bookingDate;} 
     public LocalDate getStartDate() {return startDate;} 
     public LocalDate getEndDate() {return endDate;} 
@@ -67,8 +67,8 @@ public class Booking {
     
     // SETTERS
     // public void setBookingId(String _bookingId) { bookingId = _bookingId; }
-    public void setCustomer(Customer _customer) { customer = _customer; }
-    public void setCar(Car _car) { car = _car; }
+    public void setCustomer(Customer _customerID) { customerID = _customerID; }
+    public void setCar(Car _carPlate) { carPlate = _carPlate; }
     public void setBookingDate(LocalDate _bookingDate) { bookingDate = _bookingDate; }
     public void setStartDate(LocalDate _startDate) { startDate = _startDate; }
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
