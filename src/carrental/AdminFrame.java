@@ -210,12 +210,14 @@ public class AdminFrame extends javax.swing.JFrame {
             {
                 System.out.printf("Carbrand does not contain key %s. Initiializing key...\n", carBrand);
                 carBrands.put(carBrand, bookingFee);
+                System.out.println(carBrands.get(carBrand));
             }
 
             else
             {
                 System.out.printf("Carbrand contains key %s. Replacing value...\n", carBrand);
                 carBrands.replace(carBrand, carBrands.get(carBrand) + bookingFee);
+                System.out.println(carBrands.get(carBrand));
             }
 
             if (!rentedCars.contains(car)) 
@@ -1758,8 +1760,6 @@ public class AdminFrame extends javax.swing.JFrame {
         new LoginFrame().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-//    boolean displayed = false;
-    
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         //        if (displayed) return;
         //        displayed = true;

@@ -48,6 +48,8 @@ public class Booking {
         carNo = bookingInfo.get(2);
 //        customerID = bookingInfo.get(1);
 //        carPlate = bookingInfo.get(2);
+        customer = CarRental.getCustomers().get(0);
+        car = CarRental.getCars().get(0);
     }
     
     // GETTERS

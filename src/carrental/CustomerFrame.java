@@ -5,6 +5,8 @@
 package carrental;
 
 import java.util.ArrayList;
+
+import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -1398,7 +1400,7 @@ public class CustomerFrame extends javax.swing.JFrame {
 
     private void btnFilterCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterCarActionPerformed
         
-        String carBrand = txtCarBrand.getText().trim().toUpperCase();
+        String carBrand = txtCarBrand.getText().trim().toLowerCase();
         String carModel = txtCarModel.getText().trim().toLowerCase();
         String inputMinPrice = txtMinPrice.getText().trim();
         String inputMaxPrice = txtMaxPrice.getText().trim();
@@ -1432,11 +1434,25 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         for (Car car : CarRental.getCars())
         {
-            if (car.getCarBrand().toLowerCase().contains(carBrand) &&
-                car.getCarModel().toLowerCase().contains(carModel) &&
-                (car.getDailyRentalRate() >= minPrice && car.getDailyRentalRate() <= maxPrice))
-            {
+            System.out.println(car.getCarBrand().toLowerCase());
+            System.out.println(carBrand);
+            System.out.println(car.getCarBrand().toLowerCase().contains(carBrand));
+            System.out.println();
+            Boolean withinPriceRange;
 
+            if (inputMinPrice.isEmpty() && inputMaxPrice.isEmpty()) 
+                withinPriceRange = true;
+            else if (!inputMinPrice.isEmpty() && !inputMaxPrice.isEmpty())
+                withinPriceRange = car.getDailyRentalRate() >= minPrice && car.getDailyRentalRate() <= maxPrice;
+            else if (!inputMinPrice.isEmpty())
+                withinPriceRange = car.getDailyRentalRate() >= minPrice;
+            else
+                withinPriceRange = car.getDailyRentalRate() <= maxPrice;
+
+
+            if ((car.getCarBrand().toLowerCase().contains(carBrand) &&
+                car.getCarModel().toLowerCase().contains(carModel)) && withinPriceRange)
+            {
                 columns[0] = car.getCarID();
                 columns[1] = car.getCarPlate();
                 columns[2] = car.getCarBrand();
@@ -1452,7 +1468,14 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMinPriceActionPerformed
 
     private void tableAllCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAllCarsMouseClicked
-        // TODO add your handling code here:
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableAllCars.getModel();
+        int row = tableAllCars.getSelectedRow();
+
+        if (row >= 0) {
+            txtCarBrand.setText((String) tableModel.getValueAt(row, 2));
+            txtCarModel.setText((String) tableModel.getValueAt(row, 3));
+        }
     }//GEN-LAST:event_tableAllCarsMouseClicked
 
     private void tableAllCarsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAllCarsMouseExited
@@ -1476,6 +1499,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         txtCarModel.setText("");
         txtMinPrice.setText("");
         txtMaxPrice.setText("");
+        loadCars();
     }//GEN-LAST:event_btnResetCarActionPerformed
     
     boolean displayed = false;
