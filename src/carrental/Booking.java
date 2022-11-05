@@ -14,8 +14,10 @@ public class Booking {
     
     // INITIALIZATIONS
     private final String bookingID;
-    private Customer customerID;
-    private Car carPlate;
+    private final String custID;
+    private final String carNo;
+    private Customer customer;
+    private Car car;
     private LocalDate bookingDate;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -42,14 +44,18 @@ public class Booking {
         endDate = LocalDate.parse(sendDate, format);
 
         // Todo - Initialize Customer and Car object
-        customerID = CarRental.getCustomers().get(0);
-        carPlate = CarRental.getCars().get(0);
+        custID = bookingInfo.get(1);
+        carNo = bookingInfo.get(2);
+//        customerID = bookingInfo.get(1);
+//        carPlate = bookingInfo.get(2);
     }
     
     // GETTERS
     public String getBookingId() {return bookingID;} 
-    public Customer getCustomer() {return customerID;} 
-    public Car getCar() {return carPlate;}
+    public String getCustID() {return custID;} 
+    public String getCarNo() {return carNo;} 
+    public Customer getCustomer() {return customer;} 
+    public Car getCar() {return car;}
     public LocalDate getBookingDate() {return bookingDate;} 
     public LocalDate getStartDate() {return startDate;} 
     public LocalDate getEndDate() {return endDate;} 
@@ -67,8 +73,10 @@ public class Booking {
     
     // SETTERS
     // public void setBookingId(String _bookingId) { bookingId = _bookingId; }
-    public void setCustomer(Customer _customerID) { customerID = _customerID; }
-    public void setCar(Car _carPlate) { carPlate = _carPlate; }
+    public void setCustomer(Customer _customer) { customer = _customer; }
+    public void setCar(Car _car) { car = _car; }
+//    public void setCustID(String _custID) { custID = _custID; }
+//    public void setCarNo(String _carNo) { carNo = _carNo; }
     public void setBookingDate(LocalDate _bookingDate) { bookingDate = _bookingDate; }
     public void setStartDate(LocalDate _startDate) { startDate = _startDate; }
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }

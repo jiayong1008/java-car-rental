@@ -2319,9 +2319,9 @@ public class AdminFrame extends javax.swing.JFrame {
             txtBookingID.setText((String) tableModel.getValueAt(row, 0));
             txtCustomerID.setText((String) tableModel.getValueAt(row, 1));
             txtBookingCP.setText((String) tableModel.getValueAt(row, 2));
-            txtBookingDate.setText((String) tableModel.getValueAt(row, 3));
-            txtPickUp.setText((String) tableModel.getValueAt(row, 4));
-            txtDropOff.setText((String) tableModel.getValueAt(row, 5));
+            txtBookingDate.setText((String) tableModel.getValueAt(row, 3).toString());
+            txtPickUp.setText((String) tableModel.getValueAt(row, 4).toString());
+            txtDropOff.setText((String) tableModel.getValueAt(row, 5).toString());
             txtAmount.setText((String) tableModel.getValueAt(row, 6));
     }
     }//GEN-LAST:event_tableBookingsMouseClicked
