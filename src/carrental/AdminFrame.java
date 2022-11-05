@@ -2516,7 +2516,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     txtUsername.setText("");
                     JOptionPane.showMessageDialog(this, "User deleted successfully.");
                 } 
-                else
+                else 
                     JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
                 
                 break;

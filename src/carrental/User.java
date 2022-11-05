@@ -19,7 +19,7 @@ abstract public class User {
     protected String username;
     protected String password;
     public static int id = 1;
-//    protected static final String FILE = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\CarRental\\src\\carrental\\database\\users.txt";
+    // protected static final String FILE = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\CarRental\\src\\carrental\\database\\users.txt";
     protected static final String FILE = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
 
     // CONSTRUCTORS
@@ -63,8 +63,8 @@ abstract public class User {
             
             line = String.format(
                 "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
-                getUserID(), getRole().toLowerCase(), name, gender,
-                contactNo, email, ic, username, password);
+                getUserID(), getRole().toLowerCase(), name.toUpperCase(), 
+                gender.toLowerCase(), contactNo, email, ic, username, password);
             pw.write(line);
             pw.close();
 
@@ -122,7 +122,7 @@ abstract public class User {
                 line = String.format(
                     "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
                     user.getUserID(), user.getRole().toLowerCase(), user.getName(), user.getGender(),
-                    user.getContactNo(), user.getEmail(), user.getIC(), user.getIC(), user.getPassword()
+                    user.getContactNo(), user.getEmail(), user.getIC(), user.getUsername(), user.getPassword()
                 );
                 pw.write(line);
             }
