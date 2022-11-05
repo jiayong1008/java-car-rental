@@ -2332,6 +2332,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
 
     private void btnUserSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserSearchActionPerformed
+        
         String role = comRole.getSelectedItem().toString().toLowerCase();
         String gender = comGender.getSelectedItem().toString().toLowerCase();
         String name = txtUserFullName.getText().trim().toLowerCase();
@@ -2347,7 +2348,6 @@ public class AdminFrame extends javax.swing.JFrame {
         else { // Admins
             users.addAll(CarRental.getAdmins());
         }
-        System.out.println(users.toString());
 
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
@@ -2410,11 +2410,10 @@ public class AdminFrame extends javax.swing.JFrame {
             ArrayList<String> userInfo = new ArrayList<String>();
 
             Collections.addAll(
-                userInfo, "T-1", role.toLowerCase(), name, 
-                gender, contact, email, ic, username, password
+                userInfo, "T-1", role.toLowerCase(), name.toUpperCase(), 
+                gender.toLowerCase(), contact, email.toLowerCase(), ic, username.toLowerCase(), password
             );
             User user = role.equals("Customer") ? new Customer(userInfo) : new Admin(userInfo);
-            System.out.println(user);
 
             if (!user.isDuplicate()) {
                 if (user.addToFile()) {

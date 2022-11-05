@@ -1,10 +1,11 @@
 userID, role, name, gender, contact, email, IC / passport, username, password
-A0001, admin, LIM JIA YONG, female, 011-12345678, jiayong@gmail.com, 021008-14-8888, jiarong, qwerty
+A0001, admin, LIM JIA YONG, female, 011-12345678, jiayong@gmail.com, 021008-14-8888, jiayong, qwerty
 A0002, admin, GOH VI NIE, female, 013-56781234, vinie@gmail.com, 021008-14-7777, vinie, qwerty
-C0003, customer, HARRY POTTER, male, 013-56781233, harry@gmail.com, 001008-14-7777, 001008-14-7777, qwerty
-C0004, customer, HAYLEY MARSHALL, female, 014-87656821, hayley@gmail.com, 951008-14-6688, 951008-14-6688, qwerty
-C0005, customer, HERMIONE GRANGER, female, 014-87654321, hermione@gmail.com, 991008-14-6688, 991008-14-6688, qwerty
-C0006, customer, RONALD WEASLEY, male, 016-98765432, ron@gmail.com, 001008-14-8899, 001008-14-8899, qwerty
-C0007, customer, ELIJAH MIKAELSON, male, 017-99661123, elijah@gmail.com, 571008-14-1235, 571008-14-1235, qwerty
-C0008, customer, NIKLAUS MIKAELSON, male, 012-12345678, klaus@gmail.com, 601008-14-6866, 601008-14-6866, qwerty
-C0009, customer, DAMON SALVATORE, male, 012-55566688, damon@tvd.com, 181008-14-0802, 181008-14-0802, qwerty
+C0003, customer, HARRY POTTER, male, 013-56781233, harry@gmail.com, 001008-14-7777, harry, qwerty
+C0004, customer, HAYLEY MARSHALL, female, 014-87656821, hayley@gmail.com, 951008-14-6688, hayley, qwerty
+C0005, customer, HERMIONE GRANGER, female, 014-87654321, hermione@gmail.com, 991008-14-6688, hermione, qwerty
+C0006, customer, RONALD WEASLEY, male, 016-98765432, ron@gmail.com, 001008-14-8899, ronald, qwerty
+C0007, customer, ELIJAH MIKAELSON, male, 017-99661123, elijah@gmail.com, 571008-14-1235, elijah, qwerty
+C0008, customer, NIKLAUS MIKAELSON, male, 012-12345678, klaus@gmail.com, 601008-14-6866, niklaus, qwerty
+C0009, customer, DAMON SALVATORE, male, 012-55566688, damon@tvd.com, 181008-14-0802, damon, qwerty
+C0010, customer, STEFAN SALVATORE, male, 012-5556668, stefan@tcd.com, 181008-14-0802, stefan, qwerty

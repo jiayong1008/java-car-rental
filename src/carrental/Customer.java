@@ -37,18 +37,18 @@ public class Customer extends User {
         return String.format("%s (Customer) - %s", customerID, name);
     }
     
-    public boolean isDuplicate() 
-    {
-        ArrayList<Customer> customers = CarRental.getCustomers();
-        for (Customer customer : customers) {
-            // Car duplication is trigerred when it has the same car plate
-            if (customer.getUserID().equals(customerID)) {
-                // id--;
-                return true;
-            }
-        }
-        return false;
-    }
+    // public boolean isDuplicate() 
+    // {
+    //     ArrayList<Customer> customers = CarRental.getCustomers();
+    //     for (Customer customer : customers) {
+    //         // Car duplication is trigerred when it has the same car plate
+    //         if (customer.getUserID().equals(customerID)) {
+    //             // id--;
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
     
     public boolean addToFile()
     {
