@@ -339,7 +339,7 @@ public class CustomerFrame extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, true
@@ -1430,7 +1430,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) tableAllCars.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
 
-        System.out.println("pass table model");
         for (Car car : CarRental.getCars())
         {
             if (car.getCarBrand().toLowerCase().contains(carBrand) &&
@@ -1443,7 +1442,6 @@ public class CustomerFrame extends javax.swing.JFrame {
                 columns[2] = car.getCarBrand();
                 columns[3] = car.getCarModel();
                 columns[4] = String.format("%.2f", car.getDailyRentalRate());
-                // columns[4] = String.format("%.2f", car.getDailyRentalRate());
                 tableModel.addRow(columns);
             }
         }

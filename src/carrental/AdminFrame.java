@@ -5,10 +5,17 @@
 package carrental;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,12 +26,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminFrame extends javax.swing.JFrame {
 
-    // private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
     DefaultListModel lm = new DefaultListModel<>();
     Object[] columns = new Object[8]; // For individual table row
     private int receiptID; // Current booking ID of receipt
-    private String reportStartDate = ""; // Selected report starte date
-    private String reportEndDate = ""; // Selected report end date       
 
     /**
      * Creates new form AdminFrame
@@ -137,6 +142,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }
 
     private void loadReceipt(Booking booking) {
+
         receiptID = Integer.parseInt(booking.getBookingId().substring(1));
         float subtotal = (float) booking.getBookingFee();
         float tax = subtotal * CarRental.getTax();
@@ -161,6 +167,92 @@ public class AdminFrame extends javax.swing.JFrame {
         txtAreaReceipt.setText(txtAreaReceipt.getText() + "  ___________________________________________\n");
         txtAreaReceipt.setText(txtAreaReceipt.getText() + String.format("   TOTAL:\t\tRM%.2f\n", total));
     }
+
+    private void generateReport (LocalDate startDate, LocalDate endDate) {
+
+        String strStartDate = startDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
+        String strEndDate = endDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
+        ArrayList<Booking> bookings = new ArrayList<Booking>();
+        ArrayList<Customer> custs = new ArrayList<Customer>();
+        ArrayList<Car> rentedCars = new ArrayList<Car>();
+        HashMap<String, Double> carBrands = new HashMap<String, Double>();  
+        LocalDate bookDate;
+        Double totalRevenue = 0.0;
+        int totalDaysRented = 0;
+
+        // Searching for booking records matching start and end date
+        for (Booking booking : CarRental.getBookings())
+        {
+            bookDate = booking.getBookingDate();
+            if ((bookDate.isAfter(startDate) || bookDate.isEqual(startDate)) && 
+                (bookDate.isBefore(endDate) || bookDate.isEqual(endDate)))
+            {
+                bookings.add(booking);
+            }
+        }
+        for (Booking booking : bookings) {
+            System.out.println(booking);
+        }
+
+        // Calculate report info
+        for (Booking booking : bookings)
+        {
+            Double bookingFee = booking.getBookingFee();
+            totalRevenue += bookingFee;
+            totalDaysRented += booking.getRentalDuration();
+
+            Car car = booking.getCar();
+            String carBrand = car.getCarBrand();
+
+            if (!carBrands.containsKey(carBrand))
+            {
+                System.out.printf("Carbrand does not contain key %s. Initiializing key...\n", carBrand);
+                carBrands.put(carBrand, bookingFee);
+            }
+
+            else
+            {
+                System.out.printf("Carbrand contains key %s. Replacing value...\n", carBrand);
+                carBrands.replace(carBrand, carBrands.get(carBrand) + bookingFee);
+            }
+
+            if (!rentedCars.contains(car)) 
+            rentedCars.add(car);
+
+            if (!custs.contains(booking.getCustomer())) 
+            custs.add(booking.getCustomer());
+        }
+
+        Float avgBookDuration = (float) totalDaysRented / bookings.size();
+        avgBookDuration = avgBookDuration.isNaN() ? 0.0F : avgBookDuration;
+
+        txtAreaReport.setText("  *******************************************\n");
+        txtAreaReport.setText(txtAreaReport.getText() + "  *                RAPID CAR SALES REPORT            *\n");
+        txtAreaReport.setText(txtAreaReport.getText() + "  *******************************************\n");
+        txtAreaReport.setText(txtAreaReport.getText() + String.format(" Date: %s ~ %s\n\n", strStartDate, strEndDate));
+
+        txtAreaReport.setText(txtAreaReport.getText() + String.format(" Total Revenue:\tRM%.2f\n", totalRevenue));
+        txtAreaReport.setText(txtAreaReport.getText() + String.format(" Total Customers:\t%d\n", custs.size()));
+        txtAreaReport.setText(txtAreaReport.getText() + String.format(" Total Cars Rented:\t%d\n", rentedCars.size()));
+        txtAreaReport.setText(txtAreaReport.getText() + String.format(" Total Days Rented:\t%d\n", totalDaysRented));
+        txtAreaReport.setText(txtAreaReport.getText() + String.format(" Average Booking Duration:\t%.2f days\n\n", avgBookDuration));
+
+        if (carBrands.size() == 0) {
+            txtAreaReport.setText(txtAreaReport.getText() + String.format(" No Cars Rented Between:\n %s to %s.\n", strStartDate, strEndDate));
+            return;
+        }
+
+        txtAreaReport.setText(txtAreaReport.getText() + " Car Brand \t\t Revenue (RM)\n");
+        txtAreaReport.setText(txtAreaReport.getText() + "  ___________________________________________\n");
+        for (Map.Entry m : carBrands.entrySet()) {    
+            txtAreaReport.setText(txtAreaReport.getText() + String.format(" %s \t\t %.2f\n\n", m.getKey(), m.getValue()));   
+        }  
+
+        txtAreaReport.setText(txtAreaReport.getText() + "  ___________________________________________\n");
+        txtAreaReport.setText(txtAreaReport.getText() + String.format("   TOTAL:\t\tRM%.2f\n", totalRevenue));
+    }
+
+
 
 // ================     END OF HELPER FUNCTIONS        ========================
 
@@ -2904,11 +2996,58 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_comRoleActionPerformed
 
     private void btnReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStartDateActionPerformed
-        // TODO add your handling code here:
+        
+        // Extracting text box values
+        String inputStartDate = datef.format(jCalendar2.getDate());
+        String inputEndDate = txtReportEndDate.getText().trim();
+        txtReportStartDate.setText(inputStartDate);
+
+        // Do nothing if end date is not provided
+        if (inputEndDate.isEmpty()) return;
+
+        // Date formatting
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
+        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+
+        if ((int) duration <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
+            txtReportStartDate.setText("");
+        }
+        
+        // lblChkIn.setText(chkInDate);
+        // validateToday();
+        // if (!chkOutDate.isEmpty()) {
+        //     validateBookingDates();
+        // }
+        // bookRoomID = "";
+        // lblRoomID.setText("N/A");
     }//GEN-LAST:event_btnReportStartDateActionPerformed
 
     private void btnReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportEndDateActionPerformed
-        // TODO add your handling code here:
+        
+        // Extracting text box values
+        String inputEndDate = datef.format(jCalendar2.getDate());
+        String inputStartDate = txtReportStartDate.getText().trim();
+        txtReportEndDate.setText(inputEndDate);
+
+        // Do nothing if end date is not provided
+        if (inputStartDate.isEmpty()) return;
+
+        // Date formatting
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
+        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+
+        if ((int) duration <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
+            txtReportEndDate.setText("");
+        }
+
     }//GEN-LAST:event_btnReportEndDateActionPerformed
 
     private void txtReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportStartDateActionPerformed
@@ -2920,7 +3059,34 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtReportEndDateActionPerformed
 
     private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
-        // TODO add your handling code here:
+        
+        // Extracting text box values
+        String inputStartDate = txtReportStartDate.getText().trim();
+        String inputEndDate = txtReportEndDate.getText().trim();
+
+        // Do nothing if end date is not provided
+        if (inputStartDate.isEmpty() || inputEndDate.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please insert start and end date first.");
+            return;
+        } 
+
+        // Date formatting
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
+        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+
+        // Validation - Check for valid duration
+        if ((int) duration <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
+            txtReportStartDate.setText("");
+            txtReportEndDate.setText("");
+            return;
+        }
+        generateReport(startDate, endDate);
+
     }//GEN-LAST:event_btnGenerateReportActionPerformed
 
     /**
