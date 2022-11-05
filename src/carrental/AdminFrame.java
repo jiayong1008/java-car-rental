@@ -208,6 +208,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
+        btnBookingsAdd = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableBookings = new javax.swing.JTable();
         tabManageCars = new javax.swing.JPanel();
@@ -516,6 +517,21 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel64.setForeground(new java.awt.Color(255, 51, 51));
         jLabel64.setText("*");
 
+        btnBookingsAdd.setBackground(new java.awt.Color(255, 204, 102));
+        btnBookingsAdd.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnBookingsAdd.setForeground(new java.awt.Color(255, 255, 255));
+        btnBookingsAdd.setText("Add");
+        btnBookingsAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBookingsAddMouseExited(evt);
+            }
+        });
+        btnBookingsAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingsAddActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout formBook2Layout = new javax.swing.GroupLayout(formBook2);
         formBook2.setLayout(formBook2Layout);
         formBook2Layout.setHorizontalGroup(
@@ -548,7 +564,7 @@ public class AdminFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel55)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(formBook2Layout.createSequentialGroup()
                                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -572,6 +588,8 @@ public class AdminFrame extends javax.swing.JFrame {
                                     .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(64, 64, 64))
                             .addGroup(formBook2Layout.createSequentialGroup()
+                                .addComponent(btnBookingsAdd)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnBookingsSearch)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,7 +636,8 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBookingsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBookingsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnBookingsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBookingsAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -2324,6 +2343,14 @@ public class AdminFrame extends javax.swing.JFrame {
     private void btnBookingsSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsSearchMouseExited
 
     }//GEN-LAST:event_btnBookingsSearchMouseExited
+
+    private void btnBookingsAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsAddMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBookingsAddMouseExited
+
+    private void btnBookingsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBookingsAddActionPerformed
     
     /*    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
@@ -2368,6 +2395,7 @@ public class AdminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JButton btnAddCar;
+    private javax.swing.JButton btnBookingsAdd;
     private javax.swing.JButton btnBookingsDelete;
     private javax.swing.JButton btnBookingsEdit;
     private javax.swing.JButton btnBookingsSearch;
