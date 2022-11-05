@@ -429,7 +429,7 @@
                             <Column editable="false" title="Car Plate" type="java.lang.String"/>
                             <Column editable="false" title="Car Brand" type="java.lang.String"/>
                             <Column editable="false" title="Car Model" type="java.lang.String"/>
-                            <Column editable="true" title="Daily Rental Rate (RM)" type="java.lang.Double"/>
+                            <Column editable="true" title="Daily Rental Rate (RM)" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

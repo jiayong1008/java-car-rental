@@ -4,22 +4,50 @@
  */
 package carrental;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CustomerFrame extends javax.swing.JFrame {
+
+    Object[] columns = new Object[8]; // For individual table row
 
     /**
      * Creates new form CustomerFrame
      */
     public CustomerFrame() {
         initComponents();
+        loadCars();
     }
+
+// ================     HELPER FUNCTIONS        ========================
+
+    // Load cars in table
+    private void loadCars() 
+    {
+        ArrayList<Car> cars = CarRental.getCars();
+        DefaultTableModel tableModel = (DefaultTableModel) tableAllCars.getModel();
+        tableModel.setRowCount(0);
+        int index = cars.size();
+        
+        for (int i = 0; i < index; i++) {
+            addTableRow(tableModel, cars.get(i));
+        }
+    }
+
+    // Populate record to table - Overload method (Car)
+    public void addTableRow(DefaultTableModel model, Car car) 
+    {
+        columns[0] = car.getCarID();
+        columns[1] = car.getCarPlate();
+        columns[2] = car.getCarBrand();
+        columns[3] = car.getCarModel();
+        columns[4] = String.format("%.2f", car.getDailyRentalRate());
+        model.addRow(columns);
+    }
+
+// ================     END OF HELPER FUNCTIONS        ========================
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1369,7 +1397,56 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPUDActionPerformed
 
     private void btnFilterCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterCarActionPerformed
-        // TODO add your handling code here:
+        
+        String carBrand = txtCarBrand.getText().trim().toUpperCase();
+        String carModel = txtCarModel.getText().trim().toLowerCase();
+        String inputMinPrice = txtMinPrice.getText().trim();
+        String inputMaxPrice = txtMaxPrice.getText().trim();
+        Double minPrice = 0.0; // Dummy minimum price just for the sake of comparison
+        Double maxPrice = 999999.9; // Dummy maximum price just for the sake of comparison
+        
+        // If minimum price field is not empty, ensure that it is a numeric (double) value
+        if (!inputMinPrice.isEmpty())
+        {
+            try {
+                minPrice = Double.parseDouble(inputMinPrice);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Minimum price must be a numeric value.");
+                return;
+            }
+        }
+        
+        // If maximum price field is not empty, ensure that it is a numeric (double) value
+        if (!inputMaxPrice.isEmpty())
+        {
+            try {
+                maxPrice = Double.parseDouble(inputMaxPrice);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Maximum price must be a numeric value.");
+                return;
+            }
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableAllCars.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
+
+        System.out.println("pass table model");
+        for (Car car : CarRental.getCars())
+        {
+            if (car.getCarBrand().toLowerCase().contains(carBrand) &&
+                car.getCarModel().toLowerCase().contains(carModel) &&
+                (car.getDailyRentalRate() >= minPrice && car.getDailyRentalRate() <= maxPrice))
+            {
+
+                columns[0] = car.getCarID();
+                columns[1] = car.getCarPlate();
+                columns[2] = car.getCarBrand();
+                columns[3] = car.getCarModel();
+                columns[4] = String.format("%.2f", car.getDailyRentalRate());
+                // columns[4] = String.format("%.2f", car.getDailyRentalRate());
+                tableModel.addRow(columns);
+            }
+        }
     }//GEN-LAST:event_btnFilterCarActionPerformed
 
     private void txtMinPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMinPriceActionPerformed
@@ -1397,7 +1474,10 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMaxPriceActionPerformed
 
     private void btnResetCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCarActionPerformed
-        // TODO add your handling code here:
+        txtCarBrand.setText("");
+        txtCarModel.setText("");
+        txtMinPrice.setText("");
+        txtMaxPrice.setText("");
     }//GEN-LAST:event_btnResetCarActionPerformed
     
     boolean displayed = false;

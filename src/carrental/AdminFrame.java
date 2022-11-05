@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminFrame extends javax.swing.JFrame {
 
-    private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
+    // private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
     DefaultListModel lm = new DefaultListModel<>();
     Object[] columns = new Object[8]; // For individual table row
     private int receiptID; // Current booking ID of receipt
