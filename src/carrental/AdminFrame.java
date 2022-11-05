@@ -4,6 +4,8 @@
  */
 package carrental;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,8 +68,8 @@ public class AdminFrame extends javax.swing.JFrame {
         public void addBookingTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
-        columns[1] = booking.getCustomer();
-        columns[2] = booking.getCar();
+        columns[1] = booking.getCustID();
+        columns[2] = booking.getCarNo();
         columns[3] = booking.getBookingDate();
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
@@ -173,57 +175,13 @@ public class AdminFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel59 = new javax.swing.JLabel();
+        btnBookingsSearch1 = new javax.swing.JButton();
         bg = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
         lblRapidCar = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        pnlBookRoom = new javax.swing.JPanel();
-        tabBookRoom = new javax.swing.JTabbedPane();
-        pnlBookRoom1 = new javax.swing.JPanel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        btnChkIn = new javax.swing.JButton();
-        txtChkIn = new javax.swing.JTextField();
-        txtChkOut = new javax.swing.JTextField();
-        btnChkOut = new javax.swing.JButton();
-        btnSearchRoom = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listAvailableRooms = new javax.swing.JList<>();
-        btnProceedGuest = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        pnlBookRoom2 = new javax.swing.JPanel();
-        formBook1 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtGuestName = new javax.swing.JTextField();
-        btnSearchGuest = new javax.swing.JButton();
-        btnConfirmBook = new javax.swing.JButton();
-        lblChkIn = new javax.swing.JLabel();
-        lblChkOut = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        lblNights = new javax.swing.JLabel();
-        lblSubtotal = new javax.swing.JLabel();
-        lblServiceTax = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        lblTourismTax = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        lblTotal = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        lblRoomID = new javax.swing.JLabel();
-        btnSelectGuest = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tableBookRoomGuest = new javax.swing.JTable();
         tabManageBookings = new javax.swing.JPanel();
         formBook2 = new javax.swing.JPanel();
         btnBookingsSearch = new javax.swing.JButton();
@@ -243,6 +201,13 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tableBookings = new javax.swing.JTable();
         tabManageCars = new javax.swing.JPanel();
@@ -327,17 +292,27 @@ public class AdminFrame extends javax.swing.JFrame {
         txtReportEndDate = new javax.swing.JTextField();
         btnGenerateReport = new javax.swing.JButton();
 
+        jLabel59.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel59.setText("*");
+
+        btnBookingsSearch1.setBackground(new java.awt.Color(255, 204, 102));
+        btnBookingsSearch1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnBookingsSearch1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBookingsSearch1.setText("Search");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bg.setBackground(new java.awt.Color(240, 255, 240));
+        bg.setBackground(new java.awt.Color(0, 0, 0));
 
-        pnlHeader.setBackground(new java.awt.Color(102, 255, 204));
+        pnlHeader.setBackground(new java.awt.Color(0, 0, 0));
 
         lblRapidCar.setBackground(new java.awt.Color(0, 0, 0));
         lblRapidCar.setFont(new java.awt.Font("Poppins Medium", 3, 24)); // NOI18N
+        lblRapidCar.setForeground(new java.awt.Color(255, 204, 102));
         lblRapidCar.setText("RapidCar");
 
-        btnLogout.setBackground(new java.awt.Color(0, 153, 153));
+        btnLogout.setBackground(new java.awt.Color(255, 102, 51));
         btnLogout.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(255, 255, 255));
         btnLogout.setText("Logout");
@@ -356,7 +331,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addComponent(lblRapidCar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogout)
-                .addGap(55, 55, 55))
+                .addGap(83, 83, 83))
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,531 +343,19 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 255, 204));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 204, 102));
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabbedPane1MouseClicked(evt);
             }
         });
 
-        pnlBookRoom.setBackground(new java.awt.Color(240, 240, 240));
+        tabManageBookings.setBackground(new java.awt.Color(255, 204, 102));
 
-        pnlBookRoom1.setBackground(new java.awt.Color(235, 235, 235));
+        formBook2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jCalendar1.setBackground(new java.awt.Color(153, 255, 204));
-
-        btnChkIn.setBackground(new java.awt.Color(0, 153, 153));
-        btnChkIn.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnChkIn.setForeground(new java.awt.Color(255, 255, 255));
-        btnChkIn.setText("Check In Date");
-        btnChkIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChkInActionPerformed(evt);
-            }
-        });
-
-        txtChkIn.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtChkIn.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtChkIn.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtChkIn.setPreferredSize(new java.awt.Dimension(21, 28));
-        txtChkIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChkInActionPerformed(evt);
-            }
-        });
-
-        txtChkOut.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtChkOut.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtChkOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtChkOut.setPreferredSize(new java.awt.Dimension(21, 28));
-        txtChkOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtChkOutActionPerformed(evt);
-            }
-        });
-
-        btnChkOut.setBackground(new java.awt.Color(0, 153, 153));
-        btnChkOut.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnChkOut.setForeground(new java.awt.Color(255, 255, 255));
-        btnChkOut.setText("Check Out Date");
-        btnChkOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChkOutActionPerformed(evt);
-            }
-        });
-
-        btnSearchRoom.setBackground(new java.awt.Color(0, 153, 153));
-        btnSearchRoom.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnSearchRoom.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearchRoom.setText("Search");
-        btnSearchRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchRoomActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Available Rooms");
-
-        listAvailableRooms.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        listAvailableRooms.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "N/A", " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        listAvailableRooms.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
-        listAvailableRooms.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listAvailableRoomsValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(listAvailableRooms);
-
-        btnProceedGuest.setBackground(new java.awt.Color(0, 153, 153));
-        btnProceedGuest.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnProceedGuest.setForeground(new java.awt.Color(255, 255, 255));
-        btnProceedGuest.setText("Proceed >>");
-        btnProceedGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProceedGuestActionPerformed(evt);
-            }
-        });
-
-        jPanel7.setBackground(new java.awt.Color(153, 255, 204));
-
-        jLabel35.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("* Note: S000 - Sea View,");
-
-        jLabel36.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("J000 - Jungle View");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel35)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout pnlBookRoom1Layout = new javax.swing.GroupLayout(pnlBookRoom1);
-        pnlBookRoom1.setLayout(pnlBookRoom1Layout);
-        pnlBookRoom1Layout.setHorizontalGroup(
-            pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnChkIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtChkIn, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSearchRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnProceedGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBookRoom1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(57, 57, 57))
-        );
-        pnlBookRoom1Layout.setVerticalGroup(
-            pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProceedGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnChkIn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtChkIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtChkOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
-        );
-
-        tabBookRoom.addTab("1 - Select Date", pnlBookRoom1);
-
-        pnlBookRoom2.setBackground(new java.awt.Color(235, 235, 235));
-
-        formBook1.setBackground(new java.awt.Color(235, 235, 235));
-
-        jLabel16.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Summary");
-
-        jLabel17.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel17.setText("Check In Date");
-
-        jLabel18.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel18.setText("Check Out Date");
-
-        jLabel20.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel20.setText("Service Tax (10%)");
-
-        jLabel21.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel21.setText("Total");
-
-        jLabel12.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("Guest Name");
-
-        txtGuestName.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtGuestName.setForeground(new java.awt.Color(102, 102, 102));
-        txtGuestName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtGuestName.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtGuestName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGuestNameActionPerformed(evt);
-            }
-        });
-
-        btnSearchGuest.setBackground(new java.awt.Color(0, 153, 153));
-        btnSearchGuest.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnSearchGuest.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearchGuest.setText("Search");
-        btnSearchGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchGuestActionPerformed(evt);
-            }
-        });
-
-        btnConfirmBook.setBackground(new java.awt.Color(0, 153, 153));
-        btnConfirmBook.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnConfirmBook.setForeground(new java.awt.Color(255, 255, 255));
-        btnConfirmBook.setText("Confirm Booking >>");
-        btnConfirmBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmBookActionPerformed(evt);
-            }
-        });
-
-        lblChkIn.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblChkIn.setForeground(new java.awt.Color(102, 102, 102));
-        lblChkIn.setText("N/A");
-
-        lblChkOut.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblChkOut.setForeground(new java.awt.Color(102, 102, 102));
-        lblChkOut.setText("N/A");
-        lblChkOut.setToolTipText("");
-
-        jLabel24.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel24.setText("Nights");
-
-        jLabel25.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel25.setText("Subtotal");
-
-        lblNights.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblNights.setForeground(new java.awt.Color(102, 102, 102));
-        lblNights.setText("0");
-
-        lblSubtotal.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblSubtotal.setForeground(new java.awt.Color(102, 102, 102));
-        lblSubtotal.setText("RM0.00");
-
-        lblServiceTax.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblServiceTax.setForeground(new java.awt.Color(102, 102, 102));
-        lblServiceTax.setText("RM0.00");
-
-        jLabel29.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel29.setText("Tourism Tax");
-
-        lblTourismTax.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblTourismTax.setForeground(new java.awt.Color(102, 102, 102));
-        lblTourismTax.setText("RM0.00");
-
-        lblTotal.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lblTotal.setForeground(new java.awt.Color(102, 102, 102));
-        lblTotal.setText("RM0.00");
-
-        jPanel6.setBackground(new java.awt.Color(153, 255, 204));
-
-        jLabel33.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("* Note: Please select guest and proceed.");
-
-        jLabel34.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("   (Register guest first if haven't already)");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel33)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
-        );
-
-        jLabel26.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel26.setText("Room ID");
-
-        lblRoomID.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblRoomID.setForeground(new java.awt.Color(102, 102, 102));
-        lblRoomID.setText("N/A");
-
-        btnSelectGuest.setBackground(new java.awt.Color(0, 153, 153));
-        btnSelectGuest.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnSelectGuest.setForeground(new java.awt.Color(255, 255, 255));
-        btnSelectGuest.setText("Select as Guest");
-        btnSelectGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectGuestActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout formBook1Layout = new javax.swing.GroupLayout(formBook1);
-        formBook1.setLayout(formBook1Layout);
-        formBook1Layout.setHorizontalGroup(
-            formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, formBook1Layout.createSequentialGroup()
-                                    .addGap(37, 37, 37)
-                                    .addComponent(jLabel29)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(lblTourismTax)))
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblServiceTax))
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel24)
-                                    .addComponent(jLabel25))
-                                .addGap(18, 18, 18)
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNights)
-                                    .addComponent(lblSubtotal)))
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel26)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18))
-                                .addGap(18, 18, 18)
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblChkIn)
-                                    .addComponent(lblChkOut)
-                                    .addComponent(lblRoomID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(formBook1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel21)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTotal)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConfirmBook, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnSearchGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtGuestName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSelectGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(56, 56, 56))
-        );
-        formBook1Layout.setVerticalGroup(
-            formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSearchGuest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSelectGuest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfirmBook)
-                .addGap(18, 18, 18))
-            .addGroup(formBook1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(lblChkIn))
-                .addGap(2, 2, 2)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(lblChkOut))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(lblRoomID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(lblNights))
-                .addGap(1, 1, 1)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(lblSubtotal))
-                .addGap(4, 4, 4)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(lblServiceTax))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel29)
-                    .addComponent(lblTourismTax))
-                .addGap(2, 2, 2)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(lblTotal))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tableBookRoomGuest.setBackground(new java.awt.Color(204, 255, 255));
-        tableBookRoomGuest.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        tableBookRoomGuest.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "User ID", "Name", "Gender", "Contact No.", "Email", "NRIC"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tableBookRoomGuest.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableBookRoomGuestMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tableBookRoomGuest);
-
-        javax.swing.GroupLayout pnlBookRoom2Layout = new javax.swing.GroupLayout(pnlBookRoom2);
-        pnlBookRoom2.setLayout(pnlBookRoom2Layout);
-        pnlBookRoom2Layout.setHorizontalGroup(
-            pnlBookRoom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoom2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formBook1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(pnlBookRoom2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
-        );
-        pnlBookRoom2Layout.setVerticalGroup(
-            pnlBookRoom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoom2Layout.createSequentialGroup()
-                .addComponent(formBook1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-        );
-
-        tabBookRoom.addTab("2 - Select Guest", pnlBookRoom2);
-
-        javax.swing.GroupLayout pnlBookRoomLayout = new javax.swing.GroupLayout(pnlBookRoom);
-        pnlBookRoom.setLayout(pnlBookRoomLayout);
-        pnlBookRoomLayout.setHorizontalGroup(
-            pnlBookRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoomLayout.createSequentialGroup()
-                .addComponent(tabBookRoom)
-                .addContainerGap())
-        );
-        pnlBookRoomLayout.setVerticalGroup(
-            pnlBookRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoomLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabBookRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Book Car", pnlBookRoom);
-
-        tabManageBookings.setBackground(new java.awt.Color(240, 240, 240));
-
-        formBook2.setBackground(new java.awt.Color(204, 255, 204));
-
-        btnBookingsSearch.setBackground(new java.awt.Color(0, 153, 153));
+        btnBookingsSearch.setBackground(new java.awt.Color(255, 204, 102));
         btnBookingsSearch.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnBookingsSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnBookingsSearch.setText("Search");
@@ -907,7 +370,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBookingsEdit.setBackground(new java.awt.Color(0, 153, 153));
+        btnBookingsEdit.setBackground(new java.awt.Color(255, 204, 102));
         btnBookingsEdit.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnBookingsEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnBookingsEdit.setText("Edit");
@@ -917,7 +380,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnBookingsDelete.setBackground(new java.awt.Color(0, 153, 153));
+        btnBookingsDelete.setBackground(new java.awt.Color(255, 204, 102));
         btnBookingsDelete.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnBookingsDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnBookingsDelete.setText("Delete");
@@ -948,6 +411,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel41.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(255, 204, 102));
         jLabel41.setText("Booking ID");
 
         txtCustomerID.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -961,6 +425,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel42.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 204, 102));
         jLabel42.setText("Customer ID");
 
         txtBookingID.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -974,9 +439,11 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel51.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(255, 204, 102));
         jLabel51.setText("Car Plate");
 
         jLabel52.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(255, 204, 102));
         jLabel52.setText("Booking Date");
 
         txtPickUp.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1010,20 +477,57 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel53.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(255, 204, 102));
         jLabel53.setText("Pick-Up");
 
         jLabel54.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 204, 102));
         jLabel54.setText("Drop-Off");
 
         jLabel55.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(255, 204, 102));
         jLabel55.setText("Amount");
+
+        jLabel56.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel56.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel56.setText("*");
+
+        jLabel58.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel58.setText("*");
+
+        jLabel60.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel60.setText("*");
+
+        jLabel61.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel61.setText("*");
+
+        jLabel62.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel62.setText("*");
+
+        jLabel63.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel63.setText("*");
+
+        jLabel64.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel64.setText("*");
 
         javax.swing.GroupLayout formBook2Layout = new javax.swing.GroupLayout(formBook2);
         formBook2.setLayout(formBook2Layout);
         formBook2Layout.setHorizontalGroup(
             formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formBook2Layout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(81, 81, 81)
+                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel61)
+                    .addComponent(jLabel62)
+                    .addComponent(jLabel63)
+                    .addComponent(jLabel64))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(formBook2Layout.createSequentialGroup()
                         .addComponent(jLabel42)
@@ -1044,31 +548,36 @@ public class AdminFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel55)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
-                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel54)
-                                    .addComponent(jLabel52))
-                                .addGap(3, 3, 3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(formBook2Layout.createSequentialGroup()
+                                .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel56)
+                                    .addComponent(jLabel58)
+                                    .addComponent(jLabel60))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel51)
-                                    .addComponent(btnBookingsSearch))
-                                .addGap(18, 18, 18)))
-                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(formBook2Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook2Layout.createSequentialGroup()
+                                        .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel54)
+                                            .addComponent(jLabel52))
+                                        .addGap(3, 3, 3))
+                                    .addGroup(formBook2Layout.createSequentialGroup()
+                                        .addComponent(jLabel51)
+                                        .addGap(33, 33, 33)))
                                 .addGap(22, 22, 22)
                                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtBookingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtBookingCP, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(64, 64, 64))
                             .addGroup(formBook2Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
+                                .addComponent(btnBookingsSearch)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(btnBookingsDelete)))
-                        .addGap(64, 64, 64))))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBookingsDelete)
+                                .addGap(40, 40, 40))))))
         );
         formBook2Layout.setVerticalGroup(
             formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1078,35 +587,41 @@ public class AdminFrame extends javax.swing.JFrame {
                     .addComponent(jLabel41)
                     .addComponent(txtBookingID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBookingCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel51))
+                    .addComponent(jLabel51)
+                    .addComponent(jLabel56)
+                    .addComponent(jLabel61))
                 .addGap(14, 14, 14)
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
                     .addComponent(txtCustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBookingDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel52))
+                    .addComponent(jLabel52)
+                    .addComponent(jLabel58)
+                    .addComponent(jLabel62))
                 .addGap(17, 17, 17)
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPickUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel53)
                     .addComponent(jLabel54)
-                    .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDropOff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel60)
+                    .addComponent(jLabel63))
                 .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(formBook2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel55)))
+                            .addComponent(jLabel55)
+                            .addComponent(jLabel64)))
                     .addGroup(formBook2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(36, 36, 36)
                         .addGroup(formBook2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnBookingsDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBookingsEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBookingsSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        tableBookings.setBackground(new java.awt.Color(204, 255, 255));
         tableBookings.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tableBookings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1154,26 +669,30 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageBookingsLayout.createSequentialGroup()
                 .addComponent(formBook2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Manage Bookings", tabManageBookings);
 
-        tabManageCars.setBackground(new java.awt.Color(240, 240, 240));
+        tabManageCars.setBackground(new java.awt.Color(255, 204, 102));
 
-        formBook3.setBackground(new java.awt.Color(204, 255, 204));
+        formBook3.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel22.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 204, 102));
         jLabel22.setText("Car Plate");
 
         jLabel23.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 204, 102));
         jLabel23.setText("Car Brand");
 
         jLabel30.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 204, 102));
         jLabel30.setText("Car Model");
 
         jLabel31.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 204, 102));
         jLabel31.setText("Daily Rate");
 
         txtCarPlate.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1212,7 +731,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnAddCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnAddCar.setBackground(new java.awt.Color(255, 204, 102));
         btnAddCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnAddCar.setForeground(new java.awt.Color(255, 255, 255));
         btnAddCar.setText("Add");
@@ -1222,7 +741,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnSearchCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnSearchCar.setBackground(new java.awt.Color(255, 204, 102));
         btnSearchCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnSearchCar.setForeground(new java.awt.Color(255, 255, 255));
         btnSearchCar.setText("Search");
@@ -1232,7 +751,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnEditCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnEditCar.setBackground(new java.awt.Color(255, 204, 102));
         btnEditCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnEditCar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditCar.setText("Edit");
@@ -1242,7 +761,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteCar.setBackground(new java.awt.Color(0, 153, 153));
+        btnDeleteCar.setBackground(new java.awt.Color(255, 204, 102));
         btnDeleteCar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnDeleteCar.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteCar.setText("Delete");
@@ -1265,6 +784,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel46.setText("*");
 
         jLabel45.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(255, 204, 102));
         jLabel45.setText("Required fields");
 
         jLabel44.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
@@ -1368,7 +888,6 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        tableCars.setBackground(new java.awt.Color(204, 255, 255));
         tableCars.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tableCars.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1422,14 +941,17 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Manage Cars", tabManageCars);
 
-        tabManageUsers.setBackground(new java.awt.Color(240, 240, 240));
+        tabManageUsers.setBackground(new java.awt.Color(255, 204, 102));
 
-        formBook.setBackground(new java.awt.Color(204, 255, 204));
+        formBook.setBackground(new java.awt.Color(0, 0, 0));
+        formBook.setForeground(new java.awt.Color(255, 204, 102));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 204, 102));
         jLabel2.setText("Full Name");
 
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 204, 102));
         jLabel3.setText("User Role");
 
         comRole.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1443,6 +965,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 204, 102));
         jLabel4.setText("Contact no.");
 
         txtContact.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1454,7 +977,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnUserSearch.setBackground(new java.awt.Color(0, 153, 153));
+        btnUserSearch.setBackground(new java.awt.Color(255, 204, 102));
         btnUserSearch.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnUserSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnUserSearch.setText("Search");
@@ -1474,12 +997,14 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 204, 102));
         jLabel6.setText("Gender");
 
         comGender.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         comGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
         jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 204, 102));
         jLabel7.setText("Email");
 
         txtEmail.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1492,6 +1017,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 204, 102));
         jLabel8.setText("NRIC");
 
         txtNric.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1504,6 +1030,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 204, 102));
         jLabel9.setText("Username");
 
         txtUsername.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1527,9 +1054,10 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel14.setText("*");
 
         jLabel10.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 204, 102));
         jLabel10.setText("Password");
 
-        btnUserAdd.setBackground(new java.awt.Color(0, 153, 153));
+        btnUserAdd.setBackground(new java.awt.Color(255, 204, 102));
         btnUserAdd.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnUserAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnUserAdd.setText("Add");
@@ -1539,7 +1067,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnUserEdit.setBackground(new java.awt.Color(0, 153, 153));
+        btnUserEdit.setBackground(new java.awt.Color(255, 204, 102));
         btnUserEdit.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnUserEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnUserEdit.setText("Edit");
@@ -1549,7 +1077,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnUserDelete.setBackground(new java.awt.Color(0, 153, 153));
+        btnUserDelete.setBackground(new java.awt.Color(255, 204, 102));
         btnUserDelete.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnUserDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnUserDelete.setText("Delete");
@@ -1560,6 +1088,7 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 204, 102));
         jLabel11.setText("Required fields");
 
         jLabel15.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
@@ -1673,7 +1202,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE)
+                            .addComponent(txtNric, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                             .addComponent(jLabel50))
                         .addGap(15, 15, 15)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1701,7 +1230,7 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel28))
-                            .addComponent(comGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, Short.MAX_VALUE))
+                            .addComponent(comGender, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formBookLayout.createSequentialGroup()
@@ -1724,7 +1253,6 @@ public class AdminFrame extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        tableUsers.setBackground(new java.awt.Color(204, 255, 255));
         tableUsers.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         tableUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1778,7 +1306,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Manage Users", tabManageUsers);
 
-        tabReceipts.setBackground(new java.awt.Color(204, 255, 204));
+        tabReceipts.setBackground(new java.awt.Color(0, 0, 0));
 
         txtAreaReceipt.setEditable(false);
         txtAreaReceipt.setColumns(20);
@@ -1787,6 +1315,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jScrollPane5.setViewportView(txtAreaReceipt);
 
         jLabel43.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(255, 204, 102));
         jLabel43.setText("Booking ID");
 
         txtBookIdReceipt.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
@@ -1799,7 +1328,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnNextReceipt.setBackground(new java.awt.Color(0, 153, 153));
+        btnNextReceipt.setBackground(new java.awt.Color(255, 204, 102));
         btnNextReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnNextReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnNextReceipt.setText(">");
@@ -1810,10 +1339,11 @@ public class AdminFrame extends javax.swing.JFrame {
         });
 
         jLabel19.setFont(new java.awt.Font("Poppins Medium", 1, 20)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 204, 102));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("Receipt");
 
-        btnPrintReceipt.setBackground(new java.awt.Color(0, 153, 153));
+        btnPrintReceipt.setBackground(new java.awt.Color(255, 204, 102));
         btnPrintReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnPrintReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnPrintReceipt.setText("Print Receipt");
@@ -1823,7 +1353,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnSearchReceipt.setBackground(new java.awt.Color(0, 153, 153));
+        btnSearchReceipt.setBackground(new java.awt.Color(255, 204, 102));
         btnSearchReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnSearchReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnSearchReceipt.setText("Search");
@@ -1833,7 +1363,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnFirstReceipt.setBackground(new java.awt.Color(0, 153, 153));
+        btnFirstReceipt.setBackground(new java.awt.Color(255, 204, 102));
         btnFirstReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnFirstReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnFirstReceipt.setText("<< First");
@@ -1843,7 +1373,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnPreviousReceipt.setBackground(new java.awt.Color(0, 153, 153));
+        btnPreviousReceipt.setBackground(new java.awt.Color(255, 204, 102));
         btnPreviousReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnPreviousReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnPreviousReceipt.setText("<");
@@ -1853,7 +1383,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnLastReceipt.setBackground(new java.awt.Color(0, 153, 153));
+        btnLastReceipt.setBackground(new java.awt.Color(255, 204, 102));
         btnLastReceipt.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnLastReceipt.setForeground(new java.awt.Color(255, 255, 255));
         btnLastReceipt.setText("Last >>");
@@ -1863,7 +1393,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        jPanel8.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel8.setBackground(new java.awt.Color(255, 204, 204));
 
         jLabel37.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(51, 51, 51));
@@ -1961,7 +1491,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Receipts", tabReceipts);
 
-        tabReport.setBackground(new java.awt.Color(204, 255, 204));
+        tabReport.setBackground(new java.awt.Color(0, 0, 0));
 
         txtAreaReport.setEditable(false);
         txtAreaReport.setColumns(20);
@@ -1970,12 +1500,13 @@ public class AdminFrame extends javax.swing.JFrame {
         jScrollPane7.setViewportView(txtAreaReport);
 
         jLabel57.setFont(new java.awt.Font("Poppins Medium", 1, 20)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(255, 204, 102));
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel57.setText("Report");
 
         jCalendar2.setBackground(new java.awt.Color(153, 255, 204));
 
-        btnReportStartDate.setBackground(new java.awt.Color(0, 153, 153));
+        btnReportStartDate.setBackground(new java.awt.Color(255, 204, 102));
         btnReportStartDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnReportStartDate.setForeground(new java.awt.Color(255, 255, 255));
         btnReportStartDate.setText("Start Date");
@@ -1985,7 +1516,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnReportEndDate.setBackground(new java.awt.Color(0, 153, 153));
+        btnReportEndDate.setBackground(new java.awt.Color(255, 204, 102));
         btnReportEndDate.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnReportEndDate.setForeground(new java.awt.Color(255, 255, 255));
         btnReportEndDate.setText("End Date");
@@ -2015,7 +1546,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
 
-        btnGenerateReport.setBackground(new java.awt.Color(0, 153, 153));
+        btnGenerateReport.setBackground(new java.awt.Color(255, 204, 102));
         btnGenerateReport.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnGenerateReport.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerateReport.setText("Generate Report");
@@ -2116,432 +1647,142 @@ public class AdminFrame extends javax.swing.JFrame {
         new LoginFrame().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnChkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChkInActionPerformed
-        // chkInDate = datef.format(jCalendar1.getDate());
-        // txtChkIn.setText(chkInDate);
-        // lblChkIn.setText(chkInDate);
-        // validateToday();
-        // if (!chkOutDate.isEmpty()) {
-        //     validateBookingDates();
-        // }
-        // bookRoomID = "";
-        // lblRoomID.setText("N/A");
-    }//GEN-LAST:event_btnChkInActionPerformed
-
-    private void txtChkInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChkInActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtChkInActionPerformed
-
-    private void txtChkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChkOutActionPerformed
-
-    }//GEN-LAST:event_txtChkOutActionPerformed
-
-    private void btnChkOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChkOutActionPerformed
-        // chkOutDate = datef.format(jCalendar1.getDate());
-        // txtChkOut.setText(chkOutDate);
-        // lblChkOut.setText(chkOutDate);
-        // if (!chkInDate.isEmpty()) {
-        //     validateBookingDates();
-        // }
-        // bookRoomID = "";
-        // lblRoomID.setText("N/A");
-    }//GEN-LAST:event_btnChkOutActionPerformed
-
-    private void btnSearchRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchRoomActionPerformed
-        // if (chkInDate.isEmpty() || chkOutDate.isEmpty()) { // Validation
-        //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
-        // } else if (validateBookingDates()) { // Add all available rooms to list model
-        //     ArrayList<String> availableRooms = getAvailableRooms();
-        //     lm.removeAllElements();
-        //     availableRooms.forEach((room) -> lm.addElement(room));
-        // }
-    }//GEN-LAST:event_btnSearchRoomActionPerformed
-
-    private void listAvailableRoomsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listAvailableRoomsValueChanged
-
-    }//GEN-LAST:event_listAvailableRoomsValueChanged
-
-    private void btnProceedGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedGuestActionPerformed
-        // if (listAvailableRooms.getSelectedValue() == null) {
-        //     JOptionPane.showMessageDialog(this, "Please select a room before proceeding.");
-        // } else {
-        //     bookRoomID = listAvailableRooms.getSelectedValue();
-        //     lblRoomID.setText(bookRoomID);
-        //     tabBookRoom.setSelectedIndex(1);
-        // }
-    }//GEN-LAST:event_btnProceedGuestActionPerformed
-
-    private void txtGuestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuestNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGuestNameActionPerformed
-
-    private void btnSearchGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGuestActionPerformed
-        // String name = txtGuestName.getText().trim().toLowerCase();
-        // if (name.isEmpty()) {
-        //     loadGuest();
-        //     JOptionPane.showMessageDialog(this, "Please insert guest name to search.");
-        // } else {
-        //     ArrayList<User> customers = ResortBooking.getCusts();
-        //     DefaultTableModel tableModel = (DefaultTableModel) tableBookRoomGuest.getModel();
-        //     tableModel.setRowCount(0); // Delete all previous rows
-
-        //     // Adding all customers who hv the matched name to table
-        //     for (User cust : customers) {
-        //         if (cust.getName().toLowerCase().contains(name)) {
-        //             row[0] = cust.getUserID();
-        //             row[1] = cust.getName();
-        //             row[2] = cust.getGender();
-        //             row[3] = cust.getContact();
-        //             row[4] = cust.getEmail();
-        //             row[5] = cust.getIC();
-        //             tableModel.addRow(row);
-        //         }
-        //     }
-        // }
-    }//GEN-LAST:event_btnSearchGuestActionPerformed
-
-    private void btnConfirmBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmBookActionPerformed
-        // if (chkInDate.isEmpty() || chkOutDate.isEmpty() || guestID == -1 || bookRoomID.isEmpty())
-        // JOptionPane.showMessageDialog(this, "Please fill in all necessary details before proceeding.");
-        // else {
-        //     ArrayList<String> bookingInfo = new ArrayList<String>();
-        //     Calendar calendar = Calendar.getInstance();
-        //     String today = datef.format(calendar.getTime());
-        //     Collections.addAll(bookingInfo, "-1", String.valueOf(guestID), bookRoomID, chkInDate, chkOutDate, today);
-        //     Booking booking = new Booking(bookingInfo);
-        //     if (!booking.isDuplicate()) {
-        //         if (booking.addToFile())
-        //         JOptionPane.showMessageDialog(this, "Booking successful.");
-        //         else {
-        //             booking = null;
-        //             JOptionPane.showMessageDialog(this, "Booking failed - Something went wrong.");
-        //         }
-        //     } else {
-        //         booking = null; // Deleting it (by making it eligible for garbage collection)
-        //         JOptionPane.showMessageDialog(this, "Booking denied - Duplicate booking detected.");
-        //     }
-        // }
-    }//GEN-LAST:event_btnConfirmBookActionPerformed
-
-    private void btnSelectGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectGuestActionPerformed
-        // int rowSelected = tableBookRoomGuest.getSelectedRow();
-        // if (rowSelected < 0)
-        // JOptionPane.showMessageDialog(this, "Please select a guest first.");
-        // else {
-        //     guestID = (int) tableBookRoomGuest.getValueAt(rowSelected, 0); // UserID col
-        //     txtGuestName.setText((String) tableBookRoomGuest.getValueAt(rowSelected, 1));
-        // }
-    }//GEN-LAST:event_btnSelectGuestActionPerformed
-
-    private void tableBookRoomGuestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookRoomGuestMouseClicked
-        DefaultTableModel tableModel = (DefaultTableModel) tableBookRoomGuest.getModel();
-        int row = tableBookRoomGuest.getSelectedRow();
-
-        if (row >= 0)
-        txtGuestName.setText((String) tableModel.getValueAt(row, 1));
-    }//GEN-LAST:event_tableBookRoomGuestMouseClicked
+//    boolean displayed = false;
     
-    private void btnBookingsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsSearchActionPerformed
-        
-    }//GEN-LAST:event_btnBookingsSearchActionPerformed
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        //        if (displayed) return;
+        //        displayed = true;
+        //        File file = new File(CarRental.getBookingFile());
+        //
+        //        try {
+            //            FileReader fr = new FileReader(file);
+            //            BufferedReader br = new BufferedReader(fr);
+            //
+            //            DefaultTableModel model = (DefaultTableModel)tableBookings.getModel();
+            //            Object[] lines = br.lines().toArray();
+            //
+            //            for(int i = 0; i < lines.length; i++){
+                //                String[] row = lines[i].toString().split(",");
+                //                model.addRow(row);
+                //            }
+            //
+            //        } catch (FileNotFoundException ex) {
+            //            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+            //        }
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
-    private void btnBookingsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsEditActionPerformed
-        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        // int row = tableBookings.getSelectedRow();
+    private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGenerateReportActionPerformed
 
-        // if (row < 0) {
-        //     JOptionPane.showMessageDialog(this, "Please select a row to edit.");
-        // } else if (chkInDate.isEmpty() || chkOutDate.isEmpty()) {
-        //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
-        // } else {
-        //     if (validateBookingDates()) {
-        //         String room = (String) tableModel.getValueAt(row, 1);
-        //         Booking currentBooking = Booking.getBooking((Integer) tableModel.getValueAt(row, 0));
-        //         ArrayList<String> availableRooms = getAvailableRooms(currentBooking);
-        //         if (availableRooms.contains(room)) {
-        //             // passed all validations - approve edit
-        //             currentBooking.updateInfo(chkInDate, chkOutDate);
-        //             JOptionPane.showMessageDialog(this, "Booking info successfully updated.");
-        //         } else {
-        //             JOptionPane.showMessageDialog(this, String.format("Room %s is not available for the given dates.", room));
-        //         }
-        //     }
-        // }
-    }//GEN-LAST:event_btnBookingsEditActionPerformed
+    private void txtReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportEndDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtReportEndDateActionPerformed
 
-    private void btnBookingsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsDeleteActionPerformed
-        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();                                            
-        int row = tableBookings.getSelectedRow();
+    private void txtReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportStartDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtReportStartDateActionPerformed
 
-        if (row < 0)
-            JOptionPane.showMessageDialog(this, "Please select a booking to delete.");
-        else 
+    private void btnReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportEndDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportEndDateActionPerformed
+
+    private void btnReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStartDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportStartDateActionPerformed
+
+    private void btnLastReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastReceiptActionPerformed
+
+        int bookingSize = CarRental.getBookings().size();
+        if (bookingSize == 0)
         {
-            // Current car can be obtained from cars array list based on the row selected in the cars table
-            ArrayList<Booking> bookings = CarRental.getBookings();
-            Booking booking = bookings.get(row);
-            bookings.remove(booking);
-
-            if (Booking.rewriteFile()) {
-                tableModel.removeRow(row);
-                txtBookingID.setText("");
-                txtCustomerID.setText("");
-                txtBookingCP.setText("");
-                txtBookingDate.setText("");
-                txtPickUp.setText("");
-                txtDropOff.setText("");
-                txtAmount.setText("");
-                JOptionPane.showMessageDialog(this, "Booking deleted successfully.");
-            } else {
-                JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
-            }
-        }
-    }//GEN-LAST:event_btnBookingsDeleteActionPerformed
-
-    private void txtBookingCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingCPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBookingCPActionPerformed
-
-    private void txtBookingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBookingDateActionPerformed
-
-    private void txtCustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustomerIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCustomerIDActionPerformed
-
-    private void tableBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookingsMouseClicked
-        
-        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        int row = tableBookings.getSelectedRow();
-        
-        if (row >= 0) {
-            txtBookingID.setText((String) tableModel.getValueAt(row, 0));
-            txtCustomerID.setText((String) tableModel.getValueAt(row, 1));
-            txtBookingCP.setText((String) tableModel.getValueAt(row, 2));
-            txtBookingDate.setText((String) tableModel.getValueAt(row, 3).toString());
-            txtPickUp.setText((String) tableModel.getValueAt(row, 4).toString());
-            txtDropOff.setText((String) tableModel.getValueAt(row, 5).toString());
-            txtAmount.setText((String) tableModel.getValueAt(row, 6));
-    }
-    }//GEN-LAST:event_tableBookingsMouseClicked
-
-    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-    }                                          
-
-
-    private void btnUserSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserSearchActionPerformed
-        
-        String role = comRole.getSelectedItem().toString().toLowerCase();
-        String gender = comGender.getSelectedItem().toString().toLowerCase();
-        String name = txtUserFullName.getText().trim().toLowerCase();
-        String contact = txtContact.getText().trim();
-        String email = txtEmail.getText().trim();
-        String ic = txtNric.getText().trim();
-        String username = txtUsername.getText().trim().toLowerCase();
-        List<User> users = new ArrayList<User>();
-
-        if (role.equals("customer")) {
-           users.addAll(CarRental.getCustomers());
-        } 
-        else { // Admins
-            users.addAll(CarRental.getAdmins());
+            JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+            return;
         }
 
-        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        tableModel.setRowCount(0); // Delete all previous rows
+        // Extracting last booking record
+        Booking booking = CarRental.getBookings().get(bookingSize - 1);
+        loadReceipt(booking);
+        txtBookIdReceipt.setText(booking.getBookingId());
+        // int last = Booking.getHighestId();
+        // Booking booking = Booking.getBooking(last);
+        // boolean hasRecord = true;
 
-        // Adding all users who hv the matched description to table
-        for (User user : users) {
-            // Filtering matched users
-            if (user.getName().toLowerCase().contains(name) && gender.equals(user.getGender().toLowerCase())
-                && user.getContactNo().contains(contact) && user.getEmail().contains(email) &&
-                user.getIC().contains(ic) && user.getUsername().toLowerCase().contains(username)) 
+        // while (booking == null) {
+            //     last--;
+            //     if (last < 0) {
+                //         JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+                //         hasRecord = false;
+                //         break;
+                //     } else {
+                //         booking = Booking.getBooking(last);
+                //     }
+            // }
+
+        // if (hasRecord) {
+            //     loadReceipt(booking);
+            //     txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
+            // }
+    }//GEN-LAST:event_btnLastReceiptActionPerformed
+
+    private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
+        Booking booking = null;
+
+        while (booking == null) {
+            // ReceiptID starts from 1
+            receiptID--;
+            // TODO - Change CarRental.getBookings().size() to Highest ID
+            if (receiptID > 0 && receiptID <= CarRental.getBookings().size())
             {
-                columns[0] = user.getUserID();
-                columns[1] = user.getName();
-                columns[2] = user.getRole();
-                columns[3] = user.getGender();
-                columns[4] = user.getContactNo();
-                columns[5] = user.getEmail();
-                columns[6] = user.getIC();
-                columns[7] = user.getUsername();
-                tableModel.addRow(columns);
-            }
-        }
-        
-    }//GEN-LAST:event_btnUserSearchActionPerformed
-
-    private void txtUserFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserFullNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserFullNameActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void txtNricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNricActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNricActionPerformed
-
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameActionPerformed
-
-    private void btnUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAddActionPerformed
-        
-        String name = txtUserFullName.getText().trim();
-        String contact = txtContact.getText().trim();
-        String email = txtEmail.getText().trim();
-        String ic = txtNric.getText().trim();
-        String gender = comGender.getSelectedItem().toString().toLowerCase();
-        String role = comRole.getSelectedItem().toString();
-        String username = txtUsername.getText().trim();
-        String password = new String(pass.getPassword()).trim();
-
-        if (name.isEmpty() || contact.isEmpty() || email.isEmpty() || 
-            ic.isEmpty() || username.isEmpty() || password.isEmpty() ) 
-        {
-            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
-        }
-        else { // Complete information provided
-            
-            ArrayList<String> userInfo = new ArrayList<String>();
-
-            Collections.addAll(
-                userInfo, "T-1", role.toLowerCase(), name.toUpperCase(), 
-                gender.toLowerCase(), contact, email.toLowerCase(), ic, username.toLowerCase(), password
-            );
-            User user = role.equals("Customer") ? new Customer(userInfo) : new Admin(userInfo);
-
-            if (!user.isDuplicate()) {
-                if (user.addToFile()) {
-                    loadUsers();
-                    JOptionPane.showMessageDialog(this, "User added successfully");
-                } else {
-                    JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
-                }
-            } else {
-                user = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
-            }
-        }
-    }//GEN-LAST:event_btnUserAddActionPerformed
-
-    private void btnUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserEditActionPerformed
-        
-        // User details that are editable - name, contact, email. Others are illogical to be modified
-        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        int row = tableUsers.getSelectedRow();
-        String name = txtUserFullName.getText().trim();
-        String contact = txtContact.getText().trim();
-        String email = txtEmail.getText().trim();
-
-        if (row < 0)
-            JOptionPane.showMessageDialog(this, "Please select a user to edit.");
-
-        else if (name.isEmpty() || contact.isEmpty() || email.isEmpty())
-            JOptionPane.showMessageDialog(this, "Incomplete information.");
-
-        else 
-        {
-            String userID = (String) tableUsers.getValueAt(row, 0); // UserID col
-            List<User> users = new ArrayList<User>();
-
-            if (((String) tableModel.getValueAt(row, 2)).equals("Admin")) 
-                users.addAll(CarRental.getAdmins());
-
-            else
-                users.addAll(CarRental.getCustomers());
-
-            for (User user : users) 
-            {
-                if (!user.getUserID().equals(userID)) continue;
-
-                if (user.getName().equals(name) && user.getContactNo().equals(contact) && user.getEmail().equals(email))
-                JOptionPane.showMessageDialog(this, "Nothing to edit.");
-
-                else
+                String requestedBookingId = String.format("B%05d", receiptID);
+                for (Booking carBooking : CarRental.getBookings())
                 {
-                    if (user.updateInfo(name, contact, email)) {
-                        JOptionPane.showMessageDialog(this, "User updated successfully.");
-                        loadUsers();
+                    if (carBooking.getBookingId().equals(requestedBookingId))
+                    {
+                        booking = carBooking;
+                        loadReceipt(booking);
+                        txtBookIdReceipt.setText(requestedBookingId);
                         break;
-                    } 
-                    else
-                    JOptionPane.showMessageDialog(this, "User update failed - something went wrong.");
+                    }
                 }
-            }
-        }
-    }//GEN-LAST:event_btnUserEditActionPerformed
-
-    private void btnUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDeleteActionPerformed
-
-        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        int row = tableUsers.getSelectedRow();
-
-        if (row < 0)
-        JOptionPane.showMessageDialog(this, "Please select a user to delete.");
-
-        else 
-        {
-            String userID = (String) tableUsers.getValueAt(row, 0); // UserID col
-            String role = (String) tableModel.getValueAt(row, 2);
-            List<User> users = new ArrayList<User>();
-
-            if (role.equals("Admin")) 
-            users.addAll(CarRental.getAdmins());
-
-            else
-            users.addAll(CarRental.getCustomers());
-
-            for (User user : users) 
-            {
-                if (!user.getUserID().equals(userID)) continue;
-
-                if (role.equals("Admin")) 
-                CarRental.getAdmins().remove(user);
-    
-                else
-                CarRental.getCustomers().remove(user);
-
-                if (User.rewriteFile()) {
-                    tableModel.removeRow(row);
-                    txtUserFullName.setText("");
-                    txtContact.setText("");
-                    txtEmail.setText("");
-                    txtNric.setText("");
-                    txtUsername.setText("");
-                    JOptionPane.showMessageDialog(this, "User deleted successfully.");
-                } 
-                else 
-                    JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
-                
+            } else { // Already at first record
+                receiptID++;
                 break;
             }
         }
-    }//GEN-LAST:event_btnUserDeleteActionPerformed
+    }//GEN-LAST:event_btnPreviousReceiptActionPerformed
 
-    private void tableUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsersMouseClicked
+    private void btnFirstReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstReceiptActionPerformed
 
-        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        int row = tableUsers.getSelectedRow();
-
-        if (row >= 0) {
-            txtUserFullName.setText((String) tableModel.getValueAt(row, 1));
-            comRole.setSelectedItem((String) tableModel.getValueAt(row, 2));
-            comGender.setSelectedItem((String) tableModel.getValueAt(row, 3));
-            txtContact.setText((String) tableModel.getValueAt(row, 4));
-            txtEmail.setText((String) tableModel.getValueAt(row, 5));
-            txtNric.setText((String) tableModel.getValueAt(row, 6));
-            txtUsername.setText((String) tableModel.getValueAt(row, 7));
+        if (CarRental.getBookings().size() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No booking receipts to show.");
+            return;
         }
-    }//GEN-LAST:event_tableUsersMouseClicked
 
-    private void txtBookIdReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookIdReceiptActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBookIdReceiptActionPerformed
+        // Extracting first booking record
+        Booking booking = CarRental.getBookings().get(0);
+        loadReceipt(booking);
+        txtBookIdReceipt.setText(booking.getBookingId());
+    }//GEN-LAST:event_btnFirstReceiptActionPerformed
+
+    private void btnSearchReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchReceiptActionPerformed
+        Booking booking = validateBookingID();
+
+        if (booking == null)
+        JOptionPane.showMessageDialog(this, "Invalid Booking ID.");
+
+        else
+        loadReceipt(booking); // populate receipt
+    }//GEN-LAST:event_btnSearchReceiptActionPerformed
+
+    private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
+        try {
+            txtAreaReceipt.print();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Could not print, check your printer.");
+        }
+    }//GEN-LAST:event_btnPrintReceiptActionPerformed
 
     private void btnNextReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextReceiptActionPerformed
         Booking booking = null;
@@ -2550,7 +1791,7 @@ public class AdminFrame extends javax.swing.JFrame {
             // ReceiptID starts from 1
             receiptID++;
             // TODO - Change CarRental.getBookings().size() to Highest ID
-            if (receiptID > 0 && receiptID <= CarRental.getBookings().size()) 
+            if (receiptID > 0 && receiptID <= CarRental.getBookings().size())
             {
                 String requestedBookingId = String.format("B%05d", receiptID);
                 for (Booking carBooking : CarRental.getBookings())
@@ -2571,108 +1812,318 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnNextReceiptActionPerformed
 
-    private void btnPrintReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintReceiptActionPerformed
-        try {
-            txtAreaReceipt.print();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Could not print, check your printer.");
+    private void txtBookIdReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookIdReceiptActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBookIdReceiptActionPerformed
+
+    private void tableUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUsersMouseClicked
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+        int row = tableUsers.getSelectedRow();
+
+        if (row >= 0) {
+            txtUserFullName.setText((String) tableModel.getValueAt(row, 1));
+            comRole.setSelectedItem((String) tableModel.getValueAt(row, 2));
+            comGender.setSelectedItem((String) tableModel.getValueAt(row, 3));
+            txtContact.setText((String) tableModel.getValueAt(row, 4));
+            txtEmail.setText((String) tableModel.getValueAt(row, 5));
+            txtNric.setText((String) tableModel.getValueAt(row, 6));
+            txtUsername.setText((String) tableModel.getValueAt(row, 7));
         }
-    }//GEN-LAST:event_btnPrintReceiptActionPerformed
+    }//GEN-LAST:event_tableUsersMouseClicked
 
-    private void btnSearchReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchReceiptActionPerformed
-        Booking booking = validateBookingID();
+    private void btnUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDeleteActionPerformed
 
-        if (booking == null)
-        JOptionPane.showMessageDialog(this, "Invalid Booking ID.");
+        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+        int row = tableUsers.getSelectedRow();
+
+        if (row < 0)
+        JOptionPane.showMessageDialog(this, "Please select a user to delete.");
 
         else
-        loadReceipt(booking); // populate receipt
-    }//GEN-LAST:event_btnSearchReceiptActionPerformed
-
-    private void btnFirstReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstReceiptActionPerformed
-
-        if (CarRental.getBookings().size() == 0)
         {
-            JOptionPane.showMessageDialog(this, "No booking receipts to show.");
-            return;
-        }
+            String userID = (String) tableUsers.getValueAt(row, 0); // UserID col
+            String role = (String) tableModel.getValueAt(row, 2);
+            List<User> users = new ArrayList<User>();
 
-        // Extracting first booking record
-        Booking booking = CarRental.getBookings().get(0);
-        loadReceipt(booking);
-        txtBookIdReceipt.setText(booking.getBookingId());
+            if (role.equals("Admin"))
+            users.addAll(CarRental.getAdmins());
 
-    }//GEN-LAST:event_btnFirstReceiptActionPerformed
+            else
+            users.addAll(CarRental.getCustomers());
 
-    private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
-        Booking booking = null;
-
-        while (booking == null) {
-            // ReceiptID starts from 1
-            receiptID--;
-            // TODO - Change CarRental.getBookings().size() to Highest ID
-            if (receiptID > 0 && receiptID <= CarRental.getBookings().size()) 
+            for (User user : users)
             {
-                String requestedBookingId = String.format("B%05d", receiptID);
-                for (Booking carBooking : CarRental.getBookings())
-                {
-                    if (carBooking.getBookingId().equals(requestedBookingId))
-                    {
-                        booking = carBooking;
-                        loadReceipt(booking);
-                        txtBookIdReceipt.setText(requestedBookingId);
-                        break;
-                    }
+                if (!user.getUserID().equals(userID)) continue;
+
+                if (role.equals("Admin"))
+                CarRental.getAdmins().remove(user);
+
+                else
+                CarRental.getCustomers().remove(user);
+
+                if (User.rewriteFile()) {
+                    tableModel.removeRow(row);
+                    txtUserFullName.setText("");
+                    txtContact.setText("");
+                    txtEmail.setText("");
+                    txtNric.setText("");
+                    txtUsername.setText("");
+                    JOptionPane.showMessageDialog(this, "User deleted successfully.");
                 }
-            } else { // Already at first record
-                receiptID++;
+                else
+                JOptionPane.showMessageDialog(this, "User deletion failed - something went wrong.");
+
                 break;
             }
         }
-    }//GEN-LAST:event_btnPreviousReceiptActionPerformed
+    }//GEN-LAST:event_btnUserDeleteActionPerformed
 
-    private void btnLastReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastReceiptActionPerformed
-        
-        int bookingSize = CarRental.getBookings().size();
-        if (bookingSize == 0)
+    private void btnUserEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserEditActionPerformed
+
+        // User details that are editable - name, contact, email. Others are illogical to be modified
+        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+        int row = tableUsers.getSelectedRow();
+        String name = txtUserFullName.getText().trim();
+        String contact = txtContact.getText().trim();
+        String email = txtEmail.getText().trim();
+
+        if (row < 0)
+        JOptionPane.showMessageDialog(this, "Please select a user to edit.");
+
+        else if (name.isEmpty() || contact.isEmpty() || email.isEmpty())
+        JOptionPane.showMessageDialog(this, "Incomplete information.");
+
+        else
         {
-            JOptionPane.showMessageDialog(this, "No booking receipts to show.");
-            return;
+            String userID = (String) tableUsers.getValueAt(row, 0); // UserID col
+            List<User> users = new ArrayList<User>();
+
+            if (((String) tableModel.getValueAt(row, 2)).equals("Admin"))
+            users.addAll(CarRental.getAdmins());
+
+            else
+            users.addAll(CarRental.getCustomers());
+
+            for (User user : users)
+            {
+                if (!user.getUserID().equals(userID)) continue;
+
+                if (user.getName().equals(name) && user.getContactNo().equals(contact) && user.getEmail().equals(email))
+                JOptionPane.showMessageDialog(this, "Nothing to edit.");
+
+                else
+                {
+                    if (user.updateInfo(name, contact, email)) {
+                        JOptionPane.showMessageDialog(this, "User updated successfully.");
+                        loadUsers();
+                        break;
+                    }
+                    else
+                    JOptionPane.showMessageDialog(this, "User update failed - something went wrong.");
+                }
+            }
+        }
+    }//GEN-LAST:event_btnUserEditActionPerformed
+
+    private void btnUserAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAddActionPerformed
+
+        String name = txtUserFullName.getText().trim();
+        String contact = txtContact.getText().trim();
+        String email = txtEmail.getText().trim();
+        String ic = txtNric.getText().trim();
+        String gender = comGender.getSelectedItem().toString().toLowerCase();
+        String role = comRole.getSelectedItem().toString();
+        String username = txtUsername.getText().trim();
+        String password = new String(pass.getPassword()).trim();
+
+        if (name.isEmpty() || contact.isEmpty() || email.isEmpty() ||
+            ic.isEmpty() || username.isEmpty() || password.isEmpty() )
+        {
+            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+        }
+        else { // Complete information provided
+
+            ArrayList<String> userInfo = new ArrayList<String>();
+
+            Collections.addAll(
+                userInfo, "T-1", role.toLowerCase(), name.toUpperCase(),
+                gender.toLowerCase(), contact, email.toLowerCase(), ic, username.toLowerCase(), password
+            );
+            User user = role.equals("Customer") ? new Customer(userInfo) : new Admin(userInfo);
+
+            if (!user.isDuplicate()) {
+                if (user.addToFile()) {
+                    loadUsers();
+                    JOptionPane.showMessageDialog(this, "User added successfully");
+                } else {
+                    JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
+                }
+            } else {
+                user = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
+            }
+        }
+    }//GEN-LAST:event_btnUserAddActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void txtNricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNricActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNricActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtUserFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserFullNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserFullNameActionPerformed
+
+    private void btnUserSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserSearchActionPerformed
+
+        String role = comRole.getSelectedItem().toString().toLowerCase();
+        String gender = comGender.getSelectedItem().toString().toLowerCase();
+        String name = txtUserFullName.getText().trim().toLowerCase();
+        String contact = txtContact.getText().trim();
+        String email = txtEmail.getText().trim();
+        String ic = txtNric.getText().trim();
+        String username = txtUsername.getText().trim().toLowerCase();
+        List<User> users = new ArrayList<User>();
+
+        if (role.equals("customer")) {
+            users.addAll(CarRental.getCustomers());
+        }
+        else { // Admins
+            users.addAll(CarRental.getAdmins());
         }
 
-        // Extracting last booking record
-        Booking booking = CarRental.getBookings().get(bookingSize - 1);
-        loadReceipt(booking);
-        txtBookIdReceipt.setText(booking.getBookingId());
-        // int last = Booking.getHighestId();
-        // Booking booking = Booking.getBooking(last);
-        // boolean hasRecord = true;
+        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
 
-        // while (booking == null) {
-        //     last--;
-        //     if (last < 0) {
-        //         JOptionPane.showMessageDialog(this, "No booking receipts to show.");
-        //         hasRecord = false;
-        //         break;
-        //     } else {
-        //         booking = Booking.getBooking(last);
-        //     }
-        // }
+        // Adding all users who hv the matched description to table
+        for (User user : users) {
+            // Filtering matched users
+            if (user.getName().toLowerCase().contains(name) && gender.equals(user.getGender().toLowerCase())
+                && user.getContactNo().contains(contact) && user.getEmail().contains(email) &&
+                user.getIC().contains(ic) && user.getUsername().toLowerCase().contains(username))
+            {
+                columns[0] = user.getUserID();
+                columns[1] = user.getName();
+                columns[2] = user.getRole();
+                columns[3] = user.getGender();
+                columns[4] = user.getContactNo();
+                columns[5] = user.getEmail();
+                columns[6] = user.getIC();
+                columns[7] = user.getUsername();
+                tableModel.addRow(columns);
+            }
+        }
 
-        // if (hasRecord) {
-        //     loadReceipt(booking);
-        //     txtBookIdReceipt.setText(Integer.toString(booking.getBookingID()));
-        // }
-    }//GEN-LAST:event_btnLastReceiptActionPerformed
+    }//GEN-LAST:event_btnUserSearchActionPerformed
+
+    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContactActionPerformed
+
+    private void comRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comRoleActionPerformed
+
+    private void tableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCarsMouseClicked
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();
+        int row = tableCars.getSelectedRow();
+
+        if (row >= 0) {
+            txtCarPlate.setText((String) tableModel.getValueAt(row, 1));
+            txtCarBrand.setText((String) tableModel.getValueAt(row, 2));
+            txtCarModel.setText((String) tableModel.getValueAt(row, 3));
+            txtCarDailyRate.setText((String) tableModel.getValueAt(row, 4));
+        }
+    }//GEN-LAST:event_tableCarsMouseClicked
+
+    private void btnDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCarActionPerformed
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();
+        int row = tableCars.getSelectedRow();
+
+        if (row < 0)
+        JOptionPane.showMessageDialog(this, "Please select a car to delete.");
+        else
+        {
+            // Current car can be obtained from cars array list based on the row selected in the cars table
+            ArrayList<Car> cars = CarRental.getCars();
+            Car car = cars.get(row);
+            cars.remove(car);
+
+            if (Car.rewriteFile()) {
+                tableModel.removeRow(row);
+                txtCarPlate.setText("");
+                txtCarBrand.setText("");
+                txtCarModel.setText("");
+                txtCarDailyRate.setText("");
+                JOptionPane.showMessageDialog(this, "Car deleted successfully.");
+                loadCars();
+            }
+            else
+            JOptionPane.showMessageDialog(this, "Car deletion failed - something went wrong.");
+
+        }
+    }//GEN-LAST:event_btnDeleteCarActionPerformed
+
+    private void btnEditCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCarActionPerformed
+
+        int row = tableCars.getSelectedRow();
+        String carPlate = txtCarPlate.getText().trim().toUpperCase();
+        String carBrand = txtCarBrand.getText().trim();
+        String carModel = txtCarModel.getText().trim();
+        String dailyRate = txtCarDailyRate.getText().trim();
+        Double dailyRentalRate = 0.0;
+
+        if (row < 0)
+        JOptionPane.showMessageDialog(this, "Please select a car to edit.");
+
+        else if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
+        JOptionPane.showMessageDialog(this, "Incomplete information provided.");
+
+        else
+        {
+            // Validate daily rate is a numeric (double) value
+            try {
+                dailyRentalRate = Double.parseDouble(dailyRate);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
+                return;
+            }
+
+            String carID = (String) tableCars.getValueAt(row, 0); // CarID col
+
+            for (Car car : CarRental.getCars())
+            {
+                if (!car.getCarID().equals(carID)) continue;
+
+                if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate)) {
+                    loadCars();
+                    JOptionPane.showMessageDialog(this, "Car updated successfully.");
+                } else
+                JOptionPane.showMessageDialog(this, "Failed to update car - something went wrong.");
+            }
+
+        }
+
+    }//GEN-LAST:event_btnEditCarActionPerformed
 
     private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
-        
+
         String carPlate = txtCarPlate.getText().trim().toUpperCase();
         String carBrand = txtCarBrand.getText().trim().toLowerCase();
         String carModel = txtCarModel.getText().trim().toLowerCase();
         String dailyRate = txtCarDailyRate.getText().trim();
         Double dailyRentalRate = -1.0;
-        
+
         // If daily rate field is not empty, ensure that it is a numeric (double) value
         if (!dailyRate.isEmpty())
         {
@@ -2702,34 +2153,21 @@ public class AdminFrame extends javax.swing.JFrame {
                 tableModel.addRow(columns);
             }
         }
-
     }//GEN-LAST:event_btnSearchCarActionPerformed
 
-    private void txtCarBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarBrandActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCarBrandActionPerformed
-
-    private void txtCarModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarModelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCarModelActionPerformed
-
-    private void txtCarDailyRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarDailyRateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCarDailyRateActionPerformed
-
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
-        
+
         String carPlate = txtCarPlate.getText().trim().toUpperCase();
         String carBrand = txtCarBrand.getText().trim();
         String carModel = txtCarModel.getText().trim();
         String dailyRate = txtCarDailyRate.getText().trim();
         Double dailyRentalRate = 0.0;
-        
+
         if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
-            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
-        
+        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+
         else {
-            
+
             // Validate daily rate is a numeric (double) value
             try {
                 dailyRentalRate = Double.parseDouble(dailyRate);
@@ -2743,22 +2181,22 @@ public class AdminFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive value.");
                 return;
             }
-            
+
             // Complete information provided - create new car object and add to database
             ArrayList<String> carInfo = new ArrayList<String>(
                 Arrays.asList("R-1", carPlate, carBrand, carModel, dailyRate)
             );
-            Car car = new Car(carInfo);            
+            Car car = new Car(carInfo);
 
             if (!car.isDuplicate()) {
 
-                if (car.addToFile()) { 
+                if (car.addToFile()) {
                     loadCars();
                     JOptionPane.showMessageDialog(this, "Car added successfully");
-                } 
+                }
                 else
-                    JOptionPane.showMessageDialog(this, "Car not added - Something went wrong.");
-                    
+                JOptionPane.showMessageDialog(this, "Car not added - Something went wrong.");
+
             } else {
                 car = null; // Deleting it (by making it eligible for garbage collection)
                 JOptionPane.showMessageDialog(this, "Car not added - Duplication detected.");
@@ -2766,162 +2204,131 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddCarActionPerformed
 
-    private void btnEditCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCarActionPerformed
-        
-        int row = tableCars.getSelectedRow();
-        String carPlate = txtCarPlate.getText().trim().toUpperCase();
-        String carBrand = txtCarBrand.getText().trim();
-        String carModel = txtCarModel.getText().trim();
-        String dailyRate = txtCarDailyRate.getText().trim();
-        Double dailyRentalRate = 0.0;
+    private void txtCarDailyRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarDailyRateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarDailyRateActionPerformed
 
-        if (row < 0)
-            JOptionPane.showMessageDialog(this, "Please select a car to edit.");
-        
-        else if (carPlate.isEmpty() || carBrand.isEmpty() || carModel.isEmpty() || dailyRate.isEmpty())
-            JOptionPane.showMessageDialog(this, "Incomplete information provided.");
-        
-        else 
-        {
-            // Validate daily rate is a numeric (double) value
-            try {
-                dailyRentalRate = Double.parseDouble(dailyRate);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Daily rental rate must be a numeric value.");
-                return;
-            }
+    private void txtCarModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarModelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarModelActionPerformed
 
-            String carID = (String) tableCars.getValueAt(row, 0); // CarID col
-
-            for (Car car : CarRental.getCars())
-            {
-                if (!car.getCarID().equals(carID)) continue;
-
-                if (car.updateInfo(carPlate, carBrand, carModel, dailyRentalRate)) {
-                    loadCars();
-                    JOptionPane.showMessageDialog(this, "Car updated successfully.");
-                } else
-                    JOptionPane.showMessageDialog(this, "Failed to update car - something went wrong.");
-            }
-
-        }
-                                           
-    }//GEN-LAST:event_btnEditCarActionPerformed
-
-    private void btnDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCarActionPerformed
-        
-        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();                                            
-        int row = tableCars.getSelectedRow();
-
-        if (row < 0)
-            JOptionPane.showMessageDialog(this, "Please select a car to delete.");
-        else 
-        {
-            // Current car can be obtained from cars array list based on the row selected in the cars table
-            ArrayList<Car> cars = CarRental.getCars();
-            Car car = cars.get(row);
-            cars.remove(car);
-
-            if (Car.rewriteFile()) {
-                tableModel.removeRow(row);
-                txtCarPlate.setText("");
-                txtCarBrand.setText("");
-                txtCarModel.setText("");
-                txtCarDailyRate.setText("");
-                JOptionPane.showMessageDialog(this, "Car deleted successfully.");
-                loadCars();
-            } 
-            else
-                JOptionPane.showMessageDialog(this, "Car deletion failed - something went wrong.");
-            
-        }
-
-    }//GEN-LAST:event_btnDeleteCarActionPerformed
-
-    private void tableCarsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCarsMouseClicked
-        
-        DefaultTableModel tableModel = (DefaultTableModel) tableCars.getModel();
-        int row = tableCars.getSelectedRow();
-        
-        if (row >= 0) {
-            txtCarPlate.setText((String) tableModel.getValueAt(row, 1));
-            txtCarBrand.setText((String) tableModel.getValueAt(row, 2));
-            txtCarModel.setText((String) tableModel.getValueAt(row, 3));
-            txtCarDailyRate.setText((String) tableModel.getValueAt(row, 4));
-        }
-    }//GEN-LAST:event_tableCarsMouseClicked
+    private void txtCarBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarBrandActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCarBrandActionPerformed
 
     private void txtCarPlateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarPlateActionPerformed
-        
+
     }//GEN-LAST:event_txtCarPlateActionPerformed
 
-    private void btnBookingsSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsSearchMouseExited
+    private void tableBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBookingsMouseClicked
 
-    }//GEN-LAST:event_btnBookingsSearchMouseExited
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        int row = tableBookings.getSelectedRow();
 
-//    boolean displayed = false;
-    
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-//        if (displayed) return;
-//        displayed = true;
-//        File file = new File(CarRental.getBookingFile());
-//        
-//        try {
-//            FileReader fr = new FileReader(file);
-//            BufferedReader br = new BufferedReader(fr);
-//            
-//            DefaultTableModel model = (DefaultTableModel)tableBookings.getModel();
-//            Object[] lines = br.lines().toArray();
-//            
-//            for(int i = 0; i < lines.length; i++){
-//                String[] row = lines[i].toString().split(",");
-//                model.addRow(row);
-//            }
-//            
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void txtBookingIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBookingIDActionPerformed
-
-    private void txtPickUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPickUpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPickUpActionPerformed
-
-    private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAmountActionPerformed
+        if (row >= 0) {
+            txtBookingID.setText((String) tableModel.getValueAt(row, 0));
+            txtCustomerID.setText((String) tableModel.getValueAt(row, 1));
+            txtBookingCP.setText((String) tableModel.getValueAt(row, 2));
+            txtBookingDate.setText((String) tableModel.getValueAt(row, 3).toString());
+            txtPickUp.setText((String) tableModel.getValueAt(row, 4).toString());
+            txtDropOff.setText((String) tableModel.getValueAt(row, 5).toString());
+            txtAmount.setText((String) tableModel.getValueAt(row, 6).toString());
+        }
+    }//GEN-LAST:event_tableBookingsMouseClicked
 
     private void txtDropOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDropOffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDropOffActionPerformed
 
-    private void comRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comRoleActionPerformed
+    private void txtAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comRoleActionPerformed
+    }//GEN-LAST:event_txtAmountActionPerformed
 
-    private void btnReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStartDateActionPerformed
+    private void txtPickUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPickUpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportStartDateActionPerformed
+    }//GEN-LAST:event_txtPickUpActionPerformed
 
-    private void btnReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportEndDateActionPerformed
+    private void txtBookingIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnReportEndDateActionPerformed
+    }//GEN-LAST:event_txtBookingIDActionPerformed
 
-    private void txtReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportStartDateActionPerformed
+    private void txtCustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustomerIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtReportStartDateActionPerformed
+    }//GEN-LAST:event_txtCustomerIDActionPerformed
 
-    private void txtReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportEndDateActionPerformed
+    private void txtBookingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtReportEndDateActionPerformed
+    }//GEN-LAST:event_txtBookingDateActionPerformed
 
-    private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
+    private void txtBookingCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingCPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGenerateReportActionPerformed
+    }//GEN-LAST:event_txtBookingCPActionPerformed
+
+    private void btnBookingsDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsDeleteActionPerformed
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        int row = tableBookings.getSelectedRow();
+
+        if (row < 0)
+        JOptionPane.showMessageDialog(this, "Please select a booking to delete.");
+        else
+        {
+            // Current car can be obtained from cars array list based on the row selected in the cars table
+            ArrayList<Booking> bookings = CarRental.getBookings();
+            Booking booking = bookings.get(row);
+            bookings.remove(booking);
+
+            if (Booking.rewriteFile()) {
+                tableModel.removeRow(row);
+                txtBookingID.setText("");
+                txtCustomerID.setText("");
+                txtBookingCP.setText("");
+                txtBookingDate.setText("");
+                txtPickUp.setText("");
+                txtDropOff.setText("");
+                txtAmount.setText("");
+                JOptionPane.showMessageDialog(this, "Booking deleted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
+            }
+        }
+    }//GEN-LAST:event_btnBookingsDeleteActionPerformed
+
+    private void btnBookingsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsEditActionPerformed
+        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        // int row = tableBookings.getSelectedRow();
+
+        // if (row < 0) {
+            //     JOptionPane.showMessageDialog(this, "Please select a row to edit.");
+            // } else if (chkInDate.isEmpty() || chkOutDate.isEmpty()) {
+            //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
+            // } else {
+            //     if (validateBookingDates()) {
+                //         String room = (String) tableModel.getValueAt(row, 1);
+                //         Booking currentBooking = Booking.getBooking((Integer) tableModel.getValueAt(row, 0));
+                //         ArrayList<String> availableRooms = getAvailableRooms(currentBooking);
+                //         if (availableRooms.contains(room)) {
+                    //             // passed all validations - approve edit
+                    //             currentBooking.updateInfo(chkInDate, chkOutDate);
+                    //             JOptionPane.showMessageDialog(this, "Booking info successfully updated.");
+                    //         } else {
+                    //             JOptionPane.showMessageDialog(this, String.format("Room %s is not available for the given dates.", room));
+                    //         }
+                //     }
+            // }
+    }//GEN-LAST:event_btnBookingsEditActionPerformed
+
+    private void btnBookingsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsSearchActionPerformed
+
+    }//GEN-LAST:event_btnBookingsSearchActionPerformed
+
+    private void btnBookingsSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsSearchMouseExited
+
+    }//GEN-LAST:event_btnBookingsSearchMouseExited
+    
+    /*    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {
+    // TODO add your handling code here:
+    }    */                                      
+
 
     /**
      * @param args the command line arguments
@@ -2964,9 +2371,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBookingsDelete;
     private javax.swing.JButton btnBookingsEdit;
     private javax.swing.JButton btnBookingsSearch;
-    private javax.swing.JButton btnChkIn;
-    private javax.swing.JButton btnChkOut;
-    private javax.swing.JButton btnConfirmBook;
+    private javax.swing.JButton btnBookingsSearch1;
     private javax.swing.JButton btnDeleteCar;
     private javax.swing.JButton btnEditCar;
     private javax.swing.JButton btnFirstReceipt;
@@ -2976,14 +2381,10 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnNextReceipt;
     private javax.swing.JButton btnPreviousReceipt;
     private javax.swing.JButton btnPrintReceipt;
-    private javax.swing.JButton btnProceedGuest;
     private javax.swing.JButton btnReportEndDate;
     private javax.swing.JButton btnReportStartDate;
     private javax.swing.JButton btnSearchCar;
-    private javax.swing.JButton btnSearchGuest;
     private javax.swing.JButton btnSearchReceipt;
-    private javax.swing.JButton btnSearchRoom;
-    private javax.swing.JButton btnSelectGuest;
     private javax.swing.JButton btnUserAdd;
     private javax.swing.JButton btnUserDelete;
     private javax.swing.JButton btnUserEdit;
@@ -2991,40 +2392,24 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comGender;
     private javax.swing.JComboBox<String> comRole;
     private javax.swing.JPanel formBook;
-    private javax.swing.JPanel formBook1;
     private javax.swing.JPanel formBook2;
     private javax.swing.JPanel formBook3;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -3039,52 +2424,40 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblChkIn;
-    private javax.swing.JLabel lblChkOut;
-    private javax.swing.JLabel lblNights;
     private javax.swing.JLabel lblRapidCar;
-    private javax.swing.JLabel lblRoomID;
-    private javax.swing.JLabel lblServiceTax;
-    private javax.swing.JLabel lblSubtotal;
-    private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblTourismTax;
-    private javax.swing.JList<String> listAvailableRooms;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JPanel pnlBookRoom;
-    private javax.swing.JPanel pnlBookRoom1;
-    private javax.swing.JPanel pnlBookRoom2;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JTabbedPane tabBookRoom;
     private javax.swing.JPanel tabManageBookings;
     private javax.swing.JPanel tabManageCars;
     private javax.swing.JPanel tabManageUsers;
     private javax.swing.JPanel tabReceipts;
     private javax.swing.JPanel tabReport;
-    private javax.swing.JTable tableBookRoomGuest;
     private javax.swing.JTable tableBookings;
     private javax.swing.JTable tableCars;
     private javax.swing.JTable tableUsers;
@@ -3099,13 +2472,10 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtCarDailyRate;
     private javax.swing.JTextField txtCarModel;
     private javax.swing.JTextField txtCarPlate;
-    private javax.swing.JTextField txtChkIn;
-    private javax.swing.JTextField txtChkOut;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtCustomerID;
     private javax.swing.JTextField txtDropOff;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtGuestName;
     private javax.swing.JTextField txtNric;
     private javax.swing.JTextField txtPickUp;
     private javax.swing.JTextField txtReportEndDate;
