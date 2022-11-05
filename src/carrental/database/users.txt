@@ -8,4 +8,3 @@ C0006, customer, RONALD WEASLEY, male, 016-98765432, ron@gmail.com, 001008-14-88
 C0007, customer, ELIJAH MIKAELSON, male, 017-99661123, elijah@gmail.com, 571008-14-1235, 571008-14-1235, qwerty
 C0008, customer, NIKLAUS MIKAELSON, male, 012-12345678, klaus@gmail.com, 601008-14-6866, 601008-14-6866, qwerty
 C0009, customer, DAMON SALVATORE, male, 012-55566688, damon@tvd.com, 181008-14-0802, 181008-14-0802, qwerty
-C0010, customer, SDASASDAS, female, 0000000000, dsadasdasd@.com, 000000000000, dsajdhsadj, 00000000

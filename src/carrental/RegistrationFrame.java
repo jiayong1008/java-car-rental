@@ -356,8 +356,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Name and username must be more than 3 characters. ");
         }
         
-        else if(contactNo.length() < 10 || contactNo.length() > 11){
+        else if(contactNo.length() < 11 || contactNo.length() > 12){
             JOptionPane.showMessageDialog(this, "Invalid contact number. ");
+        }
+        
+        else if(!contactNo.contains("-")){
+            JOptionPane.showMessageDialog(this, "Please follow the contact number format '000-0000000' ");
         }
         
         else if(!email.contains("@") || !email.contains(".com")){
@@ -371,21 +375,25 @@ public class RegistrationFrame extends javax.swing.JFrame {
             }
         }
         
-        else if(ic.length() != 12){
+        else if(ic.length() != 14){
             JOptionPane.showMessageDialog(this, "Invalid NRIC. ");
+        }
+        
+        else if(!ic.contains("-")){
+            JOptionPane.showMessageDialog(this, "Please follow the contact number format '000000-00-0000' ");
         }
         
         else {
             
             try {
-                dContact = Double.parseDouble(contactNo);
+                dContact = Double.parseDouble(contactNo.replace("-",""));
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Contact number must be a numeric value.");
                 return;
             }
             
             try {
-                dIC = Double.parseDouble(ic);
+                dIC = Double.parseDouble(ic.replace("-",""));
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "NRIC must be a numeric value.");
                 return;
