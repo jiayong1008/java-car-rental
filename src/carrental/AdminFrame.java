@@ -2244,6 +2244,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 (dailyRentalRate < 0 || dailyRentalRate >= 0 && car.getDailyRentalRate() == dailyRentalRate))
             {
                 columns[0] = car.getCarID();
+                System.out.println(car.getCarPlate());
                 columns[1] = car.getCarPlate();
                 columns[2] = car.getCarBrand();
                 columns[3] = car.getCarModel();
@@ -2432,6 +2433,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 txtDropOff.setText("");
                 txtAmount.setText("");
                 JOptionPane.showMessageDialog(this, "Booking deleted successfully.");
+                loadBookings();
             } else {
                 JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
             }
@@ -2463,7 +2465,45 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBookingsEditActionPerformed
 
     private void btnBookingsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsSearchActionPerformed
-
+//        String bookingID = txtBookingID.getText().trim().toUpperCase();
+//        String customerID = txtCustomerID.getText().trim().toUpperCase();
+//        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
+//        String sBookingDate = txtBookingDate.getText().trim();
+//        String sPickUp = txtPickUp.getText().trim();
+//        String sDropOff = txtDropOff.getText().trim();
+//        String sAmount = txtAmount.getText().trim();
+//        Double amount = -1.0;
+//
+//        // If daily rate field is not empty, ensure that it is a numeric (double) value
+//        if (!sAmount.isEmpty())
+//        {
+//            try {
+//                amount = Double.parseDouble(sAmount);
+//            } catch (NumberFormatException e) {
+//                JOptionPane.showMessageDialog(this, "Amount must be a numeric value.");
+//                return;
+//            }
+//        }
+//
+//        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+//        tableModel.setRowCount(0); // Delete all previous rows
+//
+//        for (Booking booking : CarRental.getBookings())
+//        {
+//            if (booking.getBookingId().toUpperCase().contains(bookingID) &&
+//                booking.getCustID().toUpperCase().contains(customerID) &&
+//                booking.getCarNo().toUpperCase().contains(bookingCP))
+//            {
+//                columns[0] = booking.getBookingId();
+//                columns[1] = booking.getCustID();
+//                columns[2] = booking.getCarNo();
+//                columns[3] = booking.getBookingDate().toString();
+//                columns[4] = booking.getStartDate().toString();
+//                columns[5] = booking.getEndDate().toString();
+//                columns[6] = String.format("%.2f", booking.getBookingFee());
+//                tableModel.addRow(columns);
+//            }
+//        }
     }//GEN-LAST:event_btnBookingsSearchActionPerformed
 
     private void btnBookingsSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsSearchMouseExited
@@ -2506,7 +2546,54 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerateReportActionPerformed
 
     private void btnBookingsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsAddActionPerformed
-        // TODO add your handling code here:
+//        String customerID = txtCustomerID.getText().trim().toUpperCase();
+//        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
+//        String sBookingDate = txtBookingDate.getText().trim();
+//        String sPickUp = txtPickUp.getText().trim();
+//        String sDropOff = txtDropOff.getText().trim();
+//        String sAmount = txtAmount.getText().trim();
+//        Double amount = 0.0;
+//        String bookingID = "1";
+//
+//        if (bookingID.isEmpty() || customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
+//        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
+//
+//        else {
+//
+//            // Validate daily rate is a numeric (double) value
+//            try {
+//                amount = Double.parseDouble(sAmount);
+//            } catch (NumberFormatException e) {
+//                JOptionPane.showMessageDialog(this, "Amount must be a numeric value.");
+//                return;
+//            }
+//
+//            // Validate daily rate is a positive value
+////            if (dailyRentalRate <= 0) {
+////                JOptionPane.showMessageDialog(this, "Daily rental rate must be a positive value.");
+////                return;
+////            }
+//
+//            // Complete information provided - create new car object and add to database
+//            ArrayList<String> bookingInfo = new ArrayList<String>(
+//                Arrays.asList(bookingID, customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount)
+//            );
+//            Booking booking = new Booking(bookingInfo);
+//
+//            if (!booking.isDuplicate()) {
+//
+//                if (booking.addToFile()) {
+//                    loadBookings();
+//                    JOptionPane.showMessageDialog(this, "Booking added successfully");
+//                }
+//                else
+//                JOptionPane.showMessageDialog(this, "Booking not added - Something went wrong.");
+//
+//            } else {
+//                booking = null; // Deleting it (by making it eligible for garbage collection)
+//                JOptionPane.showMessageDialog(this, "Booking not added - Duplication detected.");
+//            }
+//        }
     }//GEN-LAST:event_btnBookingsAddActionPerformed
 
     private void btnUserResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserResetActionPerformed

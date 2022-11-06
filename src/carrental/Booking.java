@@ -1,5 +1,6 @@
 package carrental;
 
+import static carrental.Car.id;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class Booking {
     
@@ -46,6 +48,29 @@ public class Booking {
         // Todo - Initialize Customer and Car object
         custID = bookingInfo.get(1);
         carNo = bookingInfo.get(2);
+        for (Car car : CarRental.getCars())
+        {
+            ArrayList<String> cars = new ArrayList<String>();
+            
+            if (car.getCarPlate().toUpperCase().contains(carNo))
+            {
+                cars.add(car.getCarID()); 
+                cars.add(car.getCarPlate());
+                cars.add(car.getCarBrand());
+                cars.add(car.getCarModel()); 
+                cars.add(String.format("%.2f", car.getDailyRentalRate()));
+                
+//                System.out.println(car.getCarID()+","+car.getCarPlate()+","+car.getCarBrand()+","+car.getCarModel()+","+String.format("%.2f", car.getDailyRentalRate()));
+            }
+            car = new Car(cars);
+            System.out.println("the what"+ car);
+        }
+        
+        ArrayList<Customer> customers = CarRental.getCustomers();
+//        for (Customer customer : customers) {
+//            if (custID.equals(customer.getUserID()))
+////                customer = customer.getUserID() + "," + customer.getRole() + "," + customer.getName() + "," + customer.getGender() + "," + customer.getContactNo() + "," + customer.getEmail() + "," + customer.getIC() + "," + customer.getUsername() + "," + customer.getPassword();
+//        }
 //        customerID = bookingInfo.get(1);
 //        carPlate = bookingInfo.get(2);
         customer = CarRental.getCustomers().get(0);
@@ -84,23 +109,69 @@ public class Booking {
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
     public void setBookingFee(double _bookingFee) { bookingFee = _bookingFee; }
     
+    public boolean isDuplicate() 
+    {
+        ArrayList<Booking> bookings = CarRental.getBookings();
+        
+        for (Booking booking : bookings) {
+            // Car duplication is trigerred when it has the same car plate
+            if (booking.getBookingId().equals(bookingID)) {
+                id--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean addToFile()
+    {
+        String line;
+
+        try {
+            // May throw FileNotFoundException
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getBookingFile(), true));
+            PrintWriter pw = new PrintWriter(bw);
+            
+            line = String.format(
+                "%s, %s, %s, %s, %s, %s, %.2f\n", 
+                bookingID, custID, carNo, bookingDate, startDate, endDate, bookingFee
+            );
+            pw.write(line);
+            pw.close();
+
+            // Add to ResortBooking's 'customers' ArrayList
+            CarRental.addBooking(this);
+            return true;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Booking file does not exist");
+        } catch (IOException e) {
+            System.out.println("Oops..something went wrong.");
+        }
+        
+        return false;
+    }
+    
     public static boolean rewriteFile()
     {
         String line;
 
         try {
             // May throw FileNotFoundException
-            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getCarFile()));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getBookingFile()));
             PrintWriter pw = new PrintWriter(bw);
-            pw.write("carPlate, carBrand, carModel, dailyRentalRate\n");
+            pw.write("bookingId, customerId, carPlate, bookingDate, startDate, endDate, bookingFee\n");
             
-            for (Car car : CarRental.getCars()) {
+            for (Booking booking : CarRental.getBookings()) {
                 line = String.format(
-                    "%s, %s, %s, %.02f\n", 
-                    car.getCarPlate(),
-                    car.getCarBrand(),
-                    car.getCarModel(),
-                    car.getDailyRentalRate());
+                    "%s, %s, %s, %s, %s, %s, %.02f\n", 
+                    booking.getBookingId(),
+                    booking.getCustID(),
+                    booking.getCarNo(),
+                    booking.getBookingDate(),
+                    booking.getStartDate(),
+                    booking.getEndDate(),
+                    booking.getBookingFee());
                 pw.write(line);
             }
             
@@ -108,7 +179,7 @@ public class Booking {
             return true;
 
         } catch (FileNotFoundException e) {
-            System.out.println("User file does not exist");
+            System.out.println("Booking file does not exist");
         } catch (IOException e) {
             System.out.println("Oops..something went wrong.");
         }
