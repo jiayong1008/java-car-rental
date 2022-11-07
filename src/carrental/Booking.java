@@ -38,7 +38,7 @@ public class Booking {
         bookingFee = Double.parseDouble(sBookingFee);
         
         //Date Format
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
         //Convert String to Date
         bookingDate = LocalDate.parse(sBookingDate, format);
@@ -48,23 +48,23 @@ public class Booking {
         // Todo - Initialize Customer and Car object
         custID = bookingInfo.get(1);
         carNo = bookingInfo.get(2);
-        for (Car car : CarRental.getCars())
-        {
-            ArrayList<String> cars = new ArrayList<String>();
-            
-            if (car.getCarPlate().toUpperCase().contains(carNo))
-            {
-                cars.add(car.getCarID()); 
-                cars.add(car.getCarPlate());
-                cars.add(car.getCarBrand());
-                cars.add(car.getCarModel()); 
-                cars.add(String.format("%.2f", car.getDailyRentalRate()));
-                
-//                System.out.println(car.getCarID()+","+car.getCarPlate()+","+car.getCarBrand()+","+car.getCarModel()+","+String.format("%.2f", car.getDailyRentalRate()));
-            }
-            car = new Car(cars);
-            System.out.println("the what"+ car);
-        }
+//        for (Car car : CarRental.getCars())
+//        {
+//            ArrayList<String> cars = new ArrayList<String>();
+//            
+//            if (car.getCarPlate().toUpperCase().contains(carNo))
+//            {
+//                cars.add(car.getCarID()); 
+//                cars.add(car.getCarPlate());
+//                cars.add(car.getCarBrand());
+//                cars.add(car.getCarModel()); 
+//                cars.add(String.format("%.2f", car.getDailyRentalRate()));
+//                
+////                System.out.println(car.getCarID()+","+car.getCarPlate()+","+car.getCarBrand()+","+car.getCarModel()+","+String.format("%.2f", car.getDailyRentalRate()));
+//            }
+//            car = new Car(cars);
+//            System.out.println("the what"+ car);
+//        }
         
         ArrayList<Customer> customers = CarRental.getCustomers();
 //        for (Customer customer : customers) {
