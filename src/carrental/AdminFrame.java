@@ -1334,17 +1334,23 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel49))
-                        .addGap(12, 12, 12)
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtNric)
-                            .addComponent(jLabel50))
-                        .addGap(15, 15, 15)
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formBookLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel50))
+                                .addGap(19, 19, 19))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBookLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNric, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28))
-                        .addGap(18, 18, 18)
+                            .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel28)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13)
@@ -1377,7 +1383,7 @@ public class AdminFrame extends javax.swing.JFrame {
                             .addComponent(jLabel27)
                             .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(formBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUserAdd)
                             .addComponent(btnUserSearch)
                             .addComponent(btnUserReset, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1422,7 +1428,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formBook, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
+                    .addComponent(formBook, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -2247,6 +2253,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 (dailyRentalRate < 0 || dailyRentalRate >= 0 && car.getDailyRentalRate() == dailyRentalRate))
             {
                 columns[0] = car.getCarID();
+                System.out.println(car.getCarPlate());
                 columns[1] = car.getCarPlate();
                 columns[2] = car.getCarBrand();
                 columns[3] = car.getCarModel();
@@ -2435,6 +2442,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 txtDropOff.setText("");
                 txtAmount.setText("");
                 JOptionPane.showMessageDialog(this, "Booking deleted successfully.");
+                loadBookings();
             } else {
                 JOptionPane.showMessageDialog(this, "Booking deletion failed - something went wrong.");
             }
@@ -2442,31 +2450,89 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBookingsDeleteActionPerformed
 
     private void btnBookingsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsEditActionPerformed
-        // DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
-        // int row = tableBookings.getSelectedRow();
+        int row = tableBookings.getSelectedRow();
+        String customerID = txtCustomerID.getText().trim().toUpperCase();
+        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
+        String sBookingDate = txtBookingDate.getText().trim();
+        String sPickUp = txtPickUp.getText().trim();
+        String sDropOff = txtDropOff.getText().trim();
+        String sAmount = txtAmount.getText().trim();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate bookingDate = LocalDate.parse(sBookingDate, format);
+        LocalDate pickUp = LocalDate.parse(sPickUp, format);
+        LocalDate dropOff = LocalDate.parse(sDropOff, format);
+        Double amount = 0.0;
 
-        // if (row < 0) {
-            //     JOptionPane.showMessageDialog(this, "Please select a row to edit.");
-            // } else if (chkInDate.isEmpty() || chkOutDate.isEmpty()) {
-            //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
-            // } else {
-            //     if (validateBookingDates()) {
-                //         String room = (String) tableModel.getValueAt(row, 1);
-                //         Booking currentBooking = Booking.getBooking((Integer) tableModel.getValueAt(row, 0));
-                //         ArrayList<String> availableRooms = getAvailableRooms(currentBooking);
-                //         if (availableRooms.contains(room)) {
-                    //             // passed all validations - approve edit
-                    //             currentBooking.updateInfo(chkInDate, chkOutDate);
-                    //             JOptionPane.showMessageDialog(this, "Booking info successfully updated.");
-                    //         } else {
-                    //             JOptionPane.showMessageDialog(this, String.format("Room %s is not available for the given dates.", room));
-                    //         }
-                //     }
-            // }
+        if (row < 0)
+        JOptionPane.showMessageDialog(this, "Please select a booking to edit.");
+
+        else if (bookingCP.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty())
+        JOptionPane.showMessageDialog(this, "Incomplete information provided.");
+//
+        else
+        {
+            String bookingID = (String) tableBookings.getValueAt(row, 0); 
+
+            for (Booking booking : CarRental.getBookings())
+            {
+                if (!booking.getBookingId().equals(bookingID)) continue;
+                if (booking.getCarNo().equals(bookingCP) && booking.getStartDate().equals(sPickUp) && booking.getEndDate().equals(sDropOff)){
+                JOptionPane.showMessageDialog(this, "Nothing to edit.");
+                }
+                else
+                {
+                    if (booking.updateInfo(bookingCP, pickUp, dropOff)) {
+                        JOptionPane.showMessageDialog(this, "Booking updated successfully.");
+                        loadBookings();
+                        break;
+                    }
+                    else
+                    JOptionPane.showMessageDialog(this, "Booking update failed - something went wrong.");
+                }
+            }
+
+        }
     }//GEN-LAST:event_btnBookingsEditActionPerformed
 
     private void btnBookingsSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsSearchActionPerformed
+        String bookingID = txtBookingID.getText().trim().toUpperCase();
+        String customerID = txtCustomerID.getText().trim().toUpperCase();
+        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
+        String sBookingDate = txtBookingDate.getText().trim();
+        String sPickUp = txtPickUp.getText().trim();
+        String sDropOff = txtDropOff.getText().trim();
+        String sAmount = txtAmount.getText().trim();
+        Double amount = -1.0;
 
+        // If daily rate field is not empty, ensure that it is a numeric (double) value
+        if (bookingID.isEmpty() && customerID.isEmpty() && bookingCP.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter booking ID, customer ID, or car plate to search bookings.");
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableBookings.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
+
+        for (Booking booking : CarRental.getBookings())
+        {
+            if (booking.getBookingId().toUpperCase().contains(bookingID) &&
+                booking.getCustID().toUpperCase().contains(customerID) &&
+                booking.getCarNo().toUpperCase().contains(bookingCP))
+            {
+                columns[0] = booking.getBookingId();
+                columns[1] = booking.getCustID();
+                columns[2] = booking.getCarNo();
+                columns[3] = booking.getBookingDate().toString();
+                columns[4] = booking.getStartDate().toString();
+                columns[5] = booking.getEndDate().toString();
+                columns[6] = String.format("%.2f", booking.getBookingFee());
+                txtBookingDate.setText("");
+                txtPickUp.setText("");
+                txtDropOff.setText("");
+                txtAmount.setText("");
+                tableModel.addRow(columns);
+            }
+        }
     }//GEN-LAST:event_btnBookingsSearchActionPerformed
 
     private void btnBookingsSearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsSearchMouseExited
@@ -2509,7 +2575,43 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerateReportActionPerformed
 
     private void btnBookingsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsAddActionPerformed
-        // TODO add your handling code here:
+        String customerID = txtCustomerID.getText().trim().toUpperCase();
+        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
+        String sBookingDate = txtBookingDate.getText().trim();
+        String sPickUp = txtPickUp.getText().trim();
+        String sDropOff = txtDropOff.getText().trim();
+        String sAmount = txtAmount.getText().trim();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate bookingDate = LocalDate.parse(sBookingDate, format);
+        LocalDate pickUp = LocalDate.parse(sPickUp, format);
+        LocalDate dropOff = LocalDate.parse(sDropOff, format);
+        Double amount = 0.0;
+//        String bookingID = "1";
+        
+        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
+        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
+
+        else {
+
+            ArrayList<String> bookingInfo = new ArrayList<String>(
+                Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount)
+            );
+            Booking booking = new Booking(bookingInfo);
+
+            if (!booking.isDuplicate()) {
+
+                if (booking.addToFile()) {
+                    loadBookings();
+                    JOptionPane.showMessageDialog(this, "Booking added successfully");
+                }
+                else
+                JOptionPane.showMessageDialog(this, "Booking not added - Something went wrong.");
+
+            } else {
+                booking = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Booking not added - Duplication detected.");
+            }
+        }
     }//GEN-LAST:event_btnBookingsAddActionPerformed
 
     private void btnUserResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserResetActionPerformed

@@ -83,6 +83,7 @@ public class CarRental {
 
     // ADDING INFORMATION
     public static void addCar(Car car) { cars.add(car); }
+    public static void addBooking(Booking booking) { bookings.add(booking); }
     public static void addCustomer(Customer customer) { customers.add(customer); }
     public static void addAdmin(Admin admin) { admins.add(admin); }
     
