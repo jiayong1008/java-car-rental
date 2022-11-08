@@ -12,12 +12,14 @@ import javax.swing.table.DefaultTableModel;
 
 public class CustomerFrame extends javax.swing.JFrame {
 
+    private static User user;
     Object[] columns = new Object[8]; // For individual table row
 
     /**
      * Creates new form CustomerFrame
      */
-    public CustomerFrame() {
+    public CustomerFrame (User cust) {
+        user = cust;
         initComponents();
         loadCars();
 //        loadCustomers();
@@ -1550,7 +1552,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerFrame().setVisible(true);
+                new CustomerFrame(user).setVisible(true);
             }
         });
     }

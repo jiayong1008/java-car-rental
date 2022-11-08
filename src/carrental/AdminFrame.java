@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdminFrame extends javax.swing.JFrame {
 
+    private static User user;
     private final SimpleDateFormat datef = new SimpleDateFormat("dd-MM-yyyy");
     DefaultListModel lm = new DefaultListModel<>();
     Object[] columns = new Object[8]; // For individual table row
@@ -36,7 +37,8 @@ public class AdminFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminFrame
      */
-    public AdminFrame() {
+    public AdminFrame(User admin) {
+        user = admin;
         initComponents();
         loadUsers();
         loadCars();
@@ -2654,7 +2656,7 @@ public class AdminFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminFrame().setVisible(true);
+                new AdminFrame(user).setVisible(true);
             }
         });
     }
