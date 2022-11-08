@@ -1263,6 +1263,7 @@ public class CustomerFrame extends javax.swing.JFrame {
 
     private void btnSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHistoryActionPerformed
        String search = txtSearchHistory.getText().trim().toUpperCase(); 
+       String carNo = null;
        if (search.isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please enter car brand to search bookings.");
@@ -1271,20 +1272,35 @@ public class CustomerFrame extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
 
+        for (Car car : CarRental.getCars())
+        {
+            System.out.println(car.getCarBrand());
+            System.out.println("the search"+ search);
+            if (car.getCarBrand().contains(search))
+            {
+                carNo = car.getCarPlate();
+            }
+            else{
+                carNo = "";
+            }
+        }
+        String customerInfo = user.getUserID();
+        DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
+        tableModelSearch.setRowCount(0); // Delete all previous rows
         for (Booking booking : CarRental.getBookings())
         {
-            if (booking.getCarNo().toUpperCase().contains(search))
+            if (booking.getCustID().toUpperCase().contains(customerInfo) && booking.getCarNo().contains(carNo))//print history of specific customer
             {
                 columns[0] = booking.getBookingId();
-                columns[2] = booking.getCarNo();
                 columns[3] = booking.getCarNo();
                 columns[4] = booking.getCarNo();
+                columns[2] = booking.getCarNo();
                 columns[1] = booking.getBookingDate().toString();
                 columns[5] = booking.getStartDate().toString();
                 columns[6] = booking.getEndDate().toString();
                 columns[7] = String.format("%.2f", booking.getBookingFee());
                 txtSearchHistory.setText("");
-                tableModel.addRow(columns);
+                tableModelSearch.addRow(columns);
             }
         }
     }//GEN-LAST:event_btnSearchHistoryActionPerformed
