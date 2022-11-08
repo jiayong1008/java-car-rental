@@ -22,7 +22,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         user = cust;
         initComponents();
         loadCars();
-        System.out.println(user);
     }
 
 // ================     HELPER FUNCTIONS        ========================

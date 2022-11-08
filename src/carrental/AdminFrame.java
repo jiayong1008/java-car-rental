@@ -43,7 +43,6 @@ public class AdminFrame extends javax.swing.JFrame {
         loadUsers();
         loadCars();
         loadBookings();
-        System.out.println(user);
     }
 
 // ================     HELPER FUNCTIONS        ========================
