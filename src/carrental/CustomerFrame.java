@@ -44,30 +44,24 @@ public class CustomerFrame extends javax.swing.JFrame {
     
     private void loadBookings() 
     {
-//        ArrayList<Customer> customers = CarRental.getCustomers();
-//        System.out.println("the custdsada"+customers);
-//        int index = customers.size();
-//        System.out.println("the cust"+customers.get(1).toString());
-//        String customerInfo = customers.get(0).toString();
-//        String customerID[] = customerInfo.split(" ", 2);
-//        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
-//        tableModel.setRowCount(0); // Delete all previous rows
-//        for (Booking booking : CarRental.getBookings())
-//        {
-//            if (booking.getCustID().toUpperCase().contains(customerID[0]))
-//            {
-//                System.out.println("the customer id is"+customerID[0]);
-//                columns[0] = booking.getBookingId();
-//                columns[3] = booking.getCarNo();
-//                columns[4] = booking.getCarNo();
-//                columns[2] = booking.getCarNo();
-//                columns[1] = booking.getBookingDate().toString();
-//                columns[5] = booking.getStartDate().toString();
-//                columns[6] = booking.getEndDate().toString();
-//                columns[7] = String.format("%.2f", booking.getBookingFee());
-//                tableModel.addRow(columns);
-//            }
-//        }
+        String customerInfo = user.getUserID();
+        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
+        for (Booking booking : CarRental.getBookings())
+        {
+            if (booking.getCustID().toUpperCase().contains(customerInfo))//print history of specific customer
+            {
+                columns[0] = booking.getBookingId();
+                columns[3] = booking.getCarNo();
+                columns[4] = booking.getCarNo();
+                columns[2] = booking.getCarNo();
+                columns[1] = booking.getBookingDate().toString();
+                columns[5] = booking.getStartDate().toString();
+                columns[6] = booking.getEndDate().toString();
+                columns[7] = String.format("%.2f", booking.getBookingFee());
+                tableModel.addRow(columns);
+            }
+        }
     }
 
     // Populate record to table - Overload method (Car)
