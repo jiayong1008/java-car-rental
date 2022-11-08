@@ -12,6 +12,9 @@ import java.util.ArrayList;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
+//    public String customerID;
+//    public String getCustomerID() { return customerID; }
+//    public void setCustomerID(String _customerID) { customerID = _customerID; }
     /**
      * Creates new form LoginFrame
      */
@@ -169,7 +172,7 @@ public class LoginFrame extends javax.swing.JFrame {
         String username = txtUsername.getText().trim().toLowerCase();
         String password = new String(passLogin.getPassword());
         String role = checkCredentials(username, password);
-
+//        customerID = readCustomerID(username, password);
         // Check credentials & user role
         if (role.equals("admin")) 
         {
@@ -220,6 +223,18 @@ public class LoginFrame extends javax.swing.JFrame {
         // Invalid credentials
         return "N/A";
     }
+    
+//    public String readCustomerID(String username, String password) 
+//    {
+//        // Check if user has provided the correct credentials of a customer
+//        ArrayList<Customer> customers = CarRental.getCustomers();
+//        for (Customer customer : customers) {
+//            if (username.equals(customer.getUsername()) && password.equals(customer.getPassword()))
+//                return customer.getUserID();
+//        }
+//
+//        return "N/A";
+//    }
 
     /**
      * @param args the command line arguments

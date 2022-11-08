@@ -59,6 +59,20 @@ public class Booking {
         // Todo - Initialize Customer and Car object
         custID = bookingInfo.get(1);
         carNo = bookingInfo.get(2);
+        
+//        for (Car car : CarRental.getCars())
+//        {
+//            if (car.getCarPlate().toUpperCase().contains(carNo))
+//            {
+////                cars.add(car.getCarID()); 
+////                cars.add(car.getCarPlate());
+////                cars.add(car.getCarBrand());
+////                cars.add(car.getCarModel()); 
+////                cars.add(String.format("%.2f", car.getDailyRentalRate()));
+////                car = new Car(car.getCarID(), car.getCarPlate(), car.getCarBrand(), car.getCarModel(), String.format("%.2f", car.getDailyRentalRate()));
+//            }
+//            
+//        }
 //        for (Car car : CarRental.getCars())
 //        {
 //            ArrayList<String> cars = new ArrayList<String>();

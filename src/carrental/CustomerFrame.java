@@ -20,10 +20,13 @@ public class CustomerFrame extends javax.swing.JFrame {
     public CustomerFrame() {
         initComponents();
         loadCars();
+//        loadCustomers();
+        loadBookings();
     }
 
 // ================     HELPER FUNCTIONS        ========================
-
+    
+    
     // Load cars in table
     private void loadCars() 
     {
@@ -36,6 +39,34 @@ public class CustomerFrame extends javax.swing.JFrame {
             addTableRow(tableModel, cars.get(i));
         }
     }
+    
+    private void loadBookings() 
+    {
+//        ArrayList<Customer> customers = CarRental.getCustomers();
+//        System.out.println("the custdsada"+customers);
+//        int index = customers.size();
+//        System.out.println("the cust"+customers.get(1).toString());
+//        String customerInfo = customers.get(0).toString();
+//        String customerID[] = customerInfo.split(" ", 2);
+//        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
+//        tableModel.setRowCount(0); // Delete all previous rows
+//        for (Booking booking : CarRental.getBookings())
+//        {
+//            if (booking.getCustID().toUpperCase().contains(customerID[0]))
+//            {
+//                System.out.println("the customer id is"+customerID[0]);
+//                columns[0] = booking.getBookingId();
+//                columns[3] = booking.getCarNo();
+//                columns[4] = booking.getCarNo();
+//                columns[2] = booking.getCarNo();
+//                columns[1] = booking.getBookingDate().toString();
+//                columns[5] = booking.getStartDate().toString();
+//                columns[6] = booking.getEndDate().toString();
+//                columns[7] = String.format("%.2f", booking.getBookingFee());
+//                tableModel.addRow(columns);
+//            }
+//        }
+    }
 
     // Populate record to table - Overload method (Car)
     public void addTableRow(DefaultTableModel model, Car car) 
@@ -46,6 +77,20 @@ public class CustomerFrame extends javax.swing.JFrame {
         columns[3] = car.getCarModel();
         columns[4] = String.format("%.2f", car.getDailyRentalRate());
         model.addRow(columns);
+    }
+    
+    public void addHistoryTableRow(DefaultTableModel model, Booking booking) 
+    {
+        columns[0] = booking.getBookingId();
+        columns[2] = booking.getCarNo();
+        columns[3] = booking.getCarNo();
+        columns[4] = booking.getCarNo();
+        columns[1] = booking.getBookingDate();
+        columns[5] = booking.getStartDate();
+        columns[6] = booking.getEndDate();
+        columns[7] = booking.getBookingFee();
+        model.addRow(columns);
+        
     }
 
 // ================     END OF HELPER FUNCTIONS        ========================
@@ -1213,19 +1258,7 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tableHistoryMouseExited
 
     private void tableHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHistoryMouseClicked
-        //        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        //        int row = tableUsers.getSelectedRow();
-        //
-        //        if (row >= 0) {
-            //            txtUserFullName.setText((String) tableModel.getValueAt(row, 1));
-            //            comRole.setSelectedItem((String) tableModel.getValueAt(row, 2));
-            //            comGender.setSelectedItemtableBookingstableModel.getValueAt(row, 3));tableBookings   txtContact.setText((String) tableModel.getValueAt(row, 4));
-        //            txtSearchHistory.setText((String) tableModel.getValueAt(row, 5));
-        //            txtNric.setText((String) tableModel.getValueAt(row, 6));
-        //
-        //            if (((String) tableModel.getValueAt(row, 7)).equals("staff"))
-        //            txtUsername.setText((String) tableModel.getValueAt(row, 7));
-        //        }
+
     }//GEN-LAST:event_tableHistoryMouseClicked
 
     private void txtSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchHistoryActionPerformed
@@ -1233,48 +1266,31 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchHistoryActionPerformed
 
     private void btnSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHistoryActionPerformed
-        //        String role = comRole.getSelectedItem().toString().toLowerCase();
-        //        String gender = comGender.getSelectedItem().toString().toLowerCase();
-        //        String name = txtUserFullName.getText().trim().toLowerCase();
-        //        String contact = txtContact.getText().trim();
-        //        String email = txtSearchHistory.getText().trim();
-        //        String ic = txtNric.getText().trim();
-        //        String username = txtUsername.getText().trim().toLowerCase();
-        // List<User> users = new ArrayList<User>();
+       String search = txtSearchHistory.getText().trim().toUpperCase(); 
+       if (search.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter car brand to search bookings.");
+        }
 
-        // if (role.equals("staff")) {
-            //     for (Staff staff : ResortBooking.getStaffs()) {
-                //         users.add(staff);
-                //     }
-            // } else { // customers
-            //     users = ResortBooking.getCusts();
-            // }
-        //
-        //        DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
-        //        tableModel.setRowCount(0); // Delete all previous rows
+        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
 
-        // Adding all customers who hv the matched description to table
-        // for (User user : users) {
-
-            //     if (user.getName().toLowerCase().contains(name) && gender.equals(user.tableBookings).toLowerCase())
-            //         && user.getContact().contains(contact) && user.getEmail().contains(email) &&
-            //         user.getIC().contains(ic)) { // Common details matched
-
-            //         // matching username for 'staff' role
-            //         if (user.getRole().equals("Customer") || (user.getRole().equals("Staff")
-                //             && user.getUsername().toLowerCase().contains(username))) {
-            //         row[0] = user.getUserID();
-            //         row[1] = user.getName();
-            //         row[2] = user.getRole();
-            //         row[3] = user.getGender();
-            //         row[4] = user.getContact();
-            //         row[5] = user.getEmail();
-            //         row[6] = user.getIC();
-            //         row[7] = user.getUsername();
-            //         tableModel.addRow(row);
-            //     }
-        // }
-        // }
+        for (Booking booking : CarRental.getBookings())
+        {
+            if (booking.getCarNo().toUpperCase().contains(search))
+            {
+                columns[0] = booking.getBookingId();
+                columns[2] = booking.getCarNo();
+                columns[3] = booking.getCarNo();
+                columns[4] = booking.getCarNo();
+                columns[1] = booking.getBookingDate().toString();
+                columns[5] = booking.getStartDate().toString();
+                columns[6] = booking.getEndDate().toString();
+                columns[7] = String.format("%.2f", booking.getBookingFee());
+                txtSearchHistory.setText("");
+                tableModel.addRow(columns);
+            }
+        }
     }//GEN-LAST:event_btnSearchHistoryActionPerformed
 
     private void btnSelectGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectGuestActionPerformed
