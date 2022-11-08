@@ -168,18 +168,18 @@ public class LoginFrame extends javax.swing.JFrame {
         
         String username = txtUsername.getText().trim().toLowerCase();
         String password = new String(passLogin.getPassword());
-        String role = checkCredentials(username, password);
+        User user = checkCredentials(username, password);
 
         // Check credentials & user role
-        if (role.equals("admin")) 
+        if (user.getClass().getSimpleName().equals("Admin")) 
         {
-            AdminFrame adminf = new AdminFrame(); // Open Admin's GUI
+            AdminFrame adminf = new AdminFrame(user); // Open Admin's GUI
             adminf.setVisible(true);
             this.setVisible(false); // Close login GUI
         }
-        else if (role.equals("customer"))
+        else if (user.getClass().getSimpleName().equals("Customer"))
         {
-            CustomerFrame custf = new CustomerFrame(); // Open Customer's GUI
+            CustomerFrame custf = new CustomerFrame(user); // Open Customer's GUI
             custf.setVisible(true);
             this.setVisible(false); // Close login GUI
         }
@@ -201,24 +201,24 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passLoginActionPerformed
 
-    public String checkCredentials(String username, String password) 
+    public User checkCredentials(String username, String password) 
     {
         // Check if user has provided the correct credentials of an admin
         ArrayList<Admin> admins = CarRental.getAdmins();
         for (Admin admin : admins) {
             if (username.equals(admin.getUsername()) && password.equals(admin.getPassword()))
-                return "admin";
+                return admin;
         }
 
         // Check if user has provided the correct credentials of a customer
         ArrayList<Customer> customers = CarRental.getCustomers();
         for (Customer customer : customers) {
             if (username.equals(customer.getUsername()) && password.equals(customer.getPassword()))
-                return "customer";
+                return customer;
         }
 
         // Invalid credentials
-        return "N/A";
+        return null;
     }
 
     /**
