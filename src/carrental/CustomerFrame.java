@@ -52,14 +52,25 @@ public class CustomerFrame extends javax.swing.JFrame {
             if (booking.getCustID().toUpperCase().contains(customerInfo))//print history of specific customer
             {
                 columns[0] = booking.getBookingId();
-                columns[3] = booking.getCarNo();
-                columns[4] = booking.getCarNo();
+//                columns[3] = booking.getCarNo();
+//                columns[4] = booking.getCarNo();
                 columns[2] = booking.getCarNo();
                 columns[1] = booking.getBookingDate().toString();
                 columns[5] = booking.getStartDate().toString();
                 columns[6] = booking.getEndDate().toString();
                 columns[7] = String.format("%.2f", booking.getBookingFee());
                 tableModel.addRow(columns);
+                for (Car car : CarRental.getCars())
+                {
+                    System.out.println("brand is"+car.getCarBrand());
+                    System.out.println("model is "+car.getCarModel());
+                    System.out.println("the search"+ booking.getCarNo());
+                if (car.getCarPlate().contains(booking.getCarNo()))
+                    {
+                    columns[3] = car.getCarBrand();
+                    columns[4] = car.getCarModel();
+                    }
+                }
             }
         }
     }
