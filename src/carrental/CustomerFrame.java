@@ -1288,56 +1288,59 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchHistoryActionPerformed
 
     private void btnSearchHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHistoryActionPerformed
-//       String search = txtSearchHistory.getText().trim().toUpperCase(); //get search(car brand) from user
-//       String carNo = null;
-//       if (search.isEmpty())
-//        {
-//            JOptionPane.showMessageDialog(this, "Please enter car brand to search bookings.");
-//        }
-//
-//        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
-//        tableModel.setRowCount(0); // Delete all previous rows
-//
-//        for (Car car : CarRental.getCars())
-//        {
-////            System.out.println(car.getCarBrand());
-////            System.out.println("the search"+ search);
-//            if (car.getCarBrand().contains(search))
-//            {
-//                System.out.println("the car brand search for "+search);
-//                carNo = car.getCarPlate();//through car brand get carPlate(s) from car file
-//            }
-//        
-//            String customerID = user.getUserID();//get login's userid
-//            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
-//            tableModelSearch.setRowCount(0); // Delete all previous rows
-//            for (Booking booking : CarRental.getBookings())
-//            {
-//                if (carNo != null)
-//                    if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
-//                    {
-//                        if (car.getCarPlate().contains(booking.getCarNo()))
-//                        {
-//                            System.out.println("the carplate in car file"+car.getCarPlate());
-//                            System.out.println("the carno that we search for "+booking.getCarNo());
-//                            System.out.println("brand is"+car.getCarBrand());
-//                            System.out.println("model is "+car.getCarModel());
-//                            columns[3] = car.getCarBrand();
-//                            columns[4] = car.getCarModel();
-//                        }
-//                        columns[0] = booking.getBookingId();
+       String search = txtSearchHistory.getText().trim().toUpperCase(); //get search(car brand) from user
+       String carNo = null;
+       if (search.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter car brand to search bookings.");
+        }
+
+        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
+        tableModel.setRowCount(0); // Delete all previous rows
+
+        for (Car car : CarRental.getCars())
+        {
+//            System.out.println(car.getCarBrand());
+//            System.out.println("the search"+ search);
+            if (car.getCarBrand().contains(search))
+            {
+                System.out.println("search: "+search);
+                carNo = car.getCarPlate();//through car brand get carPlate(s) from car file
+            }
+        
+            String customerID = user.getUserID();//get login's userid
+            System.out.println("customerid: "+customerID);
+            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
+            tableModelSearch.setRowCount(0); // Delete all previous rows
+            for (Booking booking : CarRental.getBookings())
+            {
+                if (carNo != null)
+                    if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
+                    {
+                        if (car.getCarPlate().contains(booking.getCarNo()))
+                        {
+                            System.out.println("the carplate in car file"+car.getCarPlate());
+                            System.out.println("the carno that we search for "+booking.getCarNo());
+                            System.out.println("the customer in customer file"+booking.getCustID());
+                            System.out.println("brand is"+car.getCarBrand());
+                            System.out.println("model is "+car.getCarModel());
+                            columns[3] = car.getCarBrand();
+                            columns[4] = car.getCarModel();
+                        }
+                        System.out.println("im here");
+                        columns[0] = booking.getBookingId();
 //                        columns[3] = "dabian";
 //                        columns[4] = "dabian";        
-//                        columns[1] = booking.getBookingDate().toString();
-//                        columns[2] = booking.getCarNo();
-//                        columns[5] = booking.getStartDate().toString();
-//                        columns[6] = booking.getEndDate().toString();
-//                        columns[7] = String.format("%.2f", booking.getBookingFee());
-//                        txtSearchHistory.setText("");
-//                        tableModelSearch.addRow(columns);
-//                    }
-//            }
-//        }
+                        columns[1] = booking.getBookingDate().toString();
+                        columns[2] = booking.getCarNo();
+                        columns[5] = booking.getStartDate().toString();
+                        columns[6] = booking.getEndDate().toString();
+                        columns[7] = String.format("%.2f", booking.getBookingFee());
+                        tableModelSearch.addRow(columns);
+                    }
+            }
+        }
+        txtSearchHistory.setText("");
     }//GEN-LAST:event_btnSearchHistoryActionPerformed
 
     private void btnSelectGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectGuestActionPerformed
