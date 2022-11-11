@@ -1319,38 +1319,38 @@ public class CustomerFrame extends javax.swing.JFrame {
             {
                 System.out.println("search: "+search);
                 carNo = car.getCarPlate();//through car brand get carPlate(s) from car file
-            }
+//            }
         
-            String customerID = user.getUserID();//get login's userid
-            System.out.println("customerid: "+customerID);
-//            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
-            tableModelSearch.setRowCount(0); // Delete all previous rows
-            for (Booking booking : CarRental.getBookings())
-            {
-                if (carNo != null)
-                    if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
-                    {
-                        if (car.getCarPlate().contains(booking.getCarNo()))
+                String customerID = user.getUserID();//get login's userid
+                System.out.println("customerid: "+customerID);
+    //            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
+                for (Booking booking : CarRental.getBookings())
+                {
+                    if (carNo != null)
+                        if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
                         {
-                            System.out.println("the carplate in car file"+car.getCarPlate());
-                            System.out.println("the carno that we search for "+booking.getCarNo());
-                            System.out.println("the customer in customer file"+booking.getCustID());
-                            System.out.println("brand is"+car.getCarBrand());
-                            System.out.println("model is "+car.getCarModel());
-                            columns[3] = car.getCarBrand();
-                            columns[4] = car.getCarModel();
+                            if (car.getCarPlate().toUpperCase().contains(booking.getCarNo().toUpperCase()))
+                            {
+                                System.out.println("the carplate in car file"+car.getCarPlate());
+                                System.out.println("the carno that we search for "+booking.getCarNo());
+                                System.out.println("the customer in customer file"+booking.getCustID());
+                                System.out.println("brand is"+car.getCarBrand());
+                                System.out.println("model is "+car.getCarModel());
+                                columns[3] = car.getCarBrand();
+                                columns[4] = car.getCarModel();
+                            }
+                            columns[0] = booking.getBookingId();
+    //                        columns[3] = "dabian";
+    //                        columns[4] = "dabian";        
+                            columns[1] = booking.getBookingDate().toString();
+                            columns[2] = booking.getCarNo();
+                            columns[5] = booking.getStartDate().toString();
+                            columns[6] = booking.getEndDate().toString();
+                            columns[7] = String.format("%.2f", booking.getBookingFee());
+                            tableModelSearch.addRow(columns);
+                            System.out.println("im here");
                         }
-                        columns[0] = booking.getBookingId();
-//                        columns[3] = "dabian";
-//                        columns[4] = "dabian";        
-                        columns[1] = booking.getBookingDate().toString();
-                        columns[2] = booking.getCarNo();
-                        columns[5] = booking.getStartDate().toString();
-                        columns[6] = booking.getEndDate().toString();
-                        columns[7] = String.format("%.2f", booking.getBookingFee());
-                        tableModelSearch.addRow(columns);
-                        System.out.println("im here");
-                    }
+                }
             }
         }
         txtSearchHistory.setText("");
