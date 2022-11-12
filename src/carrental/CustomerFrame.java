@@ -88,6 +88,11 @@ public class CustomerFrame extends javax.swing.JFrame {
         model.addRow(columns);
     }
     
+    private void bookingConfirmation() {
+        System.out.println("send booking confirmation");
+//        jListConfirmationLetter.add
+    }
+    
 //    public void addHistoryTableRow(DefaultTableModel model, Booking booking) 
 //    {
 ////        columns[0] = booking.getBookingId();
@@ -208,6 +213,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         tabHistory = new javax.swing.JPanel();
         btnSearchHistory = new javax.swing.JButton();
         txtSearchHistory = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableHistory = new javax.swing.JTable();
 
@@ -579,7 +585,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         pnlBookRoom1.setLayout(pnlBookRoom1Layout);
         pnlBookRoom1Layout.setHorizontalGroup(
             pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookRoom1Layout.createSequentialGroup()
                 .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlBookRoom1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -594,42 +600,42 @@ public class CustomerFrame extends javax.swing.JFrame {
                             .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBookRoom1Layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(56, 56, 56))
+                        .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(164, 164, 164))
         );
         pnlBookRoom1Layout.setVerticalGroup(
             pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookRoom1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookRoom1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBookRoom1Layout.createSequentialGroup()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73)))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1138,12 +1144,18 @@ public class CustomerFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Palatino", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 204, 102));
+        jLabel2.setText("Car Brand: ");
+
         javax.swing.GroupLayout tabHistoryLayout = new javax.swing.GroupLayout(tabHistory);
         tabHistory.setLayout(tabHistoryLayout);
         tabHistoryLayout.setHorizontalGroup(
             tabHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHistoryLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(484, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(txtSearchHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearchHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1155,7 +1167,8 @@ public class CustomerFrame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(tabHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearchHistory)
-                    .addComponent(txtSearchHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearchHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -1295,8 +1308,8 @@ public class CustomerFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter car brand to search bookings.");
         }
 
-        DefaultTableModel tableModel = (DefaultTableModel) tableHistory.getModel();
-        tableModel.setRowCount(0); // Delete all previous rows
+        DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
+        tableModelSearch.setRowCount(0); // Delete all previous rows
 
         for (Car car : CarRental.getCars())
         {
@@ -1306,38 +1319,38 @@ public class CustomerFrame extends javax.swing.JFrame {
             {
                 System.out.println("search: "+search);
                 carNo = car.getCarPlate();//through car brand get carPlate(s) from car file
-            }
+//            }
         
-            String customerID = user.getUserID();//get login's userid
-            System.out.println("customerid: "+customerID);
-            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
-            tableModelSearch.setRowCount(0); // Delete all previous rows
-            for (Booking booking : CarRental.getBookings())
-            {
-                if (carNo != null)
-                    if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
-                    {
-                        if (car.getCarPlate().contains(booking.getCarNo()))
+                String customerID = user.getUserID();//get login's userid
+                System.out.println("customerid: "+customerID);
+    //            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
+                for (Booking booking : CarRental.getBookings())
+                {
+                    if (carNo != null)
+                        if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
                         {
-                            System.out.println("the carplate in car file"+car.getCarPlate());
-                            System.out.println("the carno that we search for "+booking.getCarNo());
-                            System.out.println("the customer in customer file"+booking.getCustID());
-                            System.out.println("brand is"+car.getCarBrand());
-                            System.out.println("model is "+car.getCarModel());
-                            columns[3] = car.getCarBrand();
-                            columns[4] = car.getCarModel();
+                            if (car.getCarPlate().toUpperCase().contains(booking.getCarNo().toUpperCase()))
+                            {
+                                System.out.println("the carplate in car file"+car.getCarPlate());
+                                System.out.println("the carno that we search for "+booking.getCarNo());
+                                System.out.println("the customer in customer file"+booking.getCustID());
+                                System.out.println("brand is"+car.getCarBrand());
+                                System.out.println("model is "+car.getCarModel());
+                                columns[3] = car.getCarBrand();
+                                columns[4] = car.getCarModel();
+                            }
+                            columns[0] = booking.getBookingId();
+    //                        columns[3] = "dabian";
+    //                        columns[4] = "dabian";        
+                            columns[1] = booking.getBookingDate().toString();
+                            columns[2] = booking.getCarNo();
+                            columns[5] = booking.getStartDate().toString();
+                            columns[6] = booking.getEndDate().toString();
+                            columns[7] = String.format("%.2f", booking.getBookingFee());
+                            tableModelSearch.addRow(columns);
+                            System.out.println("im here");
                         }
-                        System.out.println("im here");
-                        columns[0] = booking.getBookingId();
-//                        columns[3] = "dabian";
-//                        columns[4] = "dabian";        
-                        columns[1] = booking.getBookingDate().toString();
-                        columns[2] = booking.getCarNo();
-                        columns[5] = booking.getStartDate().toString();
-                        columns[6] = booking.getEndDate().toString();
-                        columns[7] = String.format("%.2f", booking.getBookingFee());
-                        tableModelSearch.addRow(columns);
-                    }
+                }
             }
         }
         txtSearchHistory.setText("");
@@ -1354,7 +1367,8 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectGuestActionPerformed
 
     private void btnConfirmBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmBookActionPerformed
-        // if (chkInDate.isEmpty() || chkOutDate.isEmpty() || guestID == -1 || bookRoomID.isEmpty())
+        bookingConfirmation();
+// if (chkInDate.isEmpty() || chkOutDate.isEmpty() || guestID == -1 || bookRoomID.isEmpty())
         // JOptionPane.showMessageDialog(this, "Please fill in all necessary details before proceeding.");
         // else {
             //     ArrayList<String> bookingInfo = new ArrayList<String>();
@@ -1625,6 +1639,7 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
