@@ -1652,7 +1652,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                     tableMessagesModel.addRow(columns);
                     columns[0] = " ";
                     tableMessagesModel.addRow(columns);
-                    columns[0] = "Dear Username,";
+                    columns[0] = "Dear " + username + ",";
                     tableMessagesModel.addRow(columns);
                     columns[0] = " ";
                     tableMessagesModel.addRow(columns);
