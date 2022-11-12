@@ -9,3 +9,4 @@ C0007, customer, ELIJAH MIKAELSON, male, 017-99661123, elijah@gmail.com, 571008-
 C0008, customer, NIKLAUS MIKAELSON, male, 012-12345678, klaus@gmail.com, 601008-14-6866, niklaus, qwerty
 C0009, customer, DAMON SALVATORE, male, 012-55566688, damon@tvd.com, 181008-14-0802, damon, qwerty
 C0010, customer, STEFAN SALVATORE, male, 012-5556668, stefan@tcd.com, 181008-14-0802, stefan, qwerty
+C0011, customer, LOW SHU KIE, female, 0199986544, shuyoo@gmail.com, 098787091212, shuyooo, shuyooo123
