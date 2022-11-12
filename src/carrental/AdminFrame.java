@@ -2453,21 +2453,58 @@ public class AdminFrame extends javax.swing.JFrame {
         String sBookingDate = txtBookingDate.getText().trim();
         String sPickUp = txtPickUp.getText().trim();
         String sDropOff = txtDropOff.getText().trim();
-        String sAmount = txtAmount.getText().trim();
+        String sAmount = "0.0";
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate bookingDate = LocalDate.parse(sBookingDate, format);
         LocalDate pickUp = LocalDate.parse(sPickUp, format);
         LocalDate dropOff = LocalDate.parse(sDropOff, format);
         Double amount = 0.0;
+        long d = 0;
+        Double rentalRate = 0.0;
 
-        if (row < 0)
-        JOptionPane.showMessageDialog(this, "Please select a booking to edit.");
+        if (row < 0){
+            JOptionPane.showMessageDialog(this, "Please select a booking to edit.");
+        }
 
+//        else if (!(CarRental.getCars().contains(bookingCP))){
+//            System.out.println("the car in file"+CarRental.getCars());
+//            System.out.println("the car plate"+bookingCP);
+//            JOptionPane.showMessageDialog(this, "Car not found.");
+//        }
+        
         else if (bookingCP.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty())
         JOptionPane.showMessageDialog(this, "Incomplete information provided.");
-//
+//      
+        else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else if(pickUp==dropOff || dropOff.getYear() < pickUp.getYear() || dropOff.getYear() - pickUp.getYear() > 1){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else if(dropOff.getMonthValue() < pickUp.getMonthValue()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else if(dropOff.getDayOfMonth() < pickUp.getDayOfMonth()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
         else
         {
+            for (Car car : CarRental.getCars()){
+                if(car.getCarPlate().contains(bookingCP)){
+                    rentalRate = car.getDailyRentalRate();//get the rental rate by carplate
+                }
+            }
+            d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);//calculate difference between dropoff date and pick up date
+            System.out.println("the d "+d);
+            double duration = d;//convert d(long) to double
+            System.out.println("the duration "+ duration);
+            amount = rentalRate * duration;//calculate amount
+            System.out.println("the amount "+amount);
+//            sAmount = amount.toString();//convert amount to string for keeping to booking file
             String bookingID = (String) tableBookings.getValueAt(row, 0); 
 
             for (Booking booking : CarRental.getBookings())
@@ -2478,7 +2515,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
                 else
                 {
-                    if (booking.updateInfo(bookingCP, pickUp, dropOff)) {
+                    if (booking.updateInfo(bookingCP, pickUp, dropOff, amount)) {
                         JOptionPane.showMessageDialog(this, "Booking updated successfully.");
                         loadBookings();
                         break;

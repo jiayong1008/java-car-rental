@@ -24,6 +24,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         loadCars();
 //        loadCustomers();
         loadBookings();
+        loadNotifications();
     }
 
 // ================     HELPER FUNCTIONS        ========================
@@ -71,10 +72,43 @@ public class CustomerFrame extends javax.swing.JFrame {
                 columns[5] = booking.getStartDate().toString();
                 columns[6] = booking.getEndDate().toString();
                 columns[7] = String.format("%.2f", booking.getBookingFee());
-                tableHistoryModel.addRow(columns);
-                
+                tableHistoryModel.addRow(columns); 
             }
         }
+    }
+    
+    private void loadNotifications() 
+    {
+        String customerID = user.getUserID();
+        DefaultTableModel tableNotificationModel = (DefaultTableModel) tblNotification.getModel();
+        tableNotificationModel.setRowCount(0); // Delete all previous rows
+        for (Booking booking : CarRental.getBookings())
+        {
+            if (booking.getCustID().toUpperCase().contains(customerID))//print history of specific customer
+            {
+                for (Car car : CarRental.getCars())
+                {
+//                if (car.getCarPlate().contains(booking.getCarNo()))
+//                    {
+////                        System.out.println("the carplate in car file"+car.getCarPlate());
+////                        System.out.println("the carno that we search for "+booking.getCarNo());
+////                        System.out.println("brand is"+car.getCarBrand());
+////                        System.out.println("model is "+car.getCarModel());
+//                        columns[3] = car.getCarBrand();
+//                        columns[4] = car.getCarModel();
+//                    }
+                }
+                columns[0] = "Your booking "+booking.getBookingId()+" is confirmed!";
+//                columns[1] = booking.getBookingDate().toString();
+//                columns[2] = booking.getCarNo();
+////                columns[3] = booking.getCarNo();
+////                columns[4] = booking.getCarNo();
+//                columns[5] = booking.getStartDate().toString();
+//                columns[6] = booking.getEndDate().toString();
+//                columns[7] = String.format("%.2f", booking.getBookingFee());
+                tableNotificationModel.addRow(columns);
+        }
+    }
     }
 
     // Populate record to table - Overload method (Car)
@@ -207,8 +241,8 @@ public class CustomerFrame extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblNotification = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jListConfirmationLetter = new javax.swing.JList<>();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblMessages = new javax.swing.JTable();
         tabBookingHistory = new javax.swing.JPanel();
         tabHistory = new javax.swing.JPanel();
         btnSearchHistory = new javax.swing.JButton();
@@ -711,7 +745,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 104, Short.MAX_VALUE))
+                .addGap(0, 105, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -931,7 +965,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnConfirmBook, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1039,9 +1073,9 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         tblNotification.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Your booking on 12-10-2022 is confirmed!"},
-                {"Your booking on 12-10-2022 is confirmed!"},
-                {"Your booking on 11-10-2022 is confirmed!"},
+                {"Your booking B00000 is confirmed!"},
+                {"Your booking B00000 is confirmed!"},
+                {"Your booking B00000 is confirmed!"},
                 {null},
                 {null},
                 {null},
@@ -1049,9 +1083,14 @@ public class CustomerFrame extends javax.swing.JFrame {
                 {null}
             },
             new String [] {
-                "Title 1"
+                "Notification"
             }
         ));
+        tblNotification.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNotificationMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblNotification);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1067,7 +1106,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1075,27 +1114,39 @@ public class CustomerFrame extends javax.swing.JFrame {
                     .addContainerGap(43, Short.MAX_VALUE)))
         );
 
-        jListConfirmationLetter.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Yay, your booking is confirmed!", " ", "Dear Username,", " ", "Thank you for booking with RapidCar.", "We have received your Order B00001 on DATE TIME.  ", "We hope you had a pleasant experience. Stay safe!", " ", "Yours sincerely,", "RapidCar.", " ", " ", " " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jListConfirmationLetter);
+        tblMessages.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Yay, your booking is confirmed! "},
+                {null},
+                {"Dear Username,  "},
+                {null},
+                {"Thank you for booking with RapidCar."},
+                {"We have received your Order B00001 on DATE TIME. ."},
+                {"We hope you had a pleasant experience. Stay safe!  "},
+                {null},
+                {"Yours sincerely, "},
+                {"RapidCar."}
+            },
+            new String [] {
+                "Message"
+            }
+        ));
+        jScrollPane7.setViewportView(tblMessages);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout tabReceiptsLayout = new javax.swing.GroupLayout(tabReceipts);
@@ -1214,7 +1265,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabBookingHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tabHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabBookingHistoryLayout.setVerticalGroup(
@@ -1581,6 +1632,46 @@ public class CustomerFrame extends javax.swing.JFrame {
         txtMaxPrice.setText("");
         loadCars();
     }//GEN-LAST:event_btnResetCarActionPerformed
+
+    private void tblNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNotificationMouseClicked
+        DefaultTableModel tableMessagesModel = (DefaultTableModel) tblMessages.getModel();
+        DefaultTableModel tableNotificationsModel = (DefaultTableModel) tblNotification.getModel();
+        int row = tblNotification.getSelectedRow();
+
+        if (row >= 0) {
+            String notification = (String) tableNotificationsModel.getValueAt(row, 0);
+            String bookingID = notification.substring(13, 18);
+            String customerID = user.getUserID();
+            String username = user.getUsername();
+            tableMessagesModel.setRowCount(0); // Delete all previous rows
+            for (Booking booking : CarRental.getBookings())
+            {
+                if (booking.getBookingId().toUpperCase().contains(bookingID))//print history of specific customer
+                {
+                    columns[0] = "Yay, your booking is confirmed!";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = " ";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = "Dear Username,";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = " ";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = "Thank you for booking with RapidCar.";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = "We have received your Order " + booking.getBookingId() + " on " + booking.getBookingDate() + ".  ";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = "We hope you had a pleasant experience. Stay safe!";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = " ";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = "Yours sincerely,";
+                    tableMessagesModel.addRow(columns);
+                    columns[0] = "RapidCar.";
+                    tableMessagesModel.addRow(columns);
+            }
+        }
+        }
+    }//GEN-LAST:event_tblNotificationMouseClicked
     
     boolean displayed = false;
     
@@ -1655,7 +1746,6 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jListConfirmationLetter;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1667,8 +1757,8 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
@@ -1695,6 +1785,7 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tabReceipts;
     private javax.swing.JTable tableAllCars;
     private javax.swing.JTable tableHistory;
+    private javax.swing.JTable tblMessages;
     private javax.swing.JTable tblNotification;
     private javax.swing.JTextField txtCarBrand;
     private javax.swing.JTextField txtCarModel;

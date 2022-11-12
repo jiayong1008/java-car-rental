@@ -179,11 +179,12 @@ public class Booking {
         return false;
     }
     
-    public boolean updateInfo (String _carNo, LocalDate _startDate, LocalDate _endDate)
+    public boolean updateInfo (String _carNo, LocalDate _startDate, LocalDate _endDate, Double _bookingFee)
     {
         setCarNo(_carNo);
         setStartDate(_startDate);
         setEndDate(_endDate);
+        setBookingFee(_bookingFee);
         return rewriteFile();
     }
 
