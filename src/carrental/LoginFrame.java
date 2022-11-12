@@ -174,7 +174,13 @@ public class LoginFrame extends javax.swing.JFrame {
         User user = checkCredentials(username, password);
 
         // Check credentials & user role
-        if (user.getClass().getSimpleName().equals("Admin")) 
+        if (user == null) // Invalid credentials
+        {
+            lblLoginAlert.setOpaque(true);
+            lblLoginAlert.setText("Invalid credentials.");
+            return;
+        }
+        else if (user.getClass().getSimpleName().equals("Admin")) 
         {
             AdminFrame adminf = new AdminFrame(user); // Open Admin's GUI
             adminf.setVisible(true);
@@ -186,11 +192,7 @@ public class LoginFrame extends javax.swing.JFrame {
             custf.setVisible(true);
             this.setVisible(false); // Close login GUI
         }
-        else // Invalid credentials
-        { 
-            lblLoginAlert.setOpaque(true);
-            lblLoginAlert.setText("Invalid credentials.");
-        }
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
