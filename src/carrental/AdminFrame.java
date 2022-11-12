@@ -72,7 +72,7 @@ public class AdminFrame extends javax.swing.JFrame {
         model.addRow(columns);
     }
     
-        public void addBookingTableRow(DefaultTableModel model, Booking booking) 
+    public void addBookingTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
         columns[1] = booking.getCustID();
@@ -81,8 +81,7 @@ public class AdminFrame extends javax.swing.JFrame {
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
         columns[6] = booking.getBookingFee();
-        model.addRow(columns);
-        
+        model.addRow(columns);        
     }
 
     // Load cars in table
