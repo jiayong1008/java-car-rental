@@ -4,6 +4,9 @@
  */
 package carrental;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.lang.model.util.ElementScanner14;
@@ -188,7 +191,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         pnlBookRoom = new javax.swing.JPanel();
         tabBooking = new javax.swing.JTabbedPane();
         pnlBookRoom1 = new javax.swing.JPanel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jCldBooking = new com.toedter.calendar.JCalendar();
         btnPUD = new javax.swing.JButton();
         txtPUD = new javax.swing.JTextField();
         txtDOD = new javax.swing.JTextField();
@@ -201,6 +204,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
+        btnSearchCar1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -501,7 +505,7 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         pnlBookRoom1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jCalendar1.setBackground(new java.awt.Color(153, 255, 204));
+        jCldBooking.setBackground(new java.awt.Color(153, 255, 204));
 
         btnPUD.setBackground(new java.awt.Color(255, 204, 102));
         btnPUD.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
@@ -601,8 +605,8 @@ public class CustomerFrame extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -615,62 +619,80 @@ public class CustomerFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnSearchCar1.setBackground(new java.awt.Color(255, 204, 102));
+        btnSearchCar1.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnSearchCar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchCar1.setText("Reset");
+        btnSearchCar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchCar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlBookRoom1Layout = new javax.swing.GroupLayout(pnlBookRoom1);
         pnlBookRoom1.setLayout(pnlBookRoom1Layout);
         pnlBookRoom1Layout.setHorizontalGroup(
             pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookRoom1Layout.createSequentialGroup()
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(164, 164, 164))
+                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCldBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnSearchCar1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(13, 13, 13)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(66, 66, 66))
         );
         pnlBookRoom1Layout.setVerticalGroup(
             pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookRoom1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBookRoom1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnProceedCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlBookRoom1Layout.createSequentialGroup()
+                        .addComponent(jCldBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnPUD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPUD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDOD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDOD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlBookRoom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnSearchCar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSearchCar1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         tabBooking.addTab("1 - Select Date", pnlBookRoom1);
@@ -1489,6 +1511,36 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_listAvailableRoomsValueChanged
 
     private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
+        String sPickUp = txtPUD.getText();
+        String sDropOff = txtDOD.getText();
+        LocalDate pickUp = null;
+        LocalDate dropOff = null;
+        if(sDropOff.isEmpty() || sPickUp.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please choose pick up and drop off date.");
+        }
+        else{
+            if(!sPickUp.isEmpty() || !sDropOff.isEmpty()){
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                pickUp = LocalDate.parse(sPickUp, format);
+                dropOff = LocalDate.parse(sDropOff, format);
+            }
+            else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
+                JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+            }//same day rejected
+
+            else if(pickUp==dropOff || dropOff.getYear() < pickUp.getYear() || dropOff.getYear() - pickUp.getYear() > 1){
+                JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+            }//drop off year smaller pickup year / more than one year
+
+            else if(dropOff.getMonthValue() < pickUp.getMonthValue()){
+                JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+            }//drop off month smaller pickup month
+
+            else if(dropOff.getDayOfMonth() < pickUp.getDayOfMonth()){
+                JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+            }//drop off day smaller pickup day
+            else{displayAvailableCars();}
+        }
         // if (chkInDate.isEmpty() || chkOutDate.isEmpty()) { // Validation
             //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
             // } else if (validateBookingDates()) { // Add all available rooms to list model
@@ -1498,13 +1550,16 @@ public class CustomerFrame extends javax.swing.JFrame {
             // }
     }//GEN-LAST:event_btnSearchCarActionPerformed
 
+    private void displayAvailableCars() {
+        System.out.println("display car");
+//        jListConfirmationLetter.add
+    }
+    
     private void btnDODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDODActionPerformed
-        // chkOutDate = datef.format(jCalendar1.getDate());
-        // txtChkOut.setText(chkOutDate);
-        // lblChkOut.setText(chkOutDate);
-        // if (!chkInDate.isEmpty()) {
-            //     validateBookingDates();
-            // }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String bDropOff = sdf.format(jCldBooking.getDate());
+        txtDOD.setText(bDropOff);
+        
         // bookRoomID = "";
         // lblRoomID.setText("N/A");
     }//GEN-LAST:event_btnDODActionPerformed
@@ -1518,7 +1573,11 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPUDActionPerformed
 
     private void btnPUDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPUDActionPerformed
-        // chkInDate = datef.format(jCalendar1.getDate());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String bPickUp = sdf.format(jCldBooking.getDate());
+        txtPUD.setText(bPickUp);
+        
+// chkInDate = datef.format(jCalendar1.getDate());
         // txtChkIn.setText(chkInDate);
         // lblChkIn.setText(chkInDate);
         // validateToday();
@@ -1672,6 +1731,11 @@ public class CustomerFrame extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_tblNotificationMouseClicked
+
+    private void btnSearchCar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCar1ActionPerformed
+        txtPUD.setText("");
+        txtDOD.setText("");
+    }//GEN-LAST:event_btnSearchCar1ActionPerformed
     
     boolean displayed = false;
     
@@ -1719,12 +1783,13 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnProceedCar;
     private javax.swing.JButton btnResetCar;
     private javax.swing.JButton btnSearchCar;
+    private javax.swing.JButton btnSearchCar1;
     private javax.swing.JButton btnSearchGuest;
     private javax.swing.JButton btnSearchHistory;
     private javax.swing.JButton btnSelectGuest;
     private javax.swing.JPanel formBook1;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JCalendar jCldBooking;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
