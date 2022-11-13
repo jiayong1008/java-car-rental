@@ -1624,10 +1624,6 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         for (Car car : CarRental.getCars())
         {
-            System.out.println(car.getCarBrand().toLowerCase());
-            System.out.println(carBrand);
-            System.out.println(car.getCarBrand().toLowerCase().contains(carBrand));
-            System.out.println();
             Boolean withinPriceRange;
 
             if (inputMinPrice.isEmpty() && inputMaxPrice.isEmpty()) 

@@ -59,6 +59,8 @@ public class Booking {
         // Todo - Initialize Customer and Car object
         custID = bookingInfo.get(1);
         carNo = bookingInfo.get(2);
+        customer = CarRental.getCustomers().get(0);
+        car = CarRental.getCars().get(0);
         
 //        for (Car car : CarRental.getCars())
 //        {
