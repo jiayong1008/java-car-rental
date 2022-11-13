@@ -2748,7 +2748,11 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUserResetActionPerformed
 
     private void btnResetCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCarActionPerformed
-        // TODO add your handling code here:
+        txtCarPlate.setText("");
+        txtCarBrand.setText("");
+        txtCarModel.setText("");
+        txtCarDailyRate.setText("");
+        loadCars();
     }//GEN-LAST:event_btnResetCarActionPerformed
     
     /*    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {
