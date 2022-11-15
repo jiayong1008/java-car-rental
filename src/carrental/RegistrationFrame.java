@@ -177,6 +177,11 @@ public class RegistrationFrame extends javax.swing.JFrame {
         buttonGroup1.add(btnFemale);
         btnFemale.setForeground(new java.awt.Color(255, 255, 255));
         btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -468,6 +473,10 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFemaleActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

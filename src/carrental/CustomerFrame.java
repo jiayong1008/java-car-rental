@@ -1363,25 +1363,8 @@ public class CustomerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jtpCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtpCustomerMouseClicked
-//        if (displayed) return;
-//        displayed = true;
-//        File file = new File(CarRental.getBookingFile());
-//        try {
-//            FileReader fr = new FileReader(file);
-//            BufferedReader br = new BufferedReader(fr);
-//
-//            DefaultTableModel model = (DefaultTableModel)tableHistory.getModel();
-//            Object[] lines = br.lines().toArray();
-//
-//            for(int i = 0; i < lines.length; i++){
-//                String[] row = lines[i].toString().split(",");
-//                model.addRow(row);
-//            }
-//
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
+        tabBooking.setEnabledAt(1, false);
+        tabBooking.setEnabledAt(2, false);
     }//GEN-LAST:event_jtpCustomerMouseClicked
 
     private void tableHistoryMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHistoryMouseExited
@@ -1494,7 +1477,9 @@ public class CustomerFrame extends javax.swing.JFrame {
         }
         else{
             displayBookingSummary();
-           tabBooking.setSelectedIndex(2); 
+            tabBooking.setSelectedIndex(2); 
+            tabBooking.setEnabledAt(0, false);
+            tabBooking.setEnabledAt(1, false);
         }
     }//GEN-LAST:event_jBtnSelectActionPerformed
 
@@ -1503,6 +1488,8 @@ public class CustomerFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No car available, please choose another date.");
         } else {
             tabBooking.setSelectedIndex(1);
+            tabBooking.setEnabledAt(0, false);
+            tabBooking.setEnabledAt(2, false);
         }
     }//GEN-LAST:event_btnProceedCarActionPerformed
 
@@ -1849,6 +1836,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                 booking = null; // Deleting it (by making it eligible for garbage collection)
                 JOptionPane.showMessageDialog(this, "Booking not added - Duplication detected.");
             }
+            tabBooking.setSelectedIndex(0); 
         }
              
     }//GEN-LAST:event_btnConfirmBookActionPerformed
