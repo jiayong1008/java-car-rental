@@ -2648,19 +2648,20 @@ public class AdminFrame extends javax.swing.JFrame {
         LocalDate pickUp = LocalDate.parse(sPickUp, format);
         LocalDate dropOff = LocalDate.parse(sDropOff, format);
         Double amount = 0.0;
+        ArrayList<String> customerInFile=new ArrayList<String>();
+        ArrayList<String> carInFile=new ArrayList<String>();
 //        System.out.println(java.time.LocalDate.now()); 
 //        System.out.println("the bookingd date"+sBookingDate); 
         
 //        String bookingID = "1";
-//        for (Customer customer : CarRental.getCustomers()){
-//            if(customer.getUserID().equals(customerID)){
-//                
-//                break;
-//            }
-//            else{
-////                JOptionPane.showMessageDialog(this, "Customer does not exists.");
-//            }
-//        }
+        for (Customer customer : CarRental.getCustomers()){
+            customerInFile.add(customer.getUserID());
+            
+        }
+        for(Car car : CarRental.getCars()){
+            carInFile.add(car.getCarPlate());
+        }
+        
 //            
 //        for (Car car : CarRental.getCars()){
 //            if(!(car.getCarPlate().contains(bookingCP))){
@@ -2671,6 +2672,13 @@ public class AdminFrame extends javax.swing.JFrame {
         if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
         JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
         
+        else if(!customerInFile.contains(customerID)){
+            JOptionPane.showMessageDialog(this, "Customer does not exists.");
+        }
+        
+        else if(!carInFile.contains(bookingCP)){
+            JOptionPane.showMessageDialog(this, "Car does not exists.");
+        }
 //        else if (CarRental.getCustomers().contains(customerID)){
 //            System.out.println("the customer in file"+CarRental.getCustomers());
 //            System.out.println("the customerid"+customerID);
