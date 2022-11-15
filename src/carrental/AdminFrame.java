@@ -4,6 +4,7 @@
  */
 package carrental;
 
+import static carrental.CustomerFrame.getDateDiff;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
@@ -2560,6 +2561,50 @@ public class AdminFrame extends javax.swing.JFrame {
         Double amount = 0.0;
         ArrayList<String> customerInFile=new ArrayList<String>();
         ArrayList<String> carInFile=new ArrayList<String>();
+        
+        for (Car car : CarRental.getCars()){
+            if(car.getCarPlate().contains(bookingCP)){
+                rentalRate = car.getDailyRentalRate();
+            }
+        }
+        d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);
+        System.out.println("the d "+d);
+        double duration = d;
+        System.out.println("the duration "+ duration);
+        amount = rentalRate * duration;
+        System.out.println("the amount "+amount);
+        sAmount = amount.toString();
+            
+        long dInFile = 0;
+        int tduration, dInFileI;
+        tduration = (int)d;
+        ArrayList<String> carInTable=new ArrayList<String>();
+        ArrayList<String> carNotAvailable=new ArrayList<String>();
+        ArrayList<String> carAvailable=new ArrayList<String>();
+        for (Car car : CarRental.getCars()){
+            for (Booking booking : CarRental.getBookings()){    
+                dInFile = getDateDiff(booking.getStartDate(),booking.getEndDate(),TimeUnit.MILLISECONDS);
+                dInFileI =  (int)dInFile;
+                LocalDate dateInDuration = booking.getStartDate();
+                for (int i = 0; i <= dInFileI; i++) {
+                    LocalDate pickUpTemp = pickUp;
+                    for (int j = 0; j <= tduration; j++){
+                        if (pickUpTemp.equals(dateInDuration)){
+                            if (!carNotAvailable.contains(booking.getCarNo())){
+                                carNotAvailable.add(booking.getCarNo());
+                            }
+                        }
+                        pickUpTemp = pickUpTemp.plusDays(1);
+                    }
+
+                    dateInDuration = dateInDuration.plusDays(1);
+                }
+                       
+            }
+                     
+        }
+        System.out.println(carNotAvailable);
+        
 
         for (Customer customer : CarRental.getCustomers()){
             customerInFile.add(customer.getUserID());
@@ -2569,9 +2614,13 @@ public class AdminFrame extends javax.swing.JFrame {
             carInFile.add(car.getCarPlate());
         }
 
-        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
-        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
-
+        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
+        }
+        else if(carNotAvailable.contains(bookingCP)){
+            JOptionPane.showMessageDialog(this, "Car not available, please choose another car.");
+        }
+        
         else if(!customerInFile.contains(customerID)){
             JOptionPane.showMessageDialog(this, "Customer does not exists.");
         }
@@ -2598,18 +2647,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
         else {
 
-            for (Car car : CarRental.getCars()){
-                if(car.getCarPlate().contains(bookingCP)){
-                    rentalRate = car.getDailyRentalRate();
-                }
-            }
-            d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);
-            System.out.println("the d "+d);
-            double duration = d;
-            System.out.println("the duration "+ duration);
-            amount = rentalRate * duration;
-            System.out.println("the amount "+amount);
-            sAmount = amount.toString();
+            
+            
 
             ArrayList<String> bookingInfo = new ArrayList<String>(
                 Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount, status)

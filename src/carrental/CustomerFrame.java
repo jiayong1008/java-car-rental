@@ -1170,16 +1170,7 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         tblMessages.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Yay, your booking is confirmed! "},
-                {null},
-                {"Dear Username,  "},
-                {null},
-                {"Thank you for booking with RapidCar."},
-                {"We have received your Order B00001 on DATE TIME. ."},
-                {"We hope you had a pleasant experience. Stay safe!  "},
-                {null},
-                {"Yours sincerely, "},
-                {"RapidCar."}
+
             },
             new String [] {
                 "Message"
