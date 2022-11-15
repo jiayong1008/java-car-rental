@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
@@ -215,7 +217,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tblACar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBtnSelect = new javax.swing.JButton();
         pnlBookRoom2 = new javax.swing.JPanel();
         formBook1 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -223,28 +225,30 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtGuestName = new javax.swing.JTextField();
-        btnSearchGuest = new javax.swing.JButton();
         btnConfirmBook = new javax.swing.JButton();
-        lblChkIn = new javax.swing.JLabel();
-        lblChkOut = new javax.swing.JLabel();
+        lblPUD = new javax.swing.JLabel();
+        lblCP = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        lblNights = new javax.swing.JLabel();
+        lblDuration = new javax.swing.JLabel();
         lblSubtotal = new javax.swing.JLabel();
         lblServiceTax = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        lblTourismTax = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lblTotal = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        lblRoomID = new javax.swing.JLabel();
-        btnSelectGuest = new javax.swing.JButton();
+        lblBookingID = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        lblDOD = new javax.swing.JLabel();
+        lblCB = new javax.swing.JLabel();
+        lblCM = new javax.swing.JLabel();
+        lblRR = new javax.swing.JLabel();
         tabReceipts = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -774,13 +778,13 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 204, 102));
         jLabel1.setText("Available Cars");
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 102));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Select");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBtnSelect.setBackground(new java.awt.Color(255, 204, 102));
+        jBtnSelect.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jBtnSelect.setForeground(new java.awt.Color(255, 255, 255));
+        jBtnSelect.setText("Select");
+        jBtnSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBtnSelectActionPerformed(evt);
             }
         });
 
@@ -795,7 +799,7 @@ public class CustomerFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(95, 95, 95)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 116, Short.MAX_VALUE))
         );
@@ -807,7 +811,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jBtnSelect)
                 .addGap(63, 63, 63))
         );
 
@@ -838,31 +842,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Total");
 
-        jLabel12.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("Guest Name");
-
-        txtGuestName.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        txtGuestName.setForeground(new java.awt.Color(102, 102, 102));
-        txtGuestName.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtGuestName.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        txtGuestName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGuestNameActionPerformed(evt);
-            }
-        });
-
-        btnSearchGuest.setBackground(new java.awt.Color(0, 153, 153));
-        btnSearchGuest.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnSearchGuest.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearchGuest.setText("Search");
-        btnSearchGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchGuestActionPerformed(evt);
-            }
-        });
-
-        btnConfirmBook.setBackground(new java.awt.Color(0, 153, 153));
+        btnConfirmBook.setBackground(new java.awt.Color(255, 204, 102));
         btnConfirmBook.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
         btnConfirmBook.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmBook.setText("Confirm Booking >>");
@@ -872,14 +852,14 @@ public class CustomerFrame extends javax.swing.JFrame {
             }
         });
 
-        lblChkIn.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblChkIn.setForeground(new java.awt.Color(255, 255, 255));
-        lblChkIn.setText("N/A");
+        lblPUD.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblPUD.setForeground(new java.awt.Color(255, 255, 255));
+        lblPUD.setText("N/A");
 
-        lblChkOut.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblChkOut.setForeground(new java.awt.Color(255, 255, 255));
-        lblChkOut.setText("N/A");
-        lblChkOut.setToolTipText("");
+        lblCP.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblCP.setForeground(new java.awt.Color(255, 255, 255));
+        lblCP.setText("N/A");
+        lblCP.setToolTipText("");
 
         jLabel24.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
@@ -889,9 +869,9 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Subtotal");
 
-        lblNights.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblNights.setForeground(new java.awt.Color(255, 255, 255));
-        lblNights.setText("0");
+        lblDuration.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblDuration.setForeground(new java.awt.Color(255, 255, 255));
+        lblDuration.setText("0");
 
         lblSubtotal.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
         lblSubtotal.setForeground(new java.awt.Color(255, 255, 255));
@@ -900,14 +880,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         lblServiceTax.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
         lblServiceTax.setForeground(new java.awt.Color(255, 255, 255));
         lblServiceTax.setText("RM0.00");
-
-        jLabel29.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Tourism Tax");
-
-        lblTourismTax.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblTourismTax.setForeground(new java.awt.Color(255, 255, 255));
-        lblTourismTax.setText("RM0.00");
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
@@ -921,12 +893,12 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(51, 51, 51));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("* Note: Please select guest and proceed.");
+        jLabel33.setText("* Note: If you fail to arrive, no refund");
 
         jLabel34.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(51, 51, 51));
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("   (Register guest first if haven't already)");
+        jLabel34.setText("will be given.");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -935,7 +907,7 @@ public class CustomerFrame extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -953,136 +925,183 @@ public class CustomerFrame extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Booking ID");
 
-        lblRoomID.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
-        lblRoomID.setForeground(new java.awt.Color(255, 255, 255));
-        lblRoomID.setText("N/A");
-
-        btnSelectGuest.setBackground(new java.awt.Color(0, 153, 153));
-        btnSelectGuest.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        btnSelectGuest.setForeground(new java.awt.Color(255, 255, 255));
-        btnSelectGuest.setText("Select as Guest");
-        btnSelectGuest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectGuestActionPerformed(evt);
-            }
-        });
+        lblBookingID.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblBookingID.setForeground(new java.awt.Color(255, 255, 255));
+        lblBookingID.setText("N/A");
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel19.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Car Brand");
+
+        jLabel22.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Car Plate");
+
+        jLabel23.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Car Model");
+
+        jLabel27.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Rental Rate");
+
+        lblDOD.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblDOD.setForeground(new java.awt.Color(255, 255, 255));
+        lblDOD.setText("N/A");
+
+        lblCB.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblCB.setForeground(new java.awt.Color(255, 255, 255));
+        lblCB.setText("N/A");
+        lblCB.setToolTipText("");
+
+        lblCM.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblCM.setForeground(new java.awt.Color(255, 255, 255));
+        lblCM.setText("N/A");
+        lblCM.setToolTipText("");
+
+        lblRR.setFont(new java.awt.Font("Poppins", 0, 13)); // NOI18N
+        lblRR.setForeground(new java.awt.Color(255, 255, 255));
+        lblRR.setText("N/A");
+        lblRR.setToolTipText("");
 
         javax.swing.GroupLayout formBook1Layout = new javax.swing.GroupLayout(formBook1);
         formBook1.setLayout(formBook1Layout);
         formBook1Layout.setHorizontalGroup(
             formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
+            .addGroup(formBook1Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(formBook1Layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(formBook1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel24)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblDuration))
+                                .addGroup(formBook1Layout.createSequentialGroup()
+                                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel17)
+                                        .addComponent(jLabel18)
+                                        .addComponent(jLabel26))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblPUD)
+                                        .addComponent(lblBookingID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblDOD)))))
+                        .addGroup(formBook1Layout.createSequentialGroup()
+                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel20)
+                                .addComponent(jLabel25))
+                            .addGap(18, 18, 18)
+                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSubtotal)
+                                .addComponent(lblServiceTax)))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(formBook1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(74, 74, 74)
                         .addComponent(jLabel21)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTotal))
-                    .addGroup(formBook1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel24)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblNights))
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel26))
-                                .addGap(18, 18, 18)
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblChkIn)
-                                    .addComponent(lblChkOut)
-                                    .addComponent(lblRoomID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(formBook1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel29)
-                                    .addComponent(jLabel20)
-                                    .addComponent(jLabel25))
-                                .addGap(18, 18, 18)
-                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSubtotal)
-                                    .addComponent(lblServiceTax)
-                                    .addComponent(lblTourismTax)))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
+                        .addComponent(lblTotal)))
+                .addGap(70, 70, 70)
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConfirmBook, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnSearchGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtGuestName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSelectGuest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(56, 56, 56))
+                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnConfirmBook, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(formBook1Layout.createSequentialGroup()
+                            .addComponent(jLabel23)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCM))
+                        .addGroup(formBook1Layout.createSequentialGroup()
+                            .addComponent(jLabel27)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblRR))
+                        .addGroup(formBook1Layout.createSequentialGroup()
+                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel22)
+                                .addComponent(jLabel19))
+                            .addGap(55, 55, 55)
+                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblCB)))))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         formBook1Layout.setVerticalGroup(
             formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtGuestName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSearchGuest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSelectGuest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfirmBook)
-                .addGap(18, 18, 18))
             .addGroup(formBook1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel16)
-                .addGap(18, 18, 18)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(lblChkIn))
-                .addGap(2, 2, 2)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(lblChkOut))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(lblRoomID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(lblNights))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(lblSubtotal))
-                .addGap(4, 4, 4)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20)
-                    .addComponent(lblServiceTax))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(50, 50, 50)
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTourismTax, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(jLabel21)))
+                    .addGroup(formBook1Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(lblPUD))
+                        .addGap(2, 2, 2)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(lblDOD))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)))
+                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBook1Layout.createSequentialGroup()
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(lblBookingID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(lblDuration))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(lblSubtotal))
+                        .addGap(4, 4, 4)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(lblServiceTax))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(formBook1Layout.createSequentialGroup()
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(lblCP))
+                        .addGap(2, 2, 2)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addGroup(formBook1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(lblCB, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(lblCM))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(lblRR))
+                        .addGap(26, 26, 26)))
+                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBook1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(lblTotal)))
+                    .addComponent(btnConfirmBook))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pnlBookRoom2Layout = new javax.swing.GroupLayout(pnlBookRoom2);
@@ -1097,8 +1116,8 @@ public class CustomerFrame extends javax.swing.JFrame {
         pnlBookRoom2Layout.setVerticalGroup(
             pnlBookRoom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBookRoom2Layout.createSequentialGroup()
-                .addComponent(formBook1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, Short.MAX_VALUE)
-                .addGap(113, 113, 113))
+                .addComponent(formBook1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(94, 94, 94))
         );
 
         tabBooking.addTab("3 - Payment", pnlBookRoom2);
@@ -1459,81 +1478,58 @@ public class CustomerFrame extends javax.swing.JFrame {
         txtSearchHistory.setText("");
     }//GEN-LAST:event_btnSearchHistoryActionPerformed
 
-    private void btnSelectGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectGuestActionPerformed
-        // int rowSelected = tableBookRoomGuest.getSelectedRow();
-        // if (rowSelected < 0)
-        // JOptionPane.showMessageDialog(this, "Please select a guest first.");
-        // else {
-            //     guestID = (int) tableBookRoomGuest.getValueAt(rowSelected, 0); // UserID col
-            //     txtGuestName.setText((String) tableBookRoomGuest.getValueAt(rowSelected, 1));
-            // }
-    }//GEN-LAST:event_btnSelectGuestActionPerformed
-
-    private void btnConfirmBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmBookActionPerformed
-        bookingConfirmation();
-// if (chkInDate.isEmpty() || chkOutDate.isEmpty() || guestID == -1 || bookRoomID.isEmpty())
-        // JOptionPane.showMessageDialog(this, "Please fill in all necessary details before proceeding.");
-        // else {
-            //     ArrayList<String> bookingInfo = new ArrayList<String>();
-            //     Calendar calendar = Calendar.getInstance();
-            //     String today = datef.format(calendar.getTime());
-            //     Collections.addAll(bookingInfo, "-1", String.valueOf(guestID), bookRoomID, chkInDate, chkOutDate, today);
-            //     Booking booking = new Booking(bookingInfo);
-            //     if (!booking.isDuplicate()) {
-                //         if (booking.addToFile())
-                //         JOptionPane.showMessageDialog(this, "Booking successful.");
-                //         else {
-                    //             booking = null;
-                    //             JOptionPane.showMessageDialog(this, "Booking failed - Something went wrong.");
-                    //         }
-                //     } else {
-                //         booking = null; // Deleting it (by making it eligible for garbage collection)
-                //         JOptionPane.showMessageDialog(this, "Booking denied - Duplicate booking detected.");
-                //     }
-            // }
-    }//GEN-LAST:event_btnConfirmBookActionPerformed
-
-    private void btnSearchGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGuestActionPerformed
-        // String name = txtGuestName.getText().trim().toLowerCase();
-        // if (name.isEmpty()) {
-            //     loadGuest();
-            //     JOptionPane.showMessageDialog(this, "Please insert guest name to search.");
-            // } else {
-            //     ArrayList<User> customers = ResortBooking.getCusts();
-            //     DefaultTableModel tableModel = (DefaultTableModel) tableBookRoomGuest.getModel();
-            //     tableModel.setRowCount(0); // Delete all previous rows
-
-            //     // Adding all customers who hv the matched name to table
-            //     for (User cust : customers) {
-                //         if (cust.getName().toLowerCase().contains(name)) {
-                    //             row[0] = cust.getUserID();
-                    //             row[1] = cust.getName();
-                    //             row[2] = cust.getGender();
-                    //             row[3] = cust.getContact();
-                    //             row[4] = cust.getEmail();
-                    //             row[5] = cust.getIC();
-                    //             tableModel.addRow(row);
-                    //         }
-                //     }
-            // }
-    }//GEN-LAST:event_btnSearchGuestActionPerformed
-
-    private void txtGuestNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuestNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGuestNameActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void displayBookingSummary(){
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String spickUp = txtPUD.getText().trim();
+        String sdropOff = txtDOD.getText().trim();
+        LocalDate pickUp = LocalDate.parse(spickUp, format);
+        LocalDate dropOff= LocalDate.parse(sdropOff, format);
+        DefaultTableModel tableCarModel = (DefaultTableModel) tblACar.getModel();
+        int row = tblACar.getSelectedRow();
+        double rr = (double) tableCarModel.getValueAt(row, 3); 
+        
+        long d = 0;
+        int duration;
+        d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);
+        duration = (int)d;
+        int ID = Booking.id;
+        String bookingID = "B" + String.format("%04d", ID);
+        System.out.println("bookingID: "+bookingID);
+        double subTotal = rr * d;
+        double serviceTax = subTotal * 10 / 100;
+        double total = subTotal + serviceTax;
+        if (row >= 0){
+            lblCP.setText((String) tableCarModel.getValueAt(row, 0));
+            lblCB.setText((String) tableCarModel.getValueAt(row, 1));
+            lblCM.setText((String) tableCarModel.getValueAt(row, 2));
+            lblRR.setText(String.valueOf(rr));
+            lblPUD.setText(spickUp);
+            lblDOD.setText(sdropOff);
+            lblBookingID.setText(bookingID) ;
+            lblDuration.setText(String.valueOf(duration));
+            lblSubtotal.setText(String.valueOf(subTotal));
+            lblServiceTax.setText(String.valueOf(serviceTax));
+            lblTotal.setText(String.valueOf(total));
+        }
+        
+    }
+    
+    private void jBtnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSelectActionPerformed
+        if(tblACar.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Please choose a car to book. ");
+        }
+        else{
+            displayBookingSummary();
+           tabBooking.setSelectedIndex(2); 
+        }
+    }//GEN-LAST:event_jBtnSelectActionPerformed
 
     private void btnProceedCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedCarActionPerformed
-//         if (tblACar.getRowCount() != 0) {
-//                 JOptionPane.showMessageDialog(this, "Please select a room before proceeding.");
-//             } else {
-//                 bookRoomID = listAvailableRooms.getSelectedValue();
-//                 lblRoomID.setText(bookRoomID);
-//                 tabBookRoom.setSelectedIndex(1);
-//             }
+        if (tblACar.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "No car available, please choose another date.");
+        } else {
+            tabBooking.setSelectedIndex(1);
+        }
     }//GEN-LAST:event_btnProceedCarActionPerformed
 
     private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
@@ -1602,6 +1598,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) tblAvailableCars.getModel();
         DefaultTableModel tableCarModel = (DefaultTableModel) tblACar.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
+        tableCarModel.setRowCount(0);
         long d = 0;
         long dInFile = 0;
         int duration, dInFileI;
@@ -1826,6 +1823,60 @@ public class CustomerFrame extends javax.swing.JFrame {
         txtPUD.setText("");
         txtDOD.setText("");
     }//GEN-LAST:event_btnSearchCar1ActionPerformed
+
+    private void btnConfirmBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmBookActionPerformed
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        bookingConfirmation();
+        String customerID = user.getUserID();
+        String bookingCP = lblCP.getText().toUpperCase();
+        String sBookingDate = format.format(LocalDate.now());
+        String sPickUp = lblPUD.getText();
+        String sDropOff = lblDOD.getText();
+        LocalDate pickUp = LocalDate.parse(sPickUp, format);
+        LocalDate dropOff = LocalDate.parse(sDropOff, format);
+        String sAmount = lblTotal.getText();
+
+        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
+        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
+        
+        else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else if(pickUp==dropOff || dropOff.getYear() < pickUp.getYear() || dropOff.getYear() - pickUp.getYear() > 1){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else if(dropOff.getMonthValue() < pickUp.getMonthValue()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else if(dropOff.getDayOfMonth() < pickUp.getDayOfMonth()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+        
+        else {
+            ArrayList<String> bookingInfo = new ArrayList<String>(
+                Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount)
+            );
+            Booking booking = new Booking(bookingInfo);
+
+            if (!booking.isDuplicate()) {
+
+                if (booking.addToFile()) {
+                    loadBookings();
+                    JOptionPane.showMessageDialog(this, "Payment Successful");
+                }
+                else
+                JOptionPane.showMessageDialog(this, "Payment Unsucessful - Something went wrong.");
+
+            } else {
+                booking = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Booking not added - Duplication detected.");
+            }
+        }
+             
+    }//GEN-LAST:event_btnConfirmBookActionPerformed
     
     boolean displayed = false;
     
@@ -1874,24 +1925,24 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnResetCar;
     private javax.swing.JButton btnSearchCar;
     private javax.swing.JButton btnSearchCar1;
-    private javax.swing.JButton btnSearchGuest;
     private javax.swing.JButton btnSearchHistory;
-    private javax.swing.JButton btnSelectGuest;
     private javax.swing.JPanel formBook1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtnSelect;
     private com.toedter.calendar.JCalendar jCldBooking;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -1919,15 +1970,18 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTabbedPane jtpCustomer;
-    private javax.swing.JLabel lblChkIn;
-    private javax.swing.JLabel lblChkOut;
-    private javax.swing.JLabel lblNights;
+    private javax.swing.JLabel lblBookingID;
+    private javax.swing.JLabel lblCB;
+    private javax.swing.JLabel lblCM;
+    private javax.swing.JLabel lblCP;
+    private javax.swing.JLabel lblDOD;
+    private javax.swing.JLabel lblDuration;
+    private javax.swing.JLabel lblPUD;
+    private javax.swing.JLabel lblRR;
     private javax.swing.JLabel lblRapidCar;
-    private javax.swing.JLabel lblRoomID;
     private javax.swing.JLabel lblServiceTax;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblTourismTax;
     private javax.swing.JPanel pnlBookRoom;
     private javax.swing.JPanel pnlBookRoom1;
     private javax.swing.JPanel pnlBookRoom2;
@@ -1947,7 +2001,6 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtCarBrand;
     private javax.swing.JTextField txtCarModel;
     private javax.swing.JTextField txtDOD;
-    private javax.swing.JTextField txtGuestName;
     private javax.swing.JTextField txtMaxPrice;
     private javax.swing.JTextField txtMinPrice;
     private javax.swing.JTextField txtPUD;
