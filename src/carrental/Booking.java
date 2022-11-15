@@ -27,6 +27,7 @@ public class Booking {
     private LocalDate startDate;
     private LocalDate endDate;
     private double bookingFee;
+    private String status;
     public static int id = 1;
     
     // CONSTRUCTORS
@@ -59,6 +60,7 @@ public class Booking {
         // Todo - Initialize Customer and Car object
         custID = bookingInfo.get(1);
         carNo = bookingInfo.get(2);
+        status = bookingInfo.get(7);
         customer = CarRental.getCustomers().get(0);
         car = CarRental.getCars().get(0);
         
@@ -115,6 +117,7 @@ public class Booking {
     public LocalDate getStartDate() {return startDate;} 
     public LocalDate getEndDate() {return endDate;} 
     public double getBookingFee() {return bookingFee;}
+    public String getStatus() {return status;} 
 
     public int getRentalDuration() 
     {
@@ -136,6 +139,7 @@ public class Booking {
     public void setStartDate(LocalDate _startDate) { startDate = _startDate; }
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
     public void setBookingFee(double _bookingFee) { bookingFee = _bookingFee; }
+    public void setStatus(String _status) { status = _status; }
     
     public boolean isDuplicate() 
     {
@@ -162,8 +166,8 @@ public class Booking {
             PrintWriter pw = new PrintWriter(bw);
             
             line = String.format(
-                "%s, %s, %s, %s, %s, %s, %.2f\n", 
-                bookingID, custID, carNo, bookingDate, startDate, endDate, bookingFee
+                "%s, %s, %s, %s, %s, %s, %.2f, %s\n", 
+                bookingID, custID, carNo, bookingDate, startDate, endDate, bookingFee, status
             );
             pw.write(line);
             pw.close();
@@ -189,6 +193,12 @@ public class Booking {
         setBookingFee(_bookingFee);
         return rewriteFile();
     }
+    
+    public boolean updateStatus (String _status)
+    {
+        setStatus(_status);
+        return rewriteFile();
+    }
 
     public static boolean rewriteFile() 
     {
@@ -198,21 +208,22 @@ public class Booking {
             // May throw FileNotFoundException
             BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getBookingFile()));
             PrintWriter pw = new PrintWriter(bw);
-            pw.write("bookingId, customerId, carPlate, bookingDate, startDate, endDate, bookingFee\n");
+            pw.write("bookingId, customerId, carPlate, bookingDate, startDate, endDate, bookingFee, status\n");
 
             List <Booking> bookings = new ArrayList<Booking>();
             bookings.addAll(CarRental.getBookings());
             
             for (Booking booking: bookings) {
                 line = String.format(
-                    "%s, %s, %s, %s, %s, %s, %.02f\n", 
+                    "%s, %s, %s, %s, %s, %s, %.02f, %s\n", 
                     booking.getBookingId(),
                     booking.getCustID(),
                     booking.getCarNo(),
                     booking.getBookingDate(),
                     booking.getStartDate(),
                     booking.getEndDate(),
-                    booking.getBookingFee());
+                    booking.getBookingFee(),
+                    booking.getStatus());
                 pw.write(line);
             }
             

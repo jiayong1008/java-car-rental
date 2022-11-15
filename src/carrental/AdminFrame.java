@@ -45,6 +45,7 @@ public class AdminFrame extends javax.swing.JFrame {
         loadUsers();
         loadCars();
         loadBookings();
+        loadNewBookings();
     }
 
 // ================     HELPER FUNCTIONS        ========================
@@ -125,6 +126,26 @@ public class AdminFrame extends javax.swing.JFrame {
         
         for (int i = 0; i < index; i++) {
             addBookingTableRow(tableModel, bookings.get(i));
+        }
+    }
+    
+    private void loadNewBookings() {
+        ArrayList<Booking> bookings = CarRental.getBookings();
+        DefaultTableModel tableModel = (DefaultTableModel) tableNewBookings.getModel();
+        tableModel.setRowCount(0);
+        int index = bookings.size();
+        
+        for (Booking booking: CarRental.getBookings()) {
+            if(booking.getStatus().equals("WAITING FOR CONFIRMATION")){
+                columns[0] = booking.getBookingId();
+                columns[1] = booking.getBookingDate();
+                columns[2] = booking.getCarNo();
+                columns[3] = booking.getStartDate();
+                columns[4] = booking.getEndDate();
+                columns[5] = booking.getBookingFee();
+                tableModel.addRow(columns);
+            }
+            
         }
     }
 
@@ -391,6 +412,10 @@ public class AdminFrame extends javax.swing.JFrame {
         txtReportStartDate = new javax.swing.JTextField();
         txtReportEndDate = new javax.swing.JTextField();
         btnGenerateReport = new javax.swing.JButton();
+        tabHistory = new javax.swing.JPanel();
+        btnSendConfirmation = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableNewBookings = new javax.swing.JTable();
 
         jLabel59.setFont(new java.awt.Font("Poppins", 0, 16)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 51, 51));
@@ -1447,7 +1472,7 @@ public class AdminFrame extends javax.swing.JFrame {
             .addGroup(tabManageUsersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabManageUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formBook, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+                    .addComponent(formBook, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -1763,6 +1788,74 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Reports", tabReport);
 
+        tabHistory.setBackground(new java.awt.Color(0, 0, 0));
+
+        btnSendConfirmation.setBackground(new java.awt.Color(255, 204, 102));
+        btnSendConfirmation.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        btnSendConfirmation.setForeground(new java.awt.Color(255, 255, 255));
+        btnSendConfirmation.setText("Send Confirmation");
+        btnSendConfirmation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendConfirmationActionPerformed(evt);
+            }
+        });
+
+        tableNewBookings.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        tableNewBookings.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Booking ID", "Booking Date", "Car Plate", "Pick-up", "Drop-off", "Amount"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableNewBookings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableNewBookingsMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tableNewBookingsMouseExited(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tableNewBookings);
+
+        javax.swing.GroupLayout tabHistoryLayout = new javax.swing.GroupLayout(tabHistory);
+        tabHistory.setLayout(tabHistoryLayout);
+        tabHistoryLayout.setHorizontalGroup(
+            tabHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabHistoryLayout.createSequentialGroup()
+                .addGroup(tabHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSendConfirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 963, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 48, Short.MAX_VALUE))
+        );
+        tabHistoryLayout.setVerticalGroup(
+            tabHistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabHistoryLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSendConfirmation)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("New Bookings", tabHistory);
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -1823,6 +1916,36 @@ public class AdminFrame extends javax.swing.JFrame {
             //        }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
+    private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
+
+        // Extracting text box values
+        String inputStartDate = txtReportStartDate.getText().trim();
+        String inputEndDate = txtReportEndDate.getText().trim();
+
+        // Do nothing if end date is not provided
+        if (inputStartDate.isEmpty() || inputEndDate.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please insert start and end date first.");
+            return;
+        }
+
+        // Date formatting
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
+        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+
+        // Validation - Check for valid duration
+        if ((int) duration <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
+            txtReportStartDate.setText("");
+            txtReportEndDate.setText("");
+            return;
+        }
+        generateReport(startDate, endDate);
+    }//GEN-LAST:event_btnGenerateReportActionPerformed
+
     private void txtReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportEndDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtReportEndDateActionPerformed
@@ -1830,6 +1953,52 @@ public class AdminFrame extends javax.swing.JFrame {
     private void txtReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReportStartDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtReportStartDateActionPerformed
+
+    private void btnReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportEndDateActionPerformed
+
+        // Extracting text box values
+        String inputEndDate = datef.format(jCalendar2.getDate());
+        String inputStartDate = txtReportStartDate.getText().trim();
+        txtReportEndDate.setText(inputEndDate);
+
+        // Do nothing if end date is not provided
+        if (inputStartDate.isEmpty()) return;
+
+        // Date formatting
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
+        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+
+        if ((int) duration <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
+            txtReportEndDate.setText("");
+        }
+    }//GEN-LAST:event_btnReportEndDateActionPerformed
+
+    private void btnReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStartDateActionPerformed
+
+        // Extracting text box values
+        String inputStartDate = datef.format(jCalendar2.getDate());
+        String inputEndDate = txtReportEndDate.getText().trim();
+        txtReportStartDate.setText(inputStartDate);
+
+        // Do nothing if end date is not provided
+        if (inputEndDate.isEmpty()) return;
+
+        // Date formatting
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
+        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
+        long duration = ChronoUnit.DAYS.between(startDate, endDate);
+
+        if ((int) duration <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
+            txtReportStartDate.setText("");
+        }
+    }//GEN-LAST:event_btnReportStartDateActionPerformed
 
     private void btnLastReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastReceiptActionPerformed
 
@@ -1845,7 +2014,6 @@ public class AdminFrame extends javax.swing.JFrame {
         loadReceipt(booking);
         txtBookIdReceipt.setText(booking.getBookingId());
         // int last = Booking.getHighestId();
-
     }//GEN-LAST:event_btnLastReceiptActionPerformed
 
     private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
@@ -1954,6 +2122,14 @@ public class AdminFrame extends javax.swing.JFrame {
             txtUsername.setText((String) tableModel.getValueAt(row, 7));
         }
     }//GEN-LAST:event_tableUsersMouseClicked
+
+    private void btnUserResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserResetActionPerformed
+        txtUserFullName.setText("");
+        txtContact.setText("");
+        txtNric.setText("");
+        txtUsername.setText("");
+        loadUsers();
+    }//GEN-LAST:event_btnUserResetActionPerformed
 
     private void btnUserDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserDeleteActionPerformed
 
@@ -2125,10 +2301,10 @@ public class AdminFrame extends javax.swing.JFrame {
 
         DefaultTableModel tableModel = (DefaultTableModel) tableUsers.getModel();
         tableModel.setRowCount(0); // Delete all previous rows
-        
+
         // Adding all users who hv the matched description to table
         for (User user : users) {
-            
+
             // Filtering matched users
             if (user.getName().toUpperCase().contains(name) && gender.equals(user.getGender().toLowerCase())
                 && user.getContactNo().contains(contact) && user.getEmail().contains(email) &&
@@ -2145,7 +2321,6 @@ public class AdminFrame extends javax.swing.JFrame {
                 tableModel.addRow(columns);
             }
         }
-
     }//GEN-LAST:event_btnUserSearchActionPerformed
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
@@ -2168,6 +2343,14 @@ public class AdminFrame extends javax.swing.JFrame {
             txtCarDailyRate.setText((String) tableModel.getValueAt(row, 4));
         }
     }//GEN-LAST:event_tableCarsMouseClicked
+
+    private void btnResetCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCarActionPerformed
+        txtCarPlate.setText("");
+        txtCarBrand.setText("");
+        txtCarModel.setText("");
+        txtCarDailyRate.setText("");
+        loadCars();
+    }//GEN-LAST:event_btnResetCarActionPerformed
 
     private void btnDeleteCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteCarActionPerformed
 
@@ -2237,7 +2420,6 @@ public class AdminFrame extends javax.swing.JFrame {
             }
 
         }
-
     }//GEN-LAST:event_btnEditCarActionPerformed
 
     private void btnSearchCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchCarActionPerformed
@@ -2361,6 +2543,106 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tableBookingsMouseClicked
 
+    private void btnBookingsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsAddActionPerformed
+        String customerID = txtCustomerID.getText().trim().toUpperCase();
+        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
+        LocalDate bookingDate = java.time.LocalDate.now();
+        String sBookingDate = bookingDate.toString();
+        String sPickUp = txtPickUp.getText().trim();
+        String sDropOff = txtDropOff.getText().trim();
+        String sAmount = "0.0";
+        String status = "WAITING FOR CONFIRMATION";
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        long d = 0;
+        Double rentalRate = 0.0;
+        LocalDate pickUp = LocalDate.parse(sPickUp, format);
+        LocalDate dropOff = LocalDate.parse(sDropOff, format);
+        Double amount = 0.0;
+        ArrayList<String> customerInFile=new ArrayList<String>();
+        ArrayList<String> carInFile=new ArrayList<String>();
+
+        for (Customer customer : CarRental.getCustomers()){
+            customerInFile.add(customer.getUserID());
+
+        }
+        for(Car car : CarRental.getCars()){
+            carInFile.add(car.getCarPlate());
+        }
+
+        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
+        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
+
+        else if(!customerInFile.contains(customerID)){
+            JOptionPane.showMessageDialog(this, "Customer does not exists.");
+        }
+
+        else if(!carInFile.contains(bookingCP)){
+            JOptionPane.showMessageDialog(this, "Car does not exists.");
+        }
+
+        else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+
+        else if(pickUp==dropOff || dropOff.getYear() < pickUp.getYear() || dropOff.getYear() - pickUp.getYear() > 1){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+
+        else if(dropOff.getMonthValue() < pickUp.getMonthValue()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+
+        else if(dropOff.getDayOfMonth() < pickUp.getDayOfMonth()){
+            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
+        }
+
+        else {
+
+            for (Car car : CarRental.getCars()){
+                if(car.getCarPlate().contains(bookingCP)){
+                    rentalRate = car.getDailyRentalRate();
+                }
+            }
+            d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);
+            System.out.println("the d "+d);
+            double duration = d;
+            System.out.println("the duration "+ duration);
+            amount = rentalRate * duration;
+            System.out.println("the amount "+amount);
+            sAmount = amount.toString();
+
+            ArrayList<String> bookingInfo = new ArrayList<String>(
+                Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount, status)
+            );
+            Booking booking = new Booking(bookingInfo);
+
+            if (!booking.isDuplicate()) {
+
+                if (booking.addToFile()) {
+                    loadBookings();
+                    JOptionPane.showMessageDialog(this, "Booking added successfully");
+                }
+                else
+                JOptionPane.showMessageDialog(this, "Booking not added - Something went wrong.");
+
+            } else {
+                booking = null; // Deleting it (by making it eligible for garbage collection)
+                JOptionPane.showMessageDialog(this, "Booking not added - Duplication detected.");
+            }
+        }
+        txtBookingID.setText("");
+        txtCustomerID.setText("");
+        txtBookingCP.setText("");
+        txtPickUp.setText("");
+        txtDropOff.setText("");
+        txtAmount.setText("");
+        txtBookingDate.setText("");
+    }//GEN-LAST:event_btnBookingsAddActionPerformed
+
+    private void btnBookingsAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsAddMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBookingsAddMouseExited
+
     private void txtDropOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDropOffActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDropOffActionPerformed
@@ -2384,53 +2666,6 @@ public class AdminFrame extends javax.swing.JFrame {
     private void txtBookingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBookingDateActionPerformed
-
-    private void btnReportStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStartDateActionPerformed
-        
-        // Extracting text box values
-        String inputStartDate = datef.format(jCalendar2.getDate());
-        String inputEndDate = txtReportEndDate.getText().trim();
-        txtReportStartDate.setText(inputStartDate);
-
-        // Do nothing if end date is not provided
-        if (inputEndDate.isEmpty()) return;
-
-        // Date formatting
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
-        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
-        long duration = ChronoUnit.DAYS.between(startDate, endDate);
-
-        if ((int) duration <= 0)
-        {
-            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
-            txtReportStartDate.setText("");
-        }
-    }//GEN-LAST:event_btnReportStartDateActionPerformed
-
-    private void btnReportEndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportEndDateActionPerformed
-        
-        // Extracting text box values
-        String inputEndDate = datef.format(jCalendar2.getDate());
-        String inputStartDate = txtReportStartDate.getText().trim();
-        txtReportEndDate.setText(inputEndDate);
-
-        // Do nothing if end date is not provided
-        if (inputStartDate.isEmpty()) return;
-
-        // Date formatting
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
-        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
-        long duration = ChronoUnit.DAYS.between(startDate, endDate);
-
-        if ((int) duration <= 0)
-        {
-            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
-            txtReportEndDate.setText("");
-        }
-
-    }//GEN-LAST:event_btnReportEndDateActionPerformed
 
     private void txtBookingCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookingCPActionPerformed
         // TODO add your handling code here:
@@ -2486,31 +2721,31 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a booking to edit.");
         }
 
-//        else if (!(CarRental.getCars().contains(bookingCP))){
-//            System.out.println("the car in file"+CarRental.getCars());
-//            System.out.println("the car plate"+bookingCP);
-//            JOptionPane.showMessageDialog(this, "Car not found.");
-//        }
-        
+        //        else if (!(CarRental.getCars().contains(bookingCP))){
+            //            System.out.println("the car in file"+CarRental.getCars());
+            //            System.out.println("the car plate"+bookingCP);
+            //            JOptionPane.showMessageDialog(this, "Car not found.");
+            //        }
+
         else if (bookingCP.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty())
         JOptionPane.showMessageDialog(this, "Incomplete information provided.");
-//      
+        //
         else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
             JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
         }
-        
+
         else if(pickUp==dropOff || dropOff.getYear() < pickUp.getYear() || dropOff.getYear() - pickUp.getYear() > 1){
             JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
         }
-        
+
         else if(dropOff.getMonthValue() < pickUp.getMonthValue()){
             JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
         }
-        
+
         else if(dropOff.getDayOfMonth() < pickUp.getDayOfMonth()){
             JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
         }
-        
+
         else
         {
             for (Car car : CarRental.getCars()){
@@ -2524,14 +2759,14 @@ public class AdminFrame extends javax.swing.JFrame {
             System.out.println("the duration "+ duration);
             amount = rentalRate * duration;//calculate amount
             System.out.println("the amount "+amount);
-//            sAmount = amount.toString();//convert amount to string for keeping to booking file
-            String bookingID = (String) tableBookings.getValueAt(row, 0); 
+            //            sAmount = amount.toString();//convert amount to string for keeping to booking file
+            String bookingID = (String) tableBookings.getValueAt(row, 0);
 
             for (Booking booking : CarRental.getBookings())
             {
                 if (!booking.getBookingId().equals(bookingID)) continue;
                 if (booking.getCarNo().equals(bookingCP) && booking.getStartDate().equals(sPickUp) && booking.getEndDate().equals(sDropOff)){
-                JOptionPane.showMessageDialog(this, "Nothing to edit.");
+                    JOptionPane.showMessageDialog(this, "Nothing to edit.");
                 }
                 else
                 {
@@ -2593,176 +2828,46 @@ public class AdminFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBookingsSearchMouseExited
 
-    private void btnBookingsAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBookingsAddMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBookingsAddMouseExited
-
-    private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
+    private void btnSendConfirmationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendConfirmationActionPerformed
+        int row = tableNewBookings.getSelectedRow();
+        String status = "CONFIRMED";
         
-        // Extracting text box values
-        String inputStartDate = txtReportStartDate.getText().trim();
-        String inputEndDate = txtReportEndDate.getText().trim();
-
-        // Do nothing if end date is not provided
-        if (inputStartDate.isEmpty() || inputEndDate.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please insert start and end date first.");
-            return;
-        } 
-
-        // Date formatting
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
-        LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
-        long duration = ChronoUnit.DAYS.between(startDate, endDate);
-
-        // Validation - Check for valid duration
-        if ((int) duration <= 0)
-        {
-            JOptionPane.showMessageDialog(this, "Start date must be before end date.");
-            txtReportStartDate.setText("");
-            txtReportEndDate.setText("");
-            return;
+        if (row < 0){
+            JOptionPane.showMessageDialog(this, "Please select a booking to send.");
+            }
+        else{
+            String bookingID = (String) tableNewBookings.getValueAt(row, 0);
+            for (Booking booking : CarRental.getBookings())
+            {
+                if (booking.getBookingId().equals(bookingID)){
+                    if (booking.updateStatus(status)) {
+                        JOptionPane.showMessageDialog(this, "Confirmation sent successfully.");
+                        loadNewBookings();
+                        break;
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Fail to send booking confirmation.");
+                    }
+                }
+ 
+            }
         }
-        generateReport(startDate, endDate);
+    }//GEN-LAST:event_btnSendConfirmationActionPerformed
 
-    }//GEN-LAST:event_btnGenerateReportActionPerformed
+    private void tableNewBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNewBookingsMouseClicked
+
+    }//GEN-LAST:event_tableNewBookingsMouseClicked
+
+    private void tableNewBookingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNewBookingsMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableNewBookingsMouseExited
 
     public static long getDateDiff(LocalDate date1, LocalDate date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getDayOfYear() - date1.getDayOfYear();
         return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
 
     }
-    
-    private void btnBookingsAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsAddActionPerformed
-        String customerID = txtCustomerID.getText().trim().toUpperCase();
-        String bookingCP = txtBookingCP.getText().trim().toUpperCase();
-        LocalDate bookingDate = java.time.LocalDate.now();
-        String sBookingDate = bookingDate.toString();
-        String sPickUp = txtPickUp.getText().trim();
-        String sDropOff = txtDropOff.getText().trim();
-        String sAmount = "0.0";
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        long d = 0;
-        Double rentalRate = 0.0;
-        LocalDate pickUp = LocalDate.parse(sPickUp, format);
-        LocalDate dropOff = LocalDate.parse(sDropOff, format);
-        Double amount = 0.0;
-        ArrayList<String> customerInFile=new ArrayList<String>();
-        ArrayList<String> carInFile=new ArrayList<String>();
-//        System.out.println(java.time.LocalDate.now()); 
-//        System.out.println("the bookingd date"+sBookingDate); 
         
-//        String bookingID = "1";
-        for (Customer customer : CarRental.getCustomers()){
-            customerInFile.add(customer.getUserID());
-            
-        }
-        for(Car car : CarRental.getCars()){
-            carInFile.add(car.getCarPlate());
-        }
-        
-//            
-//        for (Car car : CarRental.getCars()){
-//            if(!(car.getCarPlate().contains(bookingCP))){
-//                JOptionPane.showMessageDialog(this, "Car does not exists.");
-//            }
-//        }
-
-        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
-        JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
-        
-        else if(!customerInFile.contains(customerID)){
-            JOptionPane.showMessageDialog(this, "Customer does not exists.");
-        }
-        
-        else if(!carInFile.contains(bookingCP)){
-            JOptionPane.showMessageDialog(this, "Car does not exists.");
-        }
-//        else if (CarRental.getCustomers().contains(customerID)){
-//            System.out.println("the customer in file"+CarRental.getCustomers());
-//            System.out.println("the customerid"+customerID);
-//            JOptionPane.showMessageDialog(this, "Customer not found.");
-//        }
-//        
-//        else if (!(CarRental.getCars().contains(bookingCP))){
-//            JOptionPane.showMessageDialog(this, "Car not found.");
-//        }
-        else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
-            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
-        }
-        
-        else if(pickUp==dropOff || dropOff.getYear() < pickUp.getYear() || dropOff.getYear() - pickUp.getYear() > 1){
-            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
-        }
-        
-        else if(dropOff.getMonthValue() < pickUp.getMonthValue()){
-            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
-        }
-        
-        else if(dropOff.getDayOfMonth() < pickUp.getDayOfMonth()){
-            JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
-        }
-        
-        else {
-            
-            for (Car car : CarRental.getCars()){
-                if(car.getCarPlate().contains(bookingCP)){
-                    rentalRate = car.getDailyRentalRate();
-                }
-            }
-            d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);
-            System.out.println("the d "+d);
-            double duration = d;
-            System.out.println("the duration "+ duration);
-            amount = rentalRate * duration;
-            System.out.println("the amount "+amount);
-            sAmount = amount.toString();
-
-            ArrayList<String> bookingInfo = new ArrayList<String>(
-                Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount)
-            );
-            Booking booking = new Booking(bookingInfo);
-
-            if (!booking.isDuplicate()) {
-
-                if (booking.addToFile()) {
-                    loadBookings();
-                    JOptionPane.showMessageDialog(this, "Booking added successfully");
-                }
-                else
-                JOptionPane.showMessageDialog(this, "Booking not added - Something went wrong.");
-
-            } else {
-                booking = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "Booking not added - Duplication detected.");
-            }
-        }
-        txtBookingID.setText("");
-        txtCustomerID.setText("");
-        txtBookingCP.setText("");
-        txtPickUp.setText("");
-        txtDropOff.setText("");
-        txtAmount.setText("");
-        txtBookingDate.setText("");
-    }//GEN-LAST:event_btnBookingsAddActionPerformed
-
-    private void btnUserResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserResetActionPerformed
-        txtUserFullName.setText("");
-        txtContact.setText("");
-        txtNric.setText("");
-        txtUsername.setText("");
-        loadUsers();
-    }//GEN-LAST:event_btnUserResetActionPerformed
-
-    private void btnResetCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetCarActionPerformed
-        txtCarPlate.setText("");
-        txtCarBrand.setText("");
-        txtCarModel.setText("");
-        txtCarDailyRate.setText("");
-        loadCars();
-    }//GEN-LAST:event_btnResetCarActionPerformed
-    
     /*    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {
     // TODO add your handling code here:
     }    */                                      
@@ -2825,6 +2930,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnResetCar;
     private javax.swing.JButton btnSearchCar;
     private javax.swing.JButton btnSearchReceipt;
+    private javax.swing.JButton btnSendConfirmation;
     private javax.swing.JButton btnUserAdd;
     private javax.swing.JButton btnUserDelete;
     private javax.swing.JButton btnUserEdit;
@@ -2886,6 +2992,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -2894,6 +3001,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblRapidCar;
     private javax.swing.JPasswordField pass;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel tabHistory;
     private javax.swing.JPanel tabManageBookings;
     private javax.swing.JPanel tabManageCars;
     private javax.swing.JPanel tabManageUsers;
@@ -2901,6 +3009,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel tabReport;
     private javax.swing.JTable tableBookings;
     private javax.swing.JTable tableCars;
+    private javax.swing.JTable tableNewBookings;
     private javax.swing.JTable tableUsers;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextArea txtAreaReceipt;

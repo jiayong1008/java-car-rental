@@ -94,27 +94,10 @@ public class CustomerFrame extends javax.swing.JFrame {
         {
             if (booking.getCustID().toUpperCase().contains(customerID))//print history of specific customer
             {
-                for (Car car : CarRental.getCars())
-                {
-//                if (car.getCarPlate().contains(booking.getCarNo()))
-//                    {
-////                        System.out.println("the carplate in car file"+car.getCarPlate());
-////                        System.out.println("the carno that we search for "+booking.getCarNo());
-////                        System.out.println("brand is"+car.getCarBrand());
-////                        System.out.println("model is "+car.getCarModel());
-//                        columns[3] = car.getCarBrand();
-//                        columns[4] = car.getCarModel();
-//                    }
+                if(booking.getStatus().equals("CONFIRMED")){
+                    columns[0] = "Your booking "+booking.getBookingId()+" is confirmed!";
+                    tableNotificationModel.addRow(columns);
                 }
-                columns[0] = "Your booking "+booking.getBookingId()+" is confirmed!";
-//                columns[1] = booking.getBookingDate().toString();
-//                columns[2] = booking.getCarNo();
-////                columns[3] = booking.getCarNo();
-////                columns[4] = booking.getCarNo();
-//                columns[5] = booking.getStartDate().toString();
-//                columns[6] = booking.getEndDate().toString();
-//                columns[7] = String.format("%.2f", booking.getBookingFee());
-                tableNotificationModel.addRow(columns);
         }
     }
     }
@@ -1832,6 +1815,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         String sBookingDate = format.format(LocalDate.now());
         String sPickUp = lblPUD.getText();
         String sDropOff = lblDOD.getText();
+        String status = "WAITING FOR CONFIRMATION";
         LocalDate pickUp = LocalDate.parse(sPickUp, format);
         LocalDate dropOff = LocalDate.parse(sDropOff, format);
         String sAmount = lblTotal.getText();
@@ -1857,7 +1841,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         
         else {
             ArrayList<String> bookingInfo = new ArrayList<String>(
-                Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount)
+                Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount, status)
             );
             Booking booking = new Booking(bookingInfo);
 
