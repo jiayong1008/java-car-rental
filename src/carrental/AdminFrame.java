@@ -211,14 +211,12 @@ public class AdminFrame extends javax.swing.JFrame {
         for (Booking booking : CarRental.getBookings())
         {
             bookDate = booking.getBookingDate();
+            // Another way - (bookDate.compareTo(startDate) >= 0 && bookDate.compareTo(endDate) <= 0)
             if ((bookDate.isAfter(startDate) || bookDate.isEqual(startDate)) && 
                 (bookDate.isBefore(endDate) || bookDate.isEqual(endDate)))
             {
                 bookings.add(booking);
             }
-        }
-        for (Booking booking : bookings) {
-            System.out.println(booking);
         }
 
         // Calculate report info
@@ -232,18 +230,10 @@ public class AdminFrame extends javax.swing.JFrame {
             String carBrand = car.getCarBrand();
 
             if (!carBrands.containsKey(carBrand))
-            {
-                System.out.printf("Carbrand does not contain key %s. Initiializing key...\n", carBrand);
-                carBrands.put(carBrand, bookingFee);
-                System.out.println(carBrands.get(carBrand));
-            }
+            carBrands.put(carBrand, bookingFee);
 
             else
-            {
-                System.out.printf("Carbrand contains key %s. Replacing value...\n", carBrand);
-                carBrands.replace(carBrand, carBrands.get(carBrand) + bookingFee);
-                System.out.println(carBrands.get(carBrand));
-            }
+            carBrands.replace(carBrand, carBrands.get(carBrand) + bookingFee);
 
             if (!rentedCars.contains(car)) 
             rentedCars.add(car);
@@ -274,7 +264,7 @@ public class AdminFrame extends javax.swing.JFrame {
         txtAreaReport.setText(txtAreaReport.getText() + " Car Brand \t\t Revenue (RM)\n");
         txtAreaReport.setText(txtAreaReport.getText() + "  ___________________________________________\n");
         for (Map.Entry m : carBrands.entrySet()) {    
-            txtAreaReport.setText(txtAreaReport.getText() + String.format(" %s \t\t %.2f\n\n", m.getKey(), m.getValue()));   
+            txtAreaReport.setText(txtAreaReport.getText() + String.format(" %s \t\t %.2f\n", m.getKey(), m.getValue()));   
         }  
 
         txtAreaReport.setText(txtAreaReport.getText() + "  ___________________________________________\n");
@@ -1931,7 +1921,7 @@ public class AdminFrame extends javax.swing.JFrame {
         }
 
         // Date formatting
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
         LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
         long duration = ChronoUnit.DAYS.between(startDate, endDate);
@@ -1966,7 +1956,7 @@ public class AdminFrame extends javax.swing.JFrame {
         if (inputStartDate.isEmpty()) return;
 
         // Date formatting
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
         LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
         long duration = ChronoUnit.DAYS.between(startDate, endDate);
@@ -1989,7 +1979,7 @@ public class AdminFrame extends javax.swing.JFrame {
         if (inputEndDate.isEmpty()) return;
 
         // Date formatting
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate startDate = LocalDate.parse(inputStartDate, dateFormat);
         LocalDate endDate = LocalDate.parse(inputEndDate, dateFormat);
         long duration = ChronoUnit.DAYS.between(startDate, endDate);
@@ -2026,7 +2016,7 @@ public class AdminFrame extends javax.swing.JFrame {
             // TODO - Change CarRental.getBookings().size() to Highest ID
             if (receiptID > 0 && receiptID <= CarRental.getBookings().size())
             {
-                String requestedBookingId = String.format("B%05d", receiptID);
+                String requestedBookingId = String.format("B%04d", receiptID);
                 for (Booking carBooking : CarRental.getBookings())
                 {
                     if (carBooking.getBookingId().equals(requestedBookingId))
@@ -2085,7 +2075,7 @@ public class AdminFrame extends javax.swing.JFrame {
             // TODO - Change CarRental.getBookings().size() to Highest ID
             if (receiptID > 0 && receiptID <= CarRental.getBookings().size())
             {
-                String requestedBookingId = String.format("B%05d", receiptID);
+                String requestedBookingId = String.format("B%04d", receiptID);
                 for (Booking carBooking : CarRental.getBookings())
                 {
                     if (carBooking.getBookingId().equals(requestedBookingId))

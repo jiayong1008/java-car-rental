@@ -61,50 +61,23 @@ public class Booking {
         custID = bookingInfo.get(1);
         carNo = bookingInfo.get(2);
         status = bookingInfo.get(7);
-        customer = CarRental.getCustomers().get(0);
-        car = CarRental.getCars().get(0);
-        
-//        for (Car car : CarRental.getCars())
-//        {
-//            if (car.getCarPlate().toUpperCase().contains(carNo))
-//            {
-////                cars.add(car.getCarID()); 
-////                cars.add(car.getCarPlate());
-////                cars.add(car.getCarBrand());
-////                cars.add(car.getCarModel()); 
-////                cars.add(String.format("%.2f", car.getDailyRentalRate()));
-////                car = new Car(car.getCarID(), car.getCarPlate(), car.getCarBrand(), car.getCarModel(), String.format("%.2f", car.getDailyRentalRate()));
-//            }
-//            
-//        }
-//        for (Car car : CarRental.getCars())
-//        {
-//            ArrayList<String> cars = new ArrayList<String>();
-//            
-//            if (car.getCarPlate().toUpperCase().contains(carNo))
-//            {
-//                cars.add(car.getCarID()); 
-//                cars.add(car.getCarPlate());
-//                cars.add(car.getCarBrand());
-//                cars.add(car.getCarModel()); 
-//                cars.add(String.format("%.2f", car.getDailyRentalRate()));
-//                
-////                System.out.println(car.getCarID()+","+car.getCarPlate()+","+car.getCarBrand()+","+car.getCarModel()+","+String.format("%.2f", car.getDailyRentalRate()));
-//            }
-//            car = new Car(cars);
-//            System.out.println("the what"+ car);
-//        }
-        
-//        ArrayList<Customer> customers = CarRental.getCustomers();
-//        for (Customer customer : customers) {
-//            if (custID.equals(customer.getUserID()))
-////                customer = customer.getUserID() + "," + customer.getRole() + "," + customer.getName() + "," + customer.getGender() + "," + customer.getContactNo() + "," + customer.getEmail() + "," + customer.getIC() + "," + customer.getUsername() + "," + customer.getPassword();
-//        }
-//        customerID = bookingInfo.get(1);
-//        carPlate = bookingInfo.get(2);
-//        customer = CarRental.getCustomers().get(0);
-//        car = CarRental.getCars().get(0);
-        
+
+        for (Customer cust : CarRental.getCustomers()) 
+        {
+            if (cust.getUserID().equals(custID)) {
+                customer = cust;
+                break;
+            }
+        }
+
+        for (Car _car : CarRental.getCars()) 
+        {
+            if (_car.getCarPlate().equals(carNo)) {
+                car = _car;
+                break;
+            }
+        }
+       
     }
     
     // GETTERS
