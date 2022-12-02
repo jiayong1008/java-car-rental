@@ -56,6 +56,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         btnFemale = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,10 +171,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
         lblRegistration1.setForeground(new java.awt.Color(255, 204, 102));
         lblRegistration1.setText("RapidCar");
 
+        btnMale.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnMale);
         btnMale.setForeground(new java.awt.Color(255, 255, 255));
         btnMale.setText("Male");
 
+        btnFemale.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnFemale);
         btnFemale.setForeground(new java.awt.Color(255, 255, 255));
         btnFemale.setText("Female");
@@ -190,6 +193,16 @@ public class RegistrationFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("EG: 000000-00-0000");
+
+        btnSignUp.setBackground(new java.awt.Color(255, 204, 102));
+        btnSignUp.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        btnSignUp.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignUp.setText("Login");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRegistrationLayout = new javax.swing.GroupLayout(panelRegistration);
         panelRegistration.setLayout(panelRegistrationLayout);
@@ -253,8 +266,10 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 .addComponent(lblRegistration)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelRegistrationLayout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190)
+                .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRegistrationLayout.setVerticalGroup(
@@ -296,8 +311,10 @@ public class RegistrationFrame extends javax.swing.JFrame {
                     .addComponent(btnMale)
                     .addComponent(btnFemale))
                 .addGap(42, 42, 42)
-                .addComponent(btnConfirm)
-                .addGap(40, 40, 40)
+                .addGroup(panelRegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirm)
+                    .addComponent(btnSignUp))
+                .addGap(46, 46, 46)
                 .addComponent(lblRegistration1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -478,6 +495,12 @@ public class RegistrationFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFemaleActionPerformed
 
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        LoginFrame loginf = new LoginFrame();
+        loginf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSignUpActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -514,6 +537,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirm;
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.JRadioButton btnMale;
+    private javax.swing.JButton btnSignUp;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;

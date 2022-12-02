@@ -632,20 +632,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jPanel7" min="-2" pref="47" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane8" min="-2" pref="152" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnProceedCar" min="-2" pref="29" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="jCldBooking" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -662,6 +649,19 @@
                                               <Component id="btnSearchCar" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                               <Component id="btnSearchCar1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                           </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jScrollPane8" min="-2" pref="152" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="btnProceedCar" min="-2" pref="29" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="93" max="32767" attributes="0"/>
@@ -805,24 +805,24 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel36" alignment="1" min="-2" pref="148" max="-2" attributes="0"/>
-                                          <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel36" min="-2" pref="61" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="16" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace pref="13" max="32767" attributes="0"/>
                                       <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel36" min="-2" pref="19" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -837,7 +837,7 @@
                                   <Color blue="33" green="33" red="33" type="rgb"/>
                                 </Property>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="text" type="java.lang.String" value="* Note: Car Brand - Car Model"/>
+                                <Property name="text" type="java.lang.String" value="*Please choose a car to"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel36">
@@ -849,7 +849,7 @@
                                   <Color blue="33" green="33" red="33" type="rgb"/>
                                 </Property>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="text" type="java.lang.String" value="BMW - M3"/>
+                                <Property name="text" type="java.lang.String" value="proceed"/>
                               </Properties>
                             </Component>
                           </SubComponents>
