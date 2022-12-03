@@ -10,3 +10,10 @@ C0008, customer, NIKLAUS MIKAELSON, male, 012-12345678, klaus@gmail.com, 601008-
 C0009, customer, DAMON SALVATORE, male, 012-55566688, damon@tvd.com, 181008-14-0802, damon, qwerty
 C0010, customer, STEFAN SALVATORE, male, 012-5556668, stefan@tcd.com, 181008-14-0802, stefan, qwerty
 C0011, customer, LOW SHU KIE, female, 019-9986544, shuyoo@gmail.com, 098787091212, shuyooo, shuyooo123
+C0012, customer, GOH VI NIE, female, 013-56781234, vcnie@gmail.com, 021008-12-7777, vnnnnn, qwerty
+C0013, customer, GOH VI NIE, female, 013-56781234, vinie@gmail.com, 021008-15-7777, vnnnnn, qwerty
+C0014, customer, GOH VI NIE, female, 013-56781234, vinie@gmail.com, 021008-19-7777, vnnnnn, qwerty
+C0015, customer, GOH VI NIE, female, 013-56781234, vinie@gmail.com, 021008-10-7777, vnnnnn, qwerty
+C0016, customer, GOH VI NIE, female, 013-56781234, vinie@gmail.com, 021008-43-7777, vnnnnn, qwerty
+C0017, customer, SDSDSD, female, 012-0909088, @gmail.com, 090909-09-0909, sdsads, qwerty
+C0018, customer, DSDSDA, male, 019-09090909, @.com, 000000-00-0000, dsadasdsa, qwerty

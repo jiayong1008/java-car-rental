@@ -361,6 +361,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
         else if(btnFemale.isSelected()){
             gender = "female";
         }
+        else{
+            JOptionPane.showMessageDialog(this, "Please choose gender.");
+        }
 
 //        get date to generate customer id
 //        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  

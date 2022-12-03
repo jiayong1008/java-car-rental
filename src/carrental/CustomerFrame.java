@@ -159,6 +159,7 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
         lblRapidCar = new javax.swing.JLabel();
@@ -232,6 +233,10 @@ public class CustomerFrame extends javax.swing.JFrame {
         lblCB = new javax.swing.JLabel();
         lblCM = new javax.swing.JLabel();
         lblRR = new javax.swing.JLabel();
+        btnEwallet = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnCard = new javax.swing.JRadioButton();
+        btnOnline = new javax.swing.JRadioButton();
         tabReceipts = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -950,6 +955,39 @@ public class CustomerFrame extends javax.swing.JFrame {
         lblRR.setText("N/A");
         lblRR.setToolTipText("");
 
+        btnEwallet.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(btnEwallet);
+        btnEwallet.setForeground(new java.awt.Color(255, 255, 255));
+        btnEwallet.setText("E-wallet");
+        btnEwallet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEwalletActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Payment Method");
+
+        btnCard.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(btnCard);
+        btnCard.setForeground(new java.awt.Color(255, 255, 255));
+        btnCard.setText("Credit / Debit Payment");
+        btnCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCardActionPerformed(evt);
+            }
+        });
+
+        btnOnline.setBackground(new java.awt.Color(0, 0, 0));
+        buttonGroup1.add(btnOnline);
+        btnOnline.setForeground(new java.awt.Color(255, 255, 255));
+        btnOnline.setText("Online Banking");
+        btnOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOnlineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout formBook1Layout = new javax.swing.GroupLayout(formBook1);
         formBook1.setLayout(formBook1Layout);
         formBook1Layout.setHorizontalGroup(
@@ -994,35 +1032,50 @@ public class CustomerFrame extends javax.swing.JFrame {
                         .addComponent(jLabel21)
                         .addGap(18, 18, 18)
                         .addComponent(lblTotal)))
-                .addGap(70, 70, 70)
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnConfirmBook, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(formBook1Layout.createSequentialGroup()
-                            .addComponent(jLabel23)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCM))
-                        .addGroup(formBook1Layout.createSequentialGroup()
-                            .addComponent(jLabel27)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRR))
-                        .addGroup(formBook1Layout.createSequentialGroup()
-                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel22)
-                                .addComponent(jLabel19))
-                            .addGap(55, 55, 55)
-                            .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblCB)))))
-                .addContainerGap(270, Short.MAX_VALUE))
+                    .addGroup(formBook1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formBook1Layout.createSequentialGroup()
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(270, Short.MAX_VALUE))
+                            .addGroup(formBook1Layout.createSequentialGroup()
+                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(formBook1Layout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblCM))
+                                    .addGroup(formBook1Layout.createSequentialGroup()
+                                        .addComponent(jLabel27)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblRR))
+                                    .addGroup(formBook1Layout.createSequentialGroup()
+                                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel22)
+                                            .addComponent(jLabel19))
+                                        .addGap(55, 55, 55)
+                                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(lblCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblCB))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEwallet)
+                            .addComponent(btnConfirmBook, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnOnline)
+                            .addComponent(btnCard)
+                            .addComponent(jLabel3))
+                        .addGap(29, 29, 29))))
         );
         formBook1Layout.setVerticalGroup(
             formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(formBook1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
                     .addGroup(formBook1Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
@@ -1033,11 +1086,36 @@ public class CustomerFrame extends javax.swing.JFrame {
                         .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
                             .addComponent(lblDOD))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(formBook1Layout.createSequentialGroup()
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(formBook1Layout.createSequentialGroup()
+                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel22)
+                                    .addComponent(lblCP))
+                                .addGap(5, 5, 5))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formBook1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addGroup(formBook1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCB, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCard))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(lblCM)
+                            .addComponent(btnOnline))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(lblRR)
+                            .addComponent(btnEwallet))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(formBook1Layout.createSequentialGroup()
                         .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26)
@@ -1048,7 +1126,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                             .addComponent(lblDuration))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel25)
                             .addComponent(lblSubtotal))
@@ -1056,33 +1134,12 @@ public class CustomerFrame extends javax.swing.JFrame {
                         .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
                             .addComponent(lblServiceTax))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(formBook1Layout.createSequentialGroup()
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(lblCP))
-                        .addGap(2, 2, 2)
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addGroup(formBook1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(lblCB, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(lblCM))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel27)
-                            .addComponent(lblRR))
-                        .addGap(26, 26, 26)))
-                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(formBook1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(lblTotal)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(formBook1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(lblTotal)
                     .addComponent(btnConfirmBook))
                 .addContainerGap())
         );
@@ -1099,7 +1156,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         pnlBookRoom2Layout.setVerticalGroup(
             pnlBookRoom2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBookRoom2Layout.createSequentialGroup()
-                .addComponent(formBook1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(formBook1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, Short.MAX_VALUE)
                 .addGap(94, 94, 94))
         );
 
@@ -1797,8 +1854,20 @@ public class CustomerFrame extends javax.swing.JFrame {
         LocalDate pickUp = LocalDate.parse(sPickUp, format);
         LocalDate dropOff = LocalDate.parse(sDropOff, format);
         String sAmount = lblTotal.getText();
-
-        if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
+        if(btnCard.isSelected()){
+            JOptionPane.showMessageDialog(this, "< VISA > Amount: RM "+ sAmount);
+        }
+        else if(btnOnline.isSelected()){
+            JOptionPane.showMessageDialog(this, "< FPX > Amount: RM "+ sAmount);
+        }
+        else if(btnEwallet.isSelected()){
+            JOptionPane.showMessageDialog(this, "< E-Wallet > Amount: RM "+ sAmount);
+        }
+        
+        if( !btnCard.isSelected() && !btnOnline.isSelected() && !btnEwallet.isSelected()){
+            JOptionPane.showMessageDialog(this, "Please choose payment method.");
+        }
+        else if (customerID.isEmpty() || bookingCP.isEmpty() || sBookingDate.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty() || sAmount.isEmpty())
         JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add booking.");
         
         else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
@@ -1840,6 +1909,18 @@ public class CustomerFrame extends javax.swing.JFrame {
         }
              
     }//GEN-LAST:event_btnConfirmBookActionPerformed
+
+    private void btnEwalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEwalletActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEwalletActionPerformed
+
+    private void btnCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCardActionPerformed
+
+    private void btnOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOnlineActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOnlineActionPerformed
     
     boolean displayed = false;
     
@@ -1879,16 +1960,20 @@ public class CustomerFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton btnCard;
     private javax.swing.JButton btnConfirmBook;
     private javax.swing.JButton btnDOD;
+    private javax.swing.JRadioButton btnEwallet;
     private javax.swing.JButton btnFilterCar;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JRadioButton btnOnline;
     private javax.swing.JButton btnPUD;
     private javax.swing.JButton btnProceedCar;
     private javax.swing.JButton btnResetCar;
     private javax.swing.JButton btnSearchCar;
     private javax.swing.JButton btnSearchCar1;
     private javax.swing.JButton btnSearchHistory;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel formBook1;
     private javax.swing.JButton jBtnSelect;
     private com.toedter.calendar.JCalendar jCldBooking;
@@ -1906,6 +1991,7 @@ public class CustomerFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
