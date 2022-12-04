@@ -2561,7 +2561,7 @@ public class AdminFrame extends javax.swing.JFrame {
         System.out.println("the d "+d);
         double duration = d;
         System.out.println("the duration "+ duration);
-        amount = rentalRate * duration;
+        amount = rentalRate * duration * 110 / 100;
         System.out.println("the amount "+amount);
         sAmount = amount.toString();
             
@@ -2569,8 +2569,8 @@ public class AdminFrame extends javax.swing.JFrame {
         int tduration, dInFileI;
         tduration = (int)d;
         ArrayList<String> carInTable=new ArrayList<String>();
-        ArrayList<String> carNotAvailable=new ArrayList<String>();
         ArrayList<String> carAvailable=new ArrayList<String>();
+        ArrayList<String> carNotAvailable=new ArrayList<String>();
         for (Car car : CarRental.getCars()){
             for (Booking booking : CarRental.getBookings()){    
                 dInFile = getDateDiff(booking.getStartDate(),booking.getEndDate(),TimeUnit.MILLISECONDS);
