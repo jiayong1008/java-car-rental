@@ -395,9 +395,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
         
         else if(!password.equals(cpassword)){
             JOptionPane.showMessageDialog(this, "The password confirmation does not match.");
-            if (password.length() < 9){
+        }
+        else if (password.length() < 9){
                 JOptionPane.showMessageDialog(this, "Password must be more than 8 characters. ");
-            }
         }
         
         else if(ic.length() != 14){
@@ -435,13 +435,13 @@ public class RegistrationFrame extends javax.swing.JFrame {
             if (!user.isDuplicate()) {
                 if (user.addToFile()) {
 //                    loadUsers();
-                    JOptionPane.showMessageDialog(this, "User added successfully");
+                    JOptionPane.showMessageDialog(this, "Registration successful");
                 } else {
-                    JOptionPane.showMessageDialog(this, "User not added - Something went wrong.");
+                    JOptionPane.showMessageDialog(this, "Registration unsuccessful - Something went wrong.");
                 }
             } else {
                 user = null; // Deleting it (by making it eligible for garbage collection)
-                JOptionPane.showMessageDialog(this, "User not added - Duplication detected.");
+                JOptionPane.showMessageDialog(this, "Registration unsuccessful - Duplication detected.");
             }
             
             // Complete information provided - create new customer object and add to database
