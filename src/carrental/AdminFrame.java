@@ -4,9 +4,6 @@
  */
 package carrental;
 
-import static carrental.CustomerFrame.getDateDiff;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +12,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,7 +84,7 @@ public class AdminFrame extends javax.swing.JFrame {
         model.addRow(columns);        
     }
 
-    // Load cars in table
+    // Load users in table
     private void loadUsers() 
     {
         // Polymorphism - adding admin (subclass) and customer (subclass) to User (superclass) list 

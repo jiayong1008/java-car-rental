@@ -1,8 +1,5 @@
 package carrental;
 
-import static carrental.Car.id;
-import static carrental.User.FILE;
-import static carrental.User.id;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -13,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 
 public class Booking {
     
@@ -91,7 +87,17 @@ public class Booking {
     public LocalDate getEndDate() {return endDate;} 
     public double getBookingFee() {return bookingFee;}
     public String getStatus() {return status;} 
-
+    
+    // SETTERS
+    public void setCustomer(Customer _customer) { customer = _customer; }
+    public void setCar(Car _car) { car = _car; }
+    public void setCarNo(String _carNo) { carNo = _carNo; }
+    public void setBookingDate(LocalDate _bookingDate) { bookingDate = _bookingDate; }
+    public void setStartDate(LocalDate _startDate) { startDate = _startDate; }
+    public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
+    public void setBookingFee(double _bookingFee) { bookingFee = _bookingFee; }
+    public void setStatus(String _status) { status = _status; }
+    
     public int getRentalDuration() 
     {
         try {
@@ -101,19 +107,7 @@ public class Booking {
             return -1;
         }   
     }
-    
-    // SETTERS
-    // public void setBookingId(String _bookingId) { bookingId = _bookingId; }
-    public void setCustomer(Customer _customer) { customer = _customer; }
-    public void setCar(Car _car) { car = _car; }
-//    public void setCustID(String _custID) { custID = _custID; }
-    public void setCarNo(String _carNo) { carNo = _carNo; }
-    public void setBookingDate(LocalDate _bookingDate) { bookingDate = _bookingDate; }
-    public void setStartDate(LocalDate _startDate) { startDate = _startDate; }
-    public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
-    public void setBookingFee(double _bookingFee) { bookingFee = _bookingFee; }
-    public void setStatus(String _status) { status = _status; }
-    
+
     public boolean isDuplicate() 
     {
         List<Booking> bookings = new ArrayList<Booking>();
