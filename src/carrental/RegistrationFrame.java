@@ -4,13 +4,9 @@
  */
 package carrental;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 
 public class RegistrationFrame extends javax.swing.JFrame {   

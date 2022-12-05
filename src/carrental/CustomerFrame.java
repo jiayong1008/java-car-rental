@@ -4,17 +4,12 @@
  */
 package carrental;
 
-import static carrental.AdminFrame.getDateDiff;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-
-import javax.lang.model.util.ElementScanner14;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
