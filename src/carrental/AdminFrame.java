@@ -2564,8 +2564,6 @@ public class AdminFrame extends javax.swing.JFrame {
         long dInFile = 0;
         int tduration, dInFileI;
         tduration = (int)d;
-        ArrayList<String> carInTable=new ArrayList<String>();
-        ArrayList<String> carAvailable=new ArrayList<String>();
         ArrayList<String> carNotAvailable=new ArrayList<String>();
         for (Car car : CarRental.getCars()){
             for (Booking booking : CarRental.getBookings()){    
@@ -2812,11 +2810,6 @@ public class AdminFrame extends javax.swing.JFrame {
         String bookingID = txtBookingID.getText().trim().toUpperCase();
         String customerID = txtCustomerID.getText().trim().toUpperCase();
         String bookingCP = txtBookingCP.getText().trim().toUpperCase();
-        String sBookingDate = txtBookingDate.getText().trim();
-        String sPickUp = txtPickUp.getText().trim();
-        String sDropOff = txtDropOff.getText().trim();
-        String sAmount = txtAmount.getText().trim();
-        Double amount = -1.0;
 
         // If daily rate field is not empty, ensure that it is a numeric (double) value
         if (bookingID.isEmpty() && customerID.isEmpty() && bookingCP.isEmpty())
