@@ -84,10 +84,9 @@ abstract public class User {
         List<User> users = new ArrayList<User>();
         users.addAll(CarRental.getAdmins());
         users.addAll(CarRental.getCustomers());
-
         // User duplication is trigerred when user has the same IC
         for (User user : users) {
-            if (user.getIC().equals(ic)) {
+            if (user.getIC().equals(ic) || user.getUsername().equals(username)) {
                 id--;
                 return true;
             }
