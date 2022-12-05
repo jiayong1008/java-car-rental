@@ -81,6 +81,7 @@ abstract public class User {
 
     public boolean isDuplicate() 
     {
+        // Parent class (User) used as polymorphic type
         List<User> users = new ArrayList<User>();
         users.addAll(CarRental.getAdmins());
         users.addAll(CarRental.getCustomers());
@@ -143,6 +144,4 @@ abstract public class User {
     public abstract String getUserID();
     public abstract String getRole();
     public abstract String toString();
-    // public abstract boolean isDuplicate();
-    // public abstract boolean addToFile();
 }
