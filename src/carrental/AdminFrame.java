@@ -130,7 +130,6 @@ public class AdminFrame extends javax.swing.JFrame {
         ArrayList<Booking> bookings = CarRental.getBookings();
         DefaultTableModel tableModel = (DefaultTableModel) tableNewBookings.getModel();
         tableModel.setRowCount(0);
-        int index = bookings.size();
         
         for (Booking booking: CarRental.getBookings()) {
             if(booking.getStatus().equals("WAITING FOR CONFIRMATION")){
@@ -2439,7 +2438,6 @@ public class AdminFrame extends javax.swing.JFrame {
                 (dailyRentalRate < 0 || dailyRentalRate >= 0 && car.getDailyRentalRate() == dailyRentalRate))
             {
                 columns[0] = car.getCarID();
-                System.out.println(car.getCarPlate());
                 columns[1] = car.getCarPlate();
                 columns[2] = car.getCarBrand();
                 columns[3] = car.getCarModel();
@@ -2554,11 +2552,8 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         }
         d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);
-        System.out.println("the d "+d);
         double duration = d;
-        System.out.println("the duration "+ duration);
         amount = rentalRate * duration * 110 / 100;
-        System.out.println("the amount "+amount);
         sAmount = amount.toString();
             
         long dInFile = 0;
@@ -2587,7 +2582,6 @@ public class AdminFrame extends javax.swing.JFrame {
             }
                      
         }
-        System.out.println(carNotAvailable);
         
 
         for (Customer customer : CarRental.getCustomers()){
@@ -2726,14 +2720,10 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void btnBookingsEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingsEditActionPerformed
         int row = tableBookings.getSelectedRow();
-        String customerID = txtCustomerID.getText().trim().toUpperCase();
         String bookingCP = txtBookingCP.getText().trim().toUpperCase();
-        String sBookingDate = txtBookingDate.getText().trim();
         String sPickUp = txtPickUp.getText().trim();
         String sDropOff = txtDropOff.getText().trim();
-        String sAmount = "0.0";
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate bookingDate = LocalDate.parse(sBookingDate, format);
         LocalDate pickUp = LocalDate.parse(sPickUp, format);
         LocalDate dropOff = LocalDate.parse(sDropOff, format);
         Double amount = 0.0;
@@ -2744,15 +2734,9 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a booking to edit.");
         }
 
-        //        else if (!(CarRental.getCars().contains(bookingCP))){
-            //            System.out.println("the car in file"+CarRental.getCars());
-            //            System.out.println("the car plate"+bookingCP);
-            //            JOptionPane.showMessageDialog(this, "Car not found.");
-            //        }
-
         else if (bookingCP.isEmpty() || sPickUp.isEmpty() || sDropOff.isEmpty())
         JOptionPane.showMessageDialog(this, "Incomplete information provided.");
-        //
+        
         else if(pickUp.getDayOfMonth()==dropOff.getDayOfMonth() && pickUp.getMonthValue()==dropOff.getMonthValue() && pickUp.getYear()==dropOff.getYear()){
             JOptionPane.showMessageDialog(this, "Fail to add booking, invalid pick up and drop off date.");
         }
@@ -2777,12 +2761,8 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
             }
             d = getDateDiff(pickUp,dropOff,TimeUnit.MILLISECONDS);//calculate difference between dropoff date and pick up date
-            System.out.println("the d "+d);
             double duration = d;//convert d(long) to double
-            System.out.println("the duration "+ duration);
             amount = rentalRate * duration;//calculate amount
-            System.out.println("the amount "+amount);
-            //            sAmount = amount.toString();//convert amount to string for keeping to booking file
             String bookingID = (String) tableBookings.getValueAt(row, 0);
 
             for (Booking booking : CarRental.getBookings())

@@ -345,12 +345,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         String cpassword = new String(passcRgt.getPassword());
         String role = "customer";
         String gender="";
-////        get date to generate customer id
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  
-//        LocalDateTime now = LocalDateTime.now();  
-//        String customerID = "C" + (dtf.format(now));
-////        finish generate customer id
-//      gender set
+
         if(btnMale.isSelected()){
             gender = "male";
         }
@@ -361,15 +356,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please choose gender.");
         }
 
-//        get date to generate customer id
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");  
-//        LocalDateTime now = LocalDateTime.now();  
-//        String customerID = "C" + (dtf.format(now));
-//        finish generate customer id
-
-        System.out.println("gender" + buttonGroup1.getSelection().getActionCommand());
         double dContact = 0.0;
         double dIC = 0.0;
+        
         if (name.isEmpty() || contactNo.isEmpty() || email.isEmpty() || ic.isEmpty() || username.isEmpty() || password.isEmpty() || cpassword.isEmpty())
             JOptionPane.showMessageDialog(this, "Please fill in all necessary information to add user.");
             

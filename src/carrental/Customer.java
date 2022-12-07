@@ -39,20 +39,6 @@ public class Customer extends User {
     
     public boolean addToFile()
     {
-//        try {
-//
-//      // make a connection to the file
-//      BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
-//      PrintWriter pw = new PrintWriter(bw);
-//      Path file = Paths.get("input.txt");
-//
-//      // read all lines of the file
-//      long count = Files.lines(file).count();
-//      System.out.println("Total Lines: " + count);
-//
-//    } catch (Exception e) {
-//      e.getStackTrace();
-//    }
         String role = "customer";
         String line;
 

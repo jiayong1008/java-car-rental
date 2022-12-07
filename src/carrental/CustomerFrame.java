@@ -25,7 +25,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         user = cust;
         initComponents();
         loadCars();
-//        loadCustomers();
         loadBookings();
         loadNotifications();
     }
@@ -59,10 +58,6 @@ public class CustomerFrame extends javax.swing.JFrame {
                 {
                 if (car.getCarPlate().contains(booking.getCarNo()))
                     {
-//                        System.out.println("the carplate in car file"+car.getCarPlate());
-//                        System.out.println("the carno that we search for "+booking.getCarNo());
-//                        System.out.println("brand is"+car.getCarBrand());
-//                        System.out.println("model is "+car.getCarModel());
                         columns[3] = car.getCarBrand();
                         columns[4] = car.getCarModel();
                     }
@@ -70,8 +65,6 @@ public class CustomerFrame extends javax.swing.JFrame {
                 columns[0] = booking.getBookingId();
                 columns[1] = booking.getBookingDate().toString();
                 columns[2] = booking.getCarNo();
-//                columns[3] = booking.getCarNo();
-//                columns[4] = booking.getCarNo();
                 columns[5] = booking.getStartDate().toString();
                 columns[6] = booking.getEndDate().toString();
                 columns[7] = String.format("%.2f", booking.getBookingFee());
@@ -107,38 +100,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         columns[4] = String.format("%.2f", car.getDailyRentalRate());
         model.addRow(columns);
     }
-    
-    private void bookingConfirmation() {
-        System.out.println("send booking confirmation");
-//        jListConfirmationLetter.add
-    }
-    
-//    public void addHistoryTableRow(DefaultTableModel model, Booking booking) 
-//    {
-////        columns[0] = booking.getBookingId();
-////        columns[2] = booking.getCarNo();
-////        columns[1] = booking.getBookingDate();
-////        columns[5] = booking.getStartDate();
-////        columns[6] = booking.getEndDate();
-////        columns[7] = booking.getBookingFee();
-////        model.addRow(columns);
-////        for (Car car : CarRental.getCars())
-////                {
-//////                    System.out.println("brand is"+car.getCarBrand());
-//////                    System.out.println("model is "+car.getCarModel());
-////                    System.out.println("the search"+ booking.getCarNo());
-////                if (car.getCarPlate().contains(booking.getCarNo()))
-////                    {
-////                        System.out.println("the carplate in car file"+car.getCarPlate());
-////                        System.out.println("the carno that we search for "+booking.getCarNo());
-////                        System.out.println("brand is"+car.getCarBrand());
-////                        System.out.println("model is "+car.getCarModel());
-////                        columns[3] = car.getCarBrand();
-////                        columns[4] = car.getCarModel();
-////                    }
-////                }
-//        
-//    }
+
 
 // ================     END OF HELPER FUNCTIONS        ========================
     
@@ -1445,17 +1407,11 @@ public class CustomerFrame extends javax.swing.JFrame {
 
         for (Car car : CarRental.getCars())
         {
-//            System.out.println(car.getCarBrand());
-//            System.out.println("the search"+ search);
             if (car.getCarBrand().contains(search))
             {
-                System.out.println("search: "+search);
                 carNo = car.getCarPlate();//through car brand get carPlate(s) from car file
-//            }
         
                 String customerID = user.getUserID();//get login's userid
-                System.out.println("customerid: "+customerID);
-    //            DefaultTableModel tableModelSearch = (DefaultTableModel) tableHistory.getModel();
                 for (Booking booking : CarRental.getBookings())
                 {
                     if (carNo != null)
@@ -1463,24 +1419,16 @@ public class CustomerFrame extends javax.swing.JFrame {
                         {
                             if (car.getCarPlate().toUpperCase().contains(booking.getCarNo().toUpperCase()))
                             {
-                                System.out.println("the carplate in car file"+car.getCarPlate());
-                                System.out.println("the carno that we search for "+booking.getCarNo());
-                                System.out.println("the customer in customer file"+booking.getCustID());
-                                System.out.println("brand is"+car.getCarBrand());
-                                System.out.println("model is "+car.getCarModel());
                                 columns[3] = car.getCarBrand();
                                 columns[4] = car.getCarModel();
                             }
                             columns[0] = booking.getBookingId();
-    //                        columns[3] = "dabian";
-    //                        columns[4] = "dabian";        
                             columns[1] = booking.getBookingDate().toString();
                             columns[2] = booking.getCarNo();
                             columns[5] = booking.getStartDate().toString();
                             columns[6] = booking.getEndDate().toString();
                             columns[7] = String.format("%.2f", booking.getBookingFee());
                             tableModelSearch.addRow(columns);
-                            System.out.println("im here");
                         }
                 }
             }
@@ -1504,7 +1452,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         duration = (int)d;
         int ID = Booking.id;
         String bookingID = "B" + String.format("%04d", ID);
-        System.out.println("bookingID: "+bookingID);
         double subTotal = rr * d;
         double serviceTax = subTotal * 10 / 100;
         double total = subTotal + serviceTax;
@@ -1801,7 +1748,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         if (row >= 0) {
             String notification = (String) tableNotificationsModel.getValueAt(row, 0);
             String bookingID = notification.substring(13, 18);
-            String customerID = user.getUserID();
             String username = user.getUsername();
             tableMessagesModel.setRowCount(0); // Delete all previous rows
             for (Booking booking : CarRental.getBookings())
@@ -1840,7 +1786,6 @@ public class CustomerFrame extends javax.swing.JFrame {
 
     private void btnConfirmBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmBookActionPerformed
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        bookingConfirmation();
         String customerID = user.getUserID();
         String bookingCP = lblCP.getText().toUpperCase();
         String sBookingDate = format.format(LocalDate.now());
