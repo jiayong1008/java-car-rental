@@ -335,7 +335,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
     
-    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {                                           
         String name = txtName.getText().trim().toUpperCase();
         String contactNo = txtContact.getText().trim();
         String email = txtEmail.getText().trim().toLowerCase();
@@ -418,6 +418,7 @@ public class RegistrationFrame extends javax.swing.JFrame {
 
             if (!user.isDuplicate()) {
                 if (user.addToFile()) {
+                    CarRental.loadUsers();
                     JOptionPane.showMessageDialog(this, "Registration successful");
                 } else {
                     JOptionPane.showMessageDialog(this, "Registration unsuccessful - Something went wrong.");
