@@ -19,8 +19,6 @@ abstract public class User {
     protected String username;
     protected String password;
     public static int id = 1;
-    // protected static final String FILE = "C:\\Users\\JiaYong\\Documents\\NetBeansProjects\\CarRental\\src\\carrental\\database\\users.txt";
-    protected static final String FILE = "/Users/vinie/NetBeansProjects/java-car-rental/src/carrental/database/users.txt";
 
     // CONSTRUCTORS
     public User() {}
@@ -58,7 +56,7 @@ abstract public class User {
         String line;
         try {
             // May throw FileNotFoundException
-            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE, true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
             PrintWriter pw = new PrintWriter(bw);
             
             line = String.format(
@@ -110,7 +108,7 @@ abstract public class User {
 
         try {
             // May throw FileNotFoundException
-            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile()));
             PrintWriter pw = new PrintWriter(bw);
             pw.write("userID, role, name, gender, contact, email, IC / passport, username, password\n");
 
