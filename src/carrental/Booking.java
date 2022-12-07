@@ -15,8 +15,6 @@ public class Booking {
     
     // INITIALIZATIONS
     private final String bookingID;
-    private final String custID;
-    private String carNo;
     private Customer customer;
     private Car car;
     private LocalDate bookingDate;
@@ -29,14 +27,12 @@ public class Booking {
     // CONSTRUCTORS
     public Booking(ArrayList<String> bookingInfo)
     {
-
         // assigning user ID manually if not provided
         int bookingId = Integer.parseInt(bookingInfo.get(0).substring(1));
         bookingId = (bookingId >= 0) ? bookingId : id;
         bookingID = "B" + String.format("%04d", bookingId);
         id = ++bookingId;
         
-//        bookingID = bookingInfo.get(0);
         String sBookingDate = bookingInfo.get(3);
         String sstartDate = bookingInfo.get(4);
         String sendDate = bookingInfo.get(5);
@@ -53,9 +49,9 @@ public class Booking {
         startDate = LocalDate.parse(sstartDate, format);
         endDate = LocalDate.parse(sendDate, format);
 
-        // Todo - Initialize Customer and Car object
-        custID = bookingInfo.get(1);
-        carNo = bookingInfo.get(2);
+        // Initialize Customer and Car object
+        String custID = bookingInfo.get(1);
+        String carNo = bookingInfo.get(2);
         status = bookingInfo.get(7);
 
         for (Customer cust : CarRental.getCustomers()) 
@@ -78,8 +74,6 @@ public class Booking {
     
     // GETTERS
     public String getBookingId() {return bookingID;} 
-    public String getCustID() {return custID;} 
-    public String getCarNo() {return carNo;} 
     public Customer getCustomer() {return customer;} 
     public Car getCar() {return car;}
     public LocalDate getBookingDate() {return bookingDate;} 
@@ -91,7 +85,6 @@ public class Booking {
     // SETTERS
     public void setCustomer(Customer _customer) { customer = _customer; }
     public void setCar(Car _car) { car = _car; }
-    public void setCarNo(String _carNo) { carNo = _carNo; }
     public void setBookingDate(LocalDate _bookingDate) { bookingDate = _bookingDate; }
     public void setStartDate(LocalDate _startDate) { startDate = _startDate; }
     public void setEndDate(LocalDate _endDate) { endDate = _endDate; }
@@ -134,7 +127,7 @@ public class Booking {
             
             line = String.format(
                 "%s, %s, %s, %s, %s, %s, %.2f, %s\n", 
-                bookingID, custID, carNo, bookingDate, startDate, endDate, bookingFee, status
+                bookingID, customer.getUserID(), car.getCarPlate(), bookingDate, startDate, endDate, bookingFee, status
             );
             pw.write(line);
             pw.close();
@@ -154,7 +147,11 @@ public class Booking {
     
     public boolean updateInfo (String _carNo, LocalDate _startDate, LocalDate _endDate, Double _bookingFee)
     {
-        setCarNo(_carNo);
+        for (Car car : CarRental.getCars())
+        {
+            if (car.getCarPlate().equals(_carNo))
+            setCar(car);
+        }
         setStartDate(_startDate);
         setEndDate(_endDate);
         setBookingFee(_bookingFee);
@@ -184,8 +181,8 @@ public class Booking {
                 line = String.format(
                     "%s, %s, %s, %s, %s, %s, %.02f, %s\n", 
                     booking.getBookingId(),
-                    booking.getCustID(),
-                    booking.getCarNo(),
+                    booking.getCustomer().getUserID(),
+                    booking.getCar().getCarPlate(),
                     booking.getBookingDate(),
                     booking.getStartDate(),
                     booking.getEndDate(),

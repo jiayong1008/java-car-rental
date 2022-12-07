@@ -72,11 +72,12 @@ public class AdminFrame extends javax.swing.JFrame {
         model.addRow(columns);
     }
     
+    // Populate record to table - Overload method (Booking)
     public void addTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
-        columns[1] = booking.getCustID();
-        columns[2] = booking.getCarNo();
+        columns[1] = booking.getCustomer().getUserID();
+        columns[2] = booking.getCar().getCarPlate();
         columns[3] = booking.getBookingDate();
         columns[4] = booking.getStartDate();
         columns[5] = booking.getEndDate();
@@ -134,7 +135,7 @@ public class AdminFrame extends javax.swing.JFrame {
             if(booking.getStatus().equals("WAITING FOR CONFIRMATION")){
                 columns[0] = booking.getBookingId();
                 columns[1] = booking.getBookingDate();
-                columns[2] = booking.getCarNo();
+                columns[2] = booking.getCar().getCarPlate();
                 columns[3] = booking.getStartDate();
                 columns[4] = booking.getEndDate();
                 columns[5] = booking.getBookingFee();
@@ -1880,25 +1881,6 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        //        if (displayed) return;
-        //        displayed = true;
-        //        File file = new File(CarRental.getBookingFile());
-        //
-        //        try {
-            //            FileReader fr = new FileReader(file);
-            //            BufferedReader br = new BufferedReader(fr);
-            //
-            //            DefaultTableModel model = (DefaultTableModel)tableBookings.getModel();
-            //            Object[] lines = br.lines().toArray();
-            //
-            //            for(int i = 0; i < lines.length; i++){
-                //                String[] row = lines[i].toString().split(",");
-                //                model.addRow(row);
-                //            }
-            //
-            //        } catch (FileNotFoundException ex) {
-            //            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void btnGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateReportActionPerformed
@@ -1998,7 +1980,6 @@ public class AdminFrame extends javax.swing.JFrame {
         Booking booking = CarRental.getBookings().get(bookingSize - 1);
         loadReceipt(booking);
         txtBookIdReceipt.setText(booking.getBookingId());
-        // int last = Booking.getHighestId();
     }//GEN-LAST:event_btnLastReceiptActionPerformed
 
     private void btnPreviousReceiptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPreviousReceiptActionPerformed
@@ -2007,7 +1988,6 @@ public class AdminFrame extends javax.swing.JFrame {
         while (booking == null) {
             // ReceiptID starts from 1
             receiptID--;
-            // TODO - Change CarRental.getBookings().size() to Highest ID
             if (receiptID > 0 && receiptID <= CarRental.getBookings().size())
             {
                 String requestedBookingId = String.format("B%04d", receiptID);
@@ -2568,8 +2548,8 @@ public class AdminFrame extends javax.swing.JFrame {
                     LocalDate pickUpTemp = pickUp;
                     for (int j = 0; j <= tduration; j++){
                         if (pickUpTemp.equals(dateInDuration)){
-                            if (!carNotAvailable.contains(booking.getCarNo())){
-                                carNotAvailable.add(booking.getCarNo());
+                            if (!carNotAvailable.contains(booking.getCar().getCarPlate())){
+                                carNotAvailable.add(booking.getCar().getCarPlate());
                             }
                         }
                         pickUpTemp = pickUpTemp.plusDays(1);
@@ -2623,9 +2603,6 @@ public class AdminFrame extends javax.swing.JFrame {
         }
 
         else {
-
-            
-            
 
             ArrayList<String> bookingInfo = new ArrayList<String>(
                 Arrays.asList("B-1", customerID, bookingCP, sBookingDate, sPickUp, sDropOff, sAmount, status)
@@ -2767,7 +2744,7 @@ public class AdminFrame extends javax.swing.JFrame {
             for (Booking booking : CarRental.getBookings())
             {
                 if (!booking.getBookingId().equals(bookingID)) continue;
-                if (booking.getCarNo().equals(bookingCP) && booking.getStartDate().equals(sPickUp) && booking.getEndDate().equals(sDropOff)){
+                if (booking.getCar().getCarPlate().equals(bookingCP) && booking.getStartDate().equals(sPickUp) && booking.getEndDate().equals(sDropOff)){
                     JOptionPane.showMessageDialog(this, "Nothing to edit.");
                 }
                 else
@@ -2802,12 +2779,12 @@ public class AdminFrame extends javax.swing.JFrame {
         for (Booking booking : CarRental.getBookings())
         {
             if (booking.getBookingId().toUpperCase().contains(bookingID) &&
-                booking.getCustID().toUpperCase().contains(customerID) &&
-                booking.getCarNo().toUpperCase().contains(bookingCP))
+                booking.getCustomer().getUserID().toUpperCase().contains(customerID) &&
+                booking.getCar().getCarPlate().toUpperCase().contains(bookingCP))
             {
                 columns[0] = booking.getBookingId();
-                columns[1] = booking.getCustID();
-                columns[2] = booking.getCarNo();
+                columns[1] = booking.getCustomer().getUserID();
+                columns[2] = booking.getCar().getCarPlate();
                 columns[3] = booking.getBookingDate().toString();
                 columns[4] = booking.getStartDate().toString();
                 columns[5] = booking.getEndDate().toString();

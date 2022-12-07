@@ -52,11 +52,11 @@ public class CustomerFrame extends javax.swing.JFrame {
         tableHistoryModel.setRowCount(0); // Delete all previous rows
         for (Booking booking : CarRental.getBookings())
         {
-            if (booking.getCustID().toUpperCase().contains(customerID))//print history of specific customer
+            if (booking.getCustomer().getUserID().toUpperCase().contains(customerID))//print history of specific customer
             {
                 for (Car car : CarRental.getCars())
                 {
-                if (car.getCarPlate().contains(booking.getCarNo()))
+                if (car.getCarPlate().contains(booking.getCar().getCarPlate()))
                     {
                         columns[3] = car.getCarBrand();
                         columns[4] = car.getCarModel();
@@ -64,7 +64,7 @@ public class CustomerFrame extends javax.swing.JFrame {
                 }
                 columns[0] = booking.getBookingId();
                 columns[1] = booking.getBookingDate().toString();
-                columns[2] = booking.getCarNo();
+                columns[2] = booking.getCar().getCarPlate();
                 columns[5] = booking.getStartDate().toString();
                 columns[6] = booking.getEndDate().toString();
                 columns[7] = String.format("%.2f", booking.getBookingFee());
@@ -80,7 +80,7 @@ public class CustomerFrame extends javax.swing.JFrame {
         tableNotificationModel.setRowCount(0); // Delete all previous rows
         for (Booking booking : CarRental.getBookings())
         {
-            if (booking.getCustID().toUpperCase().contains(customerID))//print history of specific customer
+            if (booking.getCustomer().getUserID().toUpperCase().contains(customerID))//print history of specific customer
             {
                 if(booking.getStatus().equals("CONFIRMED")){
                     columns[0] = "Your booking "+booking.getBookingId()+" is confirmed!";
@@ -1415,16 +1415,16 @@ public class CustomerFrame extends javax.swing.JFrame {
                 for (Booking booking : CarRental.getBookings())
                 {
                     if (carNo != null)
-                        if (booking.getCustID().toUpperCase().contains(customerID) && booking.getCarNo().contains(carNo))//print history of specific customer
+                        if (booking.getCustomer().getUserID().toUpperCase().contains(customerID) && booking.getCar().getCarPlate().contains(carNo))//print history of specific customer
                         {
-                            if (car.getCarPlate().toUpperCase().contains(booking.getCarNo().toUpperCase()))
+                            if (car.getCarPlate().toUpperCase().contains(booking.getCar().getCarPlate().toUpperCase()))
                             {
                                 columns[3] = car.getCarBrand();
                                 columns[4] = car.getCarModel();
                             }
                             columns[0] = booking.getBookingId();
                             columns[1] = booking.getBookingDate().toString();
-                            columns[2] = booking.getCarNo();
+                            columns[2] = booking.getCar().getCarPlate();
                             columns[5] = booking.getStartDate().toString();
                             columns[6] = booking.getEndDate().toString();
                             columns[7] = String.format("%.2f", booking.getBookingFee());
@@ -1540,19 +1540,11 @@ public class CustomerFrame extends javax.swing.JFrame {
             }
             
         }
-        // if (chkInDate.isEmpty() || chkOutDate.isEmpty()) { // Validation
-            //     JOptionPane.showMessageDialog(this, "Please fill in the dates first.");
-            // } else if (validateBookingDates()) { // Add all available rooms to list model
-            //     ArrayList<String> availableRooms = getAvailableRooms();
-            //     lm.removeAllElements();
-            //     availableRooms.forEach((room) -> lm.addElement(room));
-            // }
     }//GEN-LAST:event_btnSearchCarActionPerformed
 
     public static long getDateDiff(LocalDate date1, LocalDate date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getDayOfYear() - date1.getDayOfYear();
         return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
-
     }
     
     private void displayAvailableCars(LocalDate pickUp, LocalDate dropOff) {
@@ -1577,8 +1569,8 @@ public class CustomerFrame extends javax.swing.JFrame {
                     LocalDate pickUpTemp = pickUp;
                     for (int j = 0; j <= duration; j++){
                         if (pickUpTemp.equals(dateInDuration)){
-                            if (!carNotAvailable.contains(booking.getCarNo())){
-                                carNotAvailable.add(booking.getCarNo());
+                            if (!carNotAvailable.contains(booking.getCar().getCarPlate())){
+                                carNotAvailable.add(booking.getCar().getCarPlate());
                             }
                         }
                         pickUpTemp = pickUpTemp.plusDays(1);
@@ -1611,9 +1603,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String bDropOff = sdf.format(jCldBooking.getDate());
         txtDOD.setText(bDropOff);
-        
-        // bookRoomID = "";
-        // lblRoomID.setText("N/A");
     }//GEN-LAST:event_btnDODActionPerformed
 
     private void txtDODActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDODActionPerformed
@@ -1628,16 +1617,6 @@ public class CustomerFrame extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String bPickUp = sdf.format(jCldBooking.getDate());
         txtPUD.setText(bPickUp);
-        
-// chkInDate = datef.format(jCalendar1.getDate());
-        // txtChkIn.setText(chkInDate);
-        // lblChkIn.setText(chkInDate);
-        // validateToday();
-        // if (!chkOutDate.isEmpty()) {
-            //     validateBookingDates();
-            // }
-        // bookRoomID = "";
-        // lblRoomID.setText("N/A");
     }//GEN-LAST:event_btnPUDActionPerformed
 
     private void btnFilterCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterCarActionPerformed
