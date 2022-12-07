@@ -1,10 +1,5 @@
 package carrental;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -35,36 +30,5 @@ public class Customer extends User {
     public String toString()
     {
         return String.format("%s (Customer) - %s", customerID, name);
-    }
-    
-    public boolean addToFile()
-    {
-        String role = "customer";
-        String line;
-
-        try {
-            // May throw FileNotFoundException
-            BufferedWriter bw = new BufferedWriter(new FileWriter(CarRental.getUserFile(), true));
-            PrintWriter pw = new PrintWriter(bw);
-            
-            line = String.format(
-                "%s, %s, %s, %s, %s, %s, %s, %s, %s\n", 
-            customerID, role, name, gender, contactNo, email, ic, username, password
-            );
-            pw.write(line);
-            pw.close();
-
-            // Add to CarRental's 'customers' ArrayList
-            CarRental.addCustomer(this);
-            return true;
-
-        } catch (FileNotFoundException e) {
-            System.out.println("User file does not exist");
-        } catch (IOException e) {
-            System.out.println("Oops..something went wrong.");
-        }
-        
-        return false;
-    }
-    
+    }    
 }

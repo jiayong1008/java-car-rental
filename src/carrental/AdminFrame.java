@@ -72,7 +72,7 @@ public class AdminFrame extends javax.swing.JFrame {
         model.addRow(columns);
     }
     
-    public void addBookingTableRow(DefaultTableModel model, Booking booking) 
+    public void addTableRow(DefaultTableModel model, Booking booking) 
     {
         columns[0] = booking.getBookingId();
         columns[1] = booking.getCustID();
@@ -122,12 +122,11 @@ public class AdminFrame extends javax.swing.JFrame {
         int index = bookings.size();
         
         for (int i = 0; i < index; i++) {
-            addBookingTableRow(tableModel, bookings.get(i));
+            addTableRow(tableModel, bookings.get(i));
         }
     }
     
     private void loadNewBookings() {
-        ArrayList<Booking> bookings = CarRental.getBookings();
         DefaultTableModel tableModel = (DefaultTableModel) tableNewBookings.getModel();
         tableModel.setRowCount(0);
         

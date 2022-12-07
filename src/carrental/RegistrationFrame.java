@@ -415,11 +415,9 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 gender, contactNo, email, ic, username, password
             );
             User user = role.equals("customer") ? new Customer(userInfo) : new Customer(userInfo);
-            System.out.println(user);
 
             if (!user.isDuplicate()) {
                 if (user.addToFile()) {
-//                    loadUsers();
                     JOptionPane.showMessageDialog(this, "Registration successful");
                 } else {
                     JOptionPane.showMessageDialog(this, "Registration unsuccessful - Something went wrong.");
@@ -428,40 +426,8 @@ public class RegistrationFrame extends javax.swing.JFrame {
                 user = null; // Deleting it (by making it eligible for garbage collection)
                 JOptionPane.showMessageDialog(this, "Registration unsuccessful - Duplication detected.");
             }
-            
-            // Complete information provided - create new customer object and add to database
-//            ArrayList<String> userInfo = new ArrayList<String>(
-//                Arrays.asList(customerID, role, name, gender, contactNo, email, ic, username, password)
-//            );
-//            
-//            Customer customer = new Customer(userInfo);
-//            System.out.println(customer);
-//                        
-//
-//            if (!customer.isDuplicate()) {
-//
-//                if (customer.addToFile()) { 
-////                    loadUsers();
-//                    JOptionPane.showMessageDialog(this, "Registered successfully");
-//                } 
-//                else
-//                    JOptionPane.showMessageDialog(this, "Registered unsuccessfully - Something went wrong.");
-//                    
-//            } else {
-//                customer = null; // Deleting it (by making it eligible for garbage collection)
-//                JOptionPane.showMessageDialog(this, "Account Exist");
-//            }
         }
     }
-    // Check staff credentials
-    // if (checkCredentials(username, password)) {
-    //     MainFrame mainf = new MainFrame(); // Call main page frame
-    //     mainf.setVisible(true);
-    //     this.setVisible(false); // Close login frame
-    // } else { // Wrong credentials
-    //     lblLoginAlert.setOpaque(true);
-    //     lblLoginAlert.setText("Invalid staff credentials.");
-    // }//GEN-LAST:event_btnConfirmActionPerformed
     
     private void txtRgtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRgtUsernameActionPerformed
         // TODO add your handling code here:
